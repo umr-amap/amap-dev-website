@@ -1,0 +1,15 @@
+---
+title: "Ressources"
+---
+
+List of ressources used to build this website.
+
+# Good dev practices
+
+# Git
+
+# Test
+
+# CI/CD
+
+# ...

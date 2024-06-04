@@ -1,0 +1,27 @@
+project:
+  type: website
+
+website:
+  title: "amap-dev-website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - git.qmd
+      - starting_project.qmd
+      - testing.qmd
+      - documentation.qmd
+      - ci_cd.qmd
+      - hpc.qmd
+      - about.qmd
+      - ressources.qmd
+
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+
