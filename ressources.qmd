@@ -2,9 +2,10 @@
 title: "Ressources"
 ---
 
-List of ressources used to build this website.
+List of resources used to build this website.
 
 # Good dev practices
+<https://rdatatoolbox.github.io/>
 
 # Git
 

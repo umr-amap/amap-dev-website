@@ -3,12 +3,12 @@ title: "Starting a new project"
 ---
 
 # R users
-- working within a Rstudio project
-- naming without blank space
-- version control
-- relative paths
-- license + readme + description files
-- repositories organisation : raw-data, transformed-data, outputs, figures, R
-- multiple functions, one file per function in R repo
-- useful R packages: devtools, usethis, rcompendium, here
+## working within a Rstudio project
+## naming without blank space
+## version control
+## relative paths
+## license + readme + description files
+## repositories organisation : raw-data, transformed-data, outputs, figures, R
+## multiple functions, one file per function in R repo
+## useful R packages: devtools, usethis, rcompendium, here
 
