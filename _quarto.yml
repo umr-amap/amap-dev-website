@@ -3,18 +3,19 @@ project:
 
 website:
   title: "amap-dev-website"
+  search: true
   navbar:
     left:
-      - href: index.qmd
+      - href: src/index.qmd
         text: Home
-      - git.qmd
-      - starting_project.qmd
-      - testing.qmd
-      - documentation.qmd
-      - ci_cd.qmd
-      - hpc.qmd
-      - about.qmd
-      - ressources.qmd
+      - src/git.qmd
+      - src/starting_project.qmd
+      - src/testing.qmd
+      - src/documentation.qmd
+      - src/ci_cd.qmd
+      - src/hpc.qmd
+      - src/about.qmd
+      - src/resources.qmd
 
 
 format:

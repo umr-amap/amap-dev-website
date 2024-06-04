@@ -1,0 +1,21 @@
+---
+title: "Resources"
+---
+
+List of resources used to build this website.
+
+# Good dev practices
+<https://rdatatoolbox.github.io/>
+
+# Git
+- Git oriented with github and R (Rstudio) <https://happygitwithr.com//>
+- Software Carpentry for git beginners <https://swcarpentry.github.io/git-novice/index.html/>
+- Atlassian introduction to git <https://www.atlassian.com/fr/git/>
+- github training kit (include cheat sheet) <https://training.github.com//>
+- `Learn git fundamentals` handbook <https://www.freecodecamp.org/news/learn-git-basics//>
+
+# Test
+
+# CI/CD
+
+# ...

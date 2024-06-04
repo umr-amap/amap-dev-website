@@ -1,0 +1,73 @@
+---
+title: "HPC"
+---
+
+# What is HPC ?
+- Description of HPC, what it is and what it is used for.
+
+## Do you need HPC ?
+- Cases where HPC is useful.
+- Questions to ask yourself to know if you need HPC.
+    - Do you need to run a lot of simulations ?
+    - Do you need to run simulations that are very long ?
+    - Do you need to run simulations that are very memory intensive ?
+
+## What ressources are available ?
+At AMAP, we have access to several HPC ressources.
+
+### MESO@LR
+
+#### Description of the cluster
+- Medium size cluster based in Montpellier
+- List of ressources
+- pros / cons
+
+#### How to open an account
+- Contact the HPC team at AMAP
+- Mail to B. Pitollat
+
+### GENCI
+GENCI is the French national HPC agency. It provides access to several HPC ressources in France.
+
+#### Description of the clusters
+- Very large clusters
+- Pros / cons
+
+#### How to open an account ?
+- Go to the GENCI portal
+- Fill the requested document (provide IP)
+- Needs to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director.
+
+## How to use HPC ?
+To efficiently use HPC, you'll need to follow a few steps.
+- connect to the cluster and transfer your files
+- create your computation environment in the cluster
+- learn how to submit jobs
+
+### Connect and transfer files to the cluster
+#### Connection
+- Directly via `ssh`
+- Directly in the IDE (VSCode, PyCharm, etc.)
+
+#### Transfer files
+- Using scp & rsync
+- Using Filezilla
+
+### Create your computation environment
+- The modules system
+- Conda environments
+
+### Submit jobs
+#### The SLURM scheduler
+#### How to write a SLURM script
+#### How to submit and monitor a job
+#### Different partitions available
+- meso@lr
+- adastra
+
+# Concrete examples
+
+## Running a Python script using GPU on meso@lr
+## Install libraries and running a R script
+
+
