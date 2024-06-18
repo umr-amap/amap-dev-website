@@ -1,3 +1,34 @@
 ---
 title: "CI/CD"
 ---
+
+# What is CI/CD and why is it important?
+
+CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.
+
+You configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.
+
+Even for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.
+
+We recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc... that are good too.
+
+If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don't know yet about INRAE.
+
+# GitHub Actions
+
+## Principles
+- [doc](https://docs.github.com/en/actions)
+- `.yaml` files
+- example:
+  - déclancheur
+  - jobs
+  - steps
+
+## Configuration for an R package
+- use various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from [r-lib/actions](https://github.com/r-lib/actions/#readme)
+- `usethis::use_github_action()`:
+  - 1: check-standard: Run `R CMD check` on Linux, macOS, and Windows
+  - 2: test-coverage: Compute test coverage and report to https://about.codecov.io
+  - 3: pr-commands: Add /document and /style commands for pull requests
+- `usethis::use_pkgdown_github_pages()`
+  - cf. section sur documentation
