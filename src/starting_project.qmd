@@ -3,11 +3,23 @@ title: "Starting a new project"
 ---
 
 # R users
-## working within a Rstudio project
-## naming without blank space
-## version control
-## relative paths
-## license + readme + description files
+## Work within a Rstudio project
+- File > New Project > New Directory > New Project : renders a .Rproj file which will be located at the project root
+- name your project without blank space and accent
+- within your project, always use relative paths from the project root to ensure portability across users (check "here" R package)
+
+## Start version control with git
+[How to use git](git.qmd)
+
+## The files you need from the very beginning
+- DESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)
+```r
+usethis::create_package("mypackage")
+```
+
+- license : 
+- readme 
+
 ## repositories organisation : raw-data, transformed-data, outputs, figures, R
 ## multiple functions, one file per function in R repo
 ## useful R packages: devtools, usethis, rcompendium, here, testthat
