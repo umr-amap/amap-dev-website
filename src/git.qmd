@@ -1,3 +1,201 @@
 ---
 title: "Git"
 ---
+
+Inspiration [here](https://happygitwithr.com/install-git.html).
+Official `git` documentation [here](https://git-scm.com/doc).
+
+# What is Git and why should I use it?
+- version control system
+- collaboration
+- backup
+- reproducibility
+
+# Install git
+
+You need Git, so you can use it at the command line and so RStudio can call it.
+
+If there’s any chance it’s installed already, verify that, rejoice, and skip this step. (But consider updating an existing installation.)
+
+Otherwise, find installation instructions below for your operating system.
+
+## Git already installed?
+
+Go to the shell. Enter which git to request the path to your Git executable:
+
+```shell
+which git
+## /usr/bin/git
+```
+
+and `git --version` to see its version:
+
+```shell
+git --version
+## git version 2.45.2
+```
+
+If you are successful, that’s great! You have Git already. No need to install! Move on.
+
+If, instead, you see something more like git: command not found, keep reading.
+
+macOS users might get an immediate offer to install command line developer tools. Yes, you should accept! Click “Install” and read more below.
+
+## Windows
+
+__Option 1__ (highly recommended): Install Git for Windows, also known as msysgit or “Git Bash”, to get Git in addition to some other useful tools, such as the Bash shell. Yes, all those names are totally confusing, but you might encounter them elsewhere and I want you to be well-informed.
+
+We like this because Git for Windows leaves the Git executable in a conventional location, which will help you and other programs, e.g. RStudio, find it and use it. This also supports a transition to more expert use, because the “Git Bash” shell will be useful as you venture outside of R/RStudio.
+
+    NOTE: When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”. Otherwise, we believe it is good to accept the defaults.
+    Note that RStudio for Windows prefers for Git to be installed below C:/Program Files and this appears to be the default. This implies, for example, that the Git executable on my Windows system is found at C:/Program Files/Git/bin/git.exe. Unless you have specific reasons to otherwise, follow this convention.
+
+This also leaves you with a Git client, though not a very good one. So check out Git clients we recommend (chapter 8).
+
+FYI, this appears to be equivalent to what you would download from here: https://git-scm.com/download/.
+
+__Option 2__ (recommended): Install Git for Windows via the Chocolatey package manager. If this means anything to you, Chocolatey is like apt-get or Homebrew, but for Windows instead of Debian/Ubuntu Linux or macOS. As far as I can tell, using Chocolatey to install Git for Windows gives the same result as installing it yourself (option 1).
+
+This obviously requires that you already have Chocolatey installed or that you are up for installing it. It is not hard and the instructions are here. This may be worthwhile if it seems likely you will be installing more open source software in the future.
+
+After you install Chocolatey, in a shell, do:
+
+```shell
+choco install git.install
+```
+
+This installs the most current Git (Install) X.Y.Z Chocolatey package. At the time of writing, that is “Git (Install) 2.33.1”, but that version number will increment over time.
+Updating Git for Windows
+
+If you already have Git for Windows, but it’s not the latest version, it’s a good idea to update. You can update like so from the command line:
+
+```shell
+git update-git-for-windows
+```
+
+## macOS
+
+__Option 1__ (highly recommended): Install the Xcode command line tools (not all of Xcode), which includes Git.
+
+Go to the shell and enter one of these commands to elicit an offer to install developer command line tools:
+
+Accept the offer! Click on “Install”.
+
+Here’s another way to request this installation, more directly:
+
+We just happen to find this Git-based trigger apropos.
+
+Note also that, after upgrading macOS, you might need to re-do the above and/or re-agree to the Xcode license agreement. We have seen this cause the RStudio Git pane to disappear on a system where it was previously working. Use commands like those above to tickle Xcode into prompting you for what it needs, then restart RStudio.
+
+__Option 2__ (recommended): Install Git from here: http://git-scm.com/downloads.
+
+
+    This arguably sets you up the best for the future. It will certainly get you the latest version of Git of all approaches described here.
+    The GitHub home for the macOS installer is here: https://github.com/timcharper/git_osx_installer.
+        At that link, you can find more info if something goes wrong or you are working on an old version of macOS.
+
+__Option 3__ (recommended): If you anticipate getting heavily into scientific computing, you’re going to be installing and updating lots of software. You should check out Homebrew, “the missing package manager for OS X”. Among many other things, it can install Git for you. Once you have Homebrew installed, do this in the shell:
+
+```shell
+brew install git
+```
+
+## Linux
+
+Install Git via your distro’s package manager.
+
+Ubuntu or Debian Linux:
+
+```shell
+sudo apt-get install git
+```
+
+Fedora or RedHat Linux:
+
+```shell
+sudo yum install git
+```
+
+A comprehensive list for various Linux and Unix package managers:
+
+https://git-scm.com/download/linux
+
+# Global configuration (only once)
+
+## Necessary configuration
+In the shell:
+
+```shell
+git config --global user.name "Jane Doe"
+git config --global user.email "jane@example.com"
+git config --global --list
+```
+
+substituting your name and the email associated with your GitHub account.
+
+The usethis package offers an alternative approach. You can set your Git user name and email from within R:
+
+```r
+## install if needed (do this exactly once):
+## install.packages("usethis")
+
+library(usethis)
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.org")
+```
+
+You can have a secondary mail associated with your git account. To do so, you can add it to your global configuration:
+```shell
+git config --global user.email
+```
+
+## Optional configuration
+- Default editor:
+```shell
+git config --global core.editor "Rstudio"
+```
+- Default main branch:
+```shell
+git config --global init.defaultBranch main
+```
+
+## Personnal access token
+- Go to https://github.com/settings/tokens and click “Generate token”.
+- From R: `usethis::create_github_token()`
+
+## Git client
+- Rstudio integration
+- VSCode integration
+- GitKraken
+- github desktop
+
+# Create a new git repository
+
+## Where to store your git repositories
+- GitHub: pros and cons, public and private repositories
+- GitLab: IRD, CIRAD and INRAE instances
+
+## Github first
+- Create a new repository on GitHub
+- Clone the repository on your computer
+- Make a local change, commit, and push
+with CLI & Rstudio
+
+## Local first
+- `git init`
+- `.git` folder
+- `.gitignore` file
+
+# Git basics
+
+## Git workflow
+- Working directory, staging area, repository
+- branches
+- `push` and `pull`
+
+## Git basic commands
+- `git status`
+- `git add`
+- ...
+- liens vers formations + documentation
+
+## Merge conflicts
