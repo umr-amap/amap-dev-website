@@ -15,6 +15,7 @@ List of resources used to build this website.
 - `Learn git fundamentals` handbook <https://www.freecodecamp.org/news/learn-git-basics//>
 
 # Test
+<https://r-pkgs.org/testing-basics.html>
 
 # CI/CD
 

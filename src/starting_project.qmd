@@ -10,5 +10,5 @@ title: "Starting a new project"
 ## license + readme + description files
 ## repositories organisation : raw-data, transformed-data, outputs, figures, R
 ## multiple functions, one file per function in R repo
-## useful R packages: devtools, usethis, rcompendium, here
+## useful R packages: devtools, usethis, rcompendium, here, testthat
 

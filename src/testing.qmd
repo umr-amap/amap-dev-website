@@ -1,3 +1,40 @@
 ---
 title: "Testing"
 ---
+# R users
+## why do you need tests ?
+
+## initial setup
+```shell
+usethis::use_testthat(3)
+```
+verify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :
+```shell
+library(testthat)
+library(pkg_name)
+
+test_check("pkg_name")
+```
+No need to modify testthat.R file !
+
+## create a test
+- function in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with "test", here test-my_function.R
+
+## run a test
+First devtools::load_all(), then :
+- à la main : testthat::test_file("tests/testthat/test-my-function.R")
+- shortcut RStudio
+- devtools::test() (ou check())
+
+## examples
+- expect_equal()
+- expect_type()
+- expect_length()
+- ...
+
+## when and what to test
+- one test per function
+- test-first philosophy
+- test unitaire
+- test coverage
+- link with CI and github actions
