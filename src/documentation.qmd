@@ -1,3 +1,20 @@
 ---
 title: "Documentation"
 ---
+
+# R users
+## DESCRIPTION file
+
+## function documentation
+- what is needed in the function documentation
+- writing both function and doc at the same time in my-function.R
+- using roxygen to generate man/my-funtion.Rd
+
+## vignette
+- for what ?
+```r
+usethis::use_vignette("my-vignette")
+```
+
+## website with pkgdown
+<https://r-pkgs.org/website.html>
