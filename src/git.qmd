@@ -4,9 +4,23 @@ title: "Git"
 
 Inspiration [here](https://happygitwithr.com/install-git.html).
 Official `git` documentation [here](https://git-scm.com/doc).
+[software carpentry](https://kb.nikhef.nl/computing-course/git-novice/instructor/01-basics.html)
+[repoducibility course](https://reproducibility.rocks/materials/day2/02-git/)
 
-# What is Git and why should I use it?
+# What is Version Control, Git and why should I use it?
+
+We’ll start by exploring how version control can be used to keep track of what one person did and when. Even if you aren’t collaborating with other people, automated version control is much better than this situation:
+
+![](https://kb.nikhef.nl/computing-course/git-novice/fig/phd101212s.png)
+
+If you work alone, git is great to track changes and recover previous version of your files. You can also use a remote repository to have a back up and share your work.
+
 - version control system
+
+![](https://reproducibility.rocks/materials/day2/02-git/images/file_cycle2.png)
+
+Let’s imagine that we have a repository already working ( later we’ll see how to create one). When you create a new file as part of the repository (or repo), that file is untracked or unversioned. This means that git will ignore the file and any change you make to it until you add it to the repo. At that point the file is staged and it ready to get into the repository. To do that you do a commit and save that version of the file to the repo. This workflow modify --> add --> commit will repeat every time you want to save a version of the file. We don’t recommend making a commit every time you save the file or change a comma, and its also not a good idea to make a commit with a billion of changes. With practice and depending on how do you work, you will find a comfortable middle ground.
+
 - collaboration
 - backup
 - reproducibility
