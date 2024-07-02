@@ -1,21 +1,92 @@
 ---
 title: "HPC"
+execute:
+  eval: false
 ---
 
 # What is HPC ?
-- Description of HPC, what it is and what it is used for.
+High performance computing (HPC) is the practice of aggregating ("clustering") computing resources that work in parallel to gain performance greater than that of a single workstation and process massive multi-dimensional data sets.
+
+A standard computing system solves problems primarily by using serial computing—it divides the workload into a sequence of tasks and then runs the tasks one after the other on the same processor. On the other hand, HPC uses parallel processing, which divides the workload into tasks that run simultaneously on multiple processors.
+
+HPC computer systems are characterized by their high-speed processing power, high-performance networks, and large-memory capacity.
+
+While a laptop or desktop with a 3 GHz processor can perform around 3 billion calculations per second (~3.10^9), HPC solutions that can perform quadrillions of calculations per second (~10^{15}).
 
 ## Do you need HPC ?
-- Cases where HPC is useful.
-- Questions to ask yourself to know if you need HPC.
-    - Do you need to run a lot of simulations ?
-    - Do you need to run simulations that are very long ?
-    - Do you need to run simulations that are very memory intensive ?
+There are many cases where you might need to use use HPC ressources.
+
+### You need to run a lot of simulations
+Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
+You'll probably find yourself in this type of situation:
+```{r}
+plots <- c('P01', 'P02', ...)
+years <- c(2000, 2001, ...)
+
+for (plot in plots) {
+    for (year in years) {
+        data <- get_data(plot, year)
+        data <- preprocess_data(data, arguments...)
+        results <- run_analysis(data, arguments...)
+        write_results(results, plot, year)
+    }
+}
+```
+This will require you to run the same analysis many times. If the analysis is long to run, all the analyses being independant, you might want to use HPC to run all the simulations in parallel.
+
+You need to modify your script so that it uses input arguments :
+```{r}
+args <- commandArgs(trailingOnly = TRUE)
+plot <- args[1]
+year <- as.numeric(args[2])
+
+data <- get_data(plot, year)
+data <- preprocess_data(data, arguments...)
+results <- run_analysis(data, arguments...)
+write_results(results, plot, year)
+```
+
+and then launch the script concurrently for all the plots and years using [`Rscript`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/Rscript) and [`xargs`](https://www.man7.org/linux/man-pages/man1/xargs.1.html) :
+```bash
+for plot in P01 P02 ...; do
+    for year in 2000 2001 ...; do
+        echo $plot $year
+    done
+done | xargs -n 2 -P 4 Rscript my_script.R
+```
+
+### You need to run simulations that are very long
+You might want to use parallelization to speed up the computation of a single simulation. [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) or [OpenMP](https://en.wikipedia.org/wiki/OpenMP) are two libraries that can help you to parallelize your code.
+
+You can also access to very powerful hardware (typically [GPUs](https://en.wikipedia.org/wiki/Graphics_processing_unit)) that are not available on your computer, and that can speed up the computation of your simulations.
+
+### You need to run simulations that are very memory intensive
+Let's say that you developed a script on your computer that run on a small domain. You want to extend this script to a larger domain but you run out of memory on your computer. You have two options here to run your code on HPC:
+- Run your script on a node with more memory (some HPC nodes have memory up to ~1 To)
+- Use parallel computing to distribute the memory usage on multiple nodes
+
+### Advantages of using HPC
+There are a wide range of advantages to using HPC, including:
+- ___Performance___: Very fast computation !!! This can help you to run simulations that would be impossible to run on a single workstation.
+- ___Scalability___: Ability to run many simulations in parallel. This can be useful for running many simulations with different parameters, or for running the same simulation many times.
+- ___Reliability___: HPC systems are designed to be reliable with a high percentage of availability. The machine is delocalized on a dedicated site, with a dedicated team to maintain it.
+- ___Cost___: HPC systems are shared resources, so you only pay for what you use. This can be more cost-effective than buying a high-end workstation.
+- ___Support___: HPC systems are usually supported by a team of experts who can help you to optimize your code and run your simulations.
+- ___Science focused___: you don't need to care about system administration and updating the system. You can focus on your science.
+
+### Disadvantages of using HPC
+There are also some disadvantages to using HPC, that you should be aware of:
+- ___Learning curve___: HPC systems can be complex to use (shared machine, multiple storage spaces, job scheduler, linux machine), and you may need to learn new tools and techniques to use them effectively.
+- ___Limited resources___: HPC systems are shared resources, so you may not always be able to access the resources you need exactly when you need them.
+- ___Data transfer___: Transferring data to and from an HPC system can be slow, especially if you are working with large data sets.
 
 ## What ressources are available ?
-At AMAP, we have access to several HPC ressources.
+At AMAP, we have access to several HPC ressources. All the ressources listed here are available freely to AMAP members (although institutes might contribute financialy, users are not requested to pay for computing hours or storage) and you can have additional support from POLIS-HPC team.
 
-### MESO@LR
+Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.
+
+### Meso-center `ISDM-Meso`
+Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC ressources for the Occitanie region.
 
 #### Description of the cluster
 - Medium size cluster based in Montpellier
