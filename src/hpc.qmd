@@ -194,7 +194,7 @@ scp -r /where/my_directory/is/my_directory my_login@muse-login.meso.umontpellier
 
 This means that you have to know beforehand the path to the directory on the cluster that you want to put your files in.
 
-[`rsync`](https://linux.die.net/man/1/rsync) is a more powerfull tool that allows you to synchronize directories between your computer and the cluster. It has a lot of options that you can use to customize the synchronization, and allows you to transfer only the files that have been modified since the last synchronization (very useful when you have a lot of files to transfer or when you have a slow and instable connection).
+[`rsync`](https://hpc-lr.umontpellier.fr/wp-content/uploads/2017/05/rsync.txt) is a more powerfull tool that allows you to synchronize directories between your computer and the cluster. It has a lot of options that you can use to customize the synchronization, and allows you to transfer only the files that have been modified since the last synchronization (very useful when you have a lot of files to transfer or when you have a slow and instable connection).
 
 ##### Filezilla
 [`Filezilla`](https://filezilla-project.org/) is a client for transfering files among machines. It is very easy to use and provides a graphical interface.
