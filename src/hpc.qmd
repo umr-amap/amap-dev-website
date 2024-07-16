@@ -86,28 +86,60 @@ At AMAP, we have access to several HPC ressources. All the ressources listed her
 Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.
 
 ### Meso-center `ISDM-Meso`
-Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC ressources for the Occitanie region.
+Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC ressources for the Occitanie region. Although access to this ressource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
 
 #### Description of the cluster
-- Medium size cluster based in Montpellier
-- List of ressources
-- pros / cons
+Technical specificities include:
+- 308 computational nodes of 28 cores each (bi processors Intel Xeon E5-2680 v4 2,4 Ghz (broadwell) 2×14 coeurs/noeud), 128 Go RAM
+- 2 nodes with big memory (`bigmem`) with 112 coeurs, 3To RAM each
+- 2 noeuds with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000
+- 1,3Po storage, including 1Po fast storage on Lustre
+- `SLURM` workload manager
 
 #### How to open an account
-- Contact the HPC team at AMAP
-- Mail to B. Pitollat
+Getting an account to `Meso@LR` is usualy quite fast (~1 day). You only need to be part of AMAP and have an email adress from CIRAD.
+
+You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) and the HPC team at AMAP (currently the contact person being [T. Arsouze](mailto:thomas.arsouze@cirad.fr)) with the following requirements:
+- explain who you are (student or post-doc or ... ? supervisor ? one sentence about your research)
+- request to be attached to the group `d_cirad_amap` (this is the group of AMAP members)
+- fill the `charte informatique` available [here](https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf)
 
 ### GENCI
-GENCI is the French national HPC agency. It provides access to several HPC ressources in France.
+If you need larges ressources (i.e. multi-GPU workflow, or > ~1000 CPUs working in parallel), this is probably your best option.
+[GENCI](https://www.genci.fr/) is the French national HPC agency. It provides access to [several HPC ressources in France](https://www.genci.fr/services/moyens-de-calcul):
+- [CINES](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines) (Montpellier)
+- [IDRIS](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-idris) (Saclay)
+- [TGCC](https://www.genci.fr/tres-grand-centre-de-calcul-du-cea-tgcc) (Bruyères-le-Châtel)
+
+Access and computing ressources are free for academic.
 
 #### Description of the clusters
-- Very large clusters
-- Pros / cons
+`Adastra` cluster at CINES is the most recent cluster available to GENCI users. It provides the best option for GPU computing, although it is powered by `AMD` processors (EPYC Trento). APUs AMD MI300A are also available.
+
+`Jean-Zay` cluster at IDRIS has recently been updated (09/2024) to the most powerfull `NVIDIA` GPUs available on the market (H100)
+
+`Joliot-Curie` cluster at TGCC provides access `Nvidia V100 SXM2` GPUs and Intel CPUs. Note that you can also have access to `Quantique plateform`.
 
 #### How to open an account ?
-- Go to the GENCI portal
-- Fill the requested document (provide IP)
-- Needs to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director.
+Anyone at AMAP can open an account to GENCI ressources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much ressources.
+
+> warning
+> Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the ressources.
+
+There are two ways to access GENCI ressources:
+- "Accès dynamiques" (fast access) : if your needs are < 500 000 h CPU and 50 000 h GPU (eq. V100) for 1 year. This is a simplified access, only a one paragraph description of the scientific context is required and no scientific or technical review is done.
+- "Accès réguliers" (regular access) : if your needs are too important for dynamical access, then you must go for regular access. You can request for ressources only two time per year, and provide a detailed description of your project, both scientificaly and technicaly.
+
+- You first need to login to the [edari website](https://www.edari.fr/user/login) (DARI: Demande d'Attribution de Ressources Informatiques) using RENATER federation.
+- First you need to ask for ressources:
+  - Go to "Demande de ressources" -> "Créer ou renouveler un dossier de demande d'heures." -> "Création d'un nouveau dossier"
+  - Then fill the forms:
+    - Form n°2 (Ressources) : correctly fill the type of ressources you need, the number of hours and the amount of storage needed. If you don't know what to put here, ask the HPC team at AMAP.
+    - Form n°3 (Structure de recherche) : choose UMR5120, "Identifiant RNSR" 200317641S
+    - Form n°5 (Soutien du projet) : you have access to mesocenter `Meso@LR`
+- Then you need to an account to the supercomputer:
+  - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for ressources you just created.
+  - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put "194.199.235.81", and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put "cluster-out.cirad.fr".
 
 ## How to use HPC ?
 To efficiently use HPC, you'll need to follow a few steps.
