@@ -17,10 +17,19 @@ title: "Starting a new project"
 usethis::create_package("mypackage")
 ```
 
-- license : 
-- readme 
+- LICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to <https://choosealicense.com>. For example, GPL-2 <https://choosealicense.com/licenses/gpl-2.0/> is the most widely used free software license.
 
-## repositories organisation : raw-data, transformed-data, outputs, figures, R
-## multiple functions, one file per function in R repo
-## useful R packages: devtools, usethis, rcompendium, here, testthat
+- README : the README is a text file allowing your reader to understand the general objectives and uses of your project. You can update it along the project development.
+
+## How to organize your project repositories 
+- The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.
+- As an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.
+- Obviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.
+
+
+## Some other general good organisation practice
+- Write each of your custom R functions in one single .R file
+
+## Here is a list of useful R packages when developing R projects and/or packages
+devtools, usethis, rcompendium, here, testthat
 
