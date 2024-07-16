@@ -139,7 +139,8 @@ There are two ways to access GENCI ressources:
     - Form n°5 (Soutien du projet) : you have access to mesocenter `Meso@LR`
 - Then you need to an account to the supercomputer:
   - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for ressources you just created.
-  - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put "194.199.235.81", and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put "cluster-out.cirad.fr".
+  - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put `194.199.235.81`, and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put `cluster-out.cirad.fr`.
+- Finally, you... wait ! You will receive an email when your account is created and you project validated.
 
 ## How to use HPC ?
 To efficiently use HPC, you'll need to follow a few steps.
@@ -147,10 +148,36 @@ To efficiently use HPC, you'll need to follow a few steps.
 - create your computation environment in the cluster
 - learn how to submit jobs
 
+> warning
+> The following steps are general and should apply to any HPC ressources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
+> - [Meso@LR](https://hpc-lr.umontpellier.fr/documentation-utilisateurs/)
+> - [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
+> - [Jean-Zay at IDRIS](http://www.idris.fr/jean-zay/)
+
 ### Connect and transfer files to the cluster
 #### Connection
-- Directly via `ssh`
-- Directly in the IDE (VSCode, PyCharm, etc.)
+##### Using a terminal
+The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the [`ssh` protocol](https://www.techtarget.com/searchsecurity/definition/Secure-Shell). For exemple, for `Meso@LR`cluster, in a terminal application, you can type:
+
+```bash
+ssh -X my_login@muse-login.meso.umontpellier.fr
+```
+
+To avoid typing your password each time you connect, you can use a [ssh key](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server).
+
+> note
+> Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example `adastra` does not accept ssh key.
+
+You can [use basic linux commands](https://www.hostinger.com/tutorials/linux-commands) to navigate through the cluster.
+
+You are now connected to the `frontal` or `login` node of the cluster. This is the node where you can submit jobs, transfer files, and prepare your computation environment. This is ___NOT___ the node where your jobs will be executed and where you can do your computations.
+
+##### Using an IDE
+You can also use an IDE (Integrated Development Environment - code editor that embeds multiple tools for developers) to connect to the cluster. For example `VSCode` provides a powerfull plugin to [develop on remote machines](https://code.visualstudio.com/docs/remote/ssh). This allows you to navigate, edit and run your code on the cluster directly from your IDE.
+
+`PyCharm` also provides a plugin to [develop on remote machines](https://www.jetbrains.com/help/pycharm/remote-development-starting-page.html).
+
+However, to our knowledge, no such solution exists for `RStudio`.
 
 #### Transfer files
 - Using scp & rsync
