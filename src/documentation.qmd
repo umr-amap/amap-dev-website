@@ -3,7 +3,9 @@ title: "Documentation"
 ---
 
 # R users
+
 ## DESCRIPTION file
+
 For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:
 
 > Package: mypackage
@@ -17,6 +19,7 @@ For your entire project, you will need a DESCRIPTION file which gather the proje
 
 
 ## Function documentation: basics 
+
 - What is needed in the function documentation?
 1. what does your function do
 2. with which arguments
@@ -47,5 +50,6 @@ devtools::document()
 will generate (or update) your package’s .Rd files
 
 ## Package documentation 
+
 For a more "integrated" manual, see vignette at <https://r-pkgs.org/vignettes.html>
  and website with pkgdown here <https://r-pkgs.org/website.html>.
