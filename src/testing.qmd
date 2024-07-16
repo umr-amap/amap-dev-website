@@ -2,7 +2,8 @@
 title: "Testing"
 ---
 # R users
-## why do you need tests ?
+
+## Why do you need tests ?
 
 ## initial setup
 ```shell
