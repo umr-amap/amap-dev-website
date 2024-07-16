@@ -19,7 +19,7 @@ usethis::create_package("mypackage")
 
 - LICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to <https://choosealicense.com>. For example, GPL-2 <https://choosealicense.com/licenses/gpl-2.0/> is the most widely used free software license.
 
-- README : the README is a text file allowing your reader to understand the general objectives and uses of your project. You can update it along the project development.
+- README : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development.
 
 ## How to organize your project repositories 
 - The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.

@@ -4,17 +4,48 @@ title: "Documentation"
 
 # R users
 ## DESCRIPTION file
+For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:
 
-## function documentation
-- what is needed in the function documentation
-- writing both function and doc at the same time in my-function.R
-- using roxygen to generate man/my-funtion.Rd
+> Package: mypackage
+> Title: What the Package Does (One Line, Title Case) \
+> Version: 0.0.0.1000 \
+> Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")) \
+> Description: What the package does (one paragraph). \
+> Imports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)
 
-## vignette
-- for what ?
+
+## Function documentation: basics 
+- What is needed in the function documentation?
+1. what does your function do
+2. with which arguments
+3. what does it return 
+4. (maybe) some examples of how to use it
+
+- Here is an example of header for the custom 'add' function: 
 ```r
-usethis::use_vignette("my-vignette")
+#' Add together two numbers 
+#' 
+#' @param x A number. 
+#' @param y A number. 
+#' @returns A numeric vector. 
+#' @examples 
+#' add(1, 1) 
+#' add(10, 1)
+add <- function(x, y) { 
+  x + y 
+}
 ```
 
-## website with pkgdown
-<https://r-pkgs.org/website.html>
+- Write both function and documentation at the same time in my-function.R file, stored in R sub-repository.
+
+- Use roxygen to generate man/my-function.Rd, reading the header: the devtools function document() 
+```r
+devtools::document()
+```
+will generate (or update) your package’s .Rd files
+
+## Package documentation 
+For a more "integrated" manual, see vignette at <https://r-pkgs.org/vignettes.html>
+ and website with pkgdown here <https://r-pkgs.org/website.html>.
