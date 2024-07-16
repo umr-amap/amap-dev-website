@@ -180,8 +180,32 @@ You can also use an IDE (Integrated Development Environment - code editor that e
 However, to our knowledge, no such solution exists for `RStudio`.
 
 #### Transfer files
-- Using scp & rsync
-- Using Filezilla
+To run your code on the cluster, you need first to transfer your files. You can use multiple tools to transfer files:
+
+##### `scp` & `rsync`
+If you feel at ease with a terminal, you can use `scp` or `rsync` commands to transfer files. For example, to transfer a file from your computer to the cluster, you can type:
+
+```bash
+# single file
+scp /where/my_file/is/my_file.txt my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+# directory
+scp -r /where/my_directory/is/my_directory my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+```
+
+This means that you have to know beforehand the path to the directory on the cluster that you want to put your files in.
+
+[`rsync`](https://linux.die.net/man/1/rsync) is a more powerfull tool that allows you to synchronize directories between your computer and the cluster. It has a lot of options that you can use to customize the synchronization, and allows you to transfer only the files that have been modified since the last synchronization (very useful when you have a lot of files to transfer or when you have a slow and instable connection).
+
+##### Filezilla
+[`Filezilla`](https://filezilla-project.org/) is a client for transfering files among machines. It is very easy to use and provides a graphical interface.
+
+You can find the "Quickconnect" bar at the top of the main window, and you need to provide the address of the "Host" : `muse-login.meso.umontpellier.fr`, your "Username" and "Password". You can also save your connection for later use : "File" -> "Copy current connection to Site Manager…".
+
+##### Where to put my files ?
+HPC clusters usually have multiple places where to put your files. Here are the ones for `Meso@LR`:
+- `/home/my_login` : this is your home directory. You can put your scripts and small files here. This directory is backed up.
+- `/lustre/scratch` : this is a temporary directory with very fast access where you can put your large files and data. This directory is not backed up and can be erased after 2 months. This space is recommended for running your computations that can require large amount of data.
+- `/nfs/work` : this is a directory where you can put your input / output data or executable files. This directory is backed up and can be used to store your data for a long time.
 
 ### Create your computation environment
 - The modules system
