@@ -18,7 +18,7 @@ title: "Starting a new project"
 
 ## The files you need from the very beginning
 
-- DESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)
+- DESCRIPTION & NAMESPACE files : those are the files that contain metadata of your project (or package)
 
 ```r
 usethis::create_package("mypackage")
