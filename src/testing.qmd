@@ -69,6 +69,7 @@ First ```devtools::load_all()``` to load your functions AND their corresponding 
 When you run one or several tests, you get a failure report including a description of the test, the failure location (file & code line), and the reason for the failure. You can then start debugging (your function or your test).
 
 ## Write test
+
 Expectations ```expect_``` makes the binary assertion about whether or not an object (here, the value returned by a call of your ```my_function()```) has the properties you expect.
 
 Expectations share the same structure:
@@ -104,4 +105,6 @@ Here is some useful expectations (and shortcuts) to start with:
 - one test per function property
 
 - test coverage with covr package: determines which lines of your code are executed when the test suite is run, rendering you a percentage of code that is covered by your tests (the higher the better).
+
+## See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you !
 
