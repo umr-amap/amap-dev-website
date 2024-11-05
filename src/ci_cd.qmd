@@ -17,18 +17,26 @@ If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is simil
 # GitHub Actions
 
 ## Principles
+
 - [doc](https://docs.github.com/en/actions)
-- `.yaml` files
+
+- `.yaml` files which contain the instructions (ici screen d'un exemple annoté)
+
 - example:
-  - déclancheur
+  - déclencheur
   - jobs
   - steps
 
 ## Configuration for an R package
+
+- (ici: où on met les .yaml, comment on navigue dans les onglets pour voir les actions exécutées, où sont stockés les workflow, où aller chercher les sorties)
+
 - use various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from [r-lib/actions](https://github.com/r-lib/actions/#readme)
-- `usethis::use_github_action()`:
+
+- quelques actions à mettre en place `usethis::use_github_action()`:
+
   - 1: check-standard: Run `R CMD check` on Linux, macOS, and Windows
   - 2: test-coverage: Compute test coverage and report to https://about.codecov.io
+  (+ la version sans codedecov -> comment récupérer les résultats)
   - 3: pr-commands: Add /document and /style commands for pull requests
-- `usethis::use_pkgdown_github_pages()`
-  - cf. section sur documentation
+  - 4: doc avec github pages `usethis::use_pkgdown_github_pages()` 
