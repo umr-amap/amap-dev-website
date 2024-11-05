@@ -377,22 +377,36 @@ R CMD BATCH --vanilla "--args ${input_filename} ${output_filename}" my_analysis.
 # Save the output file to a safe place
 mv ${output_filename} ${MY_PROJ_DIR}
 ```
+
 ## Running a script using GPU on `meso@lr`
 To run a script using GPU on `meso@lr`, you need a little bit more tweaking (while it might be easier on adastra for example).
 
+By default, if you install a package that requires GPU, it will not work on `meso@lr` because the GPU is not available on the login node. You first need to install your package on a GPU compute node.
+
 > warning
-> A adapter et tester: from Colin Prieur !!
->
-1.Réserver un noeud GPU intéractif
-2.Checker la version du driver nvidia avec "nvidia-smi" sur le noeud
-3.Quitter le noeud GPU
-4.Load le module de versioning approprié sur un noeud d'interface de base (pour moi c'est le python anaconda)
-5.Installer un environnement "mock" avec juste le pip et bourer la version pytorch/R (je sais pas ce que vous utilisez) compatible avec le driver NVIDIA avec pip (voir ce lien https://pytorch.org/)
-6.Rajouter les librairies spécialisées qui sont utiles pour vous dans la version.
-
-6.Lancer un noeud GPU avec l'environnement approprié et voilou !
+> To run a script on a GPU node, please add the following to your `sbatch` scripts:
+> ```bash
+> module () {
+>     eval `/usr/bin/modulecmd bash $*`
+> }
+> ```
+> This will allow you to use the `module` command in your scripts.
 
 
+### Submit an interactive job on GPU node [#interactive-gpu]
+You first need to connect to a GPU node to install your package. You can do this by submitting an interactive job on a GPU node. Here is an example of a script that you can use to submit an interactive job on a GPU node:
+```bash
+srun -A AGAP -p agap_gpu --gres gpu:a100:1 -t 00:30:00 -c 1 -J interactive1 --pty /bin/bash -i
+```
+This means you are asking for 1 GPU of type `a100` for 30 minutes, on `agap_gpu` partition, in interactive mode.
+
+Once you are connected to the GPU node, you must check the version of the `nvidia` driver with the command `nvidia-smi`. You can then exit the GPU node with `exit`.
+
+### Install you environment
+Install `pytorch` (or `tensorflow` or any other package that requires GPU) in a dedicated environment which is compatible with the `nvidia` driver version seens in #interactive-gpu section. Install also additional dependencies needed.
+
+### Submit a job on GPU node
+You can now submit a job on a GPU node. Here is an example of a script that you can use to submit a job on a GPU node:
 
 ```bash
 #!/bin/bash
@@ -409,7 +423,10 @@ module () {
     eval `/usr/bin/modulecmd bash $*`
 }
 
-cd /lustre/prieurc/prg/
+module purge
+module load ... # load the software you need
+
+cd /lustre/my_account/prg/
 ./runThroughConfig_SSL_HP.sh
 ```
 
