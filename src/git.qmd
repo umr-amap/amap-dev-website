@@ -278,7 +278,7 @@ First, you need to decide where you want to store your git repositories. You hav
 ### Self-hosted git servers
 Mentioned here for completeness, but not recommended for most users as this requires advanced technical skills and a dedicated server.
 
-You can host your own git server on your own server. This is a good option if you want to have full control over your data and your repositories, but it requires some maintenance. A good comparison of the different self-hosted git servers is available [here](https://lab.abilian.com/Tech/Apps/Software%20Forges/)
+You can host your own git server on your own server. This is a good option if you want to have full control over your data and your repositories, but it requires some maintenance. A good comparison of the different self-hosted git servers is available [here](https://lab.abilian.com/Tech/Apps/Software%20Forges/).
 
 ## Github first
 To create a new git repository starting from `GitHub`, you need to:
@@ -290,6 +290,31 @@ To create a new git repository starting from `GitHub`, you need to:
 - Give a name to your repository (`1`), a description, and choose if you want it to be public or private (`2`). It is a (**very**) good practice to add a `README.md` file to your repository that will be displayed on the main page of your repository and will give a brief description of your project (`3`), a `LICENSE` file that will define the license of your project (`4`), and a `.gitignore` file that will define the files that should not be tracked by `git` (`5`).
 
 ![](../figures/New_github_repository_2.png)
+
+- You now have a brand new repository on `GitHub`. You (and any collaborator) can now clone it to have it localy on your own computer by clicking on the green `Code` button (`1`) and copying the URL of the repository (`2`).
+
+![](../figures/New_github_repository_3.png)
+
+- You can now clone the repository on your computer by opening a terminal and typing:
+```shell
+git clone https://github.com/thomasarsouze/test.git
+```
+or using `RStudio` and `File` > `New Project` > `Version Control` > `Git` and pasting the URL of the repository you want to clone. Then click on `Create Project`;
+
+or using `GitHub Desktop` and `File` > `Clone repository` and pasting the URL of the repository you want to clone;
+
+or using `VSCode` and `View` > `Command Palette` > `Git: Clone` and pasting the URL of the repository you want to clone.
+
+## Gilab first
+Creating a new repository on `Gitlab` is very similar to `GitHub`. You can see the steps :
+
+![](../figures/New_gitlab_repository_1.png)
+
+![](../figures/New_gitlab_repository_2.png)
+
+`Gitlab` provides pre-defined customable actions for initiating your repository.
+
+![](../figures/New_gitlab_repository_3.png)
 
 ## Local first
 - `git init`
