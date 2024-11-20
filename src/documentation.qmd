@@ -52,4 +52,4 @@ will generate (or update) your package’s .Rd files
 ## Package documentation 
 
 For a more "integrated" manual, see vignette at <https://r-pkgs.org/vignettes.html>
- and website with pkgdown here <https://r-pkgs.org/website.html>.
+ and website with pkgdown here <https://r-pkgs.org/website.html>. Also see [CI/CI page](ci_cd.qmd) to automate vignette and website publishing.
