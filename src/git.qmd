@@ -232,10 +232,10 @@ You can use a personal access token in place of a password when authenticating t
 - From R: `usethis::create_github_token()`
 
 ## Git client
-There are many integrations and graphical interfaces for `git` in IDEs.
+There are many integrations and graphical interfaces for `git` in IDEs. We here present only the most common ones, but feel free to explore others and complete this section.
 
 ### Rstudio integration
-`RStudio` integrates natively with `git`.
+`RStudio` is probably your main text editor if you work with `R`. Luckily, it integrates natively with `git`.
 
 - First indicate the path to the `git` executable in the `Tools` > `Global Options` > `Git/SVN` menu.
 - Then you need to create a #Personal Access Token# to use with `RStudio`. Go to your GitHub account, click on your profile picture, then `Settings` > `Developer settings` > `Personal access tokens` > `Generate new token`. Give it a name, and select the `repo` scope. Copy the token and paste it in `RStudio` when prompted.
@@ -253,21 +253,43 @@ This allows you to see the history of your project, compare files between versio
 
 > **Note**:
 >
-> `VSCode` is highly customizable to fit your needs. You can also check the `GitHub Pull Requests` extension to review and merge pull requests directly from `VSCode`, the `GitHub Actions` extension to see the status of your CI/CD pipelines, and the `GitHub Copilot` extension to have an AI assistant to help you write code.
+> `VSCode` is highly customizable to fit your needs. You can also check the [`GitHub Pull Requests` extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) to review, comment and merge pull requests directly from `VSCode`, the [`GitHub Actions` extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions) to see the status of your CI/CD pipelines, and the [`GitHub Copilot` extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) to have an AI assistant to help you write code.
 
 ### Github desktop
+[Github Desktop](https://github.com/apps/desktop) is not an editor, but a graphical interface for `git` with a lot of feature for an easy integration with `GitHub`. You can see the history of your project, compare files between versions, push and pull changes, and many more. All without the terminal or the `git` command line.
+
 
 # Create a new git repository
+When you start a new project, wether it is a new analysis, a new package, or a new paper, you will need to create a new repository that will be a git repository. This repository will contain all the files of your project with the history of the changes all the contributors made to the files.
+
+You have two options to create a new repository:
+- You can create a new repository on the git server and clone it on your computer
+- You can create a new repository on your computer and push it to the git server
 
 ## Where to store your git repositories
-- GitHub: pros and cons, public and private repositories
-- GitLab: IRD, CIRAD and INRAE instances
+First, you need to decide where you want to store your git repositories. You have many options, depending on your needs (features, UI, collaboration, etc...) and your preferences (visibilty to other reasearchers, privacy, etc...).
+
+### GitHub
+`Github` is (by far) the most popular git server, created in 2008 and the first cloud-hosted solution. It is now owned by Microsoft. This is probably the best option if you have an open-source project that you want to share your work with the community, and you are open to collaboration. It provides a lot of features for collaboration: issues, discussions, project management, pull requests reviews, etc... It also has a built in CI/CD pipeline with `GitHub Actions` that can help you automate your workflow (testing, building, deploying, etc...) and a web hosting service with `GitHub Pages`.
+
+### Institutional git servers
+`CIRAD`, `INRAE` and `IRD` have their own git servers based on `Gitlab`. This means that all the repositories you create on those servers are hosted by the institutions and not by a third party. This is an excellent option for internal or institution-basedc projects as `Gitlab` offers very similar features to `GitHub` and you've got a local support. However, collaboration with other researchers outside of the institution is more complicated (`RENETER` login are used to access the platform) and some services are not as good as `GitHub` (particularly CI/CD).
+
+### Self-hosted git servers
+Mentioned here for completeness, but not recommended for most users as this requires advanced technical skills and a dedicated server.
+
+You can host your own git server on your own server. This is a good option if you want to have full control over your data and your repositories, but it requires some maintenance. A good comparison of the different self-hosted git servers is available [here](https://lab.abilian.com/Tech/Apps/Software%20Forges/)
 
 ## Github first
-- Create a new repository on GitHub
-- Clone the repository on your computer
-- Make a local change, commit, and push
-with CLI & Rstudio
+To create a new git repository starting from `GitHub`, you need to:
+
+- Create a new repository from the `Repositories` tab
+
+![](../figures/New_github_repository_1.png)
+
+- Give a name to your repository (`1`), a description, and choose if you want it to be public or private (`2`). It is a (**very**) good practice to add a `README.md` file to your repository that will be displayed on the main page of your repository and will give a brief description of your project (`3`), a `LICENSE` file that will define the license of your project (`4`), and a `.gitignore` file that will define the files that should not be tracked by `git` (`5`).
+
+![](../figures/New_github_repository_2.png)
 
 ## Local first
 - `git init`
@@ -276,15 +298,15 @@ with CLI & Rstudio
 
 # Git basics
 
-## Git workflow
-- Working directory, staging area, repository
-- branches
-- `push` and `pull`
-
 ## Git basic commands
 - `git status`
 - `git add`
 - ...
 - liens vers formations + documentation
+
+## Git workflow
+- Working directory, staging area, repository
+- branches
+- `push` and `pull`
 
 ## Merge conflicts
