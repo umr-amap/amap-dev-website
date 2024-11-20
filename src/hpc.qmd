@@ -5,16 +5,16 @@ execute:
 ---
 
 # What is HPC ?
-High performance computing (HPC) is the practice of aggregating ("clustering") computing resources that work in parallel to gain performance greater than that of a single workstation and process massive multi-dimensional data sets.
+High performance computing (HPC) is the practice of aggregating ("clustering") computing resources that work in parallel to gain greater performance than a single workstation and process massive multi-dimensional data sets.
 
-A standard computing system solves problems primarily by using serial computing—it divides the workload into a sequence of tasks and then runs the tasks one after the other on the same processor. On the other hand, HPC uses parallel processing, which divides the workload into tasks that run simultaneously on multiple processors.
+A standard computing system solves problems primarily by using serial computing. It divides the workload into a sequence of tasks and then runs the tasks one after the other on the same processor. On the other hand, HPC uses parallel processing, which divides the workload into tasks that run simultaneously on multiple processors.
 
 HPC computer systems are characterized by their high-speed processing power, high-performance networks, and large-memory capacity.
 
 While a laptop or desktop with a 3 GHz processor can perform around 3 billion calculations per second (~3.10^9), HPC solutions that can perform quadrillions of calculations per second (~10^{15}).
 
 ## Do you need HPC ?
-There are many cases where you might need to use use HPC ressources.
+There are many cases where you might need to use use HPC resources.
 
 ### You need to run a lot of simulations
 Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
@@ -82,20 +82,20 @@ There are also some disadvantages to using HPC, that you should be aware of:
 - ___Limited resources___: HPC systems are shared resources, so you may not always be able to access the resources you need exactly when you need them.
 - ___Data transfer___: Transferring data to and from an HPC system can be slow, especially if you are working with large data sets.
 
-## What ressources are available ?
-At AMAP, we have access to several HPC ressources. All the ressources listed here are available freely to AMAP members (although institutes might contribute financialy, users are not requested to pay for computing hours or storage) and you can have additional support from POLIS-HPC team.
+## What resources are available ?
+At AMAP, we have access to several HPC resources. All the resources listed here are available freely to AMAP members (although institutes might contribute financialy, users are not requested to pay for computing hours or storage) and you can have additional support from POLIS-HPC team.
 
 Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.
 
 ### Meso-center `ISDM-Meso` {#sec-mesolr}
-Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC ressources for the Occitanie region. Although access to this ressource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
+Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC resources for the Occitanie region. Although access to this ressource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
 
 #### Description of the cluster
 Technical specificities include:
 
 - 308 computational nodes of 28 cores each (bi processors Intel Xeon E5-2680 v4 2,4 Ghz (broadwell) 2×14 coeurs/noeud), 128 Go RAM
 - 2 nodes with big memory (`bigmem`) with 112 coeurs, 3To RAM each
-- 2 noeuds with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000
+- 2 nodes with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000
 - 1,3Po storage, including 1Po fast storage on Lustre
 - `SLURM` workload manager
 
@@ -109,15 +109,15 @@ You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) a
 - fill the `charte informatique` available [here](https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf)
 
 ### GENCI
-If you need larges ressources (i.e. multi-GPU workflow, or > ~1000 CPUs working in parallel), this is probably your best option.
+If you need larges resources (i.e. multi-GPU workflow, or > ~1000 CPUs working in parallel), this is probably your best option.
 
-[GENCI](https://www.genci.fr/) is the French national HPC agency. It provides access to [several HPC ressources in France](https://www.genci.fr/services/moyens-de-calcul):
+[GENCI](https://www.genci.fr/) is the French national HPC agency. It provides access to [several HPC resources in France](https://www.genci.fr/services/moyens-de-calcul):
 
 - [CINES](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines) (Montpellier)
 - [IDRIS](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-idris) (Saclay)
 - [TGCC](https://www.genci.fr/tres-grand-centre-de-calcul-du-cea-tgcc) (Bruyères-le-Châtel)
 
-Access and computing ressources are free for academic.
+Access and computing resources are free for academic.
 
 #### Description of the clusters
 `Adastra` cluster at CINES is the most recent cluster available to GENCI users. It provides the best option for GPU computing, although it is powered by `AMD` processors (EPYC Trento). APUs AMD MI300A are also available.
@@ -127,25 +127,25 @@ Access and computing ressources are free for academic.
 `Joliot-Curie` cluster at TGCC provides access `Nvidia V100 SXM2` GPUs and Intel CPUs. Note that you can also have access to `Quantique plateform`.
 
 #### How to open an account ?
-Anyone at AMAP can open an account to GENCI ressources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much ressources.
+Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much resources.
 
 > warning
-> Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the ressources.
+> Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.
 
-There are two ways to access GENCI ressources:
+There are two ways to access GENCI resources:
 
 - "Accès dynamiques" (fast access) : if your needs are < 500 000 h CPU and 50 000 h GPU (eq. V100) for 1 year. This is a simplified access, only a one paragraph description of the scientific context is required and no scientific or technical review is done.
-- "Accès réguliers" (regular access) : if your needs are too important for dynamical access, then you must go for regular access. You can request for ressources only two time per year, and provide a detailed description of your project, both scientificaly and technicaly.
+- "Accès réguliers" (regular access) : if your needs are too important for dynamical access, then you must go for regular access. You can request for resources only two times per year, and provide a detailed description of your project, both scientifically and technically.
 
-- You first need to login to the [edari website](https://www.edari.fr/user/login) (DARI: Demande d'Attribution de Ressources Informatiques) using RENATER federation.
-- First you need to ask for ressources:
-  - Go to "Demande de ressources" -> "Créer ou renouveler un dossier de demande d'heures." -> "Création d'un nouveau dossier"
+- You first need to login to the [edari website](https://www.edari.fr/user/login) (DARI: Demande d'Attribution de resources Informatiques) using RENATER federation.
+- First you need to ask for resources:
+  - Go to "Demande de resources" -> "Créer ou renouveler un dossier de demande d'heures." -> "Création d'un nouveau dossier"
   - Then fill the forms:
-    - Form n°2 (Ressources) : correctly fill the type of ressources you need, the number of hours and the amount of storage needed. If you don't know what to put here, ask the HPC team at AMAP.
+    - Form n°2 (resources) : correctly fill the type of resources you need, the number of hours and the amount of storage needed. If you don't know what to put here, ask the HPC team at AMAP.
     - Form n°3 (Structure de recherche) : choose UMR5120, "Identifiant RNSR" 200317641S
     - Form n°5 (Soutien du projet) : you have access to mesocenter `Meso@LR`
 - Then you need to an account to the supercomputer:
-  - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for ressources you just created.
+  - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for resources you just created.
   - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put `194.199.235.81`, and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put `cluster-out.cirad.fr`.
 - Finally, you... wait ! You will receive an email when your account is created and you project validated.
 
@@ -157,7 +157,7 @@ To efficiently use HPC, you'll need to follow a few steps.
 - learn how to submit jobs
 
 > warning
-> The following steps are general and should apply to any HPC ressources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
+> The following steps are general and should apply to any HPC resources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
 > - [Meso@LR](https://hpc-lr.umontpellier.fr/documentation-utilisateurs/)
 > - [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
 > - [Jean-Zay at IDRIS](http://www.idris.fr/jean-zay/)
@@ -217,7 +217,7 @@ HPC clusters usually have multiple places where to put your files. Here are the 
 - `/nfs/work` : this is a directory where you can put your input / output data or executable files. This directory is backed up and can be used to store your data for a long time.
 
 ### Create your computation environment
-HPC clusters usually provide a lot of scientific software and libraries that you can use. They are installed in a module system that you can load and unload. Some usefull commands are:
+HPC clusters usually provide a lot of scientific softwares and libraries that you can use. They are installed in a module system that you can load and unload. Some useful commands are:
 
 - `module avail` : list all the available modules
 
@@ -296,7 +296,7 @@ This will install your packages in the `$HOME/R/x86_64-pc-linux-gnu-library/4.3.
 - You can also use [conda](https://docs.conda.io/en/latest/) to create a dedicated environment and install additional packages. Although mostly used for installing python packages, conda can also be used to install R packages (search search for packages [here](https://anaconda.org/search?q=r-)).
 
 ### Submit jobs
-All HPC clusters use a job scheduler to manage the ressources and the jobs submitted by users. The most common job scheduler is `SLURM` (Simple Linux Utility for Resource Management). This is the scheduler use at `meso@lr`, but also àdastra` and `jean-zay`.
+All HPC clusters use a job scheduler to manage the resources and the jobs submitted by users. The most common job scheduler is `SLURM` (Simple Linux Utility for Resource Management). This is the scheduler use at `meso@lr`, but also `adastra` and `jean-zay`.
 
 #### The SLURM scheduler
 You can find the documentation for `SLURM` [here](https://slurm.schedmd.com/).
@@ -308,7 +308,7 @@ You can run your job in 2 modes:
 It is recommended to use the batch mode for long and heavy computations, and the interactive mode for testing your code.
 
 #### How to write a SLURM script
-We refer to `SLURM` documentation to see all the options available, but we list here the most basic and usefull ones to write a batch script.
+We refer to `SLURM` documentation to see all the options available, but we list here the most basic and useful ones to write a batch script.
 
 |Slurm long format |	Slurm short format |	Description |
 |-------------|:-------|:-------------------|
@@ -317,7 +317,7 @@ We refer to `SLURM` documentation to see all the options available, but we list 
 |--nodes |	-N	| Number of nodes required |
 |--ntasks	| -n	| Number of tasks of your job |
 |--ntasks-per-node |  | Number of tasks per node (should be equal to the total number of tasks divided by the number of nodes) |
-|--ntasks-per-core |  | Number of tasks per core (ussually 1) |
+|--ntasks-per-core |  | Number of tasks per core (usually 1) |
 |--partition	| -p	| Name of the partition you want to use |
 |--mem |  | Memory required by the job in Mb (if not specified, then the whole node memory is allocated)|
 |--time	| -t |	Wall time requested (HH:MM:SS), i.e. maximum time for your job to run. |
@@ -328,7 +328,7 @@ We refer to `SLURM` documentation to see all the options available, but we list 
 
 #### How to submit and monitor a job
 #### Different partitions available
-Different types of ressources are available on the cluster, as listed in @sec-mesolr:
+Different types of resources are available on the cluster, as listed in @sec-mesolr:
 
 - __CPU__ node. Partition name : `agap_long`, `agap_normal`, `agap_short`
 
@@ -346,8 +346,8 @@ Here is a very simple script that you can adapt to your needs. You can fill addi
 #SBATCH --job-name="<job_name>"         # name of the job
 #SBATCH --partition=partition_name      # name of the partition you want to use
 #SBATCH --nodes=1                       # number of nodes required
-#SBATCH --exclusive                     # Ask SLURM to reserve the whole nodes. This is not desired if you only need a few cores.
-#SBATCH --time=1:00:00                  # Wall time requested (HH:MM:SS)
+#SBATCH --exclusive                     # ask SLURM to reserve the whole nodes. This is not desired if you only need a few cores.
+#SBATCH --time=1:00:00                  # wall time requested (HH:MM:SS)
 
 module purge                            # clean the environment
 module load R/packages/4.3.1-IFB        # load the software you need
