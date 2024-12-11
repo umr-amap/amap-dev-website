@@ -17,17 +17,17 @@ Automated testing requires more work, but the benefits are the following:
 
 - robust code.
 
-Let's use testthat R package.
+Let's use `testthat` `R` package.
 
 ## Initial setup
 
 First run:
 
 ```r
-usethis::use_testthat(3)
+usethis::use_testthat()
 ```
 
-This will create a tests/testthat/ directory, and a tests/testthat.R file which is supposed to look like this, for a project named pkg_name:
+This will create a `tests/testthat/` directory, and a `tests/testthat.R` file which is supposed to look like this, for a project named pkg_name:
 
 ```r
 library(testthat)
@@ -36,51 +36,51 @@ library(pkg_name)
 test_check("pkg_name")
 ```
 
-Do not edit the testthat.R file !
+Do not edit this `testthat.R` file !
 
 ## Create a test
 
-For a function in R/ repo named my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with "test", here test-my_function.R. Two functions from usethis package can be used to create those files:
+For a function in `R/` repo named `my_function.R`, the corresponding test must lie in `tests/testthat/` repo and its name must start with `test`, here : `test-my_function.R`. Two functions from `usethis` package can be used to create those files:
 
 ```r
 usethis::use_r("my_function") # creates and opens R/my_function.R
 usethis::use_test("my_function") # creates and opens tests/testthat/test-my_function.R
 ```
 
-When using ```use_test``` function to create the test file, an example test is inserted
+When using `use_test` function to create the test file, an example test is inserted
 
 ```r
 test_that("multiplication works", {
  expect_equal(2 * 2, 4)
 })
 ```
-which indicates the structure. Within test-my_function.R you are able to write one or more ```test_that()``` tests. Each test has a description (e.g., what it is testing, in the example if "multiplication works"), and one or more expectations (e.g., what the result of the test should be, in the example ```expect_equal()```).
+which indicates the structure. Within `test-my_function.R` you are able to write one or more `test_that()` tests. Each test has a description (e.g., what it is testing, in the example if "multiplication works"), and one or more expectations (e.g., what the result of the test should be, in the example `expect_equal()`).
 
 ## Run tests
 
-First ```devtools::load_all()``` to load your functions AND their corresponding tests, then you have several options:
+First `devtools::load_all()` to load your functions AND their corresponding tests, then you have several options:
 
-- manually, using directly expect_ functions in the console ```expect_equal(my_function(...), EXPECTED_OUTPUT)```,
+- manually, using directly `expect_ functions` in the console : `expect_equal(my_function(...), EXPECTED_OUTPUT)`,
 
-- entire test for a function with ```testthat::test_file("tests/testthat/test-my_function.R")```,
+- entire test for a function with `testthat::test_file("tests/testthat/test-my_function.R")`,
 
-- entire suite of tests with ```devtools::test()``` (or check()).
+- entire suite of tests with ```devtools::test()``` (or `check()`).
 
 When you run one or several tests, you get a failure report including a description of the test, the failure location (file & code line), and the reason for the failure. You can then start debugging (your function or your test).
 
 ## Write test
 
-Expectations ```expect_``` makes the binary assertion about whether or not an object (here, the value returned by a call of your ```my_function()```) has the properties you expect.
+Expectations `expect_` makes the binary assertion about whether or not an object (here, the value returned by a call of your `my_function()`) has the properties you expect.
 
 Expectations share the same structure:
 
-- start with ```expect_```,
+- start with `expect_`,
 
-- two main arguments: the first is the actual result of your function (returned by ```my_function(args)```), and the second is what you expect,
+- two main arguments: the first is the actual result of your function (returned by `my_function(args)`), and the second is what you expect,
 
 - when the actual and expected results (e.g., the main arguments) do not agree testthat throws an error.
 
-You can write several expectations ```expect_``` in one ```test_that()``` test, as long as they test the same property of your function. You can write several tests, testing different properties, in your test-my_function.R file.
+You can write several expectations `expect_` in one `test_that()` test, as long as they test the same property of your function. You can write several tests, testing different properties, in your `test-my_function.R` file.
 
 Here is some useful expectations (and shortcuts) to start with:
 
