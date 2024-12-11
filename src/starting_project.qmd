@@ -63,7 +63,7 @@ To edit the DESCRIPTION file, check at the [documentation section](documentation
 - [`here`](https://here.r-lib.org/) : a package that provides functions to easily refer to files in your project, e.g.:
   - `here::here()` : returns the path to the project root
   - `here::here("R", "my_function.R")` : returns the path to the `my_function.R` file in the `R` sub-repository
-- [`testthat`](https://testthat.r-lib.org/) : a package that provides functions to write and run tests for your functions. Check the documentation to see how to write tests. Once you have initiated your tests with `usethis::use_testthat()`, you can write tests in the `tests/testthat/` sub-repository:
+- [`testthat`](https://testthat.r-lib.org/) : a package that provides functions to write and run tests for your functions. Check the official documentation and [the dedicated section](testing.qmd#write-test) to see how to write tests. Once you have initiated your tests with `usethis::use_testthat()`, you can write tests in the `tests/testthat/` sub-repository:
   - `usethis::use_test("my_function")` : creates a new test script `tests/testthat/test-my_function.R`
   - `devtools::test()` : to run the tests.
 
