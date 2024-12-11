@@ -14,17 +14,17 @@ We’ll start by exploring how version control can be used to keep track of what
 
 ![](https://kb.nikhef.nl/computing-course/git-novice/fig/phd101212s.png)
 
-If you work alone, `git` is great to track changes and recover previous version of your files. You can also use a remote repository to have a back up and share your work.
+If you work alone, `git` is great to track changes and recover previous versions of your files. You can also use a remote repository to have a back up and share your work.
 
 ## Version control system (VCS)
 
 ![](https://reproducibility.rocks/materials/day2/02-git/images/file_cycle2.png)
 
-Let’s imagine that we have a repository already working. When you create a new file as part of the repository (or repo), that file is untracked or unversioned. This means that git will ignore the file and any change you make to it until you add it to the repo. At that point the file is staged and it ready to get into the repository. To do that you do a commit and save that version of the file to the repo.
+Let’s imagine that we have a repository already working. When you create a new file as part of the repository (or repo), that file is untracked or unversioned. This means that git will ignore the file and any change you make to it until you add it to the repo. At that point the file is staged and is ready to get into the repository. To do that you do a commit and save that version of the file to the repo.
 
-This workflow `modify --> add --> commit` will repeat every time you want to save a version of the file. We don’t recommend making a commit every time you save the file or change a comma, and its also not a good idea to make a commit with a billion of changes. With practice and depending on how do you work, you will find a comfortable middle ground.
+This workflow `modify --> add --> commit` will repeat every time you want to save a version of the file. We don’t recommend making a commit every time you save the file or change a comma, and its also not a good idea to make a commit with a billion of changes. With practice and depending on how you work, you will find a comfortable middle ground.
 
-`git` is (by far) the most widely used distributed VCS in the world. It is a free software that you install on your computer. It is a command line tool, but there are many graphical interfaces that can help you to use it.
+`git` is (by far) the most widely used and distributed VCS in the world. It is a free software that you install on your computer. It is a command line tool, but there are many graphical interfaces that can help you to use it.
 
 ## How it works ?
 
@@ -45,7 +45,7 @@ At some point, to make this collaboration easier, you will need to use a remote 
 
 > **Note**:
 >
-> Institutional remote repositories are also available and can be easily accessed using your usual institutional credentials. They have the advantage of being hosted localy, and not prone to sudden changes in the terms of service (among others). Also, you don't contribute to the monopoly of a single company and let them use your data. However, you don't have the same visibility as on `GitHub` and to the same quality of services.
+> Institutional remote repositories are also available and can be easily accessed using your usual institutional credentials. They have the advantage of being hosted localy, and not prone to sudden changes in the terms of service (among others). Also, you don't contribute to the monopoly of a single company and let them use your data. However, you won't have the same visibility as on `GitHub` and the same quality of services.
 > - [IRD GitLab](https://forge.ird.fr/)
 > - [CIRAD GitLab](https://gitlab.cirad.fr/)
 > - [INRAE GitLab](https://forgemia.inra.fr/)
@@ -65,9 +65,10 @@ Not only this gives you access to your work, but also to all the previous versio
 > Those remote repositories are not meant to host large files. They are meant to host code and text files. If you need to backup large files associated with your code or project, you should check for [git-lfs](https://git-lfs.com/). If you're looking for a VCS for your large dataset, you should check [zenodo](https://about.zenodo.org/), or your institutional [dataverse](https://dataverse.cirad.fr/). Please check [amap-data website]() for complete information.
 
 ## Reproducibility
+
 VCS are also a way to ensure the reproducibility of your work. By keeping track of all the changes you made to your files, you can easily reproduce the analysis you did at a specific time. This is also a way to ensure the transparency of your work, as you can share the repository with others, and they can see all the changes you made to the files. More and more journals are asking for the code and data associated with the publication, and using a VCS is a way to ensure that you can provide this information.
 
-By providing a reproducible workflow (including the code, data and the environment to do the analysis), you also foster the reuse of your work by others. This is a way to ensure that your work has a greater impact, and that you can contribute to the scientific community (see @ram_git_2013)
+By providing a reproducible workflow (including the code, data and the environment to do the analysis), you also foster the reuse of your work by others. This is a way to ensure that your work has a greater impact, and that you can contribute to the scientific community (see @ram_git_2013).
 
 # Install git
 
@@ -114,7 +115,7 @@ We like this because Git for Windows leaves the Git executable in a conventional
 
 This also leaves you with a Git client, though not a very good one. So check out Git clients we recommend (chapter 8).
 
-FYI, this appears to be equivalent to what you would download from here: https://git-scm.com/download/.
+FYI, this appears to be equivalent to what you would download from [here](https://git-scm.com/download/).
 
 ### __Option 2__ (recommended)
 
@@ -129,7 +130,8 @@ choco install git.install
 ```
 
 This installs the most current Git (Install) X.Y.Z Chocolatey package. At the time of writing, that is “Git (Install) 2.33.1”, but that version number will increment over time.
-Updating Git for Windows
+
+### Updating Git for Windows
 
 If you already have Git for Windows, but it’s not the latest version, it’s a good idea to update. You can update like so from the command line:
 
@@ -140,6 +142,7 @@ git update-git-for-windows
 ## macOS
 
 ### __Option 1__ (highly recommended)
+
 Install the Xcode command line tools (not all of Xcode), which includes Git.
 
 Go to the shell and enter one of these commands to elicit an offer to install developer command line tools:
@@ -153,13 +156,15 @@ We just happen to find this Git-based trigger apropos.
 Note also that, after upgrading macOS, you might need to re-do the above and/or re-agree to the Xcode license agreement. We have seen this cause the RStudio Git pane to disappear on a system where it was previously working. Use commands like those above to tickle Xcode into prompting you for what it needs, then restart RStudio.
 
 ### __Option 2__ (recommended)
-Install Git from here: http://git-scm.com/downloads.
+
+Install Git from [here](http://git-scm.com/downloads).
 
 This arguably sets you up the best for the future. It will certainly get you the latest version of Git of all approaches described here.
-The GitHub home for the macOS installer is here: https://github.com/timcharper/git_osx_installer.
+The GitHub home for the macOS installer is [here](https://github.com/timcharper/git_osx_installer).
 At that link, you can find more info if something goes wrong or you are working on an old version of macOS.
 
 ### __Option 3__ (recommended)
+
 If you anticipate getting heavily into scientific computing, you’re going to be installing and updating lots of software. You should check out Homebrew, “the missing package manager for OS X”. Among many other things, it can install Git for you. Once you have Homebrew installed, do this in the shell:
 
 ```shell
@@ -182,13 +187,12 @@ Fedora or RedHat Linux:
 sudo yum install git
 ```
 
-A comprehensive list for various Linux and Unix package managers:
-
-https://git-scm.com/download/linux
+A comprehensive list for various Linux and Unix package managers can be found [here](https://git-scm.com/download/linux).
 
 # Global configuration (only once)
 
 ## Necessary configuration
+
 In the shell:
 
 ```shell
@@ -215,6 +219,7 @@ git config --global user.email
 ```
 
 ## Optional configuration
+
 - **Default editor**. Some git commands need to open an editor. You can set your favorite editor as the default one. For example, to use Rstudio as the default editor:
 ```shell
 git config --global core.editor "Rstudio"
@@ -226,15 +231,18 @@ git config --global init.defaultBranch main
 ```
 
 ## Personnal access token
-You can use a personal access token in place of a password when authenticating to your remote reprository in the command line or with the API. This will help you to save some time and avoid typing your password each time you push or pull from the remote repository.
 
-- Go to https://github.com/settings/tokens and click “Generate token”.
+You can use a personal access token in place of a password when authenticating to your remote repository in the command line or with the API. This will help you to save some time and avoid typing your password each time you push or pull from the remote repository.
+
+- Go to [this page](https://github.com/settings/tokens) and click “Generate token”.
 - From R: `usethis::create_github_token()`
 
 ## Git client
+
 There are many integrations and graphical interfaces for `git` in IDEs. We here present only the most common ones, but feel free to explore others and complete this section.
 
 ### Rstudio integration
+
 `RStudio` is probably your main text editor if you work with `R`. Luckily, it integrates natively with `git`.
 
 - First indicate the path to the `git` executable in the `Tools` > `Global Options` > `Git/SVN` menu.
@@ -244,9 +252,10 @@ You are now ready to use `git` with `RStudio`.
 
 Go in `File` > `New Project` > `Version Control` > `Git` and paste the URL of the repository you want to clone. Then click on `Create Project`.
 
-You will now be able to see a tab `Git` in the top right pane of `RStudio`., commit changes, and push them to the remote repository. You can also use the `terminal` pane to use `git` commands directly.
+You will now be able to see a tab `Git` in the top right pane of `RStudio`, commit changes, and push them to the remote repository. You can also use the `terminal` pane to use `git` commands directly.
 
 ### VSCode integration
+
 If you are using `VSCode`, you can install the [`GitLens`](https://www.gitkraken.com/gitlens) extension to have a better integration with `git`.
 
 This allows you to see the history of your project, compare files between versions, push and pull changes, and many more. All without the terminal or the `git` command line.
@@ -256,31 +265,40 @@ This allows you to see the history of your project, compare files between versio
 > `VSCode` is highly customizable to fit your needs. You can also check the [`GitHub Pull Requests` extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) to review, comment and merge pull requests directly from `VSCode`, the [`GitHub Actions` extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions) to see the status of your CI/CD pipelines, and the [`GitHub Copilot` extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) to have an AI assistant to help you write code.
 
 ### Github desktop
+
 [Github Desktop](https://github.com/apps/desktop) is not an editor, but a graphical interface for `git` with a lot of feature for an easy integration with `GitHub`. You can see the history of your project, compare files between versions, push and pull changes, and many more. All without the terminal or the `git` command line.
 
 
 # Create a new git repository
-When you start a new project, wether it is a new analysis, a new package, or a new paper, you will need to create a new repository that will be a git repository. This repository will contain all the files of your project with the history of the changes all the contributors made to the files.
+
+When you start a new project, whether it is a new analysis, a new package, or a new paper, you will need to create a new repository that will be a git repository. This repository will contain all the files of your project with the history of the changes all the contributors made to the files.
 
 You have two options to create a new repository:
-- You can create a new repository on the git server and clone it on your computer
-- You can create a new repository on your computer and push it to the git server
+
+- create a new repository on the git server and clone it on your computer,
+
+- create a new repository on your computer and push it to the git server.
 
 ## Where to store your git repositories
-First, you need to decide where you want to store your git repositories. You have many options, depending on your needs (features, UI, collaboration, etc...) and your preferences (visibilty to other reasearchers, privacy, etc...).
+
+First, you need to decide where you want to store your git repositories. You have many options, depending on your needs (features, UI, collaboration, etc...) and your preferences (visibility to other researchers, privacy, etc...).
 
 ### GitHub
-`Github` is (by far) the most popular git server, created in 2008 and the first cloud-hosted solution. It is now owned by Microsoft. This is probably the best option if you have an open-source project that you want to share your work with the community, and you are open to collaboration. It provides a lot of features for collaboration: issues, discussions, project management, pull requests reviews, etc... It also has a built in CI/CD pipeline with `GitHub Actions` that can help you automate your workflow (testing, building, deploying, etc...) and a web hosting service with `GitHub Pages`.
+
+`Github` is (by far) the most popular git server, created in 2008 and the first cloud-hosted solution. It is now owned by Microsoft. This is probably the best option if you have an open-source project that you want to share with the community, and you are open to collaboration. It provides a lot of features for collaboration: issues, discussions, project management, pull requests reviews, etc... It also has a built in CI/CD pipeline with `GitHub Actions` that can help you automate your workflow (testing, building, deploying, etc...) and a web hosting service with `GitHub Pages`.
 
 ### Institutional git servers
-`CIRAD`, `INRAE` and `IRD` have their own git servers based on `Gitlab`. This means that all the repositories you create on those servers are hosted by the institutions and not by a third party. This is an excellent option for internal or institution-basedc projects as `Gitlab` offers very similar features to `GitHub` and you've got a local support. However, collaboration with other researchers outside of the institution is more complicated (`RENETER` login are used to access the platform) and some services are not as good as `GitHub` (particularly CI/CD).
+
+`CIRAD`, `INRAE` and `IRD` have their own git servers based on `Gitlab`. This means that all the repositories you create on those servers are hosted by the institutions and not by a third party. This is an excellent option for internal or institution-based projects as `Gitlab` offers very similar features to `GitHub` and you've got a local support. However, collaboration with other researchers outside of the institution is more complicated (`RENATER` login are used to access the platform) and some services are not as good as `GitHub` (particularly CI/CD).
 
 ### Self-hosted git servers
+
 Mentioned here for completeness, but not recommended for most users as this requires advanced technical skills and a dedicated server.
 
 You can host your own git server on your own server. This is a good option if you want to have full control over your data and your repositories, but it requires some maintenance. A good comparison of the different self-hosted git servers is available [here](https://lab.abilian.com/Tech/Apps/Software%20Forges/).
 
 ## Github first
+
 To create a new git repository starting from `GitHub`, you need to:
 
 - Create a new repository from the `Repositories` tab
@@ -306,6 +324,7 @@ or using `GitHub Desktop` and `File` > `Clone repository` and pasting the URL of
 or using `VSCode` and `View` > `Command Palette` > `Git: Clone` and pasting the URL of the repository you want to clone.
 
 ## Gilab first
+
 Creating a new repository on `Gitlab` is very similar to `GitHub`. You can see the steps :
 
 ![](../figures/New_gitlab_repository_1.png)
