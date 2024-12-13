@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "src/resources.html",
-    "href": "src/resources.html",
-    "title": "Resources",
-    "section": "",
-    "text": "List of resources used to build this website.\n\nGood dev practices\nhttps://rdatatoolbox.github.io/\n\n\nGit\n\nGit oriented with github and R (Rstudio) https://happygitwithr.com//\nSoftware Carpentry for git beginners https://swcarpentry.github.io/git-novice/index.html/\nAtlassian introduction to git https://www.atlassian.com/fr/git/\ngithub training kit (include cheat sheet) https://training.github.com//\nLearn git fundamentals handbook https://www.freecodecamp.org/news/learn-git-basics//\n\n\n\nTest\nhttps://r-pkgs.org/testing-basics.html\n\n\nCI/CD\n\n\n…"
-  },
-  {
-    "objectID": "src/about.html",
-    "href": "src/about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
     "objectID": "src/index.html",
     "href": "src/index.html",
     "title": "amap-dev website",
@@ -21,25 +7,39 @@
     "text": "This is the brand new amap-dev website.\nThis is work in progress."
   },
   {
-    "objectID": "src/ci_cd.html",
-    "href": "src/ci_cd.html",
-    "title": "CI/CD",
+    "objectID": "src/documentation.html",
+    "href": "src/documentation.html",
+    "title": "Documentation",
     "section": "",
-    "text": "CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.\nYou configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.\nEven for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.\nWe recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.\nIf your project is hosted on Gitlab, you can use Gitlab CI/CD which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE."
+    "text": "For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:\n\nPackage: mypackage Title: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.1000\nAuthors@R: person(“First”, “Last”, , “first.last@example.com”, role = c(“aut”, “cre”), comment = c(ORCID = “YOUR-ORCID-ID”))\nDescription: What the package does (one paragraph).\nImports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)\n\n\n\n\n\nWhat is needed in the function documentation?\n\n\nwhat does your function do\nwith which arguments\nwhat does it return\n(maybe) some examples of how to use it\n\n\nHere is an example of header for the custom ‘add’ function:\n\n#' Add together two numbers \n#' \n#' @param x A number. \n#' @param y A number. \n#' @returns A numeric vector. \n#' @examples \n#' add(1, 1) \n#' add(10, 1)\nadd &lt;- function(x, y) { \n  x + y \n}\n\nWrite both function and documentation at the same time in my-function.R file, stored in R sub-repository.\nUse roxygen to generate man/my-function.Rd, reading the header: the devtools function document()\n\ndevtools::document()\nwill generate (or update) your package’s .Rd files\n\n\n\nFor a more “integrated” manual, see vignette at https://r-pkgs.org/vignettes.html and website with pkgdown here https://r-pkgs.org/website.html."
   },
   {
-    "objectID": "src/ci_cd.html#principles",
-    "href": "src/ci_cd.html#principles",
-    "title": "CI/CD",
-    "section": "Principles",
-    "text": "Principles\n\ndoc\n.yaml files\nexample:\n\ndéclancheur\njobs\nsteps"
+    "objectID": "src/documentation.html#description-file",
+    "href": "src/documentation.html#description-file",
+    "title": "Documentation",
+    "section": "",
+    "text": "For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:\n\nPackage: mypackage Title: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.1000\nAuthors@R: person(“First”, “Last”, , “first.last@example.com”, role = c(“aut”, “cre”), comment = c(ORCID = “YOUR-ORCID-ID”))\nDescription: What the package does (one paragraph).\nImports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)"
   },
   {
-    "objectID": "src/ci_cd.html#configuration-for-an-r-package",
-    "href": "src/ci_cd.html#configuration-for-an-r-package",
-    "title": "CI/CD",
-    "section": "Configuration for an R package",
-    "text": "Configuration for an R package\n\nuse various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from r-lib/actions\nusethis::use_github_action():\n\n1: check-standard: Run R CMD check on Linux, macOS, and Windows\n2: test-coverage: Compute test coverage and report to https://about.codecov.io\n3: pr-commands: Add /document and /style commands for pull requests\n\nusethis::use_pkgdown_github_pages()\n\ncf. section sur documentation"
+    "objectID": "src/documentation.html#function-documentation-basics",
+    "href": "src/documentation.html#function-documentation-basics",
+    "title": "Documentation",
+    "section": "",
+    "text": "What is needed in the function documentation?\n\n\nwhat does your function do\nwith which arguments\nwhat does it return\n(maybe) some examples of how to use it\n\n\nHere is an example of header for the custom ‘add’ function:\n\n#' Add together two numbers \n#' \n#' @param x A number. \n#' @param y A number. \n#' @returns A numeric vector. \n#' @examples \n#' add(1, 1) \n#' add(10, 1)\nadd &lt;- function(x, y) { \n  x + y \n}\n\nWrite both function and documentation at the same time in my-function.R file, stored in R sub-repository.\nUse roxygen to generate man/my-function.Rd, reading the header: the devtools function document()\n\ndevtools::document()\nwill generate (or update) your package’s .Rd files"
+  },
+  {
+    "objectID": "src/documentation.html#package-documentation",
+    "href": "src/documentation.html#package-documentation",
+    "title": "Documentation",
+    "section": "",
+    "text": "For a more “integrated” manual, see vignette at https://r-pkgs.org/vignettes.html and website with pkgdown here https://r-pkgs.org/website.html."
+  },
+  {
+    "objectID": "src/about.html",
+    "href": "src/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   },
   {
     "objectID": "src/testing.html",
@@ -84,81 +84,67 @@
     "text": "one test per function\ntest-first philosophy\ntest unitaire\ntest coverage\nlink with CI and github actions"
   },
   {
-    "objectID": "src/documentation.html",
-    "href": "src/documentation.html",
-    "title": "Documentation",
+    "objectID": "src/hpc.html",
+    "href": "src/hpc.html",
+    "title": "HPC",
     "section": "",
-    "text": "For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:\n\nPackage: mypackage Title: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.1000\nAuthors@R: person(“First”, “Last”, , “first.last@example.com”, role = c(“aut”, “cre”), comment = c(ORCID = “YOUR-ORCID-ID”))\nDescription: What the package does (one paragraph).\nImports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)\n\n\n\n\n\nWhat is needed in the function documentation?\n\n\nwhat does your function do\nwith which arguments\nwhat does it return\n(maybe) some examples of how to use it\n\n\nHere is an example of header for the custom ‘add’ function:\n\n#' Add together two numbers \n#' \n#' @param x A number. \n#' @param y A number. \n#' @returns A numeric vector. \n#' @examples \n#' add(1, 1) \n#' add(10, 1)\nadd &lt;- function(x, y) { \n  x + y \n}\n\nWrite both function and documentation at the same time in my-function.R file, stored in R sub-repository.\nUse roxygen to generate man/my-function.Rd, reading the header: the devtools function document()\n\ndevtools::document()\nwill generate (or update) your package’s .Rd files\n\n\n\nFor a more “integrated” manual, see vignette at https://r-pkgs.org/vignettes.html and website with pkgdown here https://r-pkgs.org/website.html."
+    "text": "Description of HPC, what it is and what it is used for.\n\n\n\n\nCases where HPC is useful.\nQuestions to ask yourself to know if you need HPC.\n\nDo you need to run a lot of simulations ?\nDo you need to run simulations that are very long ?\nDo you need to run simulations that are very memory intensive ?\n\n\n\n\n\nAt AMAP, we have access to several HPC ressources.\n\n\n\n\n\nMedium size cluster based in Montpellier\nList of ressources\npros / cons\n\n\n\n\n\nContact the HPC team at AMAP\nMail to B. Pitollat\n\n\n\n\n\nGENCI is the French national HPC agency. It provides access to several HPC ressources in France.\n\n\n\nVery large clusters\nPros / cons\n\n\n\n\n\nGo to the GENCI portal\nFill the requested document (provide IP)\nNeeds to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director.\n\n\n\n\n\n\nTo efficiently use HPC, you’ll need to follow a few steps. - connect to the cluster and transfer your files - create your computation environment in the cluster - learn how to submit jobs\n\n\n\n\n\nDirectly via ssh\nDirectly in the IDE (VSCode, PyCharm, etc.)\n\n\n\n\n\nUsing scp & rsync\nUsing Filezilla\n\n\n\n\n\n\nThe modules system\nConda environments\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeso@lr\nadastra"
   },
   {
-    "objectID": "src/documentation.html#description-file",
-    "href": "src/documentation.html#description-file",
-    "title": "Documentation",
+    "objectID": "src/hpc.html#do-you-need-hpc",
+    "href": "src/hpc.html#do-you-need-hpc",
+    "title": "HPC",
     "section": "",
-    "text": "For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:\n\nPackage: mypackage Title: What the Package Does (One Line, Title Case)\nVersion: 0.0.0.1000\nAuthors@R: person(“First”, “Last”, , “first.last@example.com”, role = c(“aut”, “cre”), comment = c(ORCID = “YOUR-ORCID-ID”))\nDescription: What the package does (one paragraph).\nImports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)"
+    "text": "Cases where HPC is useful.\nQuestions to ask yourself to know if you need HPC.\n\nDo you need to run a lot of simulations ?\nDo you need to run simulations that are very long ?\nDo you need to run simulations that are very memory intensive ?"
   },
   {
-    "objectID": "src/documentation.html#function-documentation-basics",
-    "href": "src/documentation.html#function-documentation-basics",
-    "title": "Documentation",
+    "objectID": "src/hpc.html#what-ressources-are-available",
+    "href": "src/hpc.html#what-ressources-are-available",
+    "title": "HPC",
     "section": "",
-    "text": "What is needed in the function documentation?\n\n\nwhat does your function do\nwith which arguments\nwhat does it return\n(maybe) some examples of how to use it\n\n\nHere is an example of header for the custom ‘add’ function:\n\n#' Add together two numbers \n#' \n#' @param x A number. \n#' @param y A number. \n#' @returns A numeric vector. \n#' @examples \n#' add(1, 1) \n#' add(10, 1)\nadd &lt;- function(x, y) { \n  x + y \n}\n\nWrite both function and documentation at the same time in my-function.R file, stored in R sub-repository.\nUse roxygen to generate man/my-function.Rd, reading the header: the devtools function document()\n\ndevtools::document()\nwill generate (or update) your package’s .Rd files"
+    "text": "At AMAP, we have access to several HPC ressources.\n\n\n\n\n\nMedium size cluster based in Montpellier\nList of ressources\npros / cons\n\n\n\n\n\nContact the HPC team at AMAP\nMail to B. Pitollat\n\n\n\n\n\nGENCI is the French national HPC agency. It provides access to several HPC ressources in France.\n\n\n\nVery large clusters\nPros / cons\n\n\n\n\n\nGo to the GENCI portal\nFill the requested document (provide IP)\nNeeds to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director."
   },
   {
-    "objectID": "src/documentation.html#package-documentation",
-    "href": "src/documentation.html#package-documentation",
-    "title": "Documentation",
+    "objectID": "src/hpc.html#how-to-use-hpc",
+    "href": "src/hpc.html#how-to-use-hpc",
+    "title": "HPC",
     "section": "",
-    "text": "For a more “integrated” manual, see vignette at https://r-pkgs.org/vignettes.html and website with pkgdown here https://r-pkgs.org/website.html."
+    "text": "To efficiently use HPC, you’ll need to follow a few steps. - connect to the cluster and transfer your files - create your computation environment in the cluster - learn how to submit jobs\n\n\n\n\n\nDirectly via ssh\nDirectly in the IDE (VSCode, PyCharm, etc.)\n\n\n\n\n\nUsing scp & rsync\nUsing Filezilla\n\n\n\n\n\n\nThe modules system\nConda environments\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeso@lr\nadastra"
   },
   {
-    "objectID": "src/starting_project.html",
-    "href": "src/starting_project.html",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check “here” R package)\n\n\n\n\nHow to use git\n\n\n\n\nDESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development.\n\n\n\n\n\nThe idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.\n\n\n\n\n\nWrite each of your custom R functions in one single .R file\n\n\n\n\ndevtools, usethis, rcompendium, here, testthat"
+    "objectID": "src/hpc.html#running-a-python-script-using-gpu-on-mesolr",
+    "href": "src/hpc.html#running-a-python-script-using-gpu-on-mesolr",
+    "title": "HPC",
+    "section": "Running a Python script using GPU on meso@lr",
+    "text": "Running a Python script using GPU on meso@lr"
   },
   {
-    "objectID": "src/starting_project.html#work-within-a-rstudio-project",
-    "href": "src/starting_project.html#work-within-a-rstudio-project",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check “here” R package)"
+    "objectID": "src/hpc.html#install-libraries-and-running-a-r-script",
+    "href": "src/hpc.html#install-libraries-and-running-a-r-script",
+    "title": "HPC",
+    "section": "Install libraries and running a R script",
+    "text": "Install libraries and running a R script"
   },
   {
-    "objectID": "src/starting_project.html#start-version-control-with-git",
-    "href": "src/starting_project.html#start-version-control-with-git",
-    "title": "Starting a new project",
+    "objectID": "src/ci_cd.html",
+    "href": "src/ci_cd.html",
+    "title": "CI/CD",
     "section": "",
-    "text": "How to use git"
+    "text": "CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.\nYou configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.\nEven for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.\nWe recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.\nIf your project is hosted on Gitlab, you can use Gitlab CI/CD which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE."
   },
   {
-    "objectID": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
-    "href": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "DESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development."
+    "objectID": "src/ci_cd.html#principles",
+    "href": "src/ci_cd.html#principles",
+    "title": "CI/CD",
+    "section": "Principles",
+    "text": "Principles\n\ndoc\n.yaml files\nexample:\n\ndéclancheur\njobs\nsteps"
   },
   {
-    "objectID": "src/starting_project.html#how-to-organize-your-project-repositories",
-    "href": "src/starting_project.html#how-to-organize-your-project-repositories",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable."
-  },
-  {
-    "objectID": "src/starting_project.html#some-other-general-good-organisation-practice",
-    "href": "src/starting_project.html#some-other-general-good-organisation-practice",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "Write each of your custom R functions in one single .R file"
-  },
-  {
-    "objectID": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
-    "href": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "devtools, usethis, rcompendium, here, testthat"
+    "objectID": "src/ci_cd.html#configuration-for-an-r-package",
+    "href": "src/ci_cd.html#configuration-for-an-r-package",
+    "title": "CI/CD",
+    "section": "Configuration for an R package",
+    "text": "Configuration for an R package\n\nuse various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from r-lib/actions\nusethis::use_github_action():\n\n1: check-standard: Run R CMD check on Linux, macOS, and Windows\n2: test-coverage: Compute test coverage and report to https://about.codecov.io\n3: pr-commands: Add /document and /style commands for pull requests\n\nusethis::use_pkgdown_github_pages()\n\ncf. section sur documentation"
   },
   {
     "objectID": "src/git.html",
@@ -266,45 +252,59 @@
     "text": "Merge conflicts"
   },
   {
-    "objectID": "src/hpc.html",
-    "href": "src/hpc.html",
-    "title": "HPC",
+    "objectID": "src/starting_project.html",
+    "href": "src/starting_project.html",
+    "title": "Starting a new project",
     "section": "",
-    "text": "Description of HPC, what it is and what it is used for.\n\n\n\n\nCases where HPC is useful.\nQuestions to ask yourself to know if you need HPC.\n\nDo you need to run a lot of simulations ?\nDo you need to run simulations that are very long ?\nDo you need to run simulations that are very memory intensive ?\n\n\n\n\n\nAt AMAP, we have access to several HPC ressources.\n\n\n\n\n\nMedium size cluster based in Montpellier\nList of ressources\npros / cons\n\n\n\n\n\nContact the HPC team at AMAP\nMail to B. Pitollat\n\n\n\n\n\nGENCI is the French national HPC agency. It provides access to several HPC ressources in France.\n\n\n\nVery large clusters\nPros / cons\n\n\n\n\n\nGo to the GENCI portal\nFill the requested document (provide IP)\nNeeds to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director.\n\n\n\n\n\n\nTo efficiently use HPC, you’ll need to follow a few steps. - connect to the cluster and transfer your files - create your computation environment in the cluster - learn how to submit jobs\n\n\n\n\n\nDirectly via ssh\nDirectly in the IDE (VSCode, PyCharm, etc.)\n\n\n\n\n\nUsing scp & rsync\nUsing Filezilla\n\n\n\n\n\n\nThe modules system\nConda environments\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeso@lr\nadastra"
+    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check “here” R package)\n\n\n\n\nHow to use git\n\n\n\n\nDESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development.\n\n\n\n\n\nThe idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.\n\n\n\n\n\nWrite each of your custom R functions in one single .R file\n\n\n\n\ndevtools, usethis, rcompendium, here, testthat"
   },
   {
-    "objectID": "src/hpc.html#do-you-need-hpc",
-    "href": "src/hpc.html#do-you-need-hpc",
-    "title": "HPC",
+    "objectID": "src/starting_project.html#work-within-a-rstudio-project",
+    "href": "src/starting_project.html#work-within-a-rstudio-project",
+    "title": "Starting a new project",
     "section": "",
-    "text": "Cases where HPC is useful.\nQuestions to ask yourself to know if you need HPC.\n\nDo you need to run a lot of simulations ?\nDo you need to run simulations that are very long ?\nDo you need to run simulations that are very memory intensive ?"
+    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check “here” R package)"
   },
   {
-    "objectID": "src/hpc.html#what-ressources-are-available",
-    "href": "src/hpc.html#what-ressources-are-available",
-    "title": "HPC",
+    "objectID": "src/starting_project.html#start-version-control-with-git",
+    "href": "src/starting_project.html#start-version-control-with-git",
+    "title": "Starting a new project",
     "section": "",
-    "text": "At AMAP, we have access to several HPC ressources.\n\n\n\n\n\nMedium size cluster based in Montpellier\nList of ressources\npros / cons\n\n\n\n\n\nContact the HPC team at AMAP\nMail to B. Pitollat\n\n\n\n\n\nGENCI is the French national HPC agency. It provides access to several HPC ressources in France.\n\n\n\nVery large clusters\nPros / cons\n\n\n\n\n\nGo to the GENCI portal\nFill the requested document (provide IP)\nNeeds to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director."
+    "text": "How to use git"
   },
   {
-    "objectID": "src/hpc.html#how-to-use-hpc",
-    "href": "src/hpc.html#how-to-use-hpc",
-    "title": "HPC",
+    "objectID": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
+    "href": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
+    "title": "Starting a new project",
     "section": "",
-    "text": "To efficiently use HPC, you’ll need to follow a few steps. - connect to the cluster and transfer your files - create your computation environment in the cluster - learn how to submit jobs\n\n\n\n\n\nDirectly via ssh\nDirectly in the IDE (VSCode, PyCharm, etc.)\n\n\n\n\n\nUsing scp & rsync\nUsing Filezilla\n\n\n\n\n\n\nThe modules system\nConda environments\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmeso@lr\nadastra"
+    "text": "DESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development."
   },
   {
-    "objectID": "src/hpc.html#running-a-python-script-using-gpu-on-mesolr",
-    "href": "src/hpc.html#running-a-python-script-using-gpu-on-mesolr",
-    "title": "HPC",
-    "section": "Running a Python script using GPU on meso@lr",
-    "text": "Running a Python script using GPU on meso@lr"
+    "objectID": "src/starting_project.html#how-to-organize-your-project-repositories",
+    "href": "src/starting_project.html#how-to-organize-your-project-repositories",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable."
   },
   {
-    "objectID": "src/hpc.html#install-libraries-and-running-a-r-script",
-    "href": "src/hpc.html#install-libraries-and-running-a-r-script",
-    "title": "HPC",
-    "section": "Install libraries and running a R script",
-    "text": "Install libraries and running a R script"
+    "objectID": "src/starting_project.html#some-other-general-good-organisation-practice",
+    "href": "src/starting_project.html#some-other-general-good-organisation-practice",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "Write each of your custom R functions in one single .R file"
+  },
+  {
+    "objectID": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
+    "href": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "devtools, usethis, rcompendium, here, testthat"
+  },
+  {
+    "objectID": "src/resources.html",
+    "href": "src/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "List of resources used to build this website.\n\nGood dev practices\nhttps://rdatatoolbox.github.io/\n\n\nGit\n\nGit oriented with github and R (Rstudio) https://happygitwithr.com//\nSoftware Carpentry for git beginners https://swcarpentry.github.io/git-novice/index.html/\nAtlassian introduction to git https://www.atlassian.com/fr/git/\ngithub training kit (include cheat sheet) https://training.github.com//\nLearn git fundamentals handbook https://www.freecodecamp.org/news/learn-git-basics//\n\n\n\nTest\nhttps://r-pkgs.org/testing-basics.html\n\n\nCI/CD\n\n\n…"
   }
 ]
