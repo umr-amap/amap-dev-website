@@ -47,7 +47,7 @@ add <- function(x, y) {
 ```r
 devtools::document()
 ```
-will generate (or update) your package’s .Rd files
+will generate (or update) your package's .Rd files
 
 ## Package documentation 
 
