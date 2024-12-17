@@ -2,12 +2,12 @@ project:
   type: website
 
 website:
-  title: "amap-dev-website"
+  title: "AMAP Lab - Resources for good programming practices"
   search: true
   navbar:
     left:
       - href: src/index.qmd
-        text: Home
+        text: "![](/src/logo_amap1.jpg){width=15%}"
       - src/starting_project.qmd
       - src/documentation.qmd
       - src/git.qmd
@@ -16,8 +16,8 @@ website:
       - src/hpc.qmd
       - src/about.qmd
       - src/resources.qmd
-  margin-header: |
-      ![](/src/logo_amap3.jpg){width=40%}
+  margin-footer: |
+      ![](/src/logo_amap3.jpg){width=30%}
 
 format:
   html:
