@@ -8,15 +8,16 @@ website:
     left:
       - href: src/index.qmd
         text: Home
-      - src/git.qmd
       - src/starting_project.qmd
-      - src/testing.qmd
       - src/documentation.qmd
+      - src/git.qmd
       - src/ci_cd.qmd
+      - src/testing.qmd
       - src/hpc.qmd
       - src/about.qmd
       - src/resources.qmd
-
+  margin-header: |
+      ![](/src/logo_amap3.jpg){width=40%}
 
 format:
   html:
