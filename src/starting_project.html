@@ -213,9 +213,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="work-within-a-rstudio-project" class="level2">
 <h2 class="anchored" data-anchor-id="work-within-a-rstudio-project">Work within a Rstudio project</h2>
 <ul>
-<li><p>File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root</p></li>
+<li>File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root</li>
+</ul>
+<pre><code>    │
+    ├── [my_project]
+    │   └── my_project.Rproj
+    │
+    ├── [another_project]
+    │   └── another_project.Rproj
+    │
+    ├── [again_another_project]
+    │   └── again_another_project.Rproj
+    │</code></pre>
+<ul>
 <li><p>name your project without blank space and accent</p></li>
-<li><p>within your project, always use relative paths from the project root to ensure portability across users (check “here” R package)</p></li>
+<li><p>within your project, always use relative paths from the project root to ensure portability across users (check <a href="https://here.r-lib.org">here</a> R package.)</p></li>
 </ul>
 </section>
 <section id="start-version-control-with-git" class="level2">
@@ -227,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>DESCRIPTION &amp; NAMESPACE files : those are files that contain metadata of your project (or package)</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"mypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"mypackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>LICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to <a href="https://choosealicense.com" class="uri">https://choosealicense.com</a>. For example, GPL-2 <a href="https://choosealicense.com/licenses/gpl-2.0/" class="uri">https://choosealicense.com/licenses/gpl-2.0/</a> is the most widely used free software license.</p></li>
 <li><p>README : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development.</p></li>
@@ -237,8 +249,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="how-to-organize-your-project-repositories">How to organize your project repositories</h2>
 <ul>
 <li><p>The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.</p></li>
-<li><p>As an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.</p></li>
-<li><p>Obviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.</p></li>
+<li><p>As an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R.</p></li>
+</ul>
+<pre><code>  .
+  ├── my_project.Rproj
+  ├── [raw-data]
+  ├── [transformed-data]
+  ├── [analysis]
+  ├── [R]
+  ├── [outputs]
+  ├── README
+  ├── DESCRIPTION
+  ├── NAMESPACE</code></pre>
+<p><em>The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.</em></p>
+<ul>
+<li>Obviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.</li>
 </ul>
 </section>
 <section id="some-other-general-good-organisation-practice" class="level2">
