@@ -1,1 +1,18 @@
 /* css styles */
+.navbar-logo {
+    max-height: 80px;
+}
+.title {
+    background-color: #4e8c1f;
+    color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+.navbar {
+    --bs-navbar-brand-font-size: 1.75rem;
+}
+.alert-primary {
+    background-color: #fb8102;
+    color: #333;
+}

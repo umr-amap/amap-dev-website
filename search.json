@@ -1,5 +1,61 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome page",
+    "section": "",
+    "text": "Welcome to the new amap-dev website!\nHere you’ll find resources on good programming practices, such as versioning or testing, but also on how to use a calculation cluster. This is a work in progress, more content will be added over the coming months.\nIf you have any questions or suggestions on the content do not hesitate to contact Thomas Arsouze (thomas.arsouze[at]cirad.fr) or Dominique Lamonica (dominique.lamonica[at]ird.fr) or Philippe Verley (philippe.verley[at]ird.fr). This is an open project, so feel free to contribute by opening a pull request here!\n\n\nTo AMAP researchers\nIf you need to discuss any issues regarding programming & development, data management, or computation: the POLIS (Pôle Informatique Scientifique) is at your service in PS1 room 44 every other Wednesday (even weeks) afternoon from 2 pm to 5 pm, starting on Wednesday the 22nd of January. Drop us an email (preferably to amap-polis[at]cirad.fr) with your issue a few days before to book one of us, or just come by with your laptop.\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "src/starting_project.html",
+    "href": "src/starting_project.html",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\n\n    │\n    ├── [my_project]\n    │   └── my_project.Rproj\n    │\n    ├── [another_project]\n    │   └── another_project.Rproj\n    │\n    ├── [again_another_project]\n    │   └── again_another_project.Rproj\n    │\n\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check here R package.)\n\n\n\n\nHow to use git\n\n\n\n\nDESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development.\n\n\n\n\n\nThe idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R.\n\n  .\n  ├── my_project.Rproj\n  ├── [raw-data]\n  ├── [transformed-data]\n  ├── [analysis]\n  ├── [R]\n  ├── [outputs]\n  ├── README\n  ├── DESCRIPTION\n  ├── NAMESPACE\nThe raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\n\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.\n\n\n\n\n\nWrite each of your custom R functions in one single .R file\n\n\n\n\ndevtools, usethis, rcompendium, here, testthat"
+  },
+  {
+    "objectID": "src/starting_project.html#work-within-a-rstudio-project",
+    "href": "src/starting_project.html#work-within-a-rstudio-project",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\n\n    │\n    ├── [my_project]\n    │   └── my_project.Rproj\n    │\n    ├── [another_project]\n    │   └── another_project.Rproj\n    │\n    ├── [again_another_project]\n    │   └── again_another_project.Rproj\n    │\n\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check here R package.)"
+  },
+  {
+    "objectID": "src/starting_project.html#start-version-control-with-git",
+    "href": "src/starting_project.html#start-version-control-with-git",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "How to use git"
+  },
+  {
+    "objectID": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
+    "href": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "DESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development."
+  },
+  {
+    "objectID": "src/starting_project.html#how-to-organize-your-project-repositories",
+    "href": "src/starting_project.html#how-to-organize-your-project-repositories",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R.\n\n  .\n  ├── my_project.Rproj\n  ├── [raw-data]\n  ├── [transformed-data]\n  ├── [analysis]\n  ├── [R]\n  ├── [outputs]\n  ├── README\n  ├── DESCRIPTION\n  ├── NAMESPACE\nThe raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\n\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable."
+  },
+  {
+    "objectID": "src/starting_project.html#some-other-general-good-organisation-practice",
+    "href": "src/starting_project.html#some-other-general-good-organisation-practice",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "Write each of your custom R functions in one single .R file"
+  },
+  {
+    "objectID": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
+    "href": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
+    "title": "Starting a new project",
+    "section": "",
+    "text": "devtools, usethis, rcompendium, here, testthat"
+  },
+  {
     "objectID": "src/documentation.html",
     "href": "src/documentation.html",
     "title": "Documentation",
@@ -26,6 +82,13 @@
     "title": "Documentation",
     "section": "",
     "text": "For a more “integrated” manual, see vignette at https://r-pkgs.org/vignettes.html and website with pkgdown here https://r-pkgs.org/website.html."
+  },
+  {
+    "objectID": "src/about.html",
+    "href": "src/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n\n\n Back to top"
   },
   {
     "objectID": "src/hpc.html",
@@ -68,6 +131,13 @@
     "title": "HPC",
     "section": "Install libraries and running a R script",
     "text": "Install libraries and running a R script"
+  },
+  {
+    "objectID": "src/resources.html",
+    "href": "src/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "List of resources used to build this website.\n\nGood dev practices\nhttps://rdatatoolbox.github.io/\n\n\nGit\n\nGit oriented with github and R (Rstudio) https://happygitwithr.com//\nSoftware Carpentry for git beginners https://swcarpentry.github.io/git-novice/index.html/\nAtlassian introduction to git https://www.atlassian.com/fr/git/\ngithub training kit (include cheat sheet) https://training.github.com//\nLearn git fundamentals handbook https://www.freecodecamp.org/news/learn-git-basics//\n\n\n\nTest\nhttps://r-pkgs.org/testing-basics.html\n\n\nCI/CD\n\n\nWorking with R\nhttps://ericmarcon.github.io/travailleR/\n\n\n…\n\n\n\n\n Back to top"
   },
   {
     "objectID": "src/git.html",
@@ -175,67 +245,25 @@
     "text": "Merge conflicts"
   },
   {
-    "objectID": "src/about.html",
-    "href": "src/about.html",
-    "title": "About",
+    "objectID": "src/ci_cd.html",
+    "href": "src/ci_cd.html",
+    "title": "CI/CD",
     "section": "",
-    "text": "About this site"
+    "text": "CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.\nYou configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.\nEven for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.\nWe recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.\nIf your project is hosted on Gitlab, you can use Gitlab CI/CD which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE."
   },
   {
-    "objectID": "src/starting_project.html",
-    "href": "src/starting_project.html",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\n\n    │\n    ├── [my_project]\n    │   └── my_project.Rproj\n    │\n    ├── [another_project]\n    │   └── another_project.Rproj\n    │\n    ├── [again_another_project]\n    │   └── again_another_project.Rproj\n    │\n\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check here R package.)\n\n\n\n\nHow to use git\n\n\n\n\nDESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development.\n\n\n\n\n\nThe idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R.\n\n  .\n  ├── my_project.Rproj\n  ├── [raw-data]\n  ├── [transformed-data]\n  ├── [analysis]\n  ├── [R]\n  ├── [outputs]\n  ├── README\n  ├── DESCRIPTION\n  ├── NAMESPACE\nThe raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\n\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.\n\n\n\n\n\nWrite each of your custom R functions in one single .R file\n\n\n\n\ndevtools, usethis, rcompendium, here, testthat"
+    "objectID": "src/ci_cd.html#principles",
+    "href": "src/ci_cd.html#principles",
+    "title": "CI/CD",
+    "section": "Principles",
+    "text": "Principles\n\ndoc\n.yaml files\nexample:\n\ndéclancheur\njobs\nsteps"
   },
   {
-    "objectID": "src/starting_project.html#work-within-a-rstudio-project",
-    "href": "src/starting_project.html#work-within-a-rstudio-project",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "File &gt; New Project &gt; New Directory &gt; New Project : renders a .Rproj file which will be located at the project root\n\n    │\n    ├── [my_project]\n    │   └── my_project.Rproj\n    │\n    ├── [another_project]\n    │   └── another_project.Rproj\n    │\n    ├── [again_another_project]\n    │   └── again_another_project.Rproj\n    │\n\nname your project without blank space and accent\nwithin your project, always use relative paths from the project root to ensure portability across users (check here R package.)"
-  },
-  {
-    "objectID": "src/starting_project.html#start-version-control-with-git",
-    "href": "src/starting_project.html#start-version-control-with-git",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "How to use git"
-  },
-  {
-    "objectID": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
-    "href": "src/starting_project.html#the-files-you-need-from-the-very-beginning",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "DESCRIPTION & NAMESPACE files : those are files that contain metadata of your project (or package)\n\nusethis::create_package(\"mypackage\")\n\nLICENSE : you need a license for your project, namely a text file named LICENSE which states under which license your code falls. To choose one refer to https://choosealicense.com. For example, GPL-2 https://choosealicense.com/licenses/gpl-2.0/ is the most widely used free software license.\nREADME : the README is a text file allowing your reader : (i) to understand the objectives of your project, (ii) how to use it, and (iii) how to install it. You will update the README along the project development."
-  },
-  {
-    "objectID": "src/starting_project.html#how-to-organize-your-project-repositories",
-    "href": "src/starting_project.html#how-to-organize-your-project-repositories",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.\nAs an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R.\n\n  .\n  ├── my_project.Rproj\n  ├── [raw-data]\n  ├── [transformed-data]\n  ├── [analysis]\n  ├── [R]\n  ├── [outputs]\n  ├── README\n  ├── DESCRIPTION\n  ├── NAMESPACE\nThe raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.\n\nObviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable."
-  },
-  {
-    "objectID": "src/starting_project.html#some-other-general-good-organisation-practice",
-    "href": "src/starting_project.html#some-other-general-good-organisation-practice",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "Write each of your custom R functions in one single .R file"
-  },
-  {
-    "objectID": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
-    "href": "src/starting_project.html#here-is-a-list-of-useful-r-packages-when-developing-r-projects-andor-packages",
-    "title": "Starting a new project",
-    "section": "",
-    "text": "devtools, usethis, rcompendium, here, testthat"
-  },
-  {
-    "objectID": "src/resources.html",
-    "href": "src/resources.html",
-    "title": "Resources",
-    "section": "",
-    "text": "List of resources used to build this website.\n\nGood dev practices\nhttps://rdatatoolbox.github.io/\n\n\nGit\n\nGit oriented with github and R (Rstudio) https://happygitwithr.com//\nSoftware Carpentry for git beginners https://swcarpentry.github.io/git-novice/index.html/\nAtlassian introduction to git https://www.atlassian.com/fr/git/\ngithub training kit (include cheat sheet) https://training.github.com//\nLearn git fundamentals handbook https://www.freecodecamp.org/news/learn-git-basics//\n\n\n\nTest\nhttps://r-pkgs.org/testing-basics.html\n\n\nCI/CD\n\n\nWorking with R\nhttps://ericmarcon.github.io/travailleR/\n\n\n…"
+    "objectID": "src/ci_cd.html#configuration-for-an-r-package",
+    "href": "src/ci_cd.html#configuration-for-an-r-package",
+    "title": "CI/CD",
+    "section": "Configuration for an R package",
+    "text": "Configuration for an R package\n\nuse various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from r-lib/actions\nusethis::use_github_action():\n\n1: check-standard: Run R CMD check on Linux, macOS, and Windows\n2: test-coverage: Compute test coverage and report to https://about.codecov.io\n3: pr-commands: Add /document and /style commands for pull requests\n\nusethis::use_pkgdown_github_pages()\n\ncf. section sur documentation"
   },
   {
     "objectID": "src/testing.html",
@@ -280,31 +308,10 @@
     "text": "one test per function\ntest-first philosophy\ntest unitaire\ntest coverage\nlink with CI and github actions"
   },
   {
-    "objectID": "src/index.html",
-    "href": "src/index.html",
-    "title": "amap-dev website",
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "Resources for \\\ngood programming practices\n",
     "section": "",
-    "text": "This is the brand new amap-dev website.\nThis is work in progress."
-  },
-  {
-    "objectID": "src/ci_cd.html",
-    "href": "src/ci_cd.html",
-    "title": "CI/CD",
-    "section": "",
-    "text": "CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.\nYou configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.\nEven for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.\nWe recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.\nIf your project is hosted on Gitlab, you can use Gitlab CI/CD which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE."
-  },
-  {
-    "objectID": "src/ci_cd.html#principles",
-    "href": "src/ci_cd.html#principles",
-    "title": "CI/CD",
-    "section": "Principles",
-    "text": "Principles\n\ndoc\n.yaml files\nexample:\n\ndéclancheur\njobs\nsteps"
-  },
-  {
-    "objectID": "src/ci_cd.html#configuration-for-an-r-package",
-    "href": "src/ci_cd.html#configuration-for-an-r-package",
-    "title": "CI/CD",
-    "section": "Configuration for an R package",
-    "text": "Configuration for an R package\n\nuse various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from r-lib/actions\nusethis::use_github_action():\n\n1: check-standard: Run R CMD check on Linux, macOS, and Windows\n2: test-coverage: Compute test coverage and report to https://about.codecov.io\n3: pr-commands: Add /document and /style commands for pull requests\n\nusethis::use_pkgdown_github_pages()\n\ncf. section sur documentation"
+    "text": "MIT License\nCopyright (c) 2024 UMR AMAP\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n\n\n Back to top"
   }
 ]

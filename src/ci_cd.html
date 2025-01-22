@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CI/CD – amap-dev-website</title>
+<title>CI/CD – Resources for \
+good programming practices</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="..//src/logo_amap3.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -38,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5027bf1c1f92ac6615724d89c8213d6a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -51,7 +53,6 @@ ul.task-list li input[type="checkbox"] {
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -78,8 +79,12 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../src/logo_amap1.jpg" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">amap-dev-website</span>
+    <span class="navbar-title">Resources for<br>
+good programming practices</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -87,38 +92,30 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../src/index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../src/git.html"> 
-<span class="menu-text">Git</span></a>
-  </li>  
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../src/starting_project.html"> 
 <span class="menu-text">Starting a new project</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../src/testing.html"> 
-<span class="menu-text">Testing</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../src/documentation.html"> 
 <span class="menu-text">Documentation</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../src/git.html"> 
+<span class="menu-text">Git</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="../src/ci_cd.html" aria-current="page"> 
 <span class="menu-text">CI/CD</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/hpc.html"> 
-<span class="menu-text">HPC</span></a>
+    <a class="nav-link" href="../src/testing.html"> 
+<span class="menu-text">Testing</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../src/hpc.html"> 
+<span class="menu-text">HPC</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../src/resources.html"> 
@@ -127,9 +124,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <div id="quarto-announcement" data-announcement-id="b002af54c7555f7f28fc4027c1add4d9" class="alert alert-primary hidden"><div class="quarto-announcement-content">
+<p>🎉 New amap-dev website !</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -147,8 +152,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#configuration-for-an-r-package" id="toc-configuration-for-an-r-package" class="nav-link" data-scroll-target="#configuration-for-an-r-package">Configuration for an R package</a></li>
   </ul></li>
   </ul>
-</nav>
-    </div>
+<div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/ci_cd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div class="quarto-margin-footer"><div class="margin-footer-item">
+<p><img src="../src/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
+</div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -214,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -633,6 +640,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Proudly made by <strong><em>POLIS</em></strong></p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../src/about.html">
+<p>About</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../LICENSE.html">
+<p>LICENSE.html</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/ci_cd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
