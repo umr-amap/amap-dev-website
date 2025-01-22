@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "src/index.html",
-    "href": "src/index.html",
-    "title": "amap-dev website",
-    "section": "",
-    "text": "This is the brand new amap-dev website.\nThis is work in progress."
-  },
-  {
     "objectID": "src/documentation.html",
     "href": "src/documentation.html",
     "title": "Documentation",
@@ -33,55 +26,6 @@
     "title": "Documentation",
     "section": "",
     "text": "For a more “integrated” manual, see vignette at https://r-pkgs.org/vignettes.html and website with pkgdown here https://r-pkgs.org/website.html."
-  },
-  {
-    "objectID": "src/about.html",
-    "href": "src/about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "src/testing.html",
-    "href": "src/testing.html",
-    "title": "Testing",
-    "section": "",
-    "text": "usethis::use_testthat(3)\nverify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :\nlibrary(testthat)\nlibrary(pkg_name)\n\ntest_check(\"pkg_name\")\nNo need to modify testthat.R file !\n\n\n\n\nfunction in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with “test”, here test-my_function.R\n\n\n\n\nFirst devtools::load_all(), then : - à la main : testthat::test_file(“tests/testthat/test-my-function.R”) - shortcut RStudio - devtools::test() (ou check())\n\n\n\n\nexpect_equal()\nexpect_type()\nexpect_length()\n…\n\n\n\n\n\none test per function\ntest-first philosophy\ntest unitaire\ntest coverage\nlink with CI and github actions"
-  },
-  {
-    "objectID": "src/testing.html#initial-setup",
-    "href": "src/testing.html#initial-setup",
-    "title": "Testing",
-    "section": "",
-    "text": "usethis::use_testthat(3)\nverify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :\nlibrary(testthat)\nlibrary(pkg_name)\n\ntest_check(\"pkg_name\")\nNo need to modify testthat.R file !"
-  },
-  {
-    "objectID": "src/testing.html#create-a-test",
-    "href": "src/testing.html#create-a-test",
-    "title": "Testing",
-    "section": "",
-    "text": "function in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with “test”, here test-my_function.R"
-  },
-  {
-    "objectID": "src/testing.html#run-a-test",
-    "href": "src/testing.html#run-a-test",
-    "title": "Testing",
-    "section": "",
-    "text": "First devtools::load_all(), then : - à la main : testthat::test_file(“tests/testthat/test-my-function.R”) - shortcut RStudio - devtools::test() (ou check())"
-  },
-  {
-    "objectID": "src/testing.html#examples",
-    "href": "src/testing.html#examples",
-    "title": "Testing",
-    "section": "",
-    "text": "expect_equal()\nexpect_type()\nexpect_length()\n…"
-  },
-  {
-    "objectID": "src/testing.html#when-and-what-to-test",
-    "href": "src/testing.html#when-and-what-to-test",
-    "title": "Testing",
-    "section": "",
-    "text": "one test per function\ntest-first philosophy\ntest unitaire\ntest coverage\nlink with CI and github actions"
   },
   {
     "objectID": "src/hpc.html",
@@ -124,27 +68,6 @@
     "title": "HPC",
     "section": "Install libraries and running a R script",
     "text": "Install libraries and running a R script"
-  },
-  {
-    "objectID": "src/ci_cd.html",
-    "href": "src/ci_cd.html",
-    "title": "CI/CD",
-    "section": "",
-    "text": "CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.\nYou configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.\nEven for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.\nWe recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.\nIf your project is hosted on Gitlab, you can use Gitlab CI/CD which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE."
-  },
-  {
-    "objectID": "src/ci_cd.html#principles",
-    "href": "src/ci_cd.html#principles",
-    "title": "CI/CD",
-    "section": "Principles",
-    "text": "Principles\n\ndoc\n.yaml files\nexample:\n\ndéclancheur\njobs\nsteps"
-  },
-  {
-    "objectID": "src/ci_cd.html#configuration-for-an-r-package",
-    "href": "src/ci_cd.html#configuration-for-an-r-package",
-    "title": "CI/CD",
-    "section": "Configuration for an R package",
-    "text": "Configuration for an R package\n\nuse various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from r-lib/actions\nusethis::use_github_action():\n\n1: check-standard: Run R CMD check on Linux, macOS, and Windows\n2: test-coverage: Compute test coverage and report to https://about.codecov.io\n3: pr-commands: Add /document and /style commands for pull requests\n\nusethis::use_pkgdown_github_pages()\n\ncf. section sur documentation"
   },
   {
     "objectID": "src/git.html",
@@ -252,6 +175,13 @@
     "text": "Merge conflicts"
   },
   {
+    "objectID": "src/about.html",
+    "href": "src/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
     "objectID": "src/starting_project.html",
     "href": "src/starting_project.html",
     "title": "Starting a new project",
@@ -305,6 +235,76 @@
     "href": "src/resources.html",
     "title": "Resources",
     "section": "",
-    "text": "List of resources used to build this website.\n\nGood dev practices\nhttps://rdatatoolbox.github.io/\n\n\nGit\n\nGit oriented with github and R (Rstudio) https://happygitwithr.com//\nSoftware Carpentry for git beginners https://swcarpentry.github.io/git-novice/index.html/\nAtlassian introduction to git https://www.atlassian.com/fr/git/\ngithub training kit (include cheat sheet) https://training.github.com//\nLearn git fundamentals handbook https://www.freecodecamp.org/news/learn-git-basics//\n\n\n\nTest\nhttps://r-pkgs.org/testing-basics.html\n\n\nCI/CD\n\n\n…"
+    "text": "List of resources used to build this website.\n\nGood dev practices\nhttps://rdatatoolbox.github.io/\n\n\nGit\n\nGit oriented with github and R (Rstudio) https://happygitwithr.com//\nSoftware Carpentry for git beginners https://swcarpentry.github.io/git-novice/index.html/\nAtlassian introduction to git https://www.atlassian.com/fr/git/\ngithub training kit (include cheat sheet) https://training.github.com//\nLearn git fundamentals handbook https://www.freecodecamp.org/news/learn-git-basics//\n\n\n\nTest\nhttps://r-pkgs.org/testing-basics.html\n\n\nCI/CD\n\n\nWorking with R\nhttps://ericmarcon.github.io/travailleR/\n\n\n…"
+  },
+  {
+    "objectID": "src/testing.html",
+    "href": "src/testing.html",
+    "title": "Testing",
+    "section": "",
+    "text": "usethis::use_testthat(3)\nverify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :\nlibrary(testthat)\nlibrary(pkg_name)\n\ntest_check(\"pkg_name\")\nNo need to modify testthat.R file !\n\n\n\n\nfunction in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with “test”, here test-my_function.R\n\n\n\n\nFirst devtools::load_all(), then : - à la main : testthat::test_file(“tests/testthat/test-my-function.R”) - shortcut RStudio - devtools::test() (ou check())\n\n\n\n\nexpect_equal()\nexpect_type()\nexpect_length()\n…\n\n\n\n\n\none test per function\ntest-first philosophy\ntest unitaire\ntest coverage\nlink with CI and github actions"
+  },
+  {
+    "objectID": "src/testing.html#initial-setup",
+    "href": "src/testing.html#initial-setup",
+    "title": "Testing",
+    "section": "",
+    "text": "usethis::use_testthat(3)\nverify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :\nlibrary(testthat)\nlibrary(pkg_name)\n\ntest_check(\"pkg_name\")\nNo need to modify testthat.R file !"
+  },
+  {
+    "objectID": "src/testing.html#create-a-test",
+    "href": "src/testing.html#create-a-test",
+    "title": "Testing",
+    "section": "",
+    "text": "function in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with “test”, here test-my_function.R"
+  },
+  {
+    "objectID": "src/testing.html#run-a-test",
+    "href": "src/testing.html#run-a-test",
+    "title": "Testing",
+    "section": "",
+    "text": "First devtools::load_all(), then : - à la main : testthat::test_file(“tests/testthat/test-my-function.R”) - shortcut RStudio - devtools::test() (ou check())"
+  },
+  {
+    "objectID": "src/testing.html#examples",
+    "href": "src/testing.html#examples",
+    "title": "Testing",
+    "section": "",
+    "text": "expect_equal()\nexpect_type()\nexpect_length()\n…"
+  },
+  {
+    "objectID": "src/testing.html#when-and-what-to-test",
+    "href": "src/testing.html#when-and-what-to-test",
+    "title": "Testing",
+    "section": "",
+    "text": "one test per function\ntest-first philosophy\ntest unitaire\ntest coverage\nlink with CI and github actions"
+  },
+  {
+    "objectID": "src/index.html",
+    "href": "src/index.html",
+    "title": "amap-dev website",
+    "section": "",
+    "text": "This is the brand new amap-dev website.\nThis is work in progress."
+  },
+  {
+    "objectID": "src/ci_cd.html",
+    "href": "src/ci_cd.html",
+    "title": "CI/CD",
+    "section": "",
+    "text": "CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.\nYou configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.\nEven for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.\nWe recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.\nIf your project is hosted on Gitlab, you can use Gitlab CI/CD which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE."
+  },
+  {
+    "objectID": "src/ci_cd.html#principles",
+    "href": "src/ci_cd.html#principles",
+    "title": "CI/CD",
+    "section": "Principles",
+    "text": "Principles\n\ndoc\n.yaml files\nexample:\n\ndéclancheur\njobs\nsteps"
+  },
+  {
+    "objectID": "src/ci_cd.html#configuration-for-an-r-package",
+    "href": "src/ci_cd.html#configuration-for-an-r-package",
+    "title": "CI/CD",
+    "section": "Configuration for an R package",
+    "text": "Configuration for an R package\n\nuse various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from r-lib/actions\nusethis::use_github_action():\n\n1: check-standard: Run R CMD check on Linux, macOS, and Windows\n2: test-coverage: Compute test coverage and report to https://about.codecov.io\n3: pr-commands: Add /document and /style commands for pull requests\n\nusethis::use_pkgdown_github_pages()\n\ncf. section sur documentation"
   }
 ]

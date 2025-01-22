@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://umr-amap.github.io/amap-dev-website/src/index.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
-  </url>
-  <url>
     <loc>https://umr-amap.github.io/amap-dev-website/src/documentation.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
-  </url>
-  <url>
-    <loc>https://umr-amap.github.io/amap-dev-website/src/about.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
-  </url>
-  <url>
-    <loc>https://umr-amap.github.io/amap-dev-website/src/testing.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
   </url>
   <url>
     <loc>https://umr-amap.github.io/amap-dev-website/src/hpc.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
-  </url>
-  <url>
-    <loc>https://umr-amap.github.io/amap-dev-website/src/ci_cd.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
   </url>
   <url>
     <loc>https://umr-amap.github.io/amap-dev-website/src/git.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://umr-amap.github.io/amap-dev-website/src/about.html</loc>
+    <lastmod>2025-01-22T15:11:35.212Z</lastmod>
   </url>
   <url>
     <loc>https://umr-amap.github.io/amap-dev-website/src/starting_project.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
   </url>
   <url>
     <loc>https://umr-amap.github.io/amap-dev-website/src/resources.html</loc>
-    <lastmod>2024-12-17T09:24:07.201Z</lastmod>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://umr-amap.github.io/amap-dev-website/src/testing.html</loc>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://umr-amap.github.io/amap-dev-website/src/index.html</loc>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
+  </url>
+  <url>
+    <loc>https://umr-amap.github.io/amap-dev-website/src/ci_cd.html</loc>
+    <lastmod>2025-01-22T15:11:35.213Z</lastmod>
   </url>
 </urlset>
