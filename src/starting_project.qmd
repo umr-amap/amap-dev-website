@@ -8,9 +8,22 @@ title: "Starting a new project"
 
 - File > New Project > New Directory > New Project : renders a .Rproj file which will be located at the project root
 
+```
+    │
+    ├── [my_project]
+    │   └── my_project.Rproj
+    │
+    ├── [another_project]
+    │   └── another_project.Rproj
+    │
+    ├── [again_another_project]
+    │   └── again_another_project.Rproj
+    │
+```
+
 - name your project without blank space and accent
 
-- within your project, always use relative paths from the project root to ensure portability across users (check "here" R package)
+- within your project, always use relative paths from the project root to ensure portability across users (check [here](https://here.r-lib.org) R package.)
 
 ## Start version control with git
 
@@ -32,7 +45,22 @@ usethis::create_package("mypackage")
 
 - The idea is to sort the files you are going to produce in different sub-repositories from the project root. Each of the sub-repository will receive a certain type of file. Thus, how much sub-repo (i.e., how your files are classified) you need is up to you and the specific project you are developing.
 
-- As an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.
+- As an example, for a data analysis project you may have 5 sub-repo which are the following : raw-data, transformed-data, analysis, outputs, R. 
+
+```
+  .
+  ├── my_project.Rproj
+  ├── [raw-data]
+  ├── [transformed-data]
+  ├── [analysis]
+  ├── [R]
+  ├── [outputs]
+  ├── README
+  ├── DESCRIPTION
+  ├── NAMESPACE
+```
+
+*The raw-data sub-repo contains the raw data used for the analysis, and should remain untouched. The transformed-data sub-repo is useful if you need to alter or transform the data, and then store it. In the analysis sub-repo, you may store the R scripts that are running the analysis and produce results. The outputs sub-repo may contain analysis results, like figures. The R sub-repo contains only your own custom R functions, that you may have developed, and are called by the analysis scripts.*
 
 - Obviously, this structure should be adapted to each project complexity and needs. Nevertheless, remember that you are trying to facilitate the reuse of your code, so be careful to keep your organization simple and readable.
 
