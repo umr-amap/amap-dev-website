@@ -1,8 +1,7 @@
 ---
-title: ""
-about: 
-  template: trestles
-  image-width: 8em
+title: "Welcome page"
+page-layout: full
+toc: false
 ---
 # Welcome to the new `amap-dev` website!
 

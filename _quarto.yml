@@ -2,22 +2,43 @@ project:
   type: website
 
 website:
-  title: "AMAP Lab - Resources for good programming practices"
-  search: true
+  title: |
+    Resources for \
+    good programming practices
+  image: /src/logo_amap3.jpg
+  search:
+    location: navbar
+    type: overlay
+  favicon: "/src/logo_amap3.jpg"
+  repo-url: "https://github.com/umr-amap/amap-dev-website"
+  issue-url: "https://github.com/umr-amap/amap-dev-website/issues"
+  repo-actions: [edit, issue]
+  page-navigation: true
+  bread-crumbs: true
+  reader-mode: true
+  back-to-top-navigation: true
+  announcement:
+     content: "🎉 New amap-dev website !"
+     position: below-navbar
+     dismissable: true
+  page-footer:
+    left: |
+      Proudly made by ___POLIS___
+    center:
+      - src/about.qmd
+      - LICENSE.md
   navbar:
-    left:
-      - href: src/index.qmd
-        text: "![](/src/logo_amap1.jpg){width=15%}"
+    logo: /src/logo_amap1.jpg
+    right:
       - src/starting_project.qmd
       - src/documentation.qmd
       - src/git.qmd
       - src/ci_cd.qmd
       - src/testing.qmd
       - src/hpc.qmd
-      - src/about.qmd
       - src/resources.qmd
   margin-footer: |
-      ![](/src/logo_amap3.jpg){width=30%}
+      ![](/src/logo_amap3.jpg){width=40%}
 
 format:
   html:
