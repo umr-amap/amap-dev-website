@@ -354,3 +354,42 @@ Creating a new repository on `Gitlab` is very similar to `GitHub`. You can see t
 - `push` and `pull`
 
 ## Merge conflicts
+
+# FAQ
+
+## My repo is too big ! How to clean it ?
+
+If by mistake you added large files to your repository, remove it from directory will not be sufficient, as you also need to remove it from the history of the repository. Here are some tips to clean your repository:
+
+- List files in the history by size. This command will list the 100 biggest files in your repository, and provide the blob hash and the name of the file concerned, as well as the size of the file.
+
+```bash
+# For OSX only
+brew install coreutils
+
+git rev-list --objects --all --missing=print |
+    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+    sed -n 's/^blob //p' |
+    grep -vF --file=<(git ls-tree -r HEAD | awk '{print $3}') | sort --numeric-sort --key=2 |
+    $(command -v gnumfmt || echo gnumfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest |
+    head -100
+    >> big_blobs.txt
+```
+
+- Next, you need to use [BFG repo-cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
+
+```bash
+# First clone your repo using --mirror
+git clone --mirror https://github.com/myorg/myrepo.git
+
+# Use the BFG repo-cleaner
+# First let's check all options
+java -jar bfg.jar --help
+# From the list of big blobs obtained previously, keep only the blob hash
+# you can then remove them from the history of the repository
+java -jar bfg.jar --strip-blobs-with-ids big_blobs.txt myrepo.git
+# Other option is to remove directly files bigger thant XMo
+java -jar bfg.jar --strip-blobs-bigger-than 5M myrepo.git
+# Finaly update your repository online
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+```
