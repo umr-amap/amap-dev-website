@@ -36,6 +36,7 @@ website:
       - src/ci_cd.qmd
       - src/testing.qmd
       - src/hpc.qmd
+      - src/amap.qmd
       - src/resources.qmd
   margin-footer: |
       ![](/src/logo_amap3.jpg){width=40%}

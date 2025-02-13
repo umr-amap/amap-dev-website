@@ -1,0 +1,101 @@
+---
+title: "Scientific computing at AMAP"
+---
+
+
+## Using `conda` at AMAP
+
+Recently, `Anaconda` has [updated it's terms of services for academia and research](https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research). As being part of research institutes of more that 200 persons, we are now subject to a licensing fee to use `Anaconda` products. However, we can still use the `conda` tool.
+
+While the `conda` tools is free and open-source, `Anaconda` (a graphical interface that uses conda) is a licensed product.
+
+Also, `conda` uses "channels" to gets access to softwares and libraries. Some are licensed and managed by `Anaconda` while other are free and open.
+
+Let's see how to keep using `conda` at AMAP, and what you should be aware of.
+
+### Installations of `conda` distributions
+
+There exist multiple distributions of `conda` that you can use, cf. [here](https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/pages/conda-distrib/).
+
+___What you should avoid___:
+
+- using the `Anaconda` distribution, as it is a licensed product. If you have it installed, you should uninstall it and consider other options bellow. Make sure you keep your existing environments.
+- using the `miniconda` distribution. Although it is free to use, you should avoid this option as the default channels are managed under `Anconda` licensing. However, you can still use `miniconda` if you [configure it properly](#check-configuration).
+
+___What you should do___:
+
+- use the [`miniforge` distribution](https://conda-forge.org/download/). It is free to use and is configure to use `conda-forge` as the default channel (which is free too). This is the recommended distribution to use at AMAP.
+
+### Licensed channels
+
+Licensed channels are channels that are managed by `Anaconda` and are subject to licensing fees. You should avoid using these channels.
+
+You can check the full list of licensed channels [here](https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/pages/conda-channels/).
+
+The main one is the `defaults` channel, which includes the following sub-channels: `r`, `main` and `msys2`.
+
+You need to remove these channels from your configuration.
+
+::: callout-note
+
+It is very unlikely that you won't find any packages in the `conda-forge` channel that you were using in the `defaults` channel. This change should not affect your workflow.
+
+:::
+
+
+::: callout-important
+
+`CIRAD` has decided to ban the access to theses licensed channels on their network, which means your `conda` will through an error if you try to access them when you're at `CIRAD` or using their VPN.
+
+:::
+
+
+
+
+### Check configuration
+
+As you may have installed `miniconda` before all this licensing issue (remember, if you have installed `Anaconda`: you should uninstall it and install `miniforge` instead!), you need to check your configuration.
+
+```bash
+conda config --show channels
+```
+
+and if any of the channels are licensed, you should remove them (here we remove the `defaults` channel):
+
+```bash
+conda config --remove channels defaults
+conda config --show channels
+```
+
+You should now see only the `conda-forge` channel. If you want to add extra (free) channels:
+
+```bash
+conda config --add channels conda-forge #if not already present
+conda config --add channels bioconda
+```
+
+::: callout-note
+
+As additional configuration, you might want to add the following lines:
+
+```bash
+conda config --set channel_priority strict #usefull to avoid conflicts and speed up the resolution of dependencies
+conda config --add channels nodefaults #usefull when you want to share environments
+```
+
+:::
+
+### Configuration at AMAP
+
+As mentioned earlier, `CIRAD` has decided to ban the access to licensed channels on their network. But to keep access to the free channels, you now need a certificate to access the free repositories.
+
+1. Download the certificate <a href="Fortinet_CA_SSL.crt" download>Click to Download</a>.
+2. Copy the certificate anyware in your computer where you can access it. `miniforge` installation folder is probably a good place.
+3. `conda config --set ssl_verify <path_to_certificate>`
+
+Without this extra configuration step, you won't be able to use `conda` at AMAP / CIRAD.
+
+### Ressources
+
+- `mivegec` lab publish an extensive and well done summary of the situation at IRD in Montpellier [here](https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/).
+- `INRAE` has published some recommandations for using `conda` [here](https://science-ouverte.inrae.fr/fr/offre-service/fiches-pratiques-et-recommandations/quelles-alternatives-aux-fonctionnalites-payantes-danaconda)
