@@ -274,7 +274,7 @@ export R_LIBS_USER
 
 ```
 
-#### Install additional packages
+#### Install additional R packages
 First, be aware that a lot of packages are already installed inside the `R/packages/4.3.1-IFB` module. If the module you need is not available, you have two solutions:
 - You can install packages in your home directory. If you need to install a package that requires compilation (such as `brms` for example), you'll need to provide information on how to do that:
 ```bash
@@ -294,6 +294,39 @@ Voulez-vous plutôt utiliser une bibliothèque personnelle ? (oui/Non/annuler) o
 This will install your packages in the `$HOME/R/x86_64-pc-linux-gnu-library/4.3.1` directory.
 
 - You can also use [conda](https://docs.conda.io/en/latest/) to create a dedicated environment and install additional packages. Although mostly used for installing python packages, conda can also be used to install R packages (search search for packages [here](https://anaconda.org/search?q=r-)).
+
+#### Install additional python packages
+The recommanded way to work with Python on the cluster is by using an environment manager. While there are many available (conda, virtualenv, pipenv, poetry, ...), we recommand to use `conda` as it is the most widely used by the scientific community AND it is already installed on the cluster.
+
+```bash
+module load anaconda/python3.8
+# Don't pay attention to the python version, you'll be able to create your own environment with the version you need.
+```
+
+We recommand to tune the `conda` configuration file to work with the cluster:
+```bash
+nano ~/.condarc   # This will create / open the file .condarc in your HOME directory in the text editor
+# Then in the .condarc file, add the following lines:
+channels:   # list the channels where conda will search for packages
+  - nodefaults
+  - conda-forge
+solver: libmamba   # this is the most efficient solver for package dependencies. Now by default, but you can specify it here.
+channel_priority: strict  # Force conda to search for packages in the order you specified in the channels list
+ssl_verify: false   # Specific to meso@lr, the SSL certificate is not valid, so you need to disable SSL verification
+envs_dirs:    # The place where you want to store your environments. If not specified, conda will create a directory in your HOME directory, but if you deal with many large environments, you might want to store them in the work directory.
+    - /path/where/to/store/your/envs
+```
+
+Then you can create and access your environments:
+```bash
+# create an environment
+conda create -n my_env python=3.11
+# activate the environment and install packages
+conda activate my_env
+conda install numpy pandas ...
+# deactivate the environment
+conda deactivate
+```
 
 ### Submit jobs
 All HPC clusters use a job scheduler to manage the resources and the jobs submitted by users. The most common job scheduler is `SLURM` (Simple Linux Utility for Resource Management). This is the scheduler use at `meso@lr`, but also `adastra` and `jean-zay`.
