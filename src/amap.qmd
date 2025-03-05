@@ -19,7 +19,7 @@ There exist multiple distributions of `conda` that you can use, cf. [here](https
 
 ___What you should avoid___:
 
-- using the `Anaconda` distribution, as it is a licensed product. If you have it installed, you should uninstall it and consider other options bellow. Make sure you keep your existing environments.
+- using the `Anaconda` distribution, as it is a licensed product. If you have it installed, you should uninstall it and consider other options below. Make sure you keep your existing environments.
 - using the `miniconda` distribution. Although it is free to use, you should avoid this option as the default channels are managed under `Anconda` licensing. However, you can still use `miniconda` if you [configure it properly](#check-configuration).
 
 ___What you should do___:
