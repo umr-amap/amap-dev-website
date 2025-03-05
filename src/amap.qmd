@@ -90,7 +90,7 @@ conda config --add channels nodefaults #usefull when you want to share environme
 As mentioned earlier, `CIRAD` has decided to ban the access to licensed channels on their network. But to keep access to the free channels, you now need a certificate to access the free repositories.
 
 1. Download the certificate <a href="Fortinet_CA_SSL.crt" download>Click to Download</a>.
-2. Copy the certificate anyware in your computer where you can access it. `miniforge` installation folder is probably a good place.
+2. Copy the certificate anywhere in your computer where you can access it. `miniforge` installation folder is probably a good place.
 3. `conda config --set ssl_verify <path_to_certificate>`
 
 Without this extra configuration step, you won't be able to use `conda` at AMAP / CIRAD.
