@@ -2,39 +2,109 @@
 title: "Testing"
 ---
 # R users
-## why do you need tests ?
 
-## initial setup
-```shell
-usethis::use_testthat(3)
+## Why do you need tests ?
+
+Basically, to be sure that your code does what you want it to do. The idea is to automate your tests, rather than perform them manually by executing some parts of the code in the console, and checking that the outputs match your expectations.
+
+Automated testing requires more work, but the benefits are the following:
+
+- fewer bugs,
+
+- bugs easier to fix,
+
+- better code structure,
+
+- robust code.
+
+Let's use `testthat` `R` package.
+
+## Initial setup
+
+First run:
+
+```r
+usethis::use_testthat()
 ```
-verify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :
-```shell
+
+This will create a `tests/testthat/` directory, and a `tests/testthat.R` file which is supposed to look like this, for a project named pkg_name:
+
+```r
 library(testthat)
 library(pkg_name)
 
 test_check("pkg_name")
 ```
-No need to modify testthat.R file !
 
-## create a test
-- function in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with "test", here test-my_function.R
+Do not edit this `testthat.R` file !
 
-## run a test
-First devtools::load_all(), then :
-- à la main : testthat::test_file("tests/testthat/test-my-function.R")
-- shortcut RStudio
-- devtools::test() (ou check())
+## Create a test
 
-## examples
+For a function in `R/` repo named `my_function.R`, the corresponding test must lie in `tests/testthat/` repo and its name must start with `test`, here : `test-my_function.R`. Two functions from `usethis` package can be used to create those files:
+
+```r
+usethis::use_r("my_function") # creates and opens R/my_function.R
+usethis::use_test("my_function") # creates and opens tests/testthat/test-my_function.R
+```
+
+When using `use_test` function to create the test file, an example test is inserted
+
+```r
+test_that("multiplication works", {
+ expect_equal(2 * 2, 4)
+})
+```
+which indicates the structure. Within `test-my_function.R` you are able to write one or more `test_that()` tests. Each test has a description (e.g., what it is testing, in the example if "multiplication works"), and one or more expectations (e.g., what the result of the test should be, in the example `expect_equal()`).
+
+## Run tests
+
+First `devtools::load_all()` to load your functions AND their corresponding tests, then you have several options:
+
+- manually, using directly `expect_ functions` in the console : `expect_equal(my_function(...), EXPECTED_OUTPUT)`,
+
+- entire test for a function with `testthat::test_file("tests/testthat/test-my_function.R")`,
+
+- entire suite of tests with ```devtools::test()``` (or `check()`).
+
+When you run one or several tests, you get a failure report including a description of the test, the failure location (file & code line), and the reason for the failure. You can then start debugging (your function or your test).
+
+## Write test
+
+Expectations `expect_` makes the binary assertion about whether or not an object (here, the value returned by a call of your `my_function()`) has the properties you expect.
+
+Expectations share the same structure:
+
+- start with `expect_`,
+
+- two main arguments: the first is the actual result of your function (returned by `my_function(args)`), and the second is what you expect,
+
+- when the actual and expected results (e.g., the main arguments) do not agree testthat throws an error.
+
+You can write several expectations `expect_` in one `test_that()` test, as long as they test the same property of your function. You can write several tests, testing different properties, in your `test-my_function.R` file.
+
+Here is some useful expectations (and shortcuts) to start with:
+
 - expect_equal()
-- expect_type()
-- expect_length()
-- ...
 
-## when and what to test
-- one test per function
-- test-first philosophy
-- test unitaire
-- test coverage
-- link with CI and github actions
+- expect_type()
+
+- expect_length()
+
+- expect_true() and expect_false()
+
+- expect_error(), expect_warning() and expect_message()
+
+## Some insights on when and what to test
+
+- focus on testing the tricky parts of your code
+
+- always write a test when you discover a bug
+
+- test-first philosophy: write the test, and then write the code to pass it
+
+- one test per function property
+
+- test coverage with covr package: determines which lines of your code are executed when the test suite is run, rendering you a percentage of code that is covered by your tests (the higher the better).
+
+## See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you !
+
