@@ -17,18 +17,60 @@ If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is simil
 # GitHub Actions
 
 ## Principles
+
 - [doc](https://docs.github.com/en/actions)
-- `.yaml` files
-- example:
-  - déclancheur
-  - jobs
-  - steps
+
+- `.yaml` files which contain the instructions: they have to be located in a .github/worflows repository.
+
+![](figures/yaml_loc.png){height=40%}
+
+- Code structure
+
+![](figures/yaml_ex_annoted.png){height=30%}
+
+The *trigger* bloc gives the instructions for when the action will be launched. The *job* bloc gives the following instructions: on which OS the action should be run (*runs-on*), and the list of steps to be run (*steps*).
+
+- Don't write your .yaml from scratch: you'll find plenty of examples on GithHub, just adapt them to the desired workflow.
+
+- Once your .yaml is ready, and you have triggered the action (by pushing a commit, for instance), you need to navigate to get the log. Here is an example with a test-coverage action.
+
+1. In the 'Actions' tab, on the left panel you can select *one* of your workflows to display its *successive runs*:
+
+![](figures/gha_outputs1.png){height=30%}
+
+You can see the commits where the workflow has been run, branch, date, duration (among various information). Obviously a green check means that the workflow has entirely run without failure, whereas a red cross indicates that it has failed.
+
+2. From there, select the run you're interested in (let's say the most recent, here 'Merge pull request #52 - test-coverage.yaml #24'):
+
+![](figures/gha_outputs2.png){height=30%}
+
+A summary of the action is displayed. If there are any warnings for instance, you'll see those in the Annotations panel at the bottom. To display the workflow log let's click on the workflow name in the central panel or in the 'Jobs' section (left panel).
+
+3. Workflow logs:
+
+![](figures/gha_outputs3.png){height=30%}
+
+Each step outputs can be drop-downed.
+
+4. Let's select the fifth step 'Test coverage':
+
+![](figures/gha_outputs4.png){height=30%}
+
+Here are your logs !
 
 ## Configuration for an R package
-- use various functions from usethis to configure so-called GHA workflows. usethis copies workflow configuration files from [r-lib/actions](https://github.com/r-lib/actions/#readme)
-- `usethis::use_github_action()`:
-  - 1: check-standard: Run `R CMD check` on Linux, macOS, and Windows
-  - 2: test-coverage: Compute test coverage and report to https://about.codecov.io
-  - 3: pr-commands: Add /document and /style commands for pull requests
-- `usethis::use_pkgdown_github_pages()`
-  - cf. section sur documentation
+
+- Use various functions from usethis package to configure so-called GHA workflows. usethis package copies workflow configuration files from [r-lib/actions](https://github.com/r-lib/actions/#readme).
+
+- You can also create and modify the .yaml files directly in GitHub by copy paste an existing .yaml that matches you needs.  
+
+- Some very useful actions to set up `usethis::use_github_action()`:
+
+  - *check-standard:* Run `R CMD check` on Linux, macOS, and Windows,
+  
+  - *test-coverage:* Compute test coverage and report to https://about.codecov.io (or compute test coverage without report, and directly look at the results in the Actions tab, as previously showed),
+  
+  - *pkgdown:* Deploy website or vignette with Github pages `usethis::use_pkgdown_github_pages()`,
+  
+  - *pr-commands:* Add /document and /style commands for pull requests.
+  
