@@ -45,7 +45,7 @@ It is very unlikely that you won't find any packages in the `conda-forge` channe
 
 ::: callout-important
 
-`CIRAD` has decided to ban the access to theses licensed channels on their network, which means your `conda` will through an error if you try to access them when you're at `CIRAD` or using their VPN.
+`CIRAD` has decided to ban the access to these licensed channels on their network, which means your `conda` will through an error if you try to access them when you're at `CIRAD` or using their VPN.
 
 :::
 
