@@ -5,7 +5,7 @@ title: "Scientific computing at AMAP"
 
 ## Using `conda` at AMAP
 
-Recently, `Anaconda` has [updated it's terms of services for academia and research](https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research). As being part of research institutes of more that 200 persons, we are now subject to a licensing fee to use `Anaconda` products. However, we can still use the `conda` tool.
+Recently, `Anaconda` has [updated its terms of services for academia and research](https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research). As being part of research institutes of more that 200 persons, we are now subject to a licensing fee to use `Anaconda` products. However, we can still use the `conda` tool.
 
 While the `conda` tools is free and open-source, `Anaconda` (a graphical interface that uses conda) is a licensed product.
 
