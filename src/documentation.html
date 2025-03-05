@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-8647a4a42273f773479d27c00df3f9ed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -185,6 +185,20 @@ good programming practices</span>
   <li><a href="#function-documentation-basics" id="toc-function-documentation-basics" class="nav-link" data-scroll-target="#function-documentation-basics">Function documentation: basics</a></li>
   <li><a href="#package-documentation" id="toc-package-documentation" class="nav-link" data-scroll-target="#package-documentation">Package documentation</a></li>
   </ul></li>
+  <li><a href="#python-users" id="toc-python-users" class="nav-link" data-scroll-target="#python-users">Python users</a>
+  <ul class="collapse">
+  <li><a href="#readme.md-file" id="toc-readme.md-file" class="nav-link" data-scroll-target="#readme.md-file"><code>README.md</code> file</a></li>
+  <li><a href="#documentation-of-api" id="toc-documentation-of-api" class="nav-link" data-scroll-target="#documentation-of-api">Documentation of API</a>
+  <ul class="collapse">
+  <li><a href="#docstrings" id="toc-docstrings" class="nav-link" data-scroll-target="#docstrings">Docstrings</a></li>
+  </ul></li>
+  <li><a href="#tutorials" id="toc-tutorials" class="nav-link" data-scroll-target="#tutorials">Tutorials</a></li>
+  <li><a href="#sphinx-documentation" id="toc-sphinx-documentation" class="nav-link" data-scroll-target="#sphinx-documentation"><code>Sphinx</code> documentation</a>
+  <ul class="collapse">
+  <li><a href="#syntax" id="toc-syntax" class="nav-link" data-scroll-target="#syntax">Syntax</a></li>
+  <li><a href="#building-gallery-of-tutorials" id="toc-building-gallery-of-tutorials" class="nav-link" data-scroll-target="#building-gallery-of-tutorials">Building gallery of tutorials</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/documentation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
@@ -212,18 +226,21 @@ good programming practices</span>
 </header>
 
 
+<p>Documentation is an essential part of any software project. It is the way to communicate with potential users and contributors, and to ensure that the project is sustainable in the long term.</p>
 <section id="r-users" class="level1">
 <h1>R users</h1>
 <section id="description-file" class="level2">
 <h2 class="anchored" data-anchor-id="description-file">DESCRIPTION file</h2>
 <p>For your entire project, you will need a DESCRIPTION file which gather the project metadata, for instance:</p>
-<blockquote class="blockquote">
-<p>Package: mypackage Title: What the Package Does (One Line, Title Case)<br>
-Version: 0.0.0.1000<br>
-Authors@R: person(“First”, “Last”, , “first.last@example.com”, role = c(“aut”, “cre”), comment = c(ORCID = “YOUR-ORCID-ID”))<br>
-Description: What the package does (one paragraph).<br>
-Imports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)</p>
-</blockquote>
+<pre><code>&gt; Package: mypackage
+&gt; Title: What the Package Does (One Line, Title Case) \
+&gt; Version: 0.0.0.1000 \
+&gt; Authors@R:
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID")) \
+&gt; Description: What the package does (one paragraph). \
+&gt; Imports: Rpackage1, Rpackage2 (the list of R packages that are needed to run your analysis)</code></pre>
+<p>Some of these sections may be edited by hand, but others are automatically generated by <code>devtools</code> or <code>usethis</code> packages.</p>
 </section>
 <section id="function-documentation-basics" class="level2">
 <h2 class="anchored" data-anchor-id="function-documentation-basics">Function documentation: basics</h2>
@@ -239,29 +256,104 @@ Imports: Rpackage1, Rpackage2 (the list of R packages that are needed to run you
 <ul>
 <li>Here is an example of header for the custom ‘add’ function:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Add together two numbers </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x A number. </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param y A number. </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns A numeric vector. </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' add(1, 1) </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' add(10, 1)</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Add together two numbers</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x A number.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param y A number.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns A numeric vector.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' add(1, 1)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' add(10, 1)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can add many options to your documentation, such as: - <code>@export</code> to make the function available to the user - <code>@importFrom</code> to import a function from a package - <code>@seealso</code> to refer to other functions</p>
 <ul>
-<li><p>Write both function and documentation at the same time in my-function.R file, stored in R sub-repository.</p></li>
-<li><p>Use roxygen to generate man/my-function.Rd, reading the header: the devtools function document()</p></li>
+<li><p>Write both function and documentation at the same time in <code>my-function.R</code> file, stored in R sub-repository.</p></li>
+<li><p>Use <code>roxygen</code> to generate <code>man/my-function.Rd</code>, reading the header: the <code>devtools</code> function <code>document()</code></p></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>will generate (or update) your package’s .Rd files</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will generate (or update) your package’s <code>.Rd</code> files</p>
 </section>
 <section id="package-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="package-documentation">Package documentation</h2>
-<p>For a more “integrated” manual, see vignette at <a href="https://r-pkgs.org/vignettes.html" class="uri">https://r-pkgs.org/vignettes.html</a> and website with pkgdown here <a href="https://r-pkgs.org/website.html" class="uri">https://r-pkgs.org/website.html</a>.</p>
+<p>For a more “integrated” documentation of your package, that details the functions, datasets, and other objects in your package, you can use <a href="https://r-pkgs.org/vignettes.html">vignettes</a> that can generate webpages with interactive code, results, plots and comments, and <a href="https://r-pkgs.org/website.html">pkgdown</a> to create a website for your package.</p>
+<p>Also see <a href="../src/ci_cd.html">CI/CI page</a> to automate vignette and website publishing.</p>
+</section>
+</section>
+<section id="python-users" class="level1">
+<h1>Python users</h1>
+<section id="readme.md-file" class="level2">
+<h2 class="anchored" data-anchor-id="readme.md-file"><code>README.md</code> file</h2>
+<p>This is the main documentation file for your project. It is located at the root of the project and should contain a general description of the project, its purpose, and how to use it. This is the first thing that users will see when they visit your project on GitHub or Gitlab (or wherever you host your code).</p>
+<p>Here is a list of things that you should include in your <code>README.md</code> file: - <strong><em>Name</em></strong> of the project / package. Idealy, it should match the name of the repository. - <strong><em>Badges</em></strong>: These are small images that show the status and the quality of your project. It is especialy usefull if you want to distribute your project / package to users. For example, you can add a badge that shows : - the build status of the project : <a href="https://github.com/pandera-dev/pandera/actions?query=workflow%3A%22CI+Tests%22+branch%3Amain"><img src="https://github.com/pandera-dev/pandera/workflows/CI%20Tests/badge.svg?branch=main" class="img-fluid" alt="CI Build"></a> - the build of the documentation : <a href="https://phenomenal.readthedocs.io/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/phenomenal/badge/?version=latest.png" class="img-fluid" alt="Documentation Status"></a> - the version of the package on Pypi: <a href="https://pypi.org/project/pandera/"><img src="https://img.shields.io/pypi/v/pandera.svg" class="img-fluid" alt="PyPI version shields.io"></a> or on Conda: <a href="https://anaconda.org/OpenAlea3/openalea.phenomenal/files"><img src="https://anaconda.org/openalea3/openalea.phenomenal/badges/version.svg" class="img-fluid" alt="Last version"></a> - <a href="https://shields.io/">and many more</a>… - <strong><em>Description</em></strong>: A short description of the project / package. 1-3 sentences is generaly enough. Just enough to give an idea of what the project is about, and generaly not too technical. - <strong><em>Installation</em></strong>: How to install the package. This should include the command to install the package using <code>pip</code> or <code>conda</code>, and any other dependencies that need to be installed. - <strong><em>Usage</em></strong>: How to use the package. This should include an example of the most basic use case of the package. - <strong><em>Links</em></strong>: Links to the documentation, tutorials, the issue tracker, the source code, the license, etc. - <strong><em>Contributing</em></strong>: How to contribute to the project. This should include information on how to report bugs, how to request new features, and how to submit code changes and how to setup the development environment. - <strong><em>Citation</em></strong>: How to cite the project.</p>
+</section>
+<section id="documentation-of-api" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-of-api">Documentation of API</h2>
+<p><code>API</code> stands for Application Programming Interface. It can refer to functions, classes, or modules in your package, that create a user interface to your code. The documentation of the API is essential for users to understand how to use your package.</p>
+<section id="docstrings" class="level3">
+<h3 class="anchored" data-anchor-id="docstrings">Docstrings</h3>
+<section id="what-is-it-and-how-to-write-it" class="level4">
+<h4 class="anchored" data-anchor-id="what-is-it-and-how-to-write-it">What is it and how to write it?</h4>
+<p>In Python, the documentation is written in a <code>docstring</code>: a string that is the first statement in a module, function, class, or method, embedded within <code>"""</code>(triple double-quotes). The docstring should describe what the function does, what arguments it takes and their types (i.e.&nbsp;<code>strings</code>, <code>bool</code>, etc…), and what it returns. This <code>docstring</code> is then used by the <code>help()</code> function, and by the <code>pydoc</code> module to generate documentation.</p>
+<p>You need to consistently write <code>docstrings</code> for all the functions, classes, and modules in your package.</p>
+<p>There are several conventions for writing <code>docstrings</code> in Python. The most common ones are: - <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google style</a> - <a href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">Numpy style</a> - <a href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">reStructuredText</a></p>
+</section>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<p>Here is an example of a function with a <code>docstring</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(x: <span class="bu">int</span>, y: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Add together two numbers.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    x : int</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">        A number.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    y : int</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">        A number.</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    int</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">        A numeric vector.</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Examples</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; add(1, 1)</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">    2</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">    &gt;&gt;&gt; add(10, 1)</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">    11</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This simple function simply adds two numbers together. The <code>docstring</code> provides: - a description of what the function does - the inputs / parameters of the function and their types. - the output of the function and its type - a simple example of how to use the function. Note that theses exemples can be executed using the <code>doctest</code> module, hence providing another nice way to <a href="../src/testing.html#why-do-you-need-tests-">test the function</a>. The lines that need to be executed are preceded by <code>&gt;&gt;&gt;</code>.</p>
+<blockquote class="blockquote">
+<p>Note:</p>
+<p>You can see in the definition of the function that the arguments have “type hints” (i.e.&nbsp;<code>x: int</code>). This is not mandatory, but it is a good practice to add type hints to your functions, as it adds another layer of documentation and it makes the code more readable and helps catch bugs early. You can further describe the return type of the function using the <code>-&gt;</code> operator (i.e.&nbsp;<code>-&gt; int</code>). The type hints are not enforced by Python, but they can be checked using a static type checker like <code>mypy</code> that will check through your code and make sure that the types are consistent.</p>
+</blockquote>
+<p>For more complex and extensive examples, you can check <code>xarray</code>package, which has a very good documentation of its API. <a href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset">The Dataset class documlentation</a> and <a href="https://github.com/pydata/xarray/blob/main/xarray/core/dataset.py#L555">the associated docstring</a></p>
+</section>
+</section>
+</section>
+<section id="tutorials" class="level2">
+<h2 class="anchored" data-anchor-id="tutorials">Tutorials</h2>
+<p>Tutorials are a great way to show users how to use your package. They can be written in a Jupyter notebook (<code>.ipynb</code> files). You can see great exemples of galleries of tutorials: - <a href="https://docs.xarray.dev/en/stable/gallery.html">xarray</a> - <a href="https://geopandas.org/en/stable/gallery/index.html">geopandas</a> - <a href="https://scikit-learn.org/stable/auto_examples/index.html">scikit-learn</a></p>
+</section>
+<section id="sphinx-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="sphinx-documentation"><code>Sphinx</code> documentation</h2>
+<p>To organize your documentation, build automatically a table of content, the API reference, and the tutorials, you can use <a href="https://www.sphinx-doc.org/en/master/"><code>Sphinx</code></a>. This is not the only tool to generate documentation, but it is one of the most popular. Another popular framework is <a href="https://www.mkdocs.org/"><code>MkDocs</code></a>.</p>
+<p><code>Sphinx</code> generates static websites (i.e.&nbsp;they are not interactive) from templates. It is highly customizable with extensions and themes and can generate documentation in many formats (HTML, PDF, ePub, etc…). It can also be used to generate documentation for other languages than Python.</p>
+<p>You can have a look at the <a href="https://sphinx-themes.org/">Sphinx themes gallery</a>. The most popular ones are <code>PyData</code>, <code>Furo</code> or <code>Read the Docs</code>.</p>
+<section id="syntax" class="level3">
+<h3 class="anchored" data-anchor-id="syntax">Syntax</h3>
+<p><code>Sphinx</code> (and <code>Sphinx</code> extensions) can handle three types of syntax for the documentation: - <code>reStructuredText</code> (<code>.rst</code> files): this is the native syntax of <code>Sphinx</code> that has been used for many years, but has lost some popularity to <code>Markdown</code> or <code>myST</code> syntax. - <code>Markdown</code> (<code>.md</code> files): this is a very popular syntax for writing documentation (used by jupyter notebooks) as it is simple and easy to read. However, some features of documentation are not handled by <code>Markdown</code> (like cross-references, custom elements, colored call out blocks). You need the extension <code>myst-parser</code> to use <code>Markdown</code> syntax in <code>Sphinx</code>. - <code>myST</code> (<code>.myst</code> files): this is a new syntax that is a superset of <code>Markdown</code> and <code>reStructuredText</code>. It is more powerful than <code>Markdown</code> and more readable than <code>reStructuredText</code>. You need the extension <code>myst-parser</code> to use <code>myST</code> syntax in <code>Sphinx</code>.</p>
+</section>
+<section id="building-gallery-of-tutorials" class="level3">
+<h3 class="anchored" data-anchor-id="building-gallery-of-tutorials">Building gallery of tutorials</h3>
+<p>To build a gallery of tutorials, you can use either the <a href="https://sphinx-gallery.github.io/stable/index.html"><code>Sphinx Gallery</code></a> or the <a href="https://nbsphinx.readthedocs.io/en/latest/"><code>nbsphinx</code></a> extensions. The <code>Sphinx Gallery</code> is more powerful and can generate the gallery from <code>.py</code> files, while <code>nbsphinx</code> is more simple and can generate the gallery from <code>.ipynb</code> files.</p>
 
 
+</section>
 </section>
 </section>
 
