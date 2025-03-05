@@ -76,7 +76,7 @@ conda config --add channels bioconda
 
 ::: callout-note
 
-As additional configuration, you might want to add the following lines:
+For additional configuration, you might want to add the following lines:
 
 ```bash
 conda config --set channel_priority strict #usefull to avoid conflicts and speed up the resolution of dependencies
