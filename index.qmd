@@ -1,0 +1,15 @@
+---
+title: "Welcome page"
+page-layout: full
+toc: false
+---
+# Welcome to the new `amap-dev` website!
+
+Here you'll find resources on good programming practices, such as versioning or testing, but also on how to use a calculation cluster. This is a work in progress, more content will be added over the coming months.
+
+If you have any questions or suggestions on the content do not hesitate to contact Thomas Arsouze (thomas.arsouze[at]cirad.fr) or Dominique Lamonica (dominique.lamonica[at]ird.fr) or Philippe Verley (philippe.verley[at]ird.fr). This is an open project, so feel free to contribute by opening a pull request [here](https://github.com/umr-amap/amap-dev-website/pulls)!
+
+# To AMAP researchers
+
+If you need to discuss any issues regarding programming & development, data management, or computation: the **POLIS** (Pôle Informatique Scientifique) is at your service in **PS1 room 44 every other Wednesday (even weeks) afternoon from 2 pm to 5 pm**, starting on Wednesday the 22nd of January. Drop us an email (preferably to amap-polis[at]cirad.fr) with your issue a few days before to book one of us, or just come by with your laptop.
+

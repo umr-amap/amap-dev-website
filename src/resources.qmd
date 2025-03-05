@@ -21,3 +21,7 @@ List of resources used to build this website.
 
 # HPC
 Hints on how to install R packages on a shared cluster <https://www.pik-potsdam.de/en/institute/about/it-services/hpc/hpc-2015/user-guides/installing-your-own-r-packages>
+
+# Working with R
+<https://ericmarcon.github.io/travailleR/>
+
