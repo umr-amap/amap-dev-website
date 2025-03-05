@@ -24,7 +24,7 @@ ___What you should avoid___:
 
 ___What you should do___:
 
-- use the [`miniforge` distribution](https://conda-forge.org/download/). It is free to use and is configure to use `conda-forge` as the default channel (which is free too). This is the recommended distribution to use at AMAP.
+- use the [`miniforge` distribution](https://conda-forge.org/download/). It is free to use and is configured to use `conda-forge` as the default channel (which is free too). This is the recommended distribution to use at AMAP.
 
 ### Licensed channels
 
