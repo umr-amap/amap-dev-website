@@ -1,73 +1,465 @@
 ---
 title: "HPC"
+execute:
+  eval: false
 ---
 
 # What is HPC ?
-- Description of HPC, what it is and what it is used for.
+High performance computing (HPC) is the practice of aggregating ("clustering") computing resources that work in parallel to gain greater performance than a single workstation and process massive multi-dimensional data sets.
+
+A standard computing system solves problems primarily by using serial computing. It divides the workload into a sequence of tasks and then runs the tasks one after the other on the same processor. On the other hand, HPC uses parallel processing, which divides the workload into tasks that run simultaneously on multiple processors.
+
+HPC computer systems are characterized by their high-speed processing power, high-performance networks, and large-memory capacity.
+
+While a laptop or desktop with a 3 GHz processor can perform around 3 billion calculations per second (~3.10^9), HPC solutions that can perform quadrillions of calculations per second (~10^{15}).
 
 ## Do you need HPC ?
-- Cases where HPC is useful.
-- Questions to ask yourself to know if you need HPC.
-    - Do you need to run a lot of simulations ?
-    - Do you need to run simulations that are very long ?
-    - Do you need to run simulations that are very memory intensive ?
+There are many cases where you might need to use HPC ressources.
 
-## What ressources are available ?
-At AMAP, we have access to several HPC ressources.
+### You need to run a lot of simulations
+Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
+You'll probably find yourself in this type of situation:
+```{r}
+plots <- c('P01', 'P02', ...)
+years <- c(2000, 2001, ...)
 
-### MESO@LR
+for (plot in plots) {
+    for (year in years) {
+        data <- get_data(plot, year)
+        data <- preprocess_data(data, arguments...)
+        results <- run_analysis(data, arguments...)
+        write_results(results, plot, year)
+    }
+}
+```
+This will require you to run the same analysis many times. If the analysis is long to run, all the analyses being independant, you might want to use HPC to run all the simulations in parallel.
+
+You need to modify your script so that it uses input arguments :
+```{r}
+args <- commandArgs(trailingOnly = TRUE)
+plot <- args[1]
+year <- as.numeric(args[2])
+
+data <- get_data(plot, year)
+data <- preprocess_data(data, arguments...)
+results <- run_analysis(data, arguments...)
+write_results(results, plot, year)
+```
+
+and then launch the script concurrently for all the plots and years using [`Rscript`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/Rscript) and [`xargs`](https://www.man7.org/linux/man-pages/man1/xargs.1.html) :
+```bash
+for plot in P01 P02 ...; do
+    for year in 2000 2001 ...; do
+        echo $plot $year
+    done
+done | xargs -n 2 -P 4 Rscript my_script.R
+```
+
+### You need to run simulations that are very long
+You might want to use parallelization to speed up the computation of a single simulation. [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface) or [OpenMP](https://en.wikipedia.org/wiki/OpenMP) are two libraries that can help you to parallelize your code.
+
+You can also access to very powerful hardware (typically [GPUs](https://en.wikipedia.org/wiki/Graphics_processing_unit)) that are not available on your computer, and that can speed up the computation of your simulations.
+
+### You need to run simulations that are very memory intensive
+Let's say that you developed a script on your computer that run on a small domain. You want to extend this script to a larger domain but you run out of memory on your computer. You have two options here to run your code on HPC:
+- Run your script on a node with more memory (some HPC nodes have memory up to ~1 To)
+- Use parallel computing to distribute the memory usage on multiple nodes
+
+### Advantages of using HPC
+There are a wide range of advantages to using HPC, including:
+
+- ___Performance___: Very fast computation !!! This can help you to run simulations that would be impossible to run on a single workstation.
+- ___Scalability___: Ability to run many simulations in parallel. This can be useful for running many simulations with different parameters, or for running the same simulation many times.
+- ___Reliability___: HPC systems are designed to be reliable with a high percentage of availability. The machine is delocalized on a dedicated site, with a dedicated team to maintain it.
+- ___Cost___: HPC systems are shared resources, so you only pay for what you use. This can be more cost-effective than buying a high-end workstation.
+- ___Support___: HPC systems are usually supported by a team of experts who can help you to optimize your code and run your simulations.
+- ___Science focused___: you don't need to care about system administration and updating the system. You can focus on your science.
+
+### Disadvantages of using HPC
+There are also some disadvantages to using HPC, that you should be aware of:
+
+- ___Learning curve___: HPC systems can be complex to use (shared machine, multiple storage spaces, job scheduler, linux machine), and you may need to learn new tools and techniques to use them effectively.
+- ___Limited resources___: HPC systems are shared resources, so you may not always be able to access the resources you need exactly when you need them.
+- ___Data transfer___: Transferring data to and from an HPC system can be slow, especially if you are working with large data sets.
+
+## What resources are available ?
+At AMAP, we have access to several HPC resources. All the resources listed here are available freely to AMAP members (although institutes might contribute financialy, users are not requested to pay for computing hours or storage) and you can have additional support from POLIS-HPC team.
+
+Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.
+
+### Meso-center `ISDM-Meso` {#sec-mesolr}
+Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC resources for the Occitanie region. Although access to this ressource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
 
 #### Description of the cluster
-- Medium size cluster based in Montpellier
-- List of ressources
-- pros / cons
+Technical specificities include:
+
+- 308 computational nodes of 28 cores each (bi processors Intel Xeon E5-2680 v4 2,4 Ghz (broadwell) 2×14 coeurs/noeud), 128 Go RAM
+- 2 nodes with big memory (`bigmem`) with 112 coeurs, 3To RAM each
+- 2 nodes with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000
+- 1,3Po storage, including 1Po fast storage on Lustre
+- `SLURM` workload manager
 
 #### How to open an account
-- Contact the HPC team at AMAP
-- Mail to B. Pitollat
+Getting an account to `Meso@LR` is usualy quite fast (~1 day). You only need to be part of AMAP and have an email adress from CIRAD.
+
+You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) and the HPC team at AMAP (currently the contact person being [T. Arsouze](mailto:thomas.arsouze@cirad.fr)) with the following requirements:
+
+- explain who you are (student or post-doc or ... ? supervisor ? one sentence about your research)
+- request to be attached to the group `d_cirad_amap` (this is the group of AMAP members)
+- fill the `charte informatique` available [here](https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf)
 
 ### GENCI
-GENCI is the French national HPC agency. It provides access to several HPC ressources in France.
+If you need larges resources (i.e. multi-GPU workflow, or > ~1000 CPUs working in parallel), this is probably your best option.
+
+[GENCI](https://www.genci.fr/) is the French national HPC agency. It provides access to [several HPC resources in France](https://www.genci.fr/services/moyens-de-calcul):
+
+- [CINES](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines) (Montpellier)
+- [IDRIS](https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-idris) (Saclay)
+- [TGCC](https://www.genci.fr/tres-grand-centre-de-calcul-du-cea-tgcc) (Bruyères-le-Châtel)
+
+Access and computing resources are free for academic.
 
 #### Description of the clusters
-- Very large clusters
-- Pros / cons
+`Adastra` cluster at CINES is the most recent cluster available to GENCI users. It provides the best option for GPU computing, although it is powered by `AMD` processors (EPYC Trento). APUs AMD MI300A are also available.
+
+`Jean-Zay` cluster at IDRIS has recently been updated (09/2024) to the most powerfull `NVIDIA` GPUs available on the market (H100)
+
+`Joliot-Curie` cluster at TGCC provides access `Nvidia V100 SXM2` GPUs and Intel CPUs. Note that you can also have access to `Quantique plateform`.
 
 #### How to open an account ?
-- Go to the GENCI portal
-- Fill the requested document (provide IP)
-- Needs to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director.
+Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much resources.
+
+> warning
+> Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.
+
+There are two ways to access GENCI resources:
+
+- "Accès dynamiques" (fast access) : if your needs are < 500 000 h CPU and 50 000 h GPU (eq. V100) for 1 year. This is a simplified access, only a one paragraph description of the scientific context is required and no scientific or technical review is done.
+- "Accès réguliers" (regular access) : if your needs are too important for dynamical access, then you must go for regular access. You can request for resources only two times per year, and provide a detailed description of your project, both scientifically and technically.
+
+- You first need to login to the [edari website](https://www.edari.fr/user/login) (DARI: Demande d'Attribution de resources Informatiques) using RENATER federation.
+- First you need to ask for resources:
+  - Go to "Demande de resources" -> "Créer ou renouveler un dossier de demande d'heures." -> "Création d'un nouveau dossier"
+  - Then fill the forms:
+    - Form n°2 (resources) : correctly fill the type of resources you need, the number of hours and the amount of storage needed. If you don't know what to put here, ask the HPC team at AMAP.
+    - Form n°3 (Structure de recherche) : choose UMR5120, "Identifiant RNSR" 200317641S
+    - Form n°5 (Soutien du projet) : you have access to mesocenter `Meso@LR`
+- Then you need to an account to the supercomputer:
+  - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for resources you just created.
+  - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put `194.199.235.81`, and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put `cluster-out.cirad.fr`.
+- Finally, you... wait ! You will receive an email when your account is created and you project validated.
 
 ## How to use HPC ?
 To efficiently use HPC, you'll need to follow a few steps.
+
 - connect to the cluster and transfer your files
 - create your computation environment in the cluster
 - learn how to submit jobs
 
+> warning
+> The following steps are general and should apply to any HPC resources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
+> - [Meso@LR](https://hpc-lr.umontpellier.fr/documentation-utilisateurs/)
+> - [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
+> - [Jean-Zay at IDRIS](http://www.idris.fr/jean-zay/)
+
 ### Connect and transfer files to the cluster
 #### Connection
-- Directly via `ssh`
-- Directly in the IDE (VSCode, PyCharm, etc.)
+##### Using a terminal
+The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the [`ssh` protocol](https://www.techtarget.com/searchsecurity/definition/Secure-Shell). For exemple, for `Meso@LR`cluster, in a terminal application, you can type:
+
+```bash
+ssh -X my_login@muse-login.meso.umontpellier.fr
+```
+
+To avoid typing your password each time you connect, you can use a [ssh key](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server).
+
+> note
+> Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example `adastra` does not accept ssh key.
+
+You can [use basic linux commands](https://www.hostinger.com/tutorials/linux-commands) to navigate through the cluster.
+
+You are now connected to the `frontal` or `login` node of the cluster. This is the node where you can submit jobs, transfer files, and prepare your computation environment. This is ___NOT___ the node where your jobs will be executed and where you can do your computations.
+
+##### Using an IDE
+You can also use an IDE (Integrated Development Environment - code editor that embeds multiple tools for developers) to connect to the cluster. For example `VSCode` provides a powerfull plugin to [develop on remote machines](https://code.visualstudio.com/docs/remote/ssh). This allows you to navigate, edit and run your code on the cluster directly from your IDE.
+
+`PyCharm` also provides a plugin to [develop on remote machines](https://www.jetbrains.com/help/pycharm/remote-development-starting-page.html).
+
+However, to our knowledge, no such solution exists for `RStudio`.
 
 #### Transfer files
-- Using scp & rsync
-- Using Filezilla
+To run your code on the cluster, you need first to transfer your files. You can use multiple tools to transfer files:
+
+##### `scp` & `rsync`
+If you feel at ease with a terminal, you can use `scp` or `rsync` commands to transfer files. For example, to transfer a file from your computer to the cluster, you can type:
+
+```bash
+# single file
+scp /where/my_file/is/my_file.txt my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+# directory
+scp -r /where/my_directory/is/my_directory my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+```
+
+This means that you have to know beforehand the path to the directory on the cluster that you want to put your files in.
+
+[`rsync`](https://hpc-lr.umontpellier.fr/wp-content/uploads/2017/05/rsync.txt) is a more powerfull tool that allows you to synchronize directories between your computer and the cluster. It has a lot of options that you can use to customize the synchronization, and allows you to transfer only the files that have been modified since the last synchronization (very useful when you have a lot of files to transfer or when you have a slow and instable connection).
+
+##### Filezilla
+[`Filezilla`](https://filezilla-project.org/) is a client for transfering files among machines. It is very easy to use and provides a graphical interface.
+
+You can find the "Quickconnect" bar at the top of the main window, and you need to provide the address of the "Host" : `muse-login.meso.umontpellier.fr`, your "Username" and "Password". You can also save your connection for later use : "File" -> "Copy current connection to Site Manager…".
+
+##### Where to put my files ?
+HPC clusters usually have multiple places where to put your files. Here are the ones for `Meso@LR`:
+
+- `/home/my_login` : this is your home directory. You can put your scripts and small files here. This directory is backed up.
+- `/lustre/scratch` : this is a temporary directory with very fast access where you can put your large files and data. This directory is not backed up and can be erased after 2 months. This space is recommended for running your computations that can require large amount of data.
+- `/nfs/work` : this is a directory where you can put your input / output data or executable files. This directory is backed up and can be used to store your data for a long time.
 
 ### Create your computation environment
-- The modules system
-- Conda environments
+HPC clusters usually provide a lot of scientific softwares and libraries that you can use. They are installed in a module system that you can load and unload. Some useful commands are:
+
+- `module avail` : list all the available modules
+
+```bash
+$ module avail
+
+------------------------------------------------------------------------- /usr/share/Modules/modulefiles -------------------------------------------------------------------------
+dot         module-git  module-info modules     null        use.own
+
+-------------------------------------------------------------------- /trinity/shared/modulefiles/modulegroups --------------------------------------------------------------------
+bioinfo-cirad bioinfo-ifb   cv-admin      cv-advanced   cv-local      cv-standard   local
+
+----------------------------------------------------------------------- /trinity/shared/modulefiles/local ------------------------------------------------------------------------
+automake/1.16.1             geos/3.10.6                 ImageMagick/7.0.3-10        openjpeg/2.4.0              R/3.6.1                     sqlite/3.38.1
+Cast3M/2019                 geos/3.7.2                  intel/opencl-1.2-6.4.0.37   openslide/3.4.1             R/3.6.1-tcltk               squashfs/4.3
+cgal/5.2                    ghmm/1.0                    JDK/11.0.15                 phast/1.5                   R/3.6.3                     swig/3.0.11
+cmake/3.22.0                git/2.35.1                  JDK/jdk.8_x64               pi4u/torc                   R/4.0.2                     vmd/1.9.3
+...
+dawgpaws/1.0                       ImageMagick/7.0.11-14              pandoc/2.14.0.1                    skif/1.2                           yak/0.1
+deepgp/20220929-singularity        insilicoseq/1.5.4                  pantherscore/1.03                  SLR/20240610                       yulab-smu/20230217
+deeptmhmm/1.0.20                   interproscan/5.41-78.0             pantherscore/2.2                   slurm_drmaa/1.1.1                  zlib/1.2.8
+deepTools/3.5.1                    interproscan/5.48-83.0             parallel/20220922                  smrtlink/10.1.0.119588
+deepvariant/1.1.0                  interproscan/5.67-99.0             parsnp/1.7.4-conda                 snakemake/5.12.3
+```
+- `module load my_module` : load a module, e.g. `module load R/packages/4.3.1-IFB`
+- `module unload my_module` : unload a module, e.g. `module unload R/packages/4.3.1-IFB`
+- `module list` : list all the loaded modules in your environment, e.g.:
+```bash
+$ module load R/packages/4.3.1-IFB
+$ module list
+Currently Loaded Modulefiles:
+  1) bioinfo-ifb            2) r/4.3.1                3) R/packages/4.3.1-IFB
+```
+You can see that `R/packages/4.3.1-IFB` (recommend for `R` users) is loaded with some dependecies.
+- `module purge` : unload all the loaded modules
+
+To access modules, you need to do some configuration first:
+```bash
+nano ~/.bashrc    # nano is a text editor
+
+# add the following lines at the end of the file
+
+# module
+MODULEPATH=$MODULEPATH:/nfs/work/agap_id-bin/modulefiles
+export MODULEPATH
+
+# User specific environment and startup programs
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH
+
+# R_LIBS_USER
+R_LIBS_USER=~/R/x86_64-pc-linux-gnu-library/4.3.1
+export R_LIBS_USER
+
+```
+
+#### Install additional R packages
+First, be aware that a lot of packages are already installed inside the `R/packages/4.3.1-IFB` module. If the module you need is not available, you have two solutions:
+- You can install packages in your home directory. If you need to install a package that requires compilation (such as `brms` for example), you'll need to provide information on how to do that:
+```bash
+$ cd ~       # back to your HOME directory
+$ mkdir .R   # create a directory for R packages configuration
+$ echo "CXX14 = g++ -fPIC\nCXX14FLAGS = -O3\nCXX14PICFLAGS = -fpic\nCXX14STD = -std=gnu++1y\n" > ~/.R/Makevars
+# You can now install your packages
+$ R --vanilla
+> install.packages('brms')
+Installation du package dans ‘/nfs/work/agap_id-bin/img/R/4.3.1-IFB/lib’
+(car ‘lib’ n'est pas spécifié)
+Avis dans install.packages("brms") :
+  'lib = "/nfs/work/agap_id-bin/img/R/4.3.1-IFB/lib"' ne peut être ouvert en écriture
+Voulez-vous plutôt utiliser une bibliothèque personnelle ? (oui/Non/annuler) oui
+```
+
+This will install your packages in the `$HOME/R/x86_64-pc-linux-gnu-library/4.3.1` directory.
+
+- You can also use [conda](https://docs.conda.io/en/latest/) to create a dedicated environment and install additional packages. Although mostly used for installing python packages, conda can also be used to install R packages (search search for packages [here](https://anaconda.org/search?q=r-)).
+
+#### Install additional python packages
+The recommanded way to work with Python on the cluster is by using an environment manager. While there are many available (conda, virtualenv, pipenv, poetry, ...), we recommand to use `conda` as it is the most widely used by the scientific community AND it is already installed on the cluster.
+
+```bash
+module load anaconda/python3.8
+# Don't pay attention to the python version, you'll be able to create your own environment with the version you need.
+```
+
+We recommand to tune the `conda` configuration file to work with the cluster:
+```bash
+nano ~/.condarc   # This will create / open the file .condarc in your HOME directory in the text editor
+# Then in the .condarc file, add the following lines:
+channels:   # list the channels where conda will search for packages
+  - nodefaults
+  - conda-forge
+solver: libmamba   # this is the most efficient solver for package dependencies. Now by default, but you can specify it here.
+channel_priority: strict  # Force conda to search for packages in the order you specified in the channels list
+ssl_verify: false   # Specific to meso@lr, the SSL certificate is not valid, so you need to disable SSL verification
+envs_dirs:    # The place where you want to store your environments. If not specified, conda will create a directory in your HOME directory, but if you deal with many large environments, you might want to store them in the work directory.
+    - /path/where/to/store/your/envs
+```
+
+Then you can create and access your environments:
+```bash
+# create an environment
+conda create -n my_env python=3.11
+# activate the environment and install packages
+conda activate my_env
+conda install numpy pandas ...
+# deactivate the environment
+conda deactivate
+```
 
 ### Submit jobs
+All HPC clusters use a job scheduler to manage the resources and the jobs submitted by users. The most common job scheduler is `SLURM` (Simple Linux Utility for Resource Management). This is the scheduler use at `meso@lr`, but also `adastra` and `jean-zay`.
+
 #### The SLURM scheduler
+You can find the documentation for `SLURM` [here](https://slurm.schedmd.com/).
+
+You can run your job in 2 modes:
+- direct / interactive mode, using the command `srun` : for example `srun --pty bash` will open a bash session on a compute node.
+- batch mode, using the command `sbatch` : you need to write a script that will be executed by the scheduler.
+
+It is recommended to use the batch mode for long and heavy computations, and the interactive mode for testing your code.
+
 #### How to write a SLURM script
+We refer to `SLURM` documentation to see all the options available, but we list here the most basic and useful ones to write a batch script.
+
+|Slurm long format |	Slurm short format |	Description |
+|-------------|:-------|:-------------------|
+|--job-name	| -J |	Name of the job |
+|--account | | Name of the account to which the job is charged |
+|--nodes |	-N	| Number of nodes required |
+|--ntasks	| -n	| Number of tasks of your job |
+|--ntasks-per-node |  | Number of tasks per node (should be equal to the total number of tasks divided by the number of nodes) |
+|--ntasks-per-core |  | Number of tasks per core (usually 1) |
+|--partition	| -p	| Name of the partition you want to use |
+|--mem |  | Memory required by the job in Mb (if not specified, then the whole node memory is allocated)|
+|--time	| -t |	Wall time requested (HH:MM:SS), i.e. maximum time for your job to run. |
+|--output	| -o |	Output file where the standard output will be written. By default, slurm-%j.out or '%j' is the job number |
+|--error	| -e |	Error file where the standard error will be written. By default, slurm-%j.err or '%j' is the job number |
+|--mail-user |	|	Email address to send notifications |
+
+
 #### How to submit and monitor a job
 #### Different partitions available
-- meso@lr
-- adastra
+Different types of resources are available on the cluster, as listed in @sec-mesolr:
+
+- __CPU__ node. Partition name : `agap_long`, `agap_normal`, `agap_short`
+
+- __GPU__ node. Partition name : `agap_gpu`
+
+- __Big memory__ node. Partition name : `agap_bigmem`
+
+You can find the list of partitions available on the cluster with the command `sinfo` (including time limits and number of nodes available).
 
 # Concrete examples
+Here is a very simple script that you can adapt to your needs. You can fill additional `SLURM` options, and also the modify the call to your script.
 
-## Running a Python script using GPU on meso@lr
-## Install libraries and running a R script
+```bash
+#!/bin/bash                             # mandatory first line. This is a bash script
+#SBATCH --job-name="<job_name>"         # name of the job
+#SBATCH --partition=partition_name      # name of the partition you want to use
+#SBATCH --nodes=1                       # number of nodes required
+#SBATCH --exclusive                     # ask SLURM to reserve the whole nodes. This is not desired if you only need a few cores.
+#SBATCH --time=1:00:00                  # wall time requested (HH:MM:SS)
 
+module purge                            # clean the environment
+module load R/packages/4.3.1-IFB        # load the software you need
+
+set -v -x                               # useful to debug your script
+
+# Where your project is located, and where you will run it
+MY_PROJ_DIR="/home/arsouzet/projects/AMAP/arsouze/runs_StormR/"
+MY_PROJ_SCRATCH_DIR="/home/arsouzet/scratch/runs_StormR/$SLURM_ARRAY_TASK_ID"
+
+# Your script has 2 arguments: the input file and the output file
+input_filename="my_input_file.nc"
+output_filename="my_output_file.tiff"
+
+# Manage the directory where you will run your analysis
+if [ ! -d "${MY_PROJ_SCRATCH_DIR}" ]
+then
+    mkdir ${MY_PROJ_SCRATCH_DIR}
+fi
+
+cd ${MY_PROJ_DIR}
+cp my_analysis.R ${input_filename} ${MY_PROJ_SCRATCH_DIR}
+cd ${MY_PROJ_SCRATCH_DIR}
+
+# Run the R script
+R CMD BATCH --vanilla "--args ${input_filename} ${output_filename}" my_analysis.R
+# Save the output file to a safe place
+mv ${output_filename} ${MY_PROJ_DIR}
+```
+
+## Running a script using GPU on `meso@lr`
+To run a script using GPU on `meso@lr`, you need a little bit more tweaking (while it might be easier on adastra for example).
+
+By default, if you install a package that requires GPU, it will not work on `meso@lr` because the GPU is not available on the login node. You first need to install your package on a GPU compute node.
+
+> warning
+> To run a script on a GPU node, please add the following to your `sbatch` scripts:
+> ```bash
+> module () {
+>     eval `/usr/bin/modulecmd bash $*`
+> }
+> ```
+> This will allow you to use the `module` command in your scripts.
+
+
+### Submit an interactive job on GPU node [#interactive-gpu]
+You first need to connect to a GPU node to install your package. You can do this by submitting an interactive job on a GPU node. Here is an example of a script that you can use to submit an interactive job on a GPU node:
+```bash
+srun -A AGAP -p agap_gpu --gres gpu:a100:1 -t 00:30:00 -c 1 -J interactive1 --pty /bin/bash -i
+```
+This means you are asking for 1 GPU of type `a100` for 30 minutes, on `agap_gpu` partition, in interactive mode.
+
+Once you are connected to the GPU node, you must check the version of the `nvidia` driver with the command `nvidia-smi`. You can then exit the GPU node with `exit`.
+
+### Install you environment
+Install `pytorch` (or `tensorflow` or any other package that requires GPU) in a dedicated environment which is compatible with the `nvidia` driver version seens in #interactive-gpu section. Install also additional dependencies needed.
+
+### Submit a job on GPU node
+You can now submit a job on a GPU node. Here is an example of a script that you can use to submit a job on a GPU node:
+
+```bash
+#!/bin/bash
+#SBATCH --job-name=my_job
+#SBATCH --account=agap
+#SBATCH --partition=agap_gpu
+#SBATCH --output=/my/output/path/output.log
+#SBATCH --time=8:00:00
+#SBATCH --ntasks=1
+#SBATCH --gres=gpu:a100:1    # we only need 1 GPU
+#SBATCH --mem=32000
+
+module () {
+    eval `/usr/bin/modulecmd bash $*`
+}
+
+module purge
+module load ... # load the software you need
+
+cd /lustre/my_account/prg/
+./runThroughConfig_SSL_HP.sh
+```
 
