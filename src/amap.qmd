@@ -9,7 +9,7 @@ Recently, `Anaconda` has [updated its terms of services for academia and researc
 
 While the `conda` tools is free and open-source, `Anaconda` (a graphical interface that uses conda) is a licensed product.
 
-Also, `conda` uses "channels" to gets access to softwares and libraries. Some are licensed and managed by `Anaconda` while other are free and open.
+Also, `conda` uses "channels" to gets access to software and librairies. Some are licensed and managed by `Anaconda` while other are free and open.
 
 Let's see how to keep using `conda` at AMAP, and what you should be aware of.
 
