@@ -14,7 +14,7 @@ HPC computer systems are characterized by their high-speed processing power, hig
 While a laptop or desktop with a 3 GHz processor can perform around 3 billion calculations per second (~3.10^9), HPC solutions that can perform quadrillions of calculations per second (~10^{15}).
 
 ## Do you need HPC ?
-There are many cases where you might need to use use HPC resources.
+There are many cases where you might need to use HPC ressources.
 
 ### You need to run a lot of simulations
 Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
