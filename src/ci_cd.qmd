@@ -30,7 +30,7 @@ If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is simil
 
 The *trigger* bloc gives the instructions for when the action will be launched. The *job* bloc gives the following instructions: on which OS the action should be run (*runs-on*), and the list of steps to be run (*steps*).
 
-- Don't write you .yaml from scratch: you'll find plenty of examples on GithHub, just adapt them to the desired workflow.
+- Don't write your .yaml from scratch: you'll find plenty of examples on GithHub, just adapt them to the desired workflow.
 
 - Once your .yaml is ready, and you have triggered the action (by pushing a commit, for instance), you need to navigate to get the log. Here is an example with a test-coverage action.
 
