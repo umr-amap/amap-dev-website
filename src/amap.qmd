@@ -95,7 +95,7 @@ As mentioned earlier, `CIRAD` has decided to ban the access to licensed channels
 
 Without this extra configuration step, you won't be able to use `conda` at AMAP / CIRAD.
 
-### Ressources
+### Resources
 
 - `mivegec` lab publish an extensive and well done summary of the situation at IRD in Montpellier [here](https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/).
 - `INRAE` has published some recommandations for using `conda` [here](https://science-ouverte.inrae.fr/fr/offre-service/fiches-pratiques-et-recommandations/quelles-alternatives-aux-fonctionnalites-payantes-danaconda)

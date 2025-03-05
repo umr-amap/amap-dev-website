@@ -14,7 +14,7 @@ HPC computer systems are characterized by their high-speed processing power, hig
 While a laptop or desktop with a 3 GHz processor can perform around 3 billion calculations per second (~3.10^9), HPC solutions that can perform quadrillions of calculations per second (~10^{15}).
 
 ## Do you need HPC ?
-There are many cases where you might need to use HPC ressources.
+There are many cases where you might need to use HPC resources.
 
 ### You need to run a lot of simulations
 Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
@@ -88,13 +88,13 @@ At AMAP, we have access to several HPC resources. All the resources listed here 
 Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.
 
 ### Meso-center `ISDM-Meso` {#sec-mesolr}
-Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC resources for the Occitanie region. Although access to this ressource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
+Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC resources for the Occitanie region. Although access to this resource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
 
 #### Description of the cluster
 Technical specificities include:
 
 - 308 computational nodes of 28 cores each (bi processors Intel Xeon E5-2680 v4 2,4 Ghz (broadwell) 2×14 coeurs/noeud), 128 Go RAM
-- 2 nodes with big memory (`bigmem`) with 112 coeurs, 3To RAM each
+- 2 nodes with big memory (`bigmem`) with 112 cores, 3To RAM each
 - 2 nodes with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000
 - 1,3Po storage, including 1Po fast storage on Lustre
 - `SLURM` workload manager
