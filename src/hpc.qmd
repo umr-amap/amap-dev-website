@@ -20,7 +20,6 @@ There are many cases where you might need to use HPC resources.
 Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
 You'll probably find yourself in this type of situation:
 ```{r}
-#| eval: false
 plots <- c('P01', 'P02', ...)
 years <- c(2000, 2001, ...)
 
@@ -37,7 +36,6 @@ This will require you to run the same analysis many times. If the analysis is lo
 
 You need to modify your script so that it uses input arguments :
 ```{r}
-#| eval: false
 args <- comman#| dArgs(trailingOnly = TRUE)
 plot <- args[1]
 year <- as.numeric(args[2])

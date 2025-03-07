@@ -41,6 +41,9 @@ website:
   margin-footer: |
       ![](/figures/logo_amap3.jpg){width=40%}
 
+execute:
+  freeze: auto
+
 format:
   html:
     theme: cosmo
