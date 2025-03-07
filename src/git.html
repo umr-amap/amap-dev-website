@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -65,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//src/logo_amap3.jpg" rel="icon" type="image/jpeg">
+<link href="..//figures/logo_amap3.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -114,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../src/logo_amap1.jpg" alt="" class="navbar-logo">
+    <img src="../figures/logo_amap1.jpg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Resources for<br>
@@ -152,6 +172,10 @@ good programming practices</span>
 <span class="menu-text">HPC</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../src/amap.html"> 
+<span class="menu-text">Scientific computing at AMAP</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../src/resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
@@ -179,12 +203,29 @@ good programming practices</span>
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-git-and-why-should-i-use-it" id="toc-what-is-git-and-why-should-i-use-it" class="nav-link active" data-scroll-target="#what-is-git-and-why-should-i-use-it">What is Git and why should I use it?</a></li>
+  <li><a href="#what-is-version-control-git-and-why-should-i-use-it" id="toc-what-is-version-control-git-and-why-should-i-use-it" class="nav-link active" data-scroll-target="#what-is-version-control-git-and-why-should-i-use-it">What is Version Control, Git and why should I use it?</a>
+  <ul class="collapse">
+  <li><a href="#version-control-system-vcs" id="toc-version-control-system-vcs" class="nav-link" data-scroll-target="#version-control-system-vcs">Version control system (VCS)</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it works ?</a></li>
+  <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration">Collaboration</a></li>
+  <li><a href="#backup" id="toc-backup" class="nav-link" data-scroll-target="#backup">Backup</a></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
+  </ul></li>
   <li><a href="#install-git" id="toc-install-git" class="nav-link" data-scroll-target="#install-git">Install git</a>
   <ul class="collapse">
   <li><a href="#git-already-installed" id="toc-git-already-installed" class="nav-link" data-scroll-target="#git-already-installed">Git already installed?</a></li>
-  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">macOS</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a>
+  <ul class="collapse">
+  <li><a href="#option-1-highly-recommended" id="toc-option-1-highly-recommended" class="nav-link" data-scroll-target="#option-1-highly-recommended"><strong>Option 1</strong> (highly recommended)</a></li>
+  <li><a href="#option-2-recommended" id="toc-option-2-recommended" class="nav-link" data-scroll-target="#option-2-recommended"><strong>Option 2</strong> (recommended)</a></li>
+  <li><a href="#updating-git-for-windows" id="toc-updating-git-for-windows" class="nav-link" data-scroll-target="#updating-git-for-windows">Updating Git for Windows</a></li>
+  </ul></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">macOS</a>
+  <ul class="collapse">
+  <li><a href="#option-1-highly-recommended-1" id="toc-option-1-highly-recommended-1" class="nav-link" data-scroll-target="#option-1-highly-recommended-1"><strong>Option 1</strong> (highly recommended)</a></li>
+  <li><a href="#option-2-recommended-1" id="toc-option-2-recommended-1" class="nav-link" data-scroll-target="#option-2-recommended-1"><strong>Option 2</strong> (recommended)</a></li>
+  <li><a href="#option-3-recommended" id="toc-option-3-recommended" class="nav-link" data-scroll-target="#option-3-recommended"><strong>Option 3</strong> (recommended)</a></li>
+  </ul></li>
   <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux">Linux</a></li>
   </ul></li>
   <li><a href="#global-configuration-only-once" id="toc-global-configuration-only-once" class="nav-link" data-scroll-target="#global-configuration-only-once">Global configuration (only once)</a>
@@ -192,24 +233,39 @@ good programming practices</span>
   <li><a href="#necessary-configuration" id="toc-necessary-configuration" class="nav-link" data-scroll-target="#necessary-configuration">Necessary configuration</a></li>
   <li><a href="#optional-configuration" id="toc-optional-configuration" class="nav-link" data-scroll-target="#optional-configuration">Optional configuration</a></li>
   <li><a href="#personnal-access-token" id="toc-personnal-access-token" class="nav-link" data-scroll-target="#personnal-access-token">Personnal access token</a></li>
-  <li><a href="#git-client" id="toc-git-client" class="nav-link" data-scroll-target="#git-client">Git client</a></li>
+  <li><a href="#git-client" id="toc-git-client" class="nav-link" data-scroll-target="#git-client">Git client</a>
+  <ul class="collapse">
+  <li><a href="#rstudio-integration" id="toc-rstudio-integration" class="nav-link" data-scroll-target="#rstudio-integration">Rstudio integration</a></li>
+  <li><a href="#vscode-integration" id="toc-vscode-integration" class="nav-link" data-scroll-target="#vscode-integration">VSCode integration</a></li>
+  <li><a href="#github-desktop" id="toc-github-desktop" class="nav-link" data-scroll-target="#github-desktop">Github desktop</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#create-a-new-git-repository" id="toc-create-a-new-git-repository" class="nav-link" data-scroll-target="#create-a-new-git-repository">Create a new git repository</a>
   <ul class="collapse">
-  <li><a href="#where-to-store-your-git-repositories" id="toc-where-to-store-your-git-repositories" class="nav-link" data-scroll-target="#where-to-store-your-git-repositories">Where to store your git repositories</a></li>
+  <li><a href="#where-to-store-your-git-repositories" id="toc-where-to-store-your-git-repositories" class="nav-link" data-scroll-target="#where-to-store-your-git-repositories">Where to store your git repositories</a>
+  <ul class="collapse">
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a></li>
+  <li><a href="#institutional-git-servers" id="toc-institutional-git-servers" class="nav-link" data-scroll-target="#institutional-git-servers">Institutional git servers</a></li>
+  <li><a href="#self-hosted-git-servers" id="toc-self-hosted-git-servers" class="nav-link" data-scroll-target="#self-hosted-git-servers">Self-hosted git servers</a></li>
+  </ul></li>
   <li><a href="#github-first" id="toc-github-first" class="nav-link" data-scroll-target="#github-first">Github first</a></li>
+  <li><a href="#gilab-first" id="toc-gilab-first" class="nav-link" data-scroll-target="#gilab-first">Gilab first</a></li>
   <li><a href="#local-first" id="toc-local-first" class="nav-link" data-scroll-target="#local-first">Local first</a></li>
   </ul></li>
   <li><a href="#git-basics" id="toc-git-basics" class="nav-link" data-scroll-target="#git-basics">Git basics</a>
   <ul class="collapse">
-  <li><a href="#git-workflow" id="toc-git-workflow" class="nav-link" data-scroll-target="#git-workflow">Git workflow</a></li>
   <li><a href="#git-basic-commands" id="toc-git-basic-commands" class="nav-link" data-scroll-target="#git-basic-commands">Git basic commands</a></li>
+  <li><a href="#git-workflow" id="toc-git-workflow" class="nav-link" data-scroll-target="#git-workflow">Git workflow</a></li>
   <li><a href="#merge-conflicts" id="toc-merge-conflicts" class="nav-link" data-scroll-target="#merge-conflicts">Merge conflicts</a></li>
+  </ul></li>
+  <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
+  <ul class="collapse">
+  <li><a href="#my-repo-is-too-big-how-to-clean-it" id="toc-my-repo-is-too-big-how-to-clean-it" class="nav-link" data-scroll-target="#my-repo-is-too-big-how-to-clean-it">My repo is too big ! How to clean it ?</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/git.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
-<p><img src="../src/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
+<p><img src="../figures/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
 </div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,19 +289,54 @@ good programming practices</span>
 </header>
 
 
-<p>Inspiration <a href="https://happygitwithr.com/install-git.html">here</a>. Official <code>git</code> documentation <a href="https://git-scm.com/doc">here</a>.</p>
-<section id="what-is-git-and-why-should-i-use-it" class="level1">
-<h1>What is Git and why should I use it?</h1>
-<ul>
-<li>version control system</li>
-<li>collaboration</li>
-<li>backup</li>
-<li>reproducibility</li>
-</ul>
+<p>Inspiration <a href="https://happygitwithr.com/install-git.html">here</a>. Official <code>git</code> documentation <a href="https://git-scm.com/doc">here</a>. <a href="https://kb.nikhef.nl/computing-course/git-novice/instructor/01-basics.html">software carpentry</a> <a href="https://reproducibility.rocks/materials/day2/02-git/">repoducibility course</a></p>
+<section id="what-is-version-control-git-and-why-should-i-use-it" class="level1">
+<h1>What is Version Control, Git and why should I use it?</h1>
+<p>We’ll start by exploring how version control can be used to keep track of what one person did and when. Even if you aren’t collaborating with other people, automated version control is much better than this situation:</p>
+<p><img src="https://kb.nikhef.nl/computing-course/git-novice/fig/phd101212s.png" class="img-fluid"></p>
+<p>If you work alone, <code>git</code> is great to track changes and recover previous versions of your files. You can also use a remote repository to have a back up and share your work.</p>
+<section id="version-control-system-vcs" class="level2">
+<h2 class="anchored" data-anchor-id="version-control-system-vcs">Version control system (VCS)</h2>
+<p><img src="https://reproducibility.rocks/materials/day2/02-git/images/file_cycle2.png" class="img-fluid"></p>
+<p>Let’s imagine that we have a repository already working. When you create a new file as part of the repository (or repo), that file is untracked or unversioned. This means that git will ignore the file and any change you make to it until you add it to the repo. At that point the file is staged and is ready to get into the repository. To do that you do a commit and save that version of the file to the repo.</p>
+<p>This workflow <code>modify --&gt; add --&gt; commit</code> will repeat every time you want to save a version of the file. We don’t recommend making a commit every time you save the file or change a comma, and its also not a good idea to make a commit with a billion of changes. With practice and depending on how you work, you will find a comfortable middle ground.</p>
+<p><code>git</code> is (by far) the most widely used and distributed VCS in the world. It is a free software that you install on your computer. It is a command line tool, but there are many graphical interfaces that can help you to use it.</p>
+</section>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How it works ?</h2>
+<p>A Git repository (or repo for short) contains all of the project files and the entire revision history. You’ll take an ordinary folder of files, and tell <code>Git</code> to make it a repository. This creates a <code>.git</code> subfolder, which contains all of the Git metadata for tracking changes.</p>
+<p>As you commit files, Git stores a reference to the previous version of the file. If the file has changed, Git stores a reference to the changes. This allows <code>Git</code> to quickly compare the current version of a file with the previous version, so you have a record of what has been done, and you can revert to specific versions should you ever need to.</p>
+</section>
+<section id="collaboration" class="level2">
+<h2 class="anchored" data-anchor-id="collaboration">Collaboration</h2>
+<p>Collaboration is the way different people can work on the same project together. <code>Git</code> makes collaboration easier, allowing changes by different people at the same time, on the same files. This is done by creating branches, which are different versions of the same project. Each branch can be worked on independently, and then merged back into the main branch.</p>
+<p><img src="https://www.nobledesktop.com/image/blog/git-branches-merge.png" class="img-fluid"></p>
+<p>At some point, to make this collaboration easier, you will need to use a remote repository. This is a copy of your local repository that is stored on a server. This allows you to share your work with others, and to access it from different computers, by uploading your changes and downloading changes from others. The most popular remote repository is <code>GitHub</code> (however owned by Microsoft), but there are others like <code>GitLab</code> or <code>Bitbucket</code>.</p>
+<p><img src="https://www.nobledesktop.com/image/blog/git-distributed-workflow-diagram.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p><strong>Note</strong>:</p>
+<p>Institutional remote repositories are also available and can be easily accessed using your usual institutional credentials. They have the advantage of being hosted localy, and not prone to sudden changes in the terms of service (among others). Also, you don’t contribute to the monopoly of a single company and let them use your data. However, you won’t have the same visibility as on <code>GitHub</code> and the same quality of services. - <a href="https://forge.ird.fr/">IRD GitLab</a> - <a href="https://gitlab.cirad.fr/">CIRAD GitLab</a> - <a href="https://forgemia.inra.fr/">INRAE GitLab</a></p>
+</blockquote>
+</section>
+<section id="backup" class="level2">
+<h2 class="anchored" data-anchor-id="backup">Backup</h2>
+<p>The use of a remote repository is also a way to backup your work. If your computer crashes, you can easily recover your work by downloading the repository from the remote repository. It is as simple as:</p>
+<pre class="shell"><code>git clone https://github.com/username/repo.git</code></pre>
+<p>Not only this gives you access to your work, but also to all the previous versions of your work.</p>
+<blockquote class="blockquote">
+<p><strong>Warning</strong>:</p>
+<p>Those remote repositories are not meant to host large files. They are meant to host code and text files. If you need to backup large files associated with your code or project, you should check for <a href="https://git-lfs.com/">git-lfs</a>. If you’re looking for a VCS for your large dataset, you should check <a href="https://about.zenodo.org/">zenodo</a>, or your institutional <a href="https://dataverse.cirad.fr/">dataverse</a>. Please check <a href="">amap-data website</a> for complete information.</p>
+</blockquote>
+</section>
+<section id="reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
+<p>VCS are also a way to ensure the reproducibility of your work. By keeping track of all the changes you made to your files, you can easily reproduce the analysis you did at a specific time. This is also a way to ensure the transparency of your work, as you can share the repository with others, and they can see all the changes you made to the files. More and more journals are asking for the code and data associated with the publication, and using a VCS is a way to ensure that you can provide this information.</p>
+<p>By providing a reproducible workflow (including the code, data and the environment to do the analysis), you also foster the reuse of your work by others. This is a way to ensure that your work has a greater impact, and that you can contribute to the scientific community (see <span class="citation" data-cites="ram_git_2013">Ram (<a href="#ref-ram_git_2013" role="doc-biblioref">2013</a>)</span>).</p>
+</section>
 </section>
 <section id="install-git" class="level1">
 <h1>Install git</h1>
-<p>You need Git, so you can use it at the command line and so RStudio can call it.</p>
+<p>You need Git, so you can use it at the command line and so RStudio or your favorite editor can call it.</p>
 <p>If there’s any chance it’s installed already, verify that, rejoice, and skip this step. (But consider updating an existing installation.)</p>
 <p>Otherwise, find installation instructions below for your operating system.</p>
 <section id="git-already-installed" class="level2">
@@ -262,34 +353,52 @@ good programming practices</span>
 </section>
 <section id="windows" class="level2">
 <h2 class="anchored" data-anchor-id="windows">Windows</h2>
-<p><strong>Option 1</strong> (highly recommended): Install Git for Windows, also known as msysgit or “Git Bash”, to get Git in addition to some other useful tools, such as the Bash shell. Yes, all those names are totally confusing, but you might encounter them elsewhere and I want you to be well-informed.</p>
+<section id="option-1-highly-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-highly-recommended"><strong>Option 1</strong> (highly recommended)</h3>
+<p>Install Git for Windows, also known as msysgit or “Git Bash”, to get Git in addition to some other useful tools, such as the Bash shell. Yes, all those names are totally confusing, but you might encounter them elsewhere and I want you to be well-informed.</p>
 <p>We like this because Git for Windows leaves the Git executable in a conventional location, which will help you and other programs, e.g.&nbsp;RStudio, find it and use it. This also supports a transition to more expert use, because the “Git Bash” shell will be useful as you venture outside of R/RStudio.</p>
-<pre><code>NOTE: When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”. Otherwise, we believe it is good to accept the defaults.
-Note that RStudio for Windows prefers for Git to be installed below C:/Program Files and this appears to be the default. This implies, for example, that the Git executable on my Windows system is found at C:/Program Files/Git/bin/git.exe. Unless you have specific reasons to otherwise, follow this convention.</code></pre>
+<blockquote class="blockquote">
+<p><strong>NOTE</strong>:</p>
+<p>When asked about “Adjusting your PATH environment”, make sure to select “Git from the command line and also from 3rd-party software”. Otherwise, we believe it is good to accept the defaults. Note that RStudio for Windows prefers for Git to be installed below C:/Program Files and this appears to be the default. This implies, for example, that the Git executable on my Windows system is found at C:/Program Files/Git/bin/git.exe. Unless you have specific reasons to otherwise, follow this convention.</p>
+</blockquote>
 <p>This also leaves you with a Git client, though not a very good one. So check out Git clients we recommend (chapter 8).</p>
-<p>FYI, this appears to be equivalent to what you would download from here: https://git-scm.com/download/.</p>
-<p><strong>Option 2</strong> (recommended): Install Git for Windows via the Chocolatey package manager. If this means anything to you, Chocolatey is like apt-get or Homebrew, but for Windows instead of Debian/Ubuntu Linux or macOS. As far as I can tell, using Chocolatey to install Git for Windows gives the same result as installing it yourself (option 1).</p>
+<p>FYI, this appears to be equivalent to what you would download from <a href="https://git-scm.com/download/">here</a>.</p>
+</section>
+<section id="option-2-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-recommended"><strong>Option 2</strong> (recommended)</h3>
+<p>Install Git for Windows via the Chocolatey package manager. If this means anything to you, Chocolatey is like apt-get or Homebrew, but for Windows instead of Debian/Ubuntu Linux or macOS. As far as I can tell, using Chocolatey to install Git for Windows gives the same result as installing it yourself (option 1).</p>
 <p>This obviously requires that you already have Chocolatey installed or that you are up for installing it. It is not hard and the instructions are here. This may be worthwhile if it seems likely you will be installing more open source software in the future.</p>
 <p>After you install Chocolatey, in a shell, do:</p>
 <pre class="shell"><code>choco install git.install</code></pre>
-<p>This installs the most current Git (Install) X.Y.Z Chocolatey package. At the time of writing, that is “Git (Install) 2.33.1”, but that version number will increment over time. Updating Git for Windows</p>
+<p>This installs the most current Git (Install) X.Y.Z Chocolatey package. At the time of writing, that is “Git (Install) 2.33.1”, but that version number will increment over time.</p>
+</section>
+<section id="updating-git-for-windows" class="level3">
+<h3 class="anchored" data-anchor-id="updating-git-for-windows">Updating Git for Windows</h3>
 <p>If you already have Git for Windows, but it’s not the latest version, it’s a good idea to update. You can update like so from the command line:</p>
 <pre class="shell"><code>git update-git-for-windows</code></pre>
 </section>
+</section>
 <section id="macos" class="level2">
 <h2 class="anchored" data-anchor-id="macos">macOS</h2>
-<p><strong>Option 1</strong> (highly recommended): Install the Xcode command line tools (not all of Xcode), which includes Git.</p>
+<section id="option-1-highly-recommended-1" class="level3">
+<h3 class="anchored" data-anchor-id="option-1-highly-recommended-1"><strong>Option 1</strong> (highly recommended)</h3>
+<p>Install the Xcode command line tools (not all of Xcode), which includes Git.</p>
 <p>Go to the shell and enter one of these commands to elicit an offer to install developer command line tools:</p>
 <p>Accept the offer! Click on “Install”.</p>
 <p>Here’s another way to request this installation, more directly:</p>
 <p>We just happen to find this Git-based trigger apropos.</p>
 <p>Note also that, after upgrading macOS, you might need to re-do the above and/or re-agree to the Xcode license agreement. We have seen this cause the RStudio Git pane to disappear on a system where it was previously working. Use commands like those above to tickle Xcode into prompting you for what it needs, then restart RStudio.</p>
-<p><strong>Option 2</strong> (recommended): Install Git from here: http://git-scm.com/downloads.</p>
-<pre><code>This arguably sets you up the best for the future. It will certainly get you the latest version of Git of all approaches described here.
-The GitHub home for the macOS installer is here: https://github.com/timcharper/git_osx_installer.
-    At that link, you can find more info if something goes wrong or you are working on an old version of macOS.</code></pre>
-<p><strong>Option 3</strong> (recommended): If you anticipate getting heavily into scientific computing, you’re going to be installing and updating lots of software. You should check out Homebrew, “the missing package manager for OS X”. Among many other things, it can install Git for you. Once you have Homebrew installed, do this in the shell:</p>
+</section>
+<section id="option-2-recommended-1" class="level3">
+<h3 class="anchored" data-anchor-id="option-2-recommended-1"><strong>Option 2</strong> (recommended)</h3>
+<p>Install Git from <a href="http://git-scm.com/downloads">here</a>.</p>
+<p>This arguably sets you up the best for the future. It will certainly get you the latest version of Git of all approaches described here. The GitHub home for the macOS installer is <a href="https://github.com/timcharper/git_osx_installer">here</a>. At that link, you can find more info if something goes wrong or you are working on an old version of macOS.</p>
+</section>
+<section id="option-3-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="option-3-recommended"><strong>Option 3</strong> (recommended)</h3>
+<p>If you anticipate getting heavily into scientific computing, you’re going to be installing and updating lots of software. You should check out Homebrew, “the missing package manager for OS X”. Among many other things, it can install Git for you. Once you have Homebrew installed, do this in the shell:</p>
 <pre class="shell"><code>brew install git</code></pre>
+</section>
 </section>
 <section id="linux" class="level2">
 <h2 class="anchored" data-anchor-id="linux">Linux</h2>
@@ -298,8 +407,7 @@ The GitHub home for the macOS installer is here: https://github.com/timcharper/g
 <pre class="shell"><code>sudo apt-get install git</code></pre>
 <p>Fedora or RedHat Linux:</p>
 <pre class="shell"><code>sudo yum install git</code></pre>
-<p>A comprehensive list for various Linux and Unix package managers:</p>
-<p>https://git-scm.com/download/linux</p>
+<p>A comprehensive list for various Linux and Unix package managers can be found <a href="https://git-scm.com/download/linux">here</a>.</p>
 </section>
 </section>
 <section id="global-configuration-only-once" class="level1">
@@ -311,59 +419,118 @@ The GitHub home for the macOS installer is here: https://github.com/timcharper/g
 git config --global user.email "jane@example.com"
 git config --global --list</code></pre>
 <p>substituting your name and the email associated with your GitHub account.</p>
-<p>The usethis package offers an alternative approach. You can set your Git user name and email from within R:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## install if needed (do this exactly once):</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages("usethis")</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Jane Doe"</span>, <span class="at">user.email =</span> <span class="st">"jane@example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>usethis</code> <code>R</code> package offers an alternative approach. You can set your Git user name and email from within R:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## install if needed (do this exactly once):</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages("usethis")</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(usethis)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Jane Doe"</span>, <span class="at">user.email =</span> <span class="st">"jane@example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can have a secondary mail associated with your git account. To do so, you can add it to your global configuration:</p>
 <pre class="shell"><code>git config --global user.email</code></pre>
 </section>
 <section id="optional-configuration" class="level2">
 <h2 class="anchored" data-anchor-id="optional-configuration">Optional configuration</h2>
 <ul>
-<li>Default editor:</li>
+<li><strong>Default editor</strong>. Some git commands need to open an editor. You can set your favorite editor as the default one. For example, to use Rstudio as the default editor:</li>
 </ul>
 <pre class="shell"><code>git config --global core.editor "Rstudio"</code></pre>
 <ul>
-<li>Default main branch:</li>
+<li><strong>Default branch</strong>. Every time you create a new repository, a default branch (we will see what it is later) is created. You can set the name of this default branch. <code>main</code> is the most common name for this branch.</li>
 </ul>
 <pre class="shell"><code>git config --global init.defaultBranch main</code></pre>
 </section>
 <section id="personnal-access-token" class="level2">
 <h2 class="anchored" data-anchor-id="personnal-access-token">Personnal access token</h2>
+<p>You can use a personal access token in place of a password when authenticating to your remote repository in the command line or with the API. This will help you to save some time and avoid typing your password each time you push or pull from the remote repository.</p>
 <ul>
-<li>Go to https://github.com/settings/tokens and click “Generate token”.</li>
+<li>Go to <a href="https://github.com/settings/tokens">this page</a> and click “Generate token”.</li>
 <li>From R: <code>usethis::create_github_token()</code></li>
 </ul>
 </section>
 <section id="git-client" class="level2">
 <h2 class="anchored" data-anchor-id="git-client">Git client</h2>
+<p>There are many integrations and graphical interfaces for <code>git</code> in IDEs. We here present only the most common ones, but feel free to explore others and complete this section.</p>
+<section id="rstudio-integration" class="level3">
+<h3 class="anchored" data-anchor-id="rstudio-integration">Rstudio integration</h3>
+<p><code>RStudio</code> is probably your main text editor if you work with <code>R</code>. Luckily, it integrates natively with <code>git</code>.</p>
 <ul>
-<li>Rstudio integration</li>
-<li>VSCode integration</li>
-<li>GitKraken</li>
-<li>github desktop</li>
+<li>First indicate the path to the <code>git</code> executable in the <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Git/SVN</code> menu.</li>
+<li>Then you need to create a #Personal Access Token# to use with <code>RStudio</code>. Go to your GitHub account, click on your profile picture, then <code>Settings</code> &gt; <code>Developer settings</code> &gt; <code>Personal access tokens</code> &gt; <code>Generate new token</code>. Give it a name, and select the <code>repo</code> scope. Copy the token and paste it in <code>RStudio</code> when prompted.</li>
 </ul>
+<p>You are now ready to use <code>git</code> with <code>RStudio</code>.</p>
+<p>Go in <code>File</code> &gt; <code>New Project</code> &gt; <code>Version Control</code> &gt; <code>Git</code> and paste the URL of the repository you want to clone. Then click on <code>Create Project</code>.</p>
+<p>You will now be able to see a tab <code>Git</code> in the top right pane of <code>RStudio</code>, commit changes, and push them to the remote repository. You can also use the <code>terminal</code> pane to use <code>git</code> commands directly.</p>
+</section>
+<section id="vscode-integration" class="level3">
+<h3 class="anchored" data-anchor-id="vscode-integration">VSCode integration</h3>
+<p>If you are using <code>VSCode</code>, you can install the <a href="https://www.gitkraken.com/gitlens"><code>GitLens</code></a> extension to have a better integration with <code>git</code>.</p>
+<p>This allows you to see the history of your project, compare files between versions, push and pull changes, and many more. All without the terminal or the <code>git</code> command line.</p>
+<blockquote class="blockquote">
+<p><strong>Note</strong>:</p>
+<p><code>VSCode</code> is highly customizable to fit your needs. You can also check the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github"><code>GitHub Pull Requests</code> extension</a> to review, comment and merge pull requests directly from <code>VSCode</code>, the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions"><code>GitHub Actions</code> extension</a> to see the status of your CI/CD pipelines, and the <a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot"><code>GitHub Copilot</code> extension</a> to have an AI assistant to help you write code.</p>
+</blockquote>
+</section>
+<section id="github-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="github-desktop">Github desktop</h3>
+<p><a href="https://github.com/apps/desktop">Github Desktop</a> is not an editor, but a graphical interface for <code>git</code> with a lot of feature for an easy integration with <code>GitHub</code>. You can see the history of your project, compare files between versions, push and pull changes, and many more. All without the terminal or the <code>git</code> command line.</p>
+</section>
 </section>
 </section>
 <section id="create-a-new-git-repository" class="level1">
 <h1>Create a new git repository</h1>
+<p>When you start a new project, whether it is a new analysis, a new package, or a new paper, you will need to create a new repository that will be a git repository. This repository will contain all the files of your project with the history of the changes all the contributors made to the files.</p>
+<p>You have two options to create a new repository:</p>
+<ul>
+<li><p>create a new repository on the git server and clone it on your computer,</p></li>
+<li><p>create a new repository on your computer and push it to the git server.</p></li>
+</ul>
 <section id="where-to-store-your-git-repositories" class="level2">
 <h2 class="anchored" data-anchor-id="where-to-store-your-git-repositories">Where to store your git repositories</h2>
-<ul>
-<li>GitHub: pros and cons, public and private repositories</li>
-<li>GitLab: IRD, CIRAD and INRAE instances</li>
-</ul>
+<p>First, you need to decide where you want to store your git repositories. You have many options, depending on your needs (features, UI, collaboration, etc…) and your preferences (visibility to other researchers, privacy, etc…).</p>
+<section id="github" class="level3">
+<h3 class="anchored" data-anchor-id="github">GitHub</h3>
+<p><code>Github</code> is (by far) the most popular git server, created in 2008 and the first cloud-hosted solution. It is now owned by Microsoft. This is probably the best option if you have an open-source project that you want to share with the community, and you are open to collaboration. It provides a lot of features for collaboration: issues, discussions, project management, pull requests reviews, etc… It also has a built in CI/CD pipeline with <code>GitHub Actions</code> that can help you automate your workflow (testing, building, deploying, etc…) and a web hosting service with <code>GitHub Pages</code>.</p>
+</section>
+<section id="institutional-git-servers" class="level3">
+<h3 class="anchored" data-anchor-id="institutional-git-servers">Institutional git servers</h3>
+<p><code>CIRAD</code>, <code>INRAE</code> and <code>IRD</code> have their own git servers based on <code>Gitlab</code>. This means that all the repositories you create on those servers are hosted by the institutions and not by a third party. This is an excellent option for internal or institution-based projects as <code>Gitlab</code> offers very similar features to <code>GitHub</code> and you’ve got a local support. However, collaboration with other researchers outside of the institution is more complicated (<code>RENATER</code> login are used to access the platform) and some services are not as good as <code>GitHub</code> (particularly CI/CD).</p>
+</section>
+<section id="self-hosted-git-servers" class="level3">
+<h3 class="anchored" data-anchor-id="self-hosted-git-servers">Self-hosted git servers</h3>
+<p>Mentioned here for completeness, but not recommended for most users as this requires advanced technical skills and a dedicated server.</p>
+<p>You can host your own git server on your own server. This is a good option if you want to have full control over your data and your repositories, but it requires some maintenance. A good comparison of the different self-hosted git servers is available <a href="https://lab.abilian.com/Tech/Apps/Software%20Forges/">here</a>.</p>
+</section>
 </section>
 <section id="github-first" class="level2">
 <h2 class="anchored" data-anchor-id="github-first">Github first</h2>
+<p>To create a new git repository starting from <code>GitHub</code>, you need to:</p>
 <ul>
-<li>Create a new repository on GitHub</li>
-<li>Clone the repository on your computer</li>
-<li>Make a local change, commit, and push with CLI &amp; Rstudio</li>
+<li>Create a new repository from the <code>Repositories</code> tab</li>
 </ul>
+<p><img src="../figures/New_github_repository_1.png" class="img-fluid"></p>
+<ul>
+<li>Give a name to your repository (<code>1</code>), a description, and choose if you want it to be public or private (<code>2</code>). It is a (<strong>very</strong>) good practice to add a <code>README.md</code> file to your repository that will be displayed on the main page of your repository and will give a brief description of your project (<code>3</code>), a <code>LICENSE</code> file that will define the license of your project (<code>4</code>), and a <code>.gitignore</code> file that will define the files that should not be tracked by <code>git</code> (<code>5</code>).</li>
+</ul>
+<p><img src="../figures/New_github_repository_2.png" class="img-fluid"></p>
+<ul>
+<li>You now have a brand new repository on <code>GitHub</code>. You (and any collaborator) can now clone it to have it localy on your own computer by clicking on the green <code>Code</code> button (<code>1</code>) and copying the URL of the repository (<code>2</code>).</li>
+</ul>
+<p><img src="../figures/New_github_repository_3.png" class="img-fluid"></p>
+<ul>
+<li>You can now clone the repository on your computer by opening a terminal and typing:</li>
+</ul>
+<pre class="shell"><code>git clone https://github.com/thomasarsouze/test.git</code></pre>
+<p>or using <code>RStudio</code> and <code>File</code> &gt; <code>New Project</code> &gt; <code>Version Control</code> &gt; <code>Git</code> and pasting the URL of the repository you want to clone. Then click on <code>Create Project</code>;</p>
+<p>or using <code>GitHub Desktop</code> and <code>File</code> &gt; <code>Clone repository</code> and pasting the URL of the repository you want to clone;</p>
+<p>or using <code>VSCode</code> and <code>View</code> &gt; <code>Command Palette</code> &gt; <code>Git: Clone</code> and pasting the URL of the repository you want to clone.</p>
+</section>
+<section id="gilab-first" class="level2">
+<h2 class="anchored" data-anchor-id="gilab-first">Gilab first</h2>
+<p>Creating a new repository on <code>Gitlab</code> is very similar to <code>GitHub</code>. You can see the steps :</p>
+<p><img src="../figures/New_gitlab_repository_1.png" class="img-fluid"></p>
+<p><img src="../figures/New_gitlab_repository_2.png" class="img-fluid"></p>
+<p><code>Gitlab</code> provides pre-defined customable actions for initiating your repository.</p>
+<p><img src="../figures/New_gitlab_repository_3.png" class="img-fluid"></p>
 </section>
 <section id="local-first" class="level2">
 <h2 class="anchored" data-anchor-id="local-first">Local first</h2>
@@ -376,14 +543,6 @@ git config --global --list</code></pre>
 </section>
 <section id="git-basics" class="level1">
 <h1>Git basics</h1>
-<section id="git-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="git-workflow">Git workflow</h2>
-<ul>
-<li>Working directory, staging area, repository</li>
-<li>branches</li>
-<li><code>push</code> and <code>pull</code></li>
-</ul>
-</section>
 <section id="git-basic-commands" class="level2">
 <h2 class="anchored" data-anchor-id="git-basic-commands">Git basic commands</h2>
 <ul>
@@ -393,14 +552,63 @@ git config --global --list</code></pre>
 <li>liens vers formations + documentation</li>
 </ul>
 </section>
+<section id="git-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="git-workflow">Git workflow</h2>
+<ul>
+<li>Working directory, staging area, repository</li>
+<li>branches</li>
+<li><code>push</code> and <code>pull</code></li>
+</ul>
+</section>
 <section id="merge-conflicts" class="level2">
 <h2 class="anchored" data-anchor-id="merge-conflicts">Merge conflicts</h2>
+</section>
+</section>
+<section id="faq" class="level1">
+<h1>FAQ</h1>
+<section id="my-repo-is-too-big-how-to-clean-it" class="level2">
+<h2 class="anchored" data-anchor-id="my-repo-is-too-big-how-to-clean-it">My repo is too big ! How to clean it ?</h2>
+<p>If by mistake you added large files to your repository, remove it from directory will not be sufficient, as you also need to remove it from the history of the repository. Here are some tips to clean your repository:</p>
+<ul>
+<li>List files in the history by size. This command will list the 100 biggest files in your repository, and provide the blob hash and the name of the file concerned, as well as the size of the file.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OSX only</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install coreutils</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rev-list <span class="at">--objects</span> <span class="at">--all</span> <span class="at">--missing</span><span class="op">=</span>print <span class="kw">|</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> cat-file <span class="at">--batch-check</span><span class="op">=</span><span class="st">'%(objecttype) %(objectname) %(objectsize) %(rest)'</span> <span class="kw">|</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sed</span> <span class="at">-n</span> <span class="st">'s/^blob //p'</span> <span class="kw">|</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grep</span> <span class="at">-vF</span> <span class="at">--file</span><span class="op">=&lt;(</span><span class="fu">git</span> ls-tree <span class="at">-r</span> HEAD <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{print $3}'</span><span class="op">)</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">--numeric-sort</span> <span class="at">--key</span><span class="op">=</span>2 <span class="kw">|</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">$(</span><span class="bu">command</span> <span class="at">-v</span> gnumfmt <span class="kw">||</span> <span class="bu">echo</span> gnumfmt<span class="va">)</span> <span class="at">--field</span><span class="op">=</span>2 <span class="at">--to</span><span class="op">=</span>iec-i <span class="at">--suffix</span><span class="op">=</span>B <span class="at">--padding</span><span class="op">=</span>7 <span class="at">--round</span><span class="op">=</span>nearest <span class="kw">|</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span> <span class="at">-100</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;&gt;</span> big_blobs.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Next, you need to use <a href="https://rtyley.github.io/bfg-repo-cleaner/">BFG repo-cleaner</a></li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First clone your repo using --mirror</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--mirror</span> https://github.com/myorg/myrepo.git</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the BFG repo-cleaner</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># First let's check all options</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> bfg.jar <span class="at">--help</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># From the list of big blobs obtained previously, keep only the blob hash</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># you can then remove them from the history of the repository</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> bfg.jar <span class="at">--strip-blobs-with-ids</span> big_blobs.txt myrepo.git</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Other option is to remove directly files bigger thant XMo</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="ex">java</span> <span class="at">-jar</span> bfg.jar <span class="at">--strip-blobs-bigger-than</span> 5M myrepo.git</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Finaly update your repository online</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> reflog expire <span class="at">--expire</span><span class="op">=</span>now <span class="at">--all</span> <span class="kw">&amp;&amp;</span> <span class="fu">git</span> gc <span class="at">--prune</span><span class="op">=</span>now <span class="at">--aggressive</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 
 
 </section>
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-ram_git_2013" class="csl-entry" role="listitem">
+Ram, Karthik. 2013. <span>“Git Can Facilitate Greater Reproducibility and Increased Transparency in Science.”</span> <em>Source Code for Biology and Medicine</em> 8 (1): 7. <a href="https://doi.org/10.1186/1751-0473-8-7">https://doi.org/10.1186/1751-0473-8-7</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>CI/CD – Resources for \
+<title>Scientific computing at AMAP – Resources for \
 good programming practices</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -106,7 +140,7 @@ good programming practices</span>
 <span class="menu-text">Git</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../src/ci_cd.html" aria-current="page"> 
+    <a class="nav-link" href="../src/ci_cd.html"> 
 <span class="menu-text">CI/CD</span></a>
   </li>  
   <li class="nav-item">
@@ -118,7 +152,7 @@ good programming practices</span>
 <span class="menu-text">HPC</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/amap.html"> 
+    <a class="nav-link active" href="../src/amap.html" aria-current="page"> 
 <span class="menu-text">Scientific computing at AMAP</span></a>
   </li>  
   <li class="nav-item">
@@ -149,14 +183,16 @@ good programming practices</span>
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-cicd-and-why-is-it-important" id="toc-what-is-cicd-and-why-is-it-important" class="nav-link active" data-scroll-target="#what-is-cicd-and-why-is-it-important">What is CI/CD and why is it important?</a></li>
-  <li><a href="#github-actions" id="toc-github-actions" class="nav-link" data-scroll-target="#github-actions">GitHub Actions</a>
+  <li><a href="#using-conda-at-amap" id="toc-using-conda-at-amap" class="nav-link active" data-scroll-target="#using-conda-at-amap">Using <code>conda</code> at AMAP</a>
   <ul class="collapse">
-  <li><a href="#principles" id="toc-principles" class="nav-link" data-scroll-target="#principles">Principles</a></li>
-  <li><a href="#configuration-for-an-r-package" id="toc-configuration-for-an-r-package" class="nav-link" data-scroll-target="#configuration-for-an-r-package">Configuration for an R package</a></li>
+  <li><a href="#installations-of-conda-distributions" id="toc-installations-of-conda-distributions" class="nav-link" data-scroll-target="#installations-of-conda-distributions">Installations of <code>conda</code> distributions</a></li>
+  <li><a href="#licensed-channels" id="toc-licensed-channels" class="nav-link" data-scroll-target="#licensed-channels">Licensed channels</a></li>
+  <li><a href="#check-configuration" id="toc-check-configuration" class="nav-link" data-scroll-target="#check-configuration">Check configuration</a></li>
+  <li><a href="#configuration-at-amap" id="toc-configuration-at-amap" class="nav-link" data-scroll-target="#configuration-at-amap">Configuration at AMAP</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/ci_cd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/amap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
 <p><img src="../figures/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
 </div></div></div>
@@ -165,7 +201,7 @@ good programming practices</span>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CI/CD</h1>
+<h1 class="title">Scientific computing at AMAP</h1>
 </div>
 
 
@@ -182,65 +218,99 @@ good programming practices</span>
 </header>
 
 
-<section id="what-is-cicd-and-why-is-it-important" class="level1">
-<h1>What is CI/CD and why is it important?</h1>
-<p>CI/CD stands for Continuous Integration/Continuous Deployment. It is a set of practices and tools that enable teams to deliver code changes more frequently and reliably. CI/CD is important because it helps teams to automate the process of building, testing, and deploying code changes, which reduces the risk of errors and improves the speed of delivery.</p>
-<p>You configure one or more development tasks to execute automatically when certain events happen in the hosted repository, such as a push or a pull request. For example, for an R package, it’s extremely valuable to configure an automatic run of R CMD check. This helps you discover breakage quickly, when it’s easier to diagnose and fix, and is a tremendous help for evaluating whether to accept an external contribution.</p>
-<p>Even for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.</p>
-<p>We recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc… that are good too.</p>
-<p>If your project is hosted on <code>Gitlab</code>, you can use <code>Gitlab CI/CD</code> which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don’t know yet about INRAE.</p>
+<section id="using-conda-at-amap" class="level2">
+<h2 class="anchored" data-anchor-id="using-conda-at-amap">Using <code>conda</code> at AMAP</h2>
+<p>Recently, <code>Anaconda</code> has <a href="https://www.anaconda.com/blog/update-on-anacondas-terms-of-service-for-academia-and-research">updated its terms of services for academia and research</a>. As being part of research institutes of more that 200 persons, we are now subject to a licensing fee to use <code>Anaconda</code> products. However, we can still use the <code>conda</code> tool.</p>
+<p>While the <code>conda</code> tools is free and open-source, <code>Anaconda</code> (a graphical interface that uses conda) is a licensed product.</p>
+<p>Also, <code>conda</code> uses “channels” to gets access to software and librairies. Some are licensed and managed by <code>Anaconda</code> while other are free and open.</p>
+<p>Let’s see how to keep using <code>conda</code> at AMAP, and what you should be aware of.</p>
+<section id="installations-of-conda-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="installations-of-conda-distributions">Installations of <code>conda</code> distributions</h3>
+<p>There exist multiple distributions of <code>conda</code> that you can use, cf.&nbsp;<a href="https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/pages/conda-distrib/">here</a>.</p>
+<p><strong><em>What you should avoid</em></strong>:</p>
+<ul>
+<li>using the <code>Anaconda</code> distribution, as it is a licensed product. If you have it installed, you should uninstall it and consider other options below. Make sure you keep your existing environments.</li>
+<li>using the <code>miniconda</code> distribution. Although it is free to use, you should avoid this option as the default channels are managed under <code>Anconda</code> licensing. However, you can still use <code>miniconda</code> if you <a href="#check-configuration">configure it properly</a>.</li>
+</ul>
+<p><strong><em>What you should do</em></strong>:</p>
+<ul>
+<li>use the <a href="https://conda-forge.org/download/"><code>miniforge</code> distribution</a>. It is free to use and is configured to use <code>conda-forge</code> as the default channel (which is free too). This is the recommended distribution to use at AMAP.</li>
+</ul>
 </section>
-<section id="github-actions" class="level1">
-<h1>GitHub Actions</h1>
-<section id="principles" class="level2">
-<h2 class="anchored" data-anchor-id="principles">Principles</h2>
-<ul>
-<li><p><a href="https://docs.github.com/en/actions">doc</a></p></li>
-<li><p><code>.yaml</code> files which contain the instructions: they have to be located in a .github/worflows repository.</p></li>
-</ul>
-<p><img src="figures/yaml_loc.png" style="height:40.0%"></p>
-<ul>
-<li>Code structure</li>
-</ul>
-<p><img src="figures/yaml_ex_annoted.png" style="height:30.0%"></p>
-<p>The <em>trigger</em> bloc gives the instructions for when the action will be launched. The <em>job</em> bloc gives the following instructions: on which OS the action should be run (<em>runs-on</em>), and the list of steps to be run (<em>steps</em>).</p>
-<ul>
-<li><p>Don’t write your .yaml from scratch: you’ll find plenty of examples on GithHub, just adapt them to the desired workflow.</p></li>
-<li><p>Once your .yaml is ready, and you have triggered the action (by pushing a commit, for instance), you need to navigate to get the log. Here is an example with a test-coverage action.</p></li>
-</ul>
+<section id="licensed-channels" class="level3">
+<h3 class="anchored" data-anchor-id="licensed-channels">Licensed channels</h3>
+<p>Licensed channels are channels that are managed by <code>Anaconda</code> and are subject to licensing fees. You should avoid using these channels.</p>
+<p>You can check the full list of licensed channels <a href="https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/pages/conda-channels/">here</a>.</p>
+<p>The main one is the <code>defaults</code> channel, which includes the following sub-channels: <code>r</code>, <code>main</code> and <code>msys2</code>.</p>
+<p>You need to remove these channels from your configuration.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is very unlikely that you won’t find any packages in the <code>conda-forge</code> channel that you were using in the <code>defaults</code> channel. This change should not affect your workflow.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>CIRAD</code> has decided to ban the access to these licensed channels on their network, which means your <code>conda</code> will throw an error if you try to access them when you are physically located at <code>CIRAD</code>, or using their VPN.</p>
+</div>
+</div>
+</section>
+<section id="check-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="check-configuration">Check configuration</h3>
+<p>As you may have installed <code>miniconda</code> before all this licensing issue (remember, if you have installed <code>Anaconda</code>: you should uninstall it and install <code>miniforge</code> instead!), you need to check your configuration.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--show</span> channels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and if any of the channels are licensed, you should remove them (here we remove the <code>defaults</code> channel):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--remove</span> channels defaults</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--show</span> channels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should now see only the <code>conda-forge</code> channel. If you want to add extra (free) channels:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge <span class="co">#if not already present</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels bioconda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For additional configuration, you might want to add the following lines:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> channel_priority strict <span class="co">#usefull to avoid conflicts and speed up the resolution of dependencies</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels nodefaults <span class="co">#usefull when you want to share environments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="configuration-at-amap" class="level3">
+<h3 class="anchored" data-anchor-id="configuration-at-amap">Configuration at AMAP</h3>
+<p>As mentioned earlier, <code>CIRAD</code> has decided to ban the access to licensed channels on their network. But to keep access to the free channels, you now need a certificate to access the free repositories.</p>
 <ol type="1">
-<li>In the ‘Actions’ tab, on the left panel you can select <em>one</em> of your workflows to display its <em>successive runs</em>:</li>
+<li>Download the certificate <a href="../assets/Fortinet_CA_SSL.crt" download="">Click to Download</a>.</li>
+<li>Copy the certificate anywhere in your computer where you can access it. <code>miniforge</code> installation folder is probably a good place.</li>
+<li><code>conda config --set ssl_verify &lt;path_to_certificate&gt;</code></li>
 </ol>
-<p><img src="figures/gha_outputs1.png" style="height:30.0%"></p>
-<p>You can see the commits where the workflow has been run, branch, date, duration (among various information). Obviously a green check means that the workflow has entirely run without failure, whereas a red cross indicates that it has failed.</p>
-<ol start="2" type="1">
-<li>From there, select the run you’re interested in (let’s say the most recent, here ‘Merge pull request #52 - test-coverage.yaml #24’):</li>
-</ol>
-<p><img src="figures/gha_outputs2.png" style="height:30.0%"></p>
-<p>A summary of the action is displayed. If there are any warnings for instance, you’ll see those in the Annotations panel at the bottom. To display the workflow log let’s click on the workflow name in the central panel or in the ‘Jobs’ section (left panel).</p>
-<ol start="3" type="1">
-<li>Workflow logs:</li>
-</ol>
-<p><img src="figures/gha_outputs3.png" style="height:30.0%"></p>
-<p>Each step outputs can be drop-downed.</p>
-<ol start="4" type="1">
-<li>Let’s select the fifth step ‘Test coverage’:</li>
-</ol>
-<p><img src="figures/gha_outputs4.png" style="height:30.0%"></p>
-<p>Here are your logs !</p>
+<p>Without this extra configuration step, you won’t be able to use <code>conda</code> at AMAP / CIRAD.</p>
 </section>
-<section id="configuration-for-an-r-package" class="level2">
-<h2 class="anchored" data-anchor-id="configuration-for-an-r-package">Configuration for an R package</h2>
+<section id="resources" class="level3">
+<h3 class="anchored" data-anchor-id="resources">Resources</h3>
 <ul>
-<li><p>Use various functions from usethis package to configure so-called GHA workflows. usethis package copies workflow configuration files from <a href="https://github.com/r-lib/actions/#readme">r-lib/actions</a>.</p></li>
-<li><p>You can also create and modify the .yaml files directly in GitHub by copy paste an existing .yaml that matches you needs.</p></li>
-<li><p>Some very useful actions to set up <code>usethis::use_github_action()</code>:</p>
-<ul>
-<li><p><em>check-standard:</em> Run <code>R CMD check</code> on Linux, macOS, and Windows,</p></li>
-<li><p><em>test-coverage:</em> Compute test coverage and report to https://about.codecov.io (or compute test coverage without report, and directly look at the results in the Actions tab, as previously showed),</p></li>
-<li><p><em>pkgdown:</em> Deploy website or vignette with Github pages <code>usethis::use_pkgdown_github_pages()</code>,</p></li>
-<li><p><em>pr-commands:</em> Add /document and /style commands for pull requests.</p></li>
-</ul></li>
+<li><code>mivegec</code> lab publish an extensive and well done summary of the situation at IRD in Montpellier <a href="https://mivegec.pages.ird.fr/dainat/malbec-fix-conda-licensing-issues/en/">here</a>.</li>
+<li><code>INRAE</code> has published some recommandations for using <code>conda</code> <a href="https://science-ouverte.inrae.fr/fr/offre-service/fiches-pratiques-et-recommandations/quelles-alternatives-aux-fonctionnalites-payantes-danaconda">here</a></li>
 </ul>
 
 
@@ -684,7 +754,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/ci_cd.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/amap.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

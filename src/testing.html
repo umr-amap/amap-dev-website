@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//src/logo_amap3.jpg" rel="icon" type="image/jpeg">
+<link href="..//figures/logo_amap3.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../src/logo_amap1.jpg" alt="" class="navbar-logo">
+    <img src="../figures/logo_amap1.jpg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Resources for<br>
@@ -118,6 +152,10 @@ good programming practices</span>
 <span class="menu-text">HPC</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../src/amap.html"> 
+<span class="menu-text">Scientific computing at AMAP</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../src/resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
@@ -147,17 +185,18 @@ good programming practices</span>
   <ul>
   <li><a href="#r-users" id="toc-r-users" class="nav-link active" data-scroll-target="#r-users">R users</a>
   <ul class="collapse">
-  <li><a href="#why-do-you-need-tests" id="toc-why-do-you-need-tests" class="nav-link" data-scroll-target="#why-do-you-need-tests">why do you need tests ?</a></li>
-  <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">initial setup</a></li>
-  <li><a href="#create-a-test" id="toc-create-a-test" class="nav-link" data-scroll-target="#create-a-test">create a test</a></li>
-  <li><a href="#run-a-test" id="toc-run-a-test" class="nav-link" data-scroll-target="#run-a-test">run a test</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">examples</a></li>
-  <li><a href="#when-and-what-to-test" id="toc-when-and-what-to-test" class="nav-link" data-scroll-target="#when-and-what-to-test">when and what to test</a></li>
+  <li><a href="#why-do-you-need-tests" id="toc-why-do-you-need-tests" class="nav-link" data-scroll-target="#why-do-you-need-tests">Why do you need tests ?</a></li>
+  <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link" data-scroll-target="#initial-setup">Initial setup</a></li>
+  <li><a href="#create-a-test" id="toc-create-a-test" class="nav-link" data-scroll-target="#create-a-test">Create a test</a></li>
+  <li><a href="#run-tests" id="toc-run-tests" class="nav-link" data-scroll-target="#run-tests">Run tests</a></li>
+  <li><a href="#write-test" id="toc-write-test" class="nav-link" data-scroll-target="#write-test">Write test</a></li>
+  <li><a href="#some-insights-on-when-and-what-to-test" id="toc-some-insights-on-when-and-what-to-test" class="nav-link" data-scroll-target="#some-insights-on-when-and-what-to-test">Some insights on when and what to test</a></li>
+  <li><a href="#see-cicd-page-to-make-github-run-your-tests-for-you" id="toc-see-cicd-page-to-make-github-run-your-tests-for-you" class="nav-link" data-scroll-target="#see-cicd-page-to-make-github-run-your-tests-for-you">See CI/CD page to make GitHub run your tests for you !</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/testing.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
-<p><img src="../src/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
+<p><img src="../figures/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
 </div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -184,46 +223,80 @@ good programming practices</span>
 <section id="r-users" class="level1">
 <h1>R users</h1>
 <section id="why-do-you-need-tests" class="level2">
-<h2 class="anchored" data-anchor-id="why-do-you-need-tests">why do you need tests ?</h2>
+<h2 class="anchored" data-anchor-id="why-do-you-need-tests">Why do you need tests ?</h2>
+<p>Basically, to be sure that your code does what you want it to do. The idea is to automate your tests, rather than perform them manually by executing some parts of the code in the console, and checking that the outputs match your expectations.</p>
+<p>Automated testing requires more work, but the benefits are the following:</p>
+<ul>
+<li><p>fewer bugs,</p></li>
+<li><p>bugs easier to fix,</p></li>
+<li><p>better code structure,</p></li>
+<li><p>robust code.</p></li>
+</ul>
+<p>Let’s use <code>testthat</code> <code>R</code> package.</p>
 </section>
 <section id="initial-setup" class="level2">
-<h2 class="anchored" data-anchor-id="initial-setup">initial setup</h2>
-<pre class="shell"><code>usethis::use_testthat(3)</code></pre>
-<p>verify tests/testthat/ repo and tests/testthat.R file which is supposed to look like :</p>
-<pre class="shell"><code>library(testthat)
-library(pkg_name)
-
-test_check("pkg_name")</code></pre>
-<p>No need to modify testthat.R file !</p>
+<h2 class="anchored" data-anchor-id="initial-setup">Initial setup</h2>
+<p>First run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_testthat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will create a <code>tests/testthat/</code> directory, and a <code>tests/testthat.R</code> file which is supposed to look like this, for a project named pkg_name:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pkg_name)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">test_check</span>(<span class="st">"pkg_name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Do not edit this <code>testthat.R</code> file !</p>
 </section>
 <section id="create-a-test" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-test">create a test</h2>
+<h2 class="anchored" data-anchor-id="create-a-test">Create a test</h2>
+<p>For a function in <code>R/</code> repo named <code>my_function.R</code>, the corresponding test must lie in <code>tests/testthat/</code> repo and its name must start with <code>test</code>, here : <code>test-my_function.R</code>. Two functions from <code>usethis</code> package can be used to create those files:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_r</span>(<span class="st">"my_function"</span>) <span class="co"># creates and opens R/my_function.R</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_test</span>(<span class="st">"my_function"</span>) <span class="co"># creates and opens tests/testthat/test-my_function.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When using <code>use_test</code> function to create the test file, an example test is inserted</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"multiplication works"</span>, {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">expect_equal</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>which indicates the structure. Within <code>test-my_function.R</code> you are able to write one or more <code>test_that()</code> tests. Each test has a description (e.g., what it is testing, in the example if “multiplication works”), and one or more expectations (e.g., what the result of the test should be, in the example <code>expect_equal()</code>).</p>
+</section>
+<section id="run-tests" class="level2">
+<h2 class="anchored" data-anchor-id="run-tests">Run tests</h2>
+<p>First <code>devtools::load_all()</code> to load your functions AND their corresponding tests, then you have several options:</p>
 <ul>
-<li>function in R/ repo my_function.R, the corresponding test must lie in tests/testthat/ repo and its name must start with “test”, here test-my_function.R</li>
+<li><p>manually, using directly <code>expect_ functions</code> in the console : <code>expect_equal(my_function(...), EXPECTED_OUTPUT)</code>,</p></li>
+<li><p>entire test for a function with <code>testthat::test_file("tests/testthat/test-my_function.R")</code>,</p></li>
+<li><p>entire suite of tests with <code>devtools::test()</code> (or <code>check()</code>).</p></li>
+</ul>
+<p>When you run one or several tests, you get a failure report including a description of the test, the failure location (file &amp; code line), and the reason for the failure. You can then start debugging (your function or your test).</p>
+</section>
+<section id="write-test" class="level2">
+<h2 class="anchored" data-anchor-id="write-test">Write test</h2>
+<p>Expectations <code>expect_</code> makes the binary assertion about whether or not an object (here, the value returned by a call of your <code>my_function()</code>) has the properties you expect.</p>
+<p>Expectations share the same structure:</p>
+<ul>
+<li><p>start with <code>expect_</code>,</p></li>
+<li><p>two main arguments: the first is the actual result of your function (returned by <code>my_function(args)</code>), and the second is what you expect,</p></li>
+<li><p>when the actual and expected results (e.g., the main arguments) do not agree testthat throws an error.</p></li>
+</ul>
+<p>You can write several expectations <code>expect_</code> in one <code>test_that()</code> test, as long as they test the same property of your function. You can write several tests, testing different properties, in your <code>test-my_function.R</code> file.</p>
+<p>Here is some useful expectations (and shortcuts) to start with:</p>
+<ul>
+<li><p>expect_equal()</p></li>
+<li><p>expect_type()</p></li>
+<li><p>expect_length()</p></li>
+<li><p>expect_true() and expect_false()</p></li>
+<li><p>expect_error(), expect_warning() and expect_message()</p></li>
 </ul>
 </section>
-<section id="run-a-test" class="level2">
-<h2 class="anchored" data-anchor-id="run-a-test">run a test</h2>
-<p>First devtools::load_all(), then : - à la main : testthat::test_file(“tests/testthat/test-my-function.R”) - shortcut RStudio - devtools::test() (ou check())</p>
-</section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">examples</h2>
+<section id="some-insights-on-when-and-what-to-test" class="level2">
+<h2 class="anchored" data-anchor-id="some-insights-on-when-and-what-to-test">Some insights on when and what to test</h2>
 <ul>
-<li>expect_equal()</li>
-<li>expect_type()</li>
-<li>expect_length()</li>
-<li>…</li>
+<li><p>focus on testing the tricky parts of your code</p></li>
+<li><p>always write a test when you discover a bug</p></li>
+<li><p>test-first philosophy: write the test, and then write the code to pass it</p></li>
+<li><p>one test per function property</p></li>
+<li><p>test coverage with covr package: determines which lines of your code are executed when the test suite is run, rendering you a percentage of code that is covered by your tests (the higher the better).</p></li>
 </ul>
 </section>
-<section id="when-and-what-to-test" class="level2">
-<h2 class="anchored" data-anchor-id="when-and-what-to-test">when and what to test</h2>
-<ul>
-<li>one test per function</li>
-<li>test-first philosophy</li>
-<li>test unitaire</li>
-<li>test coverage</li>
-<li>link with CI and github actions</li>
-</ul>
+<section id="see-cicd-page-to-make-github-run-your-tests-for-you" class="level2">
+<h2 class="anchored" data-anchor-id="see-cicd-page-to-make-github-run-your-tests-for-you">See <a href="../src/ci_cd.html">CI/CD page</a> to make GitHub run your tests for you !</h2>
 
 
 </section>

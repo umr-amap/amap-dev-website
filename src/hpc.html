@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="..//src/logo_amap3.jpg" rel="icon" type="image/jpeg">
+<link href="..//figures/logo_amap3.jpg" rel="icon" type="image/jpeg">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../src/logo_amap1.jpg" alt="" class="navbar-logo">
+    <img src="../figures/logo_amap1.jpg" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Resources for<br>
@@ -118,6 +152,10 @@ good programming practices</span>
 <span class="menu-text">HPC</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../src/amap.html"> 
+<span class="menu-text">Scientific computing at AMAP</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../src/resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
@@ -147,10 +185,17 @@ good programming practices</span>
   <ul>
   <li><a href="#what-is-hpc" id="toc-what-is-hpc" class="nav-link active" data-scroll-target="#what-is-hpc">What is HPC ?</a>
   <ul class="collapse">
-  <li><a href="#do-you-need-hpc" id="toc-do-you-need-hpc" class="nav-link" data-scroll-target="#do-you-need-hpc">Do you need HPC ?</a></li>
-  <li><a href="#what-ressources-are-available" id="toc-what-ressources-are-available" class="nav-link" data-scroll-target="#what-ressources-are-available">What ressources are available ?</a>
+  <li><a href="#do-you-need-hpc" id="toc-do-you-need-hpc" class="nav-link" data-scroll-target="#do-you-need-hpc">Do you need HPC ?</a>
   <ul class="collapse">
-  <li><a href="#mesolr" id="toc-mesolr" class="nav-link" data-scroll-target="#mesolr">MESO@LR</a></li>
+  <li><a href="#you-need-to-run-a-lot-of-simulations" id="toc-you-need-to-run-a-lot-of-simulations" class="nav-link" data-scroll-target="#you-need-to-run-a-lot-of-simulations">You need to run a lot of simulations</a></li>
+  <li><a href="#you-need-to-run-simulations-that-are-very-long" id="toc-you-need-to-run-simulations-that-are-very-long" class="nav-link" data-scroll-target="#you-need-to-run-simulations-that-are-very-long">You need to run simulations that are very long</a></li>
+  <li><a href="#you-need-to-run-simulations-that-are-very-memory-intensive" id="toc-you-need-to-run-simulations-that-are-very-memory-intensive" class="nav-link" data-scroll-target="#you-need-to-run-simulations-that-are-very-memory-intensive">You need to run simulations that are very memory intensive</a></li>
+  <li><a href="#advantages-of-using-hpc" id="toc-advantages-of-using-hpc" class="nav-link" data-scroll-target="#advantages-of-using-hpc">Advantages of using HPC</a></li>
+  <li><a href="#disadvantages-of-using-hpc" id="toc-disadvantages-of-using-hpc" class="nav-link" data-scroll-target="#disadvantages-of-using-hpc">Disadvantages of using HPC</a></li>
+  </ul></li>
+  <li><a href="#what-resources-are-available" id="toc-what-resources-are-available" class="nav-link" data-scroll-target="#what-resources-are-available">What resources are available ?</a>
+  <ul class="collapse">
+  <li><a href="#sec-mesolr" id="toc-sec-mesolr" class="nav-link" data-scroll-target="#sec-mesolr">Meso-center <code>ISDM-Meso</code></a></li>
   <li><a href="#genci" id="toc-genci" class="nav-link" data-scroll-target="#genci">GENCI</a></li>
   </ul></li>
   <li><a href="#how-to-use-hpc" id="toc-how-to-use-hpc" class="nav-link" data-scroll-target="#how-to-use-hpc">How to use HPC ?</a>
@@ -162,13 +207,17 @@ good programming practices</span>
   </ul></li>
   <li><a href="#concrete-examples" id="toc-concrete-examples" class="nav-link" data-scroll-target="#concrete-examples">Concrete examples</a>
   <ul class="collapse">
-  <li><a href="#running-a-python-script-using-gpu-on-mesolr" id="toc-running-a-python-script-using-gpu-on-mesolr" class="nav-link" data-scroll-target="#running-a-python-script-using-gpu-on-mesolr">Running a Python script using GPU on meso@lr</a></li>
-  <li><a href="#install-libraries-and-running-a-r-script" id="toc-install-libraries-and-running-a-r-script" class="nav-link" data-scroll-target="#install-libraries-and-running-a-r-script">Install libraries and running a R script</a></li>
+  <li><a href="#running-a-script-using-gpu-on-mesolr" id="toc-running-a-script-using-gpu-on-mesolr" class="nav-link" data-scroll-target="#running-a-script-using-gpu-on-mesolr">Running a script using GPU on <code>meso@lr</code></a>
+  <ul class="collapse">
+  <li><a href="#submit-an-interactive-job-on-gpu-node-interactive-gpu" id="toc-submit-an-interactive-job-on-gpu-node-interactive-gpu" class="nav-link" data-scroll-target="#submit-an-interactive-job-on-gpu-node-interactive-gpu">Submit an interactive job on GPU node [#interactive-gpu]</a></li>
+  <li><a href="#install-you-environment" id="toc-install-you-environment" class="nav-link" data-scroll-target="#install-you-environment">Install you environment</a></li>
+  <li><a href="#submit-a-job-on-gpu-node" id="toc-submit-a-job-on-gpu-node" class="nav-link" data-scroll-target="#submit-a-job-on-gpu-node">Submit a job on GPU node</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/umr-amap/amap-dev-website/edit/main/src/hpc.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/umr-amap/amap-dev-website/issues" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     <div class="quarto-margin-footer"><div class="margin-footer-item">
-<p><img src="../src/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
+<p><img src="../figures/logo_amap3.jpg" class="img-fluid" style="width:40.0%"></p>
 </div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -194,119 +243,502 @@ good programming practices</span>
 
 <section id="what-is-hpc" class="level1">
 <h1>What is HPC ?</h1>
-<ul>
-<li>Description of HPC, what it is and what it is used for.</li>
-</ul>
+<p>High performance computing (HPC) is the practice of aggregating (“clustering”) computing resources that work in parallel to gain greater performance than a single workstation and process massive multi-dimensional data sets.</p>
+<p>A standard computing system solves problems primarily by using serial computing. It divides the workload into a sequence of tasks and then runs the tasks one after the other on the same processor. On the other hand, HPC uses parallel processing, which divides the workload into tasks that run simultaneously on multiple processors.</p>
+<p>HPC computer systems are characterized by their high-speed processing power, high-performance networks, and large-memory capacity.</p>
+<p>While a laptop or desktop with a 3 GHz processor can perform around 3 billion calculations per second (~3.10^9), HPC solutions that can perform quadrillions of calculations per second (~10^{15}).</p>
 <section id="do-you-need-hpc" class="level2">
 <h2 class="anchored" data-anchor-id="do-you-need-hpc">Do you need HPC ?</h2>
+<p>There are many cases where you might need to use HPC resources.</p>
+<section id="you-need-to-run-a-lot-of-simulations" class="level3">
+<h3 class="anchored" data-anchor-id="you-need-to-run-a-lot-of-simulations">You need to run a lot of simulations</h3>
+<p>Let’s say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study. You’ll probably find yourself in this type of situation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'P01'</span>, <span class="st">'P02'</span>, ...)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2001</span>, ...)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (plot <span class="cf">in</span> plots) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (year <span class="cf">in</span> years) {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(plot, year)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        data <span class="ot">&lt;-</span> <span class="fu">preprocess_data</span>(data, arguments...)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        results <span class="ot">&lt;-</span> <span class="fu">run_analysis</span>(data, arguments...)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">write_results</span>(results, plot, year)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will require you to run the same analysis many times. If the analysis is long to run, all the analyses being independant, you might want to use HPC to run all the simulations in parallel.</p>
+<p>You need to modify your script so that it uses input arguments :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>args <span class="ot">&lt;-</span> comman<span class="co">#| dArgs(trailingOnly = TRUE)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> args[<span class="dv">1</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(args[<span class="dv">2</span>])</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(plot, year)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">preprocess_data</span>(data, arguments...)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">run_analysis</span>(data, arguments...)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_results</span>(results, plot, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and then launch the script concurrently for all the plots and years using <a href="https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/Rscript"><code>Rscript</code></a> and <a href="https://www.man7.org/linux/man-pages/man1/xargs.1.html"><code>xargs</code></a> :</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> plot <span class="kw">in</span> P01 P02 ...<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> year <span class="kw">in</span> 2000 2001 ...<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="va">$plot</span> <span class="va">$year</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="kw">|</span> <span class="fu">xargs</span> <span class="at">-n</span> 2 <span class="at">-P</span> 4 Rscript my_script.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="you-need-to-run-simulations-that-are-very-long" class="level3">
+<h3 class="anchored" data-anchor-id="you-need-to-run-simulations-that-are-very-long">You need to run simulations that are very long</h3>
+<p>You might want to use parallelization to speed up the computation of a single simulation. <a href="https://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a> or <a href="https://en.wikipedia.org/wiki/OpenMP">OpenMP</a> are two libraries that can help you to parallelize your code.</p>
+<p>You can also access to very powerful hardware (typically <a href="https://en.wikipedia.org/wiki/Graphics_processing_unit">GPUs</a>) that are not available on your computer, and that can speed up the computation of your simulations.</p>
+</section>
+<section id="you-need-to-run-simulations-that-are-very-memory-intensive" class="level3">
+<h3 class="anchored" data-anchor-id="you-need-to-run-simulations-that-are-very-memory-intensive">You need to run simulations that are very memory intensive</h3>
+<p>Let’s say that you developed a script on your computer that run on a small domain. You want to extend this script to a larger domain but you run out of memory on your computer. You have two options here to run your code on HPC: - Run your script on a node with more memory (some HPC nodes have memory up to ~1 To) - Use parallel computing to distribute the memory usage on multiple nodes</p>
+</section>
+<section id="advantages-of-using-hpc" class="level3">
+<h3 class="anchored" data-anchor-id="advantages-of-using-hpc">Advantages of using HPC</h3>
+<p>There are a wide range of advantages to using HPC, including:</p>
 <ul>
-<li>Cases where HPC is useful.</li>
-<li>Questions to ask yourself to know if you need HPC.
-<ul>
-<li>Do you need to run a lot of simulations ?</li>
-<li>Do you need to run simulations that are very long ?</li>
-<li>Do you need to run simulations that are very memory intensive ?</li>
-</ul></li>
+<li><strong><em>Performance</em></strong>: Very fast computation !!! This can help you to run simulations that would be impossible to run on a single workstation.</li>
+<li><strong><em>Scalability</em></strong>: Ability to run many simulations in parallel. This can be useful for running many simulations with different parameters, or for running the same simulation many times.</li>
+<li><strong><em>Reliability</em></strong>: HPC systems are designed to be reliable with a high percentage of availability. The machine is delocalized on a dedicated site, with a dedicated team to maintain it.</li>
+<li><strong><em>Cost</em></strong>: HPC systems are shared resources, so you only pay for what you use. This can be more cost-effective than buying a high-end workstation.</li>
+<li><strong><em>Support</em></strong>: HPC systems are usually supported by a team of experts who can help you to optimize your code and run your simulations.</li>
+<li><strong><em>Science focused</em></strong>: you don’t need to care about system administration and updating the system. You can focus on your science.</li>
 </ul>
 </section>
-<section id="what-ressources-are-available" class="level2">
-<h2 class="anchored" data-anchor-id="what-ressources-are-available">What ressources are available ?</h2>
-<p>At AMAP, we have access to several HPC ressources.</p>
-<section id="mesolr" class="level3">
-<h3 class="anchored" data-anchor-id="mesolr">MESO@LR</h3>
+<section id="disadvantages-of-using-hpc" class="level3">
+<h3 class="anchored" data-anchor-id="disadvantages-of-using-hpc">Disadvantages of using HPC</h3>
+<p>There are also some disadvantages to using HPC, that you should be aware of:</p>
+<ul>
+<li><strong><em>Learning curve</em></strong>: HPC systems can be complex to use (shared machine, multiple storage spaces, job scheduler, linux machine), and you may need to learn new tools and techniques to use them effectively.</li>
+<li><strong><em>Limited resources</em></strong>: HPC systems are shared resources, so you may not always be able to access the resources you need exactly when you need them.</li>
+<li><strong><em>Data transfer</em></strong>: Transferring data to and from an HPC system can be slow, especially if you are working with large data sets.</li>
+</ul>
+</section>
+</section>
+<section id="what-resources-are-available" class="level2">
+<h2 class="anchored" data-anchor-id="what-resources-are-available">What resources are available ?</h2>
+<p>At AMAP, we have access to several HPC resources. All the resources listed here are available freely to AMAP members (although institutes might contribute financialy, users are not requested to pay for computing hours or storage) and you can have additional support from POLIS-HPC team.</p>
+<p>Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.</p>
+<section id="sec-mesolr" class="level3">
+<h3 class="anchored" data-anchor-id="sec-mesolr">Meso-center <code>ISDM-Meso</code></h3>
+<p>Hosted at <a href="https://www.cines.fr/">CINES</a>, this regional Meso-center <a href="https://meso-lr.umontpellier.fr/"><code>Meso@LR</code></a> provides access to HPC resources for the Occitanie region. Although access to this resource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).</p>
 <section id="description-of-the-cluster" class="level4">
 <h4 class="anchored" data-anchor-id="description-of-the-cluster">Description of the cluster</h4>
+<p>Technical specificities include:</p>
 <ul>
-<li>Medium size cluster based in Montpellier</li>
-<li>List of ressources</li>
-<li>pros / cons</li>
+<li>308 computational nodes of 28 cores each (bi processors Intel Xeon E5-2680 v4 2,4 Ghz (broadwell) 2×14 coeurs/noeud), 128 Go RAM</li>
+<li>2 nodes with big memory (<code>bigmem</code>) with 112 cores, 3To RAM each</li>
+<li>2 nodes with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000</li>
+<li>1,3Po storage, including 1Po fast storage on Lustre</li>
+<li><code>SLURM</code> workload manager</li>
 </ul>
 </section>
 <section id="how-to-open-an-account" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-open-an-account">How to open an account</h4>
+<p>Getting an account to <code>Meso@LR</code> is usualy quite fast (~1 day). You only need to be part of AMAP and have an email adress from CIRAD.</p>
+<p>You must send a mail to <a href="mailto:bertrand.pitollat@cirad.fr">Bertrand Pitollat</a> and the HPC team at AMAP (currently the contact person being <a href="mailto:thomas.arsouze@cirad.fr">T. Arsouze</a>) with the following requirements:</p>
 <ul>
-<li>Contact the HPC team at AMAP</li>
-<li>Mail to B. Pitollat</li>
+<li>explain who you are (student or post-doc or … ? supervisor ? one sentence about your research)</li>
+<li>request to be attached to the group <code>d_cirad_amap</code> (this is the group of AMAP members)</li>
+<li>fill the <code>charte informatique</code> available <a href="https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf">here</a></li>
 </ul>
 </section>
 </section>
 <section id="genci" class="level3">
 <h3 class="anchored" data-anchor-id="genci">GENCI</h3>
-<p>GENCI is the French national HPC agency. It provides access to several HPC ressources in France.</p>
+<p>If you need larges resources (i.e.&nbsp;multi-GPU workflow, or &gt; ~1000 CPUs working in parallel), this is probably your best option.</p>
+<p><a href="https://www.genci.fr/">GENCI</a> is the French national HPC agency. It provides access to <a href="https://www.genci.fr/services/moyens-de-calcul">several HPC resources in France</a>:</p>
+<ul>
+<li><a href="https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-cines">CINES</a> (Montpellier)</li>
+<li><a href="https://www.genci.fr/centre-informatique-national-de-lenseignement-superieur-idris">IDRIS</a> (Saclay)</li>
+<li><a href="https://www.genci.fr/tres-grand-centre-de-calcul-du-cea-tgcc">TGCC</a> (Bruyères-le-Châtel)</li>
+</ul>
+<p>Access and computing resources are free for academic.</p>
 <section id="description-of-the-clusters" class="level4">
 <h4 class="anchored" data-anchor-id="description-of-the-clusters">Description of the clusters</h4>
-<ul>
-<li>Very large clusters</li>
-<li>Pros / cons</li>
-</ul>
+<p><code>Adastra</code> cluster at CINES is the most recent cluster available to GENCI users. It provides the best option for GPU computing, although it is powered by <code>AMD</code> processors (EPYC Trento). APUs AMD MI300A are also available.</p>
+<p><code>Jean-Zay</code> cluster at IDRIS has recently been updated (09/2024) to the most powerfull <code>NVIDIA</code> GPUs available on the market (H100)</p>
+<p><code>Joliot-Curie</code> cluster at TGCC provides access <code>Nvidia V100 SXM2</code> GPUs and Intel CPUs. Note that you can also have access to <code>Quantique plateform</code>.</p>
 </section>
 <section id="how-to-open-an-account-1" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-open-an-account-1">How to open an account ?</h4>
+<p>Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for <code>Meso@LR</code> but is still quite fast (&lt; 1 week) if you don’t ask for too much resources.</p>
+<blockquote class="blockquote">
+<p>warning Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.</p>
+</blockquote>
+<p>There are two ways to access GENCI resources:</p>
 <ul>
-<li>Go to the GENCI portal</li>
-<li>Fill the requested document (provide IP)</li>
-<li>Needs to be validated by the HPC team at AMAP (T. Arsouze), AMAP director (R. Pelissier) and HPC center director.</li>
+<li><p>“Accès dynamiques” (fast access) : if your needs are &lt; 500 000 h CPU and 50 000 h GPU (eq. V100) for 1 year. This is a simplified access, only a one paragraph description of the scientific context is required and no scientific or technical review is done.</p></li>
+<li><p>“Accès réguliers” (regular access) : if your needs are too important for dynamical access, then you must go for regular access. You can request for resources only two times per year, and provide a detailed description of your project, both scientifically and technically.</p></li>
+<li><p>You first need to login to the <a href="https://www.edari.fr/user/login">edari website</a> (DARI: Demande d’Attribution de resources Informatiques) using RENATER federation.</p></li>
+<li><p>First you need to ask for resources:</p>
+<ul>
+<li>Go to “Demande de resources” -&gt; “Créer ou renouveler un dossier de demande d’heures.” -&gt; “Création d’un nouveau dossier”</li>
+<li>Then fill the forms:
+<ul>
+<li>Form n°2 (resources) : correctly fill the type of resources you need, the number of hours and the amount of storage needed. If you don’t know what to put here, ask the HPC team at AMAP.</li>
+<li>Form n°3 (Structure de recherche) : choose UMR5120, “Identifiant RNSR” 200317641S</li>
+<li>Form n°5 (Soutien du projet) : you have access to mesocenter <code>Meso@LR</code></li>
+</ul></li>
+</ul></li>
+<li><p>Then you need to an account to the supercomputer:</p>
+<ul>
+<li>“Demande de compte sur les calculateurs” -&gt; “Demande de rattachement à un dossier de demande d’heures” and mention the project for resources you just created.</li>
+<li>“Demande de compte sur les calculateurs” -&gt; “Demande d’ouverture de compte”. At some point you will need to provide an IP address of your computer: put <code>194.199.235.81</code>, and your “FQDN (Fully Qualified Domain Name) obligatoire associé à l’adresse IP” : put <code>cluster-out.cirad.fr</code>.</li>
+</ul></li>
+<li><p>Finally, you… wait ! You will receive an email when your account is created and you project validated.</p></li>
 </ul>
 </section>
 </section>
 </section>
 <section id="how-to-use-hpc" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-hpc">How to use HPC ?</h2>
-<p>To efficiently use HPC, you’ll need to follow a few steps. - connect to the cluster and transfer your files - create your computation environment in the cluster - learn how to submit jobs</p>
+<p>To efficiently use HPC, you’ll need to follow a few steps.</p>
+<ul>
+<li>connect to the cluster and transfer your files</li>
+<li>create your computation environment in the cluster</li>
+<li>learn how to submit jobs</li>
+</ul>
+<blockquote class="blockquote">
+<p>warning The following steps are general and should apply to any HPC resources. We provide below examples for <code>Meso@LR</code> cluster. However, before any action, you <strong><em>MUST</em></strong> read the documentation of the cluster you are using: - <a href="https://hpc-lr.umontpellier.fr/documentation-utilisateurs/">Meso@LR</a> - <a href="https://dci.dci-gitlab.cines.fr/webextranet/">Adastra at CINES</a> - <a href="http://www.idris.fr/jean-zay/">Jean-Zay at IDRIS</a></p>
+</blockquote>
 <section id="connect-and-transfer-files-to-the-cluster" class="level3">
 <h3 class="anchored" data-anchor-id="connect-and-transfer-files-to-the-cluster">Connect and transfer files to the cluster</h3>
 <section id="connection" class="level4">
 <h4 class="anchored" data-anchor-id="connection">Connection</h4>
-<ul>
-<li>Directly via <code>ssh</code></li>
-<li>Directly in the IDE (VSCode, PyCharm, etc.)</li>
-</ul>
+<section id="using-a-terminal" class="level5">
+<h5 class="anchored" data-anchor-id="using-a-terminal">Using a terminal</h5>
+<p>The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the <a href="https://www.techtarget.com/searchsecurity/definition/Secure-Shell"><code>ssh</code> protocol</a>. For exemple, for <code>Meso@LR</code>cluster, in a terminal application, you can type:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-X</span> my_login@muse-login.meso.umontpellier.fr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To avoid typing your password each time you connect, you can use a <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server">ssh key</a>.</p>
+<blockquote class="blockquote">
+<p>note Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example <code>adastra</code> does not accept ssh key.</p>
+</blockquote>
+<p>You can <a href="https://www.hostinger.com/tutorials/linux-commands">use basic linux commands</a> to navigate through the cluster.</p>
+<p>You are now connected to the <code>frontal</code> or <code>login</code> node of the cluster. This is the node where you can submit jobs, transfer files, and prepare your computation environment. This is <strong><em>NOT</em></strong> the node where your jobs will be executed and where you can do your computations.</p>
+</section>
+<section id="using-an-ide" class="level5">
+<h5 class="anchored" data-anchor-id="using-an-ide">Using an IDE</h5>
+<p>You can also use an IDE (Integrated Development Environment - code editor that embeds multiple tools for developers) to connect to the cluster. For example <code>VSCode</code> provides a powerfull plugin to <a href="https://code.visualstudio.com/docs/remote/ssh">develop on remote machines</a>. This allows you to navigate, edit and run your code on the cluster directly from your IDE.</p>
+<p><code>PyCharm</code> also provides a plugin to <a href="https://www.jetbrains.com/help/pycharm/remote-development-starting-page.html">develop on remote machines</a>.</p>
+<p>However, to our knowledge, no such solution exists for <code>RStudio</code>.</p>
+</section>
 </section>
 <section id="transfer-files" class="level4">
 <h4 class="anchored" data-anchor-id="transfer-files">Transfer files</h4>
+<p>To run your code on the cluster, you need first to transfer your files. You can use multiple tools to transfer files:</p>
+<section id="scp-rsync" class="level5">
+<h5 class="anchored" data-anchor-id="scp-rsync"><code>scp</code> &amp; <code>rsync</code></h5>
+<p>If you feel at ease with a terminal, you can use <code>scp</code> or <code>rsync</code> commands to transfer files. For example, to transfer a file from your computer to the cluster, you can type:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># single file</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> /where/my_file/is/my_file.txt my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># directory</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> /where/my_directory/is/my_directory my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means that you have to know beforehand the path to the directory on the cluster that you want to put your files in.</p>
+<p><a href="https://hpc-lr.umontpellier.fr/wp-content/uploads/2017/05/rsync.txt"><code>rsync</code></a> is a more powerfull tool that allows you to synchronize directories between your computer and the cluster. It has a lot of options that you can use to customize the synchronization, and allows you to transfer only the files that have been modified since the last synchronization (very useful when you have a lot of files to transfer or when you have a slow and instable connection).</p>
+</section>
+<section id="filezilla" class="level5">
+<h5 class="anchored" data-anchor-id="filezilla">Filezilla</h5>
+<p><a href="https://filezilla-project.org/"><code>Filezilla</code></a> is a client for transfering files among machines. It is very easy to use and provides a graphical interface.</p>
+<p>You can find the “Quickconnect” bar at the top of the main window, and you need to provide the address of the “Host” : <code>muse-login.meso.umontpellier.fr</code>, your “Username” and “Password”. You can also save your connection for later use : “File” -&gt; “Copy current connection to Site Manager…”.</p>
+</section>
+<section id="where-to-put-my-files" class="level5">
+<h5 class="anchored" data-anchor-id="where-to-put-my-files">Where to put my files ?</h5>
+<p>HPC clusters usually have multiple places where to put your files. Here are the ones for <code>Meso@LR</code>:</p>
 <ul>
-<li>Using scp &amp; rsync</li>
-<li>Using Filezilla</li>
+<li><code>/home/my_login</code> : this is your home directory. You can put your scripts and small files here. This directory is backed up.</li>
+<li><code>/lustre/scratch</code> : this is a temporary directory with very fast access where you can put your large files and data. This directory is not backed up and can be erased after 2 months. This space is recommended for running your computations that can require large amount of data.</li>
+<li><code>/nfs/work</code> : this is a directory where you can put your input / output data or executable files. This directory is backed up and can be used to store your data for a long time.</li>
 </ul>
+</section>
 </section>
 </section>
 <section id="create-your-computation-environment" class="level3">
 <h3 class="anchored" data-anchor-id="create-your-computation-environment">Create your computation environment</h3>
+<p>HPC clusters usually provide a lot of scientific softwares and libraries that you can use. They are installed in a module system that you can load and unload. Some useful commands are:</p>
 <ul>
-<li>The modules system</li>
-<li>Conda environments</li>
+<li><code>module avail</code> : list all the available modules</li>
 </ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module avail</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-------------------------------------------------------------------------</span> /usr/share/Modules/modulefiles <span class="at">-------------------------------------------------------------------------</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dot</span>         module-git  module-info modules     null        use.own</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">--------------------------------------------------------------------</span> /trinity/shared/modulefiles/modulegroups <span class="at">--------------------------------------------------------------------</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">bioinfo-cirad</span> bioinfo-ifb   cv-admin      cv-advanced   cv-local      cv-standard   local</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-----------------------------------------------------------------------</span> /trinity/shared/modulefiles/local <span class="at">------------------------------------------------------------------------</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ex">automake/1.16.1</span>             geos/3.10.6                 ImageMagick/7.0.3-10        openjpeg/2.4.0              R/3.6.1                     sqlite/3.38.1</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Cast3M/2019</span>                 geos/3.7.2                  intel/opencl-1.2-6.4.0.37   openslide/3.4.1             R/3.6.1-tcltk               squashfs/4.3</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">cgal/5.2</span>                    ghmm/1.0                    JDK/11.0.15                 phast/1.5                   R/3.6.3                     swig/3.0.11</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">cmake/3.22.0</span>                git/2.35.1                  JDK/jdk.8_x64               pi4u/torc                   R/4.0.2                     vmd/1.9.3</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ex">dawgpaws/1.0</span>                       ImageMagick/7.0.11-14              pandoc/2.14.0.1                    skif/1.2                           yak/0.1</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ex">deepgp/20220929-singularity</span>        insilicoseq/1.5.4                  pantherscore/1.03                  SLR/20240610                       yulab-smu/20230217</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ex">deeptmhmm/1.0.20</span>                   interproscan/5.41-78.0             pantherscore/2.2                   slurm_drmaa/1.1.1                  zlib/1.2.8</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ex">deepTools/3.5.1</span>                    interproscan/5.48-83.0             parallel/20220922                  smrtlink/10.1.0.119588</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ex">deepvariant/1.1.0</span>                  interproscan/5.67-99.0             parsnp/1.7.4-conda                 snakemake/5.12.3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>module load my_module</code> : load a module, e.g.&nbsp;<code>module load R/packages/4.3.1-IFB</code></li>
+<li><code>module unload my_module</code> : unload a module, e.g.&nbsp;<code>module unload R/packages/4.3.1-IFB</code></li>
+<li><code>module list</code> : list all the loaded modules in your environment, e.g.:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load R/packages/4.3.1-IFB</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module list</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Currently</span> Loaded Modulefiles:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">1</span><span class="er">)</span> <span class="ex">bioinfo-ifb</span>            2<span class="er">)</span> <span class="ex">r/4.3.1</span>                3<span class="er">)</span> <span class="ex">R/packages/4.3.1-IFB</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can see that <code>R/packages/4.3.1-IFB</code> (recommend for <code>R</code> users) is loaded with some dependecies. - <code>module purge</code> : unload all the loaded modules</p>
+<p>To access modules, you need to do some configuration first:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.bashrc    <span class="co"># nano is a text editor</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># add the following lines at the end of the file</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># module</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="va">MODULEPATH</span><span class="op">=</span><span class="va">$MODULEPATH</span>:/nfs/work/agap_id-bin/modulefiles</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MODULEPATH</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># User specific environment and startup programs</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:<span class="va">$HOME</span>/.local/bin:<span class="va">$HOME</span>/bin</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># R_LIBS_USER</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="va">R_LIBS_USER</span><span class="op">=</span>~/R/x86_64-pc-linux-gnu-library/4.3.1</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">R_LIBS_USER</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="install-additional-r-packages" class="level4">
+<h4 class="anchored" data-anchor-id="install-additional-r-packages">Install additional R packages</h4>
+<p>First, be aware that a lot of packages are already installed inside the <code>R/packages/4.3.1-IFB</code> module. If the module you need is not available, you have two solutions: - You can install packages in your home directory. If you need to install a package that requires compilation (such as <code>brms</code> for example), you’ll need to provide information on how to do that:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~       <span class="co"># back to your HOME directory</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir .R   <span class="co"># create a directory for R packages configuration</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"CXX14 = g++ -fPIC\nCXX14FLAGS = -O3\nCXX14PICFLAGS = -fpic\nCXX14STD = -std=gnu++1y\n"</span> <span class="op">&gt;</span> ~/.R/Makevars</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># You can now install your packages</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> R <span class="at">--vanilla</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> install.packages<span class="kw">(</span><span class="st">'brms'</span><span class="kw">)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Installation</span> du package dans ‘/nfs/work/agap_id-bin/img/R/4.3.1-IFB/lib’</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">car</span> ‘lib’ n<span class="st">'est pas spécifié)</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">Avis dans install.packages("brms") :</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">  '</span>lib = <span class="st">"/nfs/work/agap_id-bin/img/R/4.3.1-IFB/lib"' ne peut être ouvert en écriture</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">Voulez-vous plutôt utiliser une bibliothèque personnelle ? (oui/Non/annuler) oui</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will install your packages in the <code>$HOME/R/x86_64-pc-linux-gnu-library/4.3.1</code> directory.</p>
+<ul>
+<li>You can also use <a href="https://docs.conda.io/en/latest/">conda</a> to create a dedicated environment and install additional packages. Although mostly used for installing python packages, conda can also be used to install R packages (search search for packages <a href="https://anaconda.org/search?q=r-">here</a>).</li>
+</ul>
+</section>
+<section id="install-additional-python-packages" class="level4">
+<h4 class="anchored" data-anchor-id="install-additional-python-packages">Install additional python packages</h4>
+<p>The recommanded way to work with Python on the cluster is by using an environment manager. While there are many available (conda, virtualenv, pipenv, poetry, …), we recommand to use <code>conda</code> as it is the most widely used by the scientific community AND it is already installed on the cluster.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load anaconda/python3.8</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Don't pay attention to the python version, you'll be able to create your own environment with the version you need.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We recommand to tune the <code>conda</code> configuration file to work with the cluster:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> ~/.condarc   <span class="co"># This will create / open the file .condarc in your HOME directory in the text editor</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Then in the .condarc file, add the following lines:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span>   <span class="co"># list the channels where conda will search for packages</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> nodefaults</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">solver:</span> libmamba   <span class="co"># this is the most efficient solver for package dependencies. Now by default, but you can specify it here.</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">channel_priority:</span> strict  <span class="co"># Force conda to search for packages in the order you specified in the channels list</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">ssl_verify:</span> false   <span class="co"># Specific to meso@lr, the SSL certificate is not valid, so you need to disable SSL verification</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">envs_dirs:</span>    <span class="co"># The place where you want to store your environments. If not specified, conda will create a directory in your HOME directory, but if you deal with many large environments, you might want to store them in the work directory.</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-</span> /path/where/to/store/your/envs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then you can create and access your environments:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create an environment</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> my_env python=3.11</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># activate the environment and install packages</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate my_env</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install numpy pandas ...</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># deactivate the environment</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="submit-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="submit-jobs">Submit jobs</h3>
+<p>All HPC clusters use a job scheduler to manage the resources and the jobs submitted by users. The most common job scheduler is <code>SLURM</code> (Simple Linux Utility for Resource Management). This is the scheduler use at <code>meso@lr</code>, but also <code>adastra</code> and <code>jean-zay</code>.</p>
 <section id="the-slurm-scheduler" class="level4">
 <h4 class="anchored" data-anchor-id="the-slurm-scheduler">The SLURM scheduler</h4>
+<p>You can find the documentation for <code>SLURM</code> <a href="https://slurm.schedmd.com/">here</a>.</p>
+<p>You can run your job in 2 modes: - direct / interactive mode, using the command <code>srun</code> : for example <code>srun --pty bash</code> will open a bash session on a compute node. - batch mode, using the command <code>sbatch</code> : you need to write a script that will be executed by the scheduler.</p>
+<p>It is recommended to use the batch mode for long and heavy computations, and the interactive mode for testing your code.</p>
 </section>
 <section id="how-to-write-a-slurm-script" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-write-a-slurm-script">How to write a SLURM script</h4>
+<p>We refer to <code>SLURM</code> documentation to see all the options available, but we list here the most basic and useful ones to write a batch script.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 19%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Slurm long format</th>
+<th style="text-align: left;">Slurm short format</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>–job-name</td>
+<td style="text-align: left;">-J</td>
+<td style="text-align: left;">Name of the job</td>
+</tr>
+<tr class="even">
+<td>–account</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Name of the account to which the job is charged</td>
+</tr>
+<tr class="odd">
+<td>–nodes</td>
+<td style="text-align: left;">-N</td>
+<td style="text-align: left;">Number of nodes required</td>
+</tr>
+<tr class="even">
+<td>–ntasks</td>
+<td style="text-align: left;">-n</td>
+<td style="text-align: left;">Number of tasks of your job</td>
+</tr>
+<tr class="odd">
+<td>–ntasks-per-node</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of tasks per node (should be equal to the total number of tasks divided by the number of nodes)</td>
+</tr>
+<tr class="even">
+<td>–ntasks-per-core</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Number of tasks per core (usually 1)</td>
+</tr>
+<tr class="odd">
+<td>–partition</td>
+<td style="text-align: left;">-p</td>
+<td style="text-align: left;">Name of the partition you want to use</td>
+</tr>
+<tr class="even">
+<td>–mem</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Memory required by the job in Mb (if not specified, then the whole node memory is allocated)</td>
+</tr>
+<tr class="odd">
+<td>–time</td>
+<td style="text-align: left;">-t</td>
+<td style="text-align: left;">Wall time requested (HH:MM:SS), i.e.&nbsp;maximum time for your job to run.</td>
+</tr>
+<tr class="even">
+<td>–output</td>
+<td style="text-align: left;">-o</td>
+<td style="text-align: left;">Output file where the standard output will be written. By default, slurm-%j.out or ‘%j’ is the job number</td>
+</tr>
+<tr class="odd">
+<td>–error</td>
+<td style="text-align: left;">-e</td>
+<td style="text-align: left;">Error file where the standard error will be written. By default, slurm-%j.err or ‘%j’ is the job number</td>
+</tr>
+<tr class="even">
+<td>–mail-user</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Email address to send notifications</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="how-to-submit-and-monitor-a-job" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-submit-and-monitor-a-job">How to submit and monitor a job</h4>
 </section>
 <section id="different-partitions-available" class="level4">
 <h4 class="anchored" data-anchor-id="different-partitions-available">Different partitions available</h4>
+<p>Different types of resources are available on the cluster, as listed in <a href="#sec-mesolr" class="quarto-xref">Section&nbsp;1.2.1</a>:</p>
 <ul>
-<li>meso@lr</li>
-<li>adastra</li>
+<li><p><strong>CPU</strong> node. Partition name : <code>agap_long</code>, <code>agap_normal</code>, <code>agap_short</code></p></li>
+<li><p><strong>GPU</strong> node. Partition name : <code>agap_gpu</code></p></li>
+<li><p><strong>Big memory</strong> node. Partition name : <code>agap_bigmem</code></p></li>
 </ul>
+<p>You can find the list of partitions available on the cluster with the command <code>sinfo</code> (including time limits and number of nodes available).</p>
 </section>
 </section>
 </section>
 </section>
 <section id="concrete-examples" class="level1">
 <h1>Concrete examples</h1>
-<section id="running-a-python-script-using-gpu-on-mesolr" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-python-script-using-gpu-on-mesolr">Running a Python script using GPU on meso@lr</h2>
+<p>Here is a very simple script that you can adapt to your needs. You can fill additional <code>SLURM</code> options, and also the modify the call to your script.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash                             # mandatory first line. This is a bash script</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name="&lt;job_name&gt;"         # name of the job</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=partition_name      # name of the partition you want to use</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1                       # number of nodes required</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --exclusive                     # ask SLURM to reserve the whole nodes. This is not desired if you only need a few cores.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=1:00:00                  # wall time requested (HH:MM:SS)</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge                            <span class="co"># clean the environment</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load R/packages/4.3.1-IFB        <span class="co"># load the software you need</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-v</span> <span class="at">-x</span>                               <span class="co"># useful to debug your script</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Where your project is located, and where you will run it</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="va">MY_PROJ_DIR</span><span class="op">=</span><span class="st">"/home/arsouzet/projects/AMAP/arsouze/runs_StormR/"</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="va">MY_PROJ_SCRATCH_DIR</span><span class="op">=</span><span class="st">"/home/arsouzet/scratch/runs_StormR/</span><span class="va">$SLURM_ARRAY_TASK_ID</span><span class="st">"</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Your script has 2 arguments: the input file and the output file</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="va">input_filename</span><span class="op">=</span><span class="st">"my_input_file.nc"</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="va">output_filename</span><span class="op">=</span><span class="st">"my_output_file.tiff"</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Manage the directory where you will run your analysis</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-d</span> <span class="st">"</span><span class="va">${MY_PROJ_SCRATCH_DIR}</span><span class="st">"</span> <span class="bu">]</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mkdir</span> <span class="va">${MY_PROJ_SCRATCH_DIR}</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">${MY_PROJ_DIR}</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> my_analysis.R <span class="va">${input_filename}</span> <span class="va">${MY_PROJ_SCRATCH_DIR}</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">${MY_PROJ_SCRATCH_DIR}</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the R script</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> CMD BATCH <span class="at">--vanilla</span> <span class="st">"--args </span><span class="va">${input_filename}</span><span class="st"> </span><span class="va">${output_filename}</span><span class="st">"</span> my_analysis.R</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the output file to a safe place</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> <span class="va">${output_filename}</span> <span class="va">${MY_PROJ_DIR}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="running-a-script-using-gpu-on-mesolr" class="level2">
+<h2 class="anchored" data-anchor-id="running-a-script-using-gpu-on-mesolr">Running a script using GPU on <code>meso@lr</code></h2>
+<p>To run a script using GPU on <code>meso@lr</code>, you need a little bit more tweaking (while it might be easier on adastra for example).</p>
+<p>By default, if you install a package that requires GPU, it will not work on <code>meso@lr</code> because the GPU is not available on the login node. You first need to install your package on a GPU compute node.</p>
+<blockquote class="blockquote">
+<p>warning To run a script on a GPU node, please add the following to your <code>sbatch</code> scripts:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">module ()</span> <span class="kw">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">eval</span> <span class="kw">`</span><span class="ex">/usr/bin/modulecmd</span> bash <span class="va">$*</span><span class="kw">`</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will allow you to use the <code>module</code> command in your scripts.</p>
+</blockquote>
+<section id="submit-an-interactive-job-on-gpu-node-interactive-gpu" class="level3">
+<h3 class="anchored" data-anchor-id="submit-an-interactive-job-on-gpu-node-interactive-gpu">Submit an interactive job on GPU node [#interactive-gpu]</h3>
+<p>You first need to connect to a GPU node to install your package. You can do this by submitting an interactive job on a GPU node. Here is an example of a script that you can use to submit an interactive job on a GPU node:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">-A</span> AGAP <span class="at">-p</span> agap_gpu <span class="at">--gres</span> gpu:a100:1 <span class="at">-t</span> 00:30:00 <span class="at">-c</span> 1 <span class="at">-J</span> interactive1 <span class="at">--pty</span> /bin/bash <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means you are asking for 1 GPU of type <code>a100</code> for 30 minutes, on <code>agap_gpu</code> partition, in interactive mode.</p>
+<p>Once you are connected to the GPU node, you must check the version of the <code>nvidia</code> driver with the command <code>nvidia-smi</code>. You can then exit the GPU node with <code>exit</code>.</p>
 </section>
-<section id="install-libraries-and-running-a-r-script" class="level2">
-<h2 class="anchored" data-anchor-id="install-libraries-and-running-a-r-script">Install libraries and running a R script</h2>
+<section id="install-you-environment" class="level3">
+<h3 class="anchored" data-anchor-id="install-you-environment">Install you environment</h3>
+<p>Install <code>pytorch</code> (or <code>tensorflow</code> or any other package that requires GPU) in a dedicated environment which is compatible with the <code>nvidia</code> driver version seens in #interactive-gpu section. Install also additional dependencies needed.</p>
+</section>
+<section id="submit-a-job-on-gpu-node" class="level3">
+<h3 class="anchored" data-anchor-id="submit-a-job-on-gpu-node">Submit a job on GPU node</h3>
+<p>You can now submit a job on a GPU node. Here is an example of a script that you can use to submit a job on a GPU node:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=my_job</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=agap</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=agap_gpu</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=/my/output/path/output.log</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=8:00:00</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:a100:1    # we only need 1 GPU</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=32000</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">module ()</span> <span class="kw">{</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">eval</span> <span class="kw">`</span><span class="ex">/usr/bin/modulecmd</span> bash <span class="va">$*</span><span class="kw">`</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> purge</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load ... <span class="co"># load the software you need</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /lustre/my_account/prg/</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="ex">./runThroughConfig_SSL_HP.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 </section>
 
