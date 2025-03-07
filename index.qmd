@@ -11,5 +11,5 @@ If you have any questions or suggestions on the content do not hesitate to conta
 
 # To AMAP researchers
 
-If you need to discuss any issues regarding programming & development, data management, or computation: the **POLIS** (Pôle Informatique Scientifique) is at your service in **PS1 room 44 every other Wednesday (even weeks) afternoon from 2 pm to 5 pm**, starting on Wednesday the 22nd of January. Drop us an email (preferably to amap-polis[at]cirad.fr) with your issue a few days before to book one of us, or just come by with your laptop.
+If you need to discuss any issues regarding programming & development, data management, or computation: the **POLIS** (Pôle Informatique Scientifique) is at your service in **PS1 room 44 every other Wednesday (even weeks) afternoon from 2 pm to 5 pm**, starting on Wednesday the 5th of March. Drop us an email (preferably to amap-polis[at]cirad.fr) with your issue a few days before to book one of us, or just come by with your laptop.
 
