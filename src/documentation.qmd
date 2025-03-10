@@ -72,6 +72,7 @@ Also see [CI/CI page](ci_cd.qmd) to automate vignette and website publishing.
 This is the main documentation file for your project. It is located at the root of the project and should contain a general description of the project, its purpose, and how to use it. This is the first thing that users will see when they visit your project on GitHub or Gitlab (or wherever you host your code).
 
 Here is a list of things that you should include in your `README.md` file:
+
 - ___Name___ of the project / package. Idealy, it should match the name of the repository.
 - ___Badges___: These are small images that show the status and the quality of your project. It is especialy usefull if you want to distribute your project / package to users. For example, you can add a badge that shows :
   - the build status of the project : [![CI Build](https://github.com/pandera-dev/pandera/workflows/CI%20Tests/badge.svg?branch=main)](https://github.com/pandera-dev/pandera/actions?query=workflow%3A%22CI+Tests%22+branch%3Amain)
