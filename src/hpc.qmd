@@ -1,5 +1,5 @@
 ---
-title: "HPC"
+title: "High Performance Computing"
 execute:
   eval: false
 ---
@@ -62,6 +62,7 @@ You can also access to very powerful hardware (typically [GPUs](https://en.wikip
 
 ### You need to run simulations that are very memory intensive
 Let's say that you developed a script on your computer that run on a small domain. You want to extend this script to a larger domain but you run out of memory on your computer. You have two options here to run your code on HPC:
+
 - Run your script on a node with more memory (some HPC nodes have memory up to ~1 To)
 - Use parallel computing to distribute the memory usage on multiple nodes
 
@@ -129,8 +130,9 @@ Access and computing resources are free for academic.
 #### How to open an account ?
 Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much resources.
 
-> warning
-> Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.
+::: {.callout-warning}
+Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.
+:::
 
 There are two ways to access GENCI resources:
 
@@ -149,18 +151,20 @@ There are two ways to access GENCI resources:
   - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put `194.199.235.81`, and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put `cluster-out.cirad.fr`.
 - Finally, you... wait ! You will receive an email when your account is created and you project validated.
 
-## How to use HPC ?
-To efficiently use HPC, you'll need to follow a few steps.
+## How to use HPC clusters ?
+To efficiently use HPC clusters, you'll need to follow a few steps.
 
 - connect to the cluster and transfer your files
 - create your computation environment in the cluster
 - learn how to submit jobs
 
-> warning
-> The following steps are general and should apply to any HPC resources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
-> - [Meso@LR](https://hpc-lr.umontpellier.fr/documentation-utilisateurs/)
-> - [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
-> - [Jean-Zay at IDRIS](http://www.idris.fr/jean-zay/)
+::: {.callout-warning}
+The following steps are general and should apply to any HPC resources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
+
+- [Meso@LR](https://hpc-lr.umontpellier.fr/documentation-utilisateurs/)
+- [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
+- [Jean-Zay at IDRIS](http://www.idris.fr/jean-zay/)
+:::
 
 ### Connect and transfer files to the cluster
 #### Connection
@@ -173,8 +177,9 @@ ssh -X my_login@muse-login.meso.umontpellier.fr
 
 To avoid typing your password each time you connect, you can use a [ssh key](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server).
 
-> note
-> Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example `adastra` does not accept ssh key.
+::: {.callout-note}
+Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example `adastra` does not accept ssh key.
+:::
 
 You can [use basic linux commands](https://www.hostinger.com/tutorials/linux-commands) to navigate through the cluster.
 
