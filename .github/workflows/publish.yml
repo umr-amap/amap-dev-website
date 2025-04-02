@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - deploy_on_palais
 
 name: Render and Publish
 
@@ -22,9 +22,21 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Publish to GitHub Pages (and render)
-        uses: quarto-dev/quarto-actions/publish@v2
+###      - name: Publish to GitHub Pages (and render)
+###        uses: quarto-dev/quarto-actions/publish@v2
+###        with:
+###          target: gh-pages
+###        env:
+###          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
         with:
-          target: gh-pages
+          to: html
+
+      - name: Publish to palais.cirad.fr
+        run: |
+          echo "Publishing to palais.cirad.fr"
+          rsync -avhz -e "ssh -o StrictHostKeyChecking=no" --chown=www-data:www-data ./_site/ amap@palais.cirad.fr:/var/www/sites/polis-dev
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
