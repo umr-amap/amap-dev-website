@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HPC – Resources for \
+<title>High Performance Computing – Resources for \
 good programming practices</title>
 <style>
 code{white-space: pre-wrap;}
@@ -149,7 +149,7 @@ good programming practices</span>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../src/hpc.html" aria-current="page"> 
-<span class="menu-text">HPC</span></a>
+<span class="menu-text">High Performance Computing</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../src/amap.html"> 
@@ -198,7 +198,7 @@ good programming practices</span>
   <li><a href="#sec-mesolr" id="toc-sec-mesolr" class="nav-link" data-scroll-target="#sec-mesolr">Meso-center <code>ISDM-Meso</code></a></li>
   <li><a href="#genci" id="toc-genci" class="nav-link" data-scroll-target="#genci">GENCI</a></li>
   </ul></li>
-  <li><a href="#how-to-use-hpc" id="toc-how-to-use-hpc" class="nav-link" data-scroll-target="#how-to-use-hpc">How to use HPC ?</a>
+  <li><a href="#how-to-use-hpc-clusters" id="toc-how-to-use-hpc-clusters" class="nav-link" data-scroll-target="#how-to-use-hpc-clusters">How to use HPC clusters ?</a>
   <ul class="collapse">
   <li><a href="#connect-and-transfer-files-to-the-cluster" id="toc-connect-and-transfer-files-to-the-cluster" class="nav-link" data-scroll-target="#connect-and-transfer-files-to-the-cluster">Connect and transfer files to the cluster</a></li>
   <li><a href="#create-your-computation-environment" id="toc-create-your-computation-environment" class="nav-link" data-scroll-target="#create-your-computation-environment">Create your computation environment</a></li>
@@ -224,7 +224,7 @@ good programming practices</span>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HPC</h1>
+<h1 class="title">High Performance Computing</h1>
 </div>
 
 
@@ -292,7 +292,11 @@ good programming practices</span>
 </section>
 <section id="you-need-to-run-simulations-that-are-very-memory-intensive" class="level3">
 <h3 class="anchored" data-anchor-id="you-need-to-run-simulations-that-are-very-memory-intensive">You need to run simulations that are very memory intensive</h3>
-<p>Let’s say that you developed a script on your computer that run on a small domain. You want to extend this script to a larger domain but you run out of memory on your computer. You have two options here to run your code on HPC: - Run your script on a node with more memory (some HPC nodes have memory up to ~1 To) - Use parallel computing to distribute the memory usage on multiple nodes</p>
+<p>Let’s say that you developed a script on your computer that run on a small domain. You want to extend this script to a larger domain but you run out of memory on your computer. You have two options here to run your code on HPC:</p>
+<ul>
+<li>Run your script on a node with more memory (some HPC nodes have memory up to ~1 To)</li>
+<li>Use parallel computing to distribute the memory usage on multiple nodes</li>
+</ul>
 </section>
 <section id="advantages-of-using-hpc" class="level3">
 <h3 class="anchored" data-anchor-id="advantages-of-using-hpc">Advantages of using HPC</h3>
@@ -364,9 +368,19 @@ good programming practices</span>
 <section id="how-to-open-an-account-1" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-open-an-account-1">How to open an account ?</h4>
 <p>Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for <code>Meso@LR</code> but is still quite fast (&lt; 1 week) if you don’t ask for too much resources.</p>
-<blockquote class="blockquote">
-<p>warning Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.</p>
-</blockquote>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.</p>
+</div>
+</div>
 <p>There are two ways to access GENCI resources:</p>
 <ul>
 <li><p>“Accès dynamiques” (fast access) : if your needs are &lt; 500 000 h CPU and 50 000 h GPU (eq. V100) for 1 year. This is a simplified access, only a one paragraph description of the scientific context is required and no scientific or technical review is done.</p></li>
@@ -392,17 +406,32 @@ good programming practices</span>
 </section>
 </section>
 </section>
-<section id="how-to-use-hpc" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-hpc">How to use HPC ?</h2>
-<p>To efficiently use HPC, you’ll need to follow a few steps.</p>
+<section id="how-to-use-hpc-clusters" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-hpc-clusters">How to use HPC clusters ?</h2>
+<p>To efficiently use HPC clusters, you’ll need to follow a few steps.</p>
 <ul>
 <li>connect to the cluster and transfer your files</li>
 <li>create your computation environment in the cluster</li>
 <li>learn how to submit jobs</li>
 </ul>
-<blockquote class="blockquote">
-<p>warning The following steps are general and should apply to any HPC resources. We provide below examples for <code>Meso@LR</code> cluster. However, before any action, you <strong><em>MUST</em></strong> read the documentation of the cluster you are using: - <a href="https://hpc-lr.umontpellier.fr/documentation-utilisateurs/">Meso@LR</a> - <a href="https://dci.dci-gitlab.cines.fr/webextranet/">Adastra at CINES</a> - <a href="http://www.idris.fr/jean-zay/">Jean-Zay at IDRIS</a></p>
-</blockquote>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The following steps are general and should apply to any HPC resources. We provide below examples for <code>Meso@LR</code> cluster. However, before any action, you <strong><em>MUST</em></strong> read the documentation of the cluster you are using:</p>
+<ul>
+<li><a href="https://hpc-lr.umontpellier.fr/documentation-utilisateurs/">Meso@LR</a></li>
+<li><a href="https://dci.dci-gitlab.cines.fr/webextranet/">Adastra at CINES</a></li>
+<li><a href="http://www.idris.fr/jean-zay/">Jean-Zay at IDRIS</a></li>
+</ul>
+</div>
+</div>
 <section id="connect-and-transfer-files-to-the-cluster" class="level3">
 <h3 class="anchored" data-anchor-id="connect-and-transfer-files-to-the-cluster">Connect and transfer files to the cluster</h3>
 <section id="connection" class="level4">
@@ -412,9 +441,19 @@ good programming practices</span>
 <p>The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the <a href="https://www.techtarget.com/searchsecurity/definition/Secure-Shell"><code>ssh</code> protocol</a>. For exemple, for <code>Meso@LR</code>cluster, in a terminal application, you can type:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-X</span> my_login@muse-login.meso.umontpellier.fr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To avoid typing your password each time you connect, you can use a <a href="https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server">ssh key</a>.</p>
-<blockquote class="blockquote">
-<p>note Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example <code>adastra</code> does not accept ssh key.</p>
-</blockquote>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although considered as secure, ssh keys are sometimes not accepted on some HPC clusters. For example <code>adastra</code> does not accept ssh key.</p>
+</div>
+</div>
 <p>You can <a href="https://www.hostinger.com/tutorials/linux-commands">use basic linux commands</a> to navigate through the cluster.</p>
 <p>You are now connected to the <code>frontal</code> or <code>login</code> node of the cluster. This is the node where you can submit jobs, transfer files, and prepare your computation environment. This is <strong><em>NOT</em></strong> the node where your jobs will be executed and where you can do your computations.</p>
 </section>
