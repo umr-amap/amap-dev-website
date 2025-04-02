@@ -34,9 +34,19 @@ jobs:
         with:
           to: html
 
-      - name: Publish to palais.cirad.fr
-        run: |
-          echo "Publishing to palais.cirad.fr"
-          rsync -avhz -e "ssh -o StrictHostKeyChecking=no" --chown=www-data:www-data ./_site/ amap@palais.cirad.fr:/var/www/sites/polis-dev
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete --chown=www-data:www-data
+          path: ./_site/
+          remote_path: /var/www/sites/polis-dev
+          remote_host: palais.cirad.fr
+          remote_user: amap
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+###      - name: Publish to palais.cirad.fr
+###        run: |
+###          echo "Publishing to palais.cirad.fr"
+###          rsync -avhz -e "ssh -o StrictHostKeyChecking=no" --chown=www-data:www-data ./_site/ amap@palais.cirad.fr:/var/www/sites/polis-dev
+###        env:
+###          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
