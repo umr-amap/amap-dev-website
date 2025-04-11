@@ -281,6 +281,7 @@ export R_LIBS_USER
 
 #### Install additional R packages
 First, be aware that a lot of packages are already installed inside the `R/packages/4.3.1-IFB` module. If the module you need is not available, you have two solutions:
+
 - You can install packages in your home directory. If you need to install a package that requires compilation (such as `brms` for example), you'll need to provide information on how to do that:
 ```bash
 $ cd ~       # back to your HOME directory
