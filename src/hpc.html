@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-8647a4a42273f773479d27c00df3f9ed.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -546,7 +546,10 @@ Note
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">R_LIBS_USER</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="install-additional-r-packages" class="level4">
 <h4 class="anchored" data-anchor-id="install-additional-r-packages">Install additional R packages</h4>
-<p>First, be aware that a lot of packages are already installed inside the <code>R/packages/4.3.1-IFB</code> module. If the module you need is not available, you have two solutions: - You can install packages in your home directory. If you need to install a package that requires compilation (such as <code>brms</code> for example), you’ll need to provide information on how to do that:</p>
+<p>First, be aware that a lot of packages are already installed inside the <code>R/packages/4.3.1-IFB</code> module. If the module you need is not available, you have two solutions:</p>
+<ul>
+<li>You can install packages in your home directory. If you need to install a package that requires compilation (such as <code>brms</code> for example), you’ll need to provide information on how to do that:</li>
+</ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~       <span class="co"># back to your HOME directory</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir .R   <span class="co"># create a directory for R packages configuration</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"CXX14 = g++ -fPIC\nCXX14FLAGS = -O3\nCXX14PICFLAGS = -fpic\nCXX14STD = -std=gnu++1y\n"</span> <span class="op">&gt;</span> ~/.R/Makevars</span>
