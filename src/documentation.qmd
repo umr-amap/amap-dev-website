@@ -47,6 +47,7 @@ add <- function(x, y) {
 ```
 
 You can add many options to your documentation, such as:
+
   - `@export` to make the function available to the user
   - `@importFrom` to import a function from a package
   - `@seealso` to refer to other functions
@@ -97,6 +98,7 @@ In Python, the documentation is written in a `docstring`: a string that is the f
 You need to consistently write `docstrings` for all the functions, classes, and modules in your package.
 
 There are several conventions for writing `docstrings` in Python. The most common ones are:
+
 - [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
 - [Numpy style](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard)
 - [reStructuredText](https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html)
@@ -135,10 +137,9 @@ This simple function simply adds two numbers together. The `docstring` provides:
 - the output of the function and its type
 - a simple example of how to use the function. Note that theses exemples can be executed using the `doctest` module, hence providing another nice way to [test the function](testing.qmd#why-do-you-need-tests-). The lines that need to be executed are preceded by `>>>`.
 
-> Note:
->
-> You can see in the definition of the function that the arguments have "type hints" (i.e. `x: int`). This is not mandatory, but it is a good practice to add type hints to your functions, as it adds another layer of documentation and it makes the code more readable and helps catch bugs early. You can further describe the return type of the function using the `->` operator (i.e. `-> int`). The type hints are not enforced by Python, but they can be checked using a static type checker like `mypy` that will check through your code and make sure that the types are consistent.
-
+:::{.callout-note}
+You can see in the definition of the function that the arguments have "type hints" (i.e. `x: int`). This is not mandatory, but it is a good practice to add type hints to your functions, as it adds another layer of documentation and it makes the code more readable and helps catch bugs early. You can further describe the return type of the function using the `->` operator (i.e. `-> int`). The type hints are not enforced by Python, but they can be checked using a static type checker like `mypy` that will check through your code and make sure that the types are consistent.
+:::
 
 For more complex and extensive examples, you can check `xarray`package, which has a very good documentation of its API.
 [The Dataset class documlentation](https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset) and [the associated docstring](https://github.com/pydata/xarray/blob/main/xarray/core/dataset.py#L555)

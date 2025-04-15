@@ -20,9 +20,9 @@ If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is simil
 
 - [doc](https://docs.github.com/en/actions)
 
-- `.yaml` files which contain the instructions: they have to be located in a .github/worflows repository.
+- `.yaml` files which contain the instructions: they have to be located in a `.github/worflows` repository.
 
-![](figures/yaml_loc.png){height=40%}
+![](figures/yaml_loc.png){height=30%}
 
 - Code structure
 
@@ -48,13 +48,13 @@ A summary of the action is displayed. If there are any warnings for instance, yo
 
 3. Workflow logs:
 
-![](figures/gha_outputs3.png){height=30%}
+![](figures/gha_outputs3.png){height=20%}
 
 Each step outputs can be drop-downed.
 
 4. Let's select the fifth step 'Test coverage':
 
-![](figures/gha_outputs4.png){height=30%}
+![](figures/gha_outputs4.png){height=20%}
 
 Here are your logs !
 
@@ -62,15 +62,14 @@ Here are your logs !
 
 - Use various functions from usethis package to configure so-called GHA workflows. usethis package copies workflow configuration files from [r-lib/actions](https://github.com/r-lib/actions/#readme).
 
-- You can also create and modify the .yaml files directly in GitHub by copy paste an existing .yaml that matches you needs.  
+- You can also create and modify the .yaml files directly in GitHub by copy paste an existing `.yaml` that matches you needs.
 
 - Some very useful actions to set up `usethis::use_github_action()`:
 
   - *check-standard:* Run `R CMD check` on Linux, macOS, and Windows,
-  
+
   - *test-coverage:* Compute test coverage and report to https://about.codecov.io (or compute test coverage without report, and directly look at the results in the Actions tab, as previously showed),
-  
+
   - *pkgdown:* Deploy website or vignette with Github pages `usethis::use_pkgdown_github_pages()`,
-  
+
   - *pr-commands:* Add /document and /style commands for pull requests.
-  
