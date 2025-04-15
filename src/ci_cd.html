@@ -196,9 +196,9 @@ good programming practices</span>
 <h2 class="anchored" data-anchor-id="principles">Principles</h2>
 <ul>
 <li><p><a href="https://docs.github.com/en/actions">doc</a></p></li>
-<li><p><code>.yaml</code> files which contain the instructions: they have to be located in a .github/worflows repository.</p></li>
+<li><p><code>.yaml</code> files which contain the instructions: they have to be located in a <code>.github/worflows</code> repository.</p></li>
 </ul>
-<p><img src="figures/yaml_loc.png" style="height:40.0%"></p>
+<p><img src="figures/yaml_loc.png" style="height:30.0%"></p>
 <ul>
 <li>Code structure</li>
 </ul>
@@ -221,19 +221,19 @@ good programming practices</span>
 <ol start="3" type="1">
 <li>Workflow logs:</li>
 </ol>
-<p><img src="figures/gha_outputs3.png" style="height:30.0%"></p>
+<p><img src="figures/gha_outputs3.png" style="height:20.0%"></p>
 <p>Each step outputs can be drop-downed.</p>
 <ol start="4" type="1">
 <li>Let’s select the fifth step ‘Test coverage’:</li>
 </ol>
-<p><img src="figures/gha_outputs4.png" style="height:30.0%"></p>
+<p><img src="figures/gha_outputs4.png" style="height:20.0%"></p>
 <p>Here are your logs !</p>
 </section>
 <section id="configuration-for-an-r-package" class="level2">
 <h2 class="anchored" data-anchor-id="configuration-for-an-r-package">Configuration for an R package</h2>
 <ul>
 <li><p>Use various functions from usethis package to configure so-called GHA workflows. usethis package copies workflow configuration files from <a href="https://github.com/r-lib/actions/#readme">r-lib/actions</a>.</p></li>
-<li><p>You can also create and modify the .yaml files directly in GitHub by copy paste an existing .yaml that matches you needs.</p></li>
+<li><p>You can also create and modify the .yaml files directly in GitHub by copy paste an existing <code>.yaml</code> that matches you needs.</p></li>
 <li><p>Some very useful actions to set up <code>usethis::use_github_action()</code>:</p>
 <ul>
 <li><p><em>check-standard:</em> Run <code>R CMD check</code> on Linux, macOS, and Windows,</p></li>

@@ -271,8 +271,11 @@ good programming practices</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can add many options to your documentation, such as: - <code>@export</code> to make the function available to the user - <code>@importFrom</code> to import a function from a package - <code>@seealso</code> to refer to other functions</p>
+<p>You can add many options to your documentation, such as:</p>
 <ul>
+<li><p><code>@export</code> to make the function available to the user</p></li>
+<li><p><code>@importFrom</code> to import a function from a package</p></li>
+<li><p><code>@seealso</code> to refer to other functions</p></li>
 <li><p>Write both function and documentation at the same time in <code>my-function.R</code> file, stored in R sub-repository.</p></li>
 <li><p>Use <code>roxygen</code> to generate <code>man/my-function.Rd</code>, reading the header: the <code>devtools</code> function <code>document()</code></p></li>
 </ul>
@@ -317,7 +320,12 @@ good programming practices</span>
 <h4 class="anchored" data-anchor-id="what-is-it-and-how-to-write-it">What is it and how to write it?</h4>
 <p>In Python, the documentation is written in a <code>docstring</code>: a string that is the first statement in a module, function, class, or method, embedded within <code>"""</code>(triple double-quotes). The docstring should describe what the function does, what arguments it takes and their types (i.e.&nbsp;<code>strings</code>, <code>bool</code>, etc…), and what it returns. This <code>docstring</code> is then used by the <code>help()</code> function, and by the <code>pydoc</code> module to generate documentation.</p>
 <p>You need to consistently write <code>docstrings</code> for all the functions, classes, and modules in your package.</p>
-<p>There are several conventions for writing <code>docstrings</code> in Python. The most common ones are: - <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google style</a> - <a href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">Numpy style</a> - <a href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">reStructuredText</a></p>
+<p>There are several conventions for writing <code>docstrings</code> in Python. The most common ones are:</p>
+<ul>
+<li><a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google style</a></li>
+<li><a href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">Numpy style</a></li>
+<li><a href="https://sphinx-rtd-tutorial.readthedocs.io/en/latest/docstrings.html">reStructuredText</a></li>
+</ul>
 </section>
 <section id="example" class="level4">
 <h4 class="anchored" data-anchor-id="example">Example</h4>
@@ -347,10 +355,19 @@ good programming practices</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This simple function simply adds two numbers together. The <code>docstring</code> provides: - a description of what the function does - the inputs / parameters of the function and their types. - the output of the function and its type - a simple example of how to use the function. Note that theses exemples can be executed using the <code>doctest</code> module, hence providing another nice way to <a href="../src/testing.html#why-do-you-need-tests-">test the function</a>. The lines that need to be executed are preceded by <code>&gt;&gt;&gt;</code>.</p>
-<blockquote class="blockquote">
-<p>Note:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You can see in the definition of the function that the arguments have “type hints” (i.e.&nbsp;<code>x: int</code>). This is not mandatory, but it is a good practice to add type hints to your functions, as it adds another layer of documentation and it makes the code more readable and helps catch bugs early. You can further describe the return type of the function using the <code>-&gt;</code> operator (i.e.&nbsp;<code>-&gt; int</code>). The type hints are not enforced by Python, but they can be checked using a static type checker like <code>mypy</code> that will check through your code and make sure that the types are consistent.</p>
-</blockquote>
+</div>
+</div>
 <p>For more complex and extensive examples, you can check <code>xarray</code>package, which has a very good documentation of its API. <a href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html#xarray.Dataset">The Dataset class documlentation</a> and <a href="https://github.com/pydata/xarray/blob/main/xarray/core/dataset.py#L555">the associated docstring</a></p>
 </section>
 </section>
