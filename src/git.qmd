@@ -336,22 +336,24 @@ Creating a new repository on `Gitlab` is very similar to `GitHub`. You can see t
 ![](../figures/New_gitlab_repository_3.png)
 
 ## Local first
-- `git init`
-- `.git` folder
-- `.gitignore` file
+- `git init`: this commands initiates the overall Git tracking of the repository where you are running the command, by creating a `.git` folder. It also releases the first initial commit and creates a `.gitignore` file.
+- `.git` folder:  the folder that contains information Git needs to function.
+- `.gitignore` file: a file where you list the patterns of files or directories you want to ignore, i.e. you do not need or want to track.
 
 # Git basics
 
-## Git basic commands
-- `git status`
-- `git add`
-- ...
-- liens vers formations + documentation
+In this section we list the basic commands and actions you need to use Git. It can also be used as a reminder for those commands. Do not hesitate to check the [resources page](resources.qmd) for more in-depth info !
 
 ## Git workflow
-- Working directory, staging area, repository
+- Working directory, staging area, repository: 
 - branches
 - `push` and `pull`
+
+## Git basic commands
+- `git status`: this commands provide the status of your repository. You will find information about the current branch, its synchronization status, and the status of your files. It also suggests actions you may take, e.g. if there is file that has been modified, but not staged yet `git status` will suggest to stage it by using `git add <your-file>`.
+- `git add`: this command is used to start tracking a new file by adding it to the staging area. 
+- `git commit`: 
+- `git checkout`: 
 
 ## Merge conflicts
 
