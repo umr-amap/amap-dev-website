@@ -2,6 +2,10 @@
 title: "Starting a new project"
 ---
 
+Wether you are writting a full new package or just collect a bunch of scripts, it is important to start your project with a good organization. This will help you to keep your code clean and readable, and will also help you to share your code with others.
+
+Bellow, you will find some recommandations and things to know before starting your project with a focus on R and Python projects (contributions to other languages are more than welcome !).
+
 # R users
 We recommand using Rstudio when starting a R project. It is the most widely used integrated development environment (IDE) by R users and developers.
 
@@ -95,3 +99,27 @@ To edit the DESCRIPTION file, check at the [documentation section](documentation
   - `usethis::use_test("my_function")` : creates a new test script `tests/testthat/test-my_function.R`
   - `devtools::test()` : to run the tests.
 
+
+# Python users
+
+When coding in Python, you will have to make several choices regarding the tools you will use for your your setup such as your IDE or package manager.
+
+## IDE
+
+We recommand using `VSCode` when starting a Python project. It is the most widely used integrated development environment (IDE) by Python users and developers. It comes with a lot of extensions that can be installed, such as:
+- `Python` / `ms-python.python` : the official extension for Python development. Base extension for other extensions. Allows the choose your Python interpreter, use the debugger, etc...
+- `Pylance` / `ms-python.vscode-pylance` : a fast and feature-rich language server for Python (code completion, parameters suggestion, code navigation, etc...)
+- `MyPy` / `ms-python.mypy-type-checker` : a type checker for Python. It checks your code for type errors and suggests fixes.
+- `Pylint` / `ms-python.pylint` : a linter for Python. It checks your code for style errors and suggests fixes.
+- `Ruff` / `charliermarsh.ruff` : an extremely fast Python linter and code formatter. Can be used to replace Flake8 (plus dozens of plugins), Black, isort, pyupgrade, and more
+- `Jupyter` / `ms-toolsai.jupyter` : the official extension for Jupyter notebooks. Basic notebook support for language kernels that are supported in Jupyter Notebooks, and allows any Python environment to be used as a Jupyter kernel.
+- `Copilot` / `github.copilot` : AI peer programming tool. Free but account needed.
+- `Gitlens` / `eamodio.gitlens` : Git supercharged. It helps you with push, pull, multiple branches, commit history, and more.
+
+## Package manager
+
+You have multiple options in python for building your package, isolate your environment, and manage your dependencies. Some are "all-in-one" solutions, while others are more modular. Here are some of the most popular ones:
+- `pip` : the default package manager for Python. It is used to install and manage packages from the Python Package Index (PyPI). It is a good choice if you are working on a small project or if you are using a virtual environment.
+- [`poetry`](https://python-poetry.org/) : a dependency manager for Python. It is used to manage dependencies, build packages, and publish packages to PyPI. One of the most recent and popular "all-in-one" solution. Good documentation and easy to use.
+- [`hatch`](https://hatch.pypa.io/latest/) : again, an all-in-one solution, with by-default choices that are ok for most projects.
+-
