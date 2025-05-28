@@ -3,10 +3,9 @@ title: "Git"
 bibliography: ../assets/bibliography.bib
 ---
 
-Inspiration [here](https://happygitwithr.com/install-git.html).
-Official `git` documentation [here](https://git-scm.com/doc).
-[software carpentry](https://kb.nikhef.nl/computing-course/git-novice/instructor/01-basics.html)
-[repoducibility course](https://reproducibility.rocks/materials/day2/02-git/)
+- Inspiration for this section : [here](https://happygitwithr.com/install-git.html).
+- Official `git` documentation : [here](https://git-scm.com/doc).
+- Software carpentry `git` introduction : [here](https://kb.nikhef.nl/computing-course/git-novice/instructor/01-basics.html)
 
 # What is Version Control, Git and why should I use it?
 
@@ -18,7 +17,7 @@ If you work alone, `git` is great to track changes and recover previous versions
 
 ## Version control system (VCS)
 
-![](https://reproducibility.rocks/materials/day2/02-git/images/file_cycle2.png)
+![](https://miro.medium.com/v2/resize:fit:1024/1*CdB0w3Danvg1lEbJtqqFzw.png)
 
 Let’s imagine that we have a repository already working. When you create a new file as part of the repository (or repo), that file is untracked or unversioned. This means that git will ignore the file and any change you make to it until you add it to the repo. At that point the file is staged and is ready to get into the repository. To do that you do a commit and save that version of the file to the repo.
 

@@ -22,7 +22,7 @@ If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is simil
 
 - `.yaml` files which contain the instructions: they have to be located in a `.github/worflows` repository.
 
-![](figures/yaml_loc.png){height=30%}
+![](figures/yaml_loc.png){height=20%}
 
 - Code structure
 
@@ -36,25 +36,25 @@ The *trigger* bloc gives the instructions for when the action will be launched. 
 
 1. In the 'Actions' tab, on the left panel you can select *one* of your workflows to display its *successive runs*:
 
-![](figures/gha_outputs1.png){height=30%}
+![](figures/gha_outputs1.png){height=20%}
 
 You can see the commits where the workflow has been run, branch, date, duration (among various information). Obviously a green check means that the workflow has entirely run without failure, whereas a red cross indicates that it has failed.
 
 2. From there, select the run you're interested in (let's say the most recent, here 'Merge pull request #52 - test-coverage.yaml #24'):
 
-![](figures/gha_outputs2.png){height=30%}
+![](figures/gha_outputs2.png){height=20%}
 
 A summary of the action is displayed. If there are any warnings for instance, you'll see those in the Annotations panel at the bottom. To display the workflow log let's click on the workflow name in the central panel or in the 'Jobs' section (left panel).
 
 3. Workflow logs:
 
-![](figures/gha_outputs3.png){height=20%}
+![](figures/gha_outputs3.png){height=15%}
 
 Each step outputs can be drop-downed.
 
 4. Let's select the fifth step 'Test coverage':
 
-![](figures/gha_outputs4.png){height=20%}
+![](figures/gha_outputs4.png){height=15%}
 
 Here are your logs !
 
