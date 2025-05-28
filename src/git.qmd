@@ -364,13 +364,12 @@ If you or your collaborators want to develop a new feature, or test some modific
 
 - `git status`: this commands provide the status of your repository. You will find information about the current branch, its synchronization status, and the status of your files. It also suggests actions you may take, e.g. if there is file that has been modified, but not staged yet `git status` will suggest to stage it by using `git add <your-file>`.
 - `git add`: this command is used to start tracking a file by adding it to the staging area. 
-- `git diff`:
-- `git commit`: 
-- `git checkout`: 
-- `git branch`: 
-- `git merge`: 
-- `git push`: 
-- `git pull`: 
+- `git diff`: shows the exact changes you have made to your files before committing.
+- `git commit`: this command commits your changes. It will open a text editor for you to write your commit message. You can also directly provide your commit message with the -m flag: `git commit -m "Your commit message here"`.
+- `git checkout a_selected_commit`: switches you on the selected commit (also works with branches and tags).
+- `git branch`: makes a new branch.
+- `git push`: sends your commits from your local copy on the remote repository.
+- `git pull`: sends back the commits from the remote repository to your local copy.
 
 # FAQ
 
