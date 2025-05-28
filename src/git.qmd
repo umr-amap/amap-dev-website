@@ -357,7 +357,17 @@ If you or your collaborators want to develop a new feature, or test some modific
 
 ### Merge branches
 
+When you are satisfied with the development you made on a new branch (that has diverged from the main branch), you may want to incorporate this code in the main branch. For that, you use the `git merge new_branch` when being on the main branch.
 
+### Resolve merge conflicts
+
+Conflicts occur in several situations: for example when two collaborators make changes to a file and push the file to their repo (in that case git itself tries to merge both files), or when you merge a branch into another with a file that has been modified on both branches after the branches have diverged. If the two files have conflicting content on the same line, git will produce a merge conflict. Merge conflicts need to be resolved manually, as they require a human intervention.
+
+When you open the conflicted file you will find conflict markers that git introduces to mark the beginning and end of the code lines that are in conflict, and a conflict divider that separates the two versions of the code that has been writen. Below is an example of a conflict in a text file with two different lines: the purple one that you wrote, and the orange one that is written on the remote repository.
+
+![](../figures/merge_conflict.png)
+
+To resolve the merge conflict, you need first to open the file in your text editor and search for the conflict markers. When you know which version you want to keep (or if you need a mix of both versions), you delete all the conflict markers (<<<<<<<, =======, and >>>>>>>) and make the changes you want in the final merge. Then you can follow the usual tracking workflow, by adding then committing the changes you made to solve the conflict.
 
 
 ## Git basic commands - recap
