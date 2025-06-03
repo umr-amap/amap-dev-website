@@ -108,3 +108,4 @@ Here is some useful expectations (and shortcuts) to start with:
 
 ## See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you !
 
+# Python users
