@@ -96,7 +96,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dde8d7229bfee0f8bb5efd37f0f9ae1e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-905433ffa22618bb005779f2b23c5ce0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -256,9 +256,14 @@ good programming practices</span>
   </ul></li>
   <li><a href="#git-basics" id="toc-git-basics" class="nav-link" data-scroll-target="#git-basics">Git basics</a>
   <ul class="collapse">
-  <li><a href="#git-basic-commands" id="toc-git-basic-commands" class="nav-link" data-scroll-target="#git-basic-commands">Git basic commands</a></li>
   <li><a href="#git-workflow" id="toc-git-workflow" class="nav-link" data-scroll-target="#git-workflow">Git workflow</a></li>
-  <li><a href="#merge-conflicts" id="toc-merge-conflicts" class="nav-link" data-scroll-target="#merge-conflicts">Merge conflicts</a></li>
+  <li><a href="#branches" id="toc-branches" class="nav-link" data-scroll-target="#branches">Branches</a>
+  <ul class="collapse">
+  <li><a href="#starting-a-new-branch" id="toc-starting-a-new-branch" class="nav-link" data-scroll-target="#starting-a-new-branch">Starting a new branch</a></li>
+  <li><a href="#merge-branches" id="toc-merge-branches" class="nav-link" data-scroll-target="#merge-branches">Merge branches</a></li>
+  <li><a href="#resolve-merge-conflicts" id="toc-resolve-merge-conflicts" class="nav-link" data-scroll-target="#resolve-merge-conflicts">Resolve merge conflicts</a></li>
+  </ul></li>
+  <li><a href="#git-basic-commands---recap" id="toc-git-basic-commands---recap" class="nav-link" data-scroll-target="#git-basic-commands---recap">Git basic commands - recap</a></li>
   </ul></li>
   <li><a href="#faq" id="toc-faq" class="nav-link" data-scroll-target="#faq">FAQ</a>
   <ul class="collapse">
@@ -541,33 +546,49 @@ git config --global --list</code></pre>
 <section id="local-first" class="level2">
 <h2 class="anchored" data-anchor-id="local-first">Local first</h2>
 <ul>
-<li><code>git init</code></li>
-<li><code>.git</code> folder</li>
-<li><code>.gitignore</code> file</li>
+<li><code>git init</code>: this commands initiates the overall Git tracking of the repository where you are running the command, by creating a <code>.git</code> folder. It also releases the first initial commit and creates a <code>.gitignore</code> file.</li>
+<li><code>.git</code> folder: the folder that contains information Git needs to function.</li>
+<li><code>.gitignore</code> file: a file where you list the patterns of files or directories you want to ignore, i.e.&nbsp;you do not need or want to track.</li>
 </ul>
 </section>
 </section>
 <section id="git-basics" class="level1">
 <h1>Git basics</h1>
-<section id="git-basic-commands" class="level2">
-<h2 class="anchored" data-anchor-id="git-basic-commands">Git basic commands</h2>
-<ul>
-<li><code>git status</code></li>
-<li><code>git add</code></li>
-<li>…</li>
-<li>liens vers formations + documentation</li>
-</ul>
-</section>
+<p>In this section we list the basic commands and actions you need to use Git. It can also be used as a reminder for those commands. Do not hesitate to check the <a href="../src/resources.html">resources page</a> for more in-depth info !</p>
 <section id="git-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="git-workflow">Git workflow</h2>
-<ul>
-<li>Working directory, staging area, repository</li>
-<li>branches</li>
-<li><code>push</code> and <code>pull</code></li>
-</ul>
+<p>Once you are in the repository you are following, i.e.&nbsp;your working directory, to actually track changes you need to (1) add the file(s) you have changed to the staging area so that they will be tracked (command <code>add</code>), (2) commit your changes (command <code>commit</code>) and write a commit message, (3) push your changes on the remote repository so that they are accessible to your colleagues (command <code>push</code>). If other people are contributing to your work, before starting making changes you will need to repatriate their changes to your local repository by pulling the modifications (command <code>pull</code>).</p>
 </section>
-<section id="merge-conflicts" class="level2">
-<h2 class="anchored" data-anchor-id="merge-conflicts">Merge conflicts</h2>
+<section id="branches" class="level2">
+<h2 class="anchored" data-anchor-id="branches">Branches</h2>
+<section id="starting-a-new-branch" class="level3">
+<h3 class="anchored" data-anchor-id="starting-a-new-branch">Starting a new branch</h3>
+<p>If you or your collaborators want to develop a new feature, or test some modifications of the code, you can do it in a branch. When initializing the code is on the “main” branch. You can make a new branch (command <code>branch</code>) which diverges from the commit you select (command <code>checkout</code>) as the starting point of the branch.</p>
+</section>
+<section id="merge-branches" class="level3">
+<h3 class="anchored" data-anchor-id="merge-branches">Merge branches</h3>
+<p>When you are satisfied with the development you made on a new branch (that has diverged from the main branch), you may want to incorporate this code in the main branch. For that, you use the <code>git merge new_branch</code> when being on the main branch.</p>
+</section>
+<section id="resolve-merge-conflicts" class="level3">
+<h3 class="anchored" data-anchor-id="resolve-merge-conflicts">Resolve merge conflicts</h3>
+<p>Conflicts occur in several situations: for example when two collaborators make changes to a file and push the file to their repo (in that case git itself tries to merge both files), or when you merge a branch into another with a file that has been modified on both branches after the branches have diverged. If the two files have conflicting content on the same line, git will produce a merge conflict. Merge conflicts need to be resolved manually, as they require a human intervention.</p>
+<p>When you open the conflicted file you will find conflict markers that git introduces to mark the beginning and end of the code lines that are in conflict, and a conflict divider that separates the two versions of the code that has been writen. Below is an example of a conflict in a text file with two different lines: the purple one that you wrote, and the orange one that is written on the remote repository.</p>
+<p><img src="../figures/merge_conflict.png" class="img-fluid"></p>
+<p>To resolve the merge conflict, you need first to open the file in your text editor and search for the conflict markers. When you know which version you want to keep (or if you need a mix of both versions), you delete all the conflict markers (&lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt;) and make the changes you want in the final merge. Then you can follow the usual tracking workflow, by adding then committing the changes you made to solve the conflict.</p>
+</section>
+</section>
+<section id="git-basic-commands---recap" class="level2">
+<h2 class="anchored" data-anchor-id="git-basic-commands---recap">Git basic commands - recap</h2>
+<ul>
+<li><code>git status</code>: this commands provide the status of your repository. You will find information about the current branch, its synchronization status, and the status of your files. It also suggests actions you may take, e.g.&nbsp;if there is file that has been modified, but not staged yet <code>git status</code> will suggest to stage it by using <code>git add &lt;your-file&gt;</code>.</li>
+<li><code>git add</code>: this command is used to start tracking a file by adding it to the staging area.</li>
+<li><code>git diff</code>: shows the exact changes you have made to your files before committing.</li>
+<li><code>git commit</code>: this command commits your changes. It will open a text editor for you to write your commit message. You can also directly provide your commit message with the -m flag: <code>git commit -m "Your commit message here"</code>.</li>
+<li><code>git checkout a_selected_commit</code>: switches you on the selected commit (also works with branches and tags).</li>
+<li><code>git branch</code>: makes a new branch.</li>
+<li><code>git push</code>: sends your commits from your local copy on the remote repository.</li>
+<li><code>git pull</code>: sends back the commits from the remote repository to your local copy.</li>
+</ul>
 </section>
 </section>
 <section id="faq" class="level1">
