@@ -236,6 +236,8 @@ You can use a personal access token in place of a password when authenticating t
 - Go to [this page](https://github.com/settings/tokens) and click “Generate token”.
 - From R: `usethis::create_github_token()`
 
+Then, to use this token and cache it so that `git` can use it every time you interact with your remote repository, you can use `Git Credential Manager` (GCM) or `GitHub CLI` : cf. [GitHub documentation](https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git).
+
 ## Git client
 
 There are many integrations and graphical interfaces for `git` in IDEs. We here present only the most common ones, but feel free to explore others and complete this section.
