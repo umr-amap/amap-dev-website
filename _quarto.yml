@@ -36,7 +36,12 @@ website:
       - src/ci_cd.qmd
       - src/testing.qmd
       - src/hpc.qmd
-      - src/amap.qmd
+      - text: AMAP
+        menu:
+          - text: "Conda"
+            href: src/amap/conda.qmd
+          - text: "Don't use proprietary software"
+            href: src/amap/software.qmd
       - src/resources.qmd
   margin-footer: |
       ![](/figures/logo_amap3.jpg){width=40%}

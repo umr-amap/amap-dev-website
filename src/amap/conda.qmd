@@ -1,5 +1,5 @@
 ---
-title: "Scientific computing at AMAP"
+title: "Bypassing conda use limitations"
 ---
 
 
