@@ -105,7 +105,7 @@ Getting an account to `Meso@LR` is usualy quite fast (~1 day). You only need to 
 
 You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) and the HPC team at AMAP (currently the contact person being [T. Arsouze](mailto:thomas.arsouze@cirad.fr)) with the following requirements:
 
-- explain who you are (student or post-doc or ... ? supervisor ? one sentence about your research)
+- in the ["demande de ressources de calcul"](https://meso-lr.umontpellier.fr/wp-content/uploads/2021/03/1-Meso_dde_Calcul_nomprojets.doc), fill only the first part up to the description of your research project. Leave the remainder empty.
 - request to be attached to the group `d_cirad_amap` (this is the group of AMAP members)
 - fill the `charte informatique` available [here](https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf)
 
