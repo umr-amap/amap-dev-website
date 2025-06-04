@@ -78,21 +78,21 @@ Expectations share the same structure:
 
 - two main arguments: the first is the actual result of your function (returned by `my_function(args)`), and the second is what you expect,
 
-- when the actual and expected results (e.g., the main arguments) do not agree testthat throws an error.
+- when the actual and expected results (e.g., the main arguments) do not agree `testthat` throws an error.
 
 You can write several expectations `expect_` in one `test_that()` test, as long as they test the same property of your function. You can write several tests, testing different properties, in your `test-my_function.R` file.
 
 Here is some useful expectations (and shortcuts) to start with:
 
-- expect_equal()
+- `expect_equal()`
 
-- expect_type()
+- `expect_type()`
 
-- expect_length()
+- `expect_length()`
 
-- expect_true() and expect_false()
+- `expect_true()` and `expect_false()`
 
-- expect_error(), expect_warning() and expect_message()
+- `expect_error()`, `expect_warning()` and `expect_message()`
 
 ## Some insights on when and what to test
 
@@ -108,3 +108,4 @@ Here is some useful expectations (and shortcuts) to start with:
 
 ## See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you !
 
+# Python users
