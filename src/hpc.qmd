@@ -101,6 +101,7 @@ Technical specificities include:
 - `SLURM` workload manager
 
 #### How to open an account
+
 Getting an account to `Meso@LR` is usualy quite fast (~1 day). You only need to be part of AMAP and have an email adress from CIRAD.
 
 You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) and the HPC team at AMAP (currently the contact person being [T. Arsouze](mailto:thomas.arsouze@cirad.fr)) with the following requirements:
@@ -110,6 +111,7 @@ You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) a
 - fill the `charte informatique` available [here](https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf)
 
 ### GENCI
+
 If you need larges resources (i.e. multi-GPU workflow, or > ~1000 CPUs working in parallel), this is probably your best option.
 
 [GENCI](https://www.genci.fr/) is the French national HPC agency. It provides access to [several HPC resources in France](https://www.genci.fr/services/moyens-de-calcul):
@@ -121,6 +123,7 @@ If you need larges resources (i.e. multi-GPU workflow, or > ~1000 CPUs working i
 Access and computing resources are free for academic.
 
 #### Description of the clusters
+
 `Adastra` cluster at CINES is the most recent cluster available to GENCI users. It provides the best option for GPU computing, although it is powered by `AMD` processors (EPYC Trento). APUs AMD MI300A are also available.
 
 `Jean-Zay` cluster at IDRIS has recently been updated (09/2024) to the most powerfull `NVIDIA` GPUs available on the market (H100)
