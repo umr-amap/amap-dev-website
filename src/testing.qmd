@@ -1,9 +1,12 @@
 ---
 title: "Testing"
 ---
-# R users
 
-## Why do you need tests ?
+You have created scripts and notebooks and now your code is a bit messy... Also, when you modify a function in one place, it unexpectedly breaks in another. You want to refactor it, but you are afraid of introducing new bugs.
+
+This is when you start thinking about testing.
+
+# Why do you need tests ?
 
 Basically, to be sure that your code does what you want it to do. The idea is to automate your tests, rather than perform them manually by executing some parts of the code in the console, and checking that the outputs match your expectations.
 
@@ -17,7 +20,14 @@ Automated testing requires more work, but the benefits are the following:
 
 - robust code.
 
-Let's use `testthat` `R` package.
+Multiple level of tests can (must) be implemented:
+- **unit tests**: test individual functions or methods in isolation, ensuring that each part of the code works as expected. This is the most common type of test.
+- **integration tests**: test how different parts of the code work together, ensuring that the interactions between components are functioning correctly.
+- **functional tests**: test the overall functionality of the application, ensuring that it meets the requirements and behaves as expected from a user's perspective.
+
+# R users
+
+Let's use `testthat` `R` package to write and run tests for your `R` package.
 
 ## Initial setup
 
@@ -68,7 +78,7 @@ First `devtools::load_all()` to load your functions AND their corresponding test
 
 When you run one or several tests, you get a failure report including a description of the test, the failure location (file & code line), and the reason for the failure. You can then start debugging (your function or your test).
 
-## Write test
+## Write tests
 
 Expectations `expect_` makes the binary assertion about whether or not an object (here, the value returned by a call of your `my_function()`) has the properties you expect.
 
@@ -94,6 +104,107 @@ Here is some useful expectations (and shortcuts) to start with:
 
 - expect_error(), expect_warning() and expect_message()
 
+# Python users
+
+In this section, we will use [`pytest`](https://docs.pytest.org/en/stable/), which is the main testing framework for Python.
+
+## Initial setup
+
+`pytest` can be install via `pypi` or `conda`:
+
+```bash
+pip (/ uv) install pytest
+# or
+conda (/ mamba) install pytest
+```
+
+Then, you can create a `test/` directory at the root of your project (cf. [dedicated section](./starting_project.qmd#the-files-you-need-from-the-very-beginning)).
+
+## Create a test
+
+You now want to create a test for a function in `src/` repo named `my_function.py`. The corresponding test must lie in `test/` repo and its name must start with `test`, here: `test_my_function.py`.
+
+```bash
+mypackage
+├── README.md
+├── ...
+├── pyproject.toml
+├── src
+│   ├── __init__.py
+│   └── my_function.py
+└── tests
+    └── test_my_function.py
+```
+
+Then, you can write tests in `test_my_function.py` file associated with function writtent in `my_function.py`. Here is an example :
+
+```python
+import pytest
+from my_package.my_function import my_function
+
+def test_my_function_1():
+    assert my_function(2, 3) == 5
+def test_my_function_2():
+    assert my_function(-1, 1) == 0
+def test_my_function_3():
+    assert my_function(0, 0) == pytest.approx(0)
+```
+
+Note that for comparing floating point numbers, you can use `pytest.approx()` to avoid issues with floating point precision.
+Also, consider keeping only one test per function property, as pytest will only report the first test.
+
+## Run tests
+
+To run your tests, it is as simple as :
+```bash
+pytest
+```
+
+as `pytest` will automatically process your layout and find all the tests in the `test/` directory.
+
+If you want to run a specific test file, or even a specific test, you can do so with:
+```bash
+pytest tests/test_my_function.py
+pytest tests/test_my_function.py::test_my_function_1
+```
+
+Some other useful options are:
+- `-v` Verbose output. Can be given twice.
+- `-k` Run tests that match the given expression.
+- `-x` Exit instantly on first error or failed test.
+
+## Write tests
+
+### Exceptions
+
+You can write tests about expected failures / exceptions:
+
+```python
+def test_my_function_raises_error():
+    with pytest.raises(ValueError):
+        my_function("a", "b")
+def test_my_function_raises_warning():
+    with pytest.warns(UserWarning):
+        my_function(1, 2, warn=True)
+```
+
+### Fixtures
+
+Fixtures are a way to provide a fixed baseline upon which tests can reliably and repeatedly execute. They allow you to set up some context or state (dataset, parameters, etc...) before running your tests, and can be reused across multiple tests.
+
+```python
+import pytest
+
+@pytest.fixture
+def sample_data():
+    return [1, 2, 3]
+
+def test_my_function_with_fixture(sample_data):
+    assert my_function(sample_data) == 6
+```
+
+# Take away messages
+
 ## Some insights on when and what to test
 
 - focus on testing the tricky parts of your code
@@ -106,5 +217,10 @@ Here is some useful expectations (and shortcuts) to start with:
 
 - test coverage with covr package: determines which lines of your code are executed when the test suite is run, rendering you a percentage of code that is covered by your tests (the higher the better).
 
-## See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you !
+## Run your tests automatically
+
+See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you ! Every time you push a commit (or any other action, depending on your configuration), GitHub will run your tests and report the results.
+
+
+
 
