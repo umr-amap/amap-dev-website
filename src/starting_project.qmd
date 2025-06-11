@@ -7,7 +7,7 @@ Whether you are writing a full new package or just collecting a bunch of scripts
 Below, you will find some recommendations and things to know before starting your project with a focus on R and Python projects (contributions to other languages are more than welcome !).
 
 # R users
-We recommand using Rstudio when starting a R project. It is the most widely used integrated development environment (IDE) by R users and developers.
+We recommend using Rstudio when starting a R project. It is the most widely used integrated development environment (IDE) by R users and developers.
 
 ## Work within a Rstudio project
 
