@@ -2,8 +2,12 @@
 title: "Starting a new project"
 ---
 
+Whether you are writing a full new package or just collecting a bunch of scripts, it is important to start your project with a good organization. This will help you to keep your code clean and readable, and will also help you to share your code with others.
+
+Below, you will find some recommendations and things to know before starting your project with a focus on R and Python projects (contributions to other languages are more than welcome !).
+
 # R users
-We recommand using Rstudio when starting a R project. It is the most widely used integrated development environment (IDE) by R users and developers.
+We recommend using Rstudio when starting a R project. It is the most widely used integrated development environment (IDE) by R users and developers.
 
 ## Work within a Rstudio project
 
@@ -95,3 +99,79 @@ To edit the DESCRIPTION file, check at the [documentation section](documentation
   - `usethis::use_test("my_function")` : creates a new test script `tests/testthat/test-my_function.R`
   - `devtools::test()` : to run the tests.
 
+
+# Python users
+
+When coding in Python, you will have to make several choices regarding the tools you will use for your setup such as your [IDE](#ide) or [package manager](#package-manager).
+
+## IDE
+
+We recommend using `VSCode` when starting a Python project. It is the most widely used integrated development environment (IDE) by Python users and developers. It comes with a lot of extensions that can be installed, such as:
+- `Python` / `ms-python.python` : the official extension for Python development. Base extension for other extensions. Allows the choose your Python interpreter, use the debugger, etc...
+- `Pylance` / `ms-python.vscode-pylance` : a fast and feature-rich language server for Python (code completion, parameters suggestion, code navigation, etc...)
+- `MyPy` / `ms-python.mypy-type-checker` : a type checker for Python. It checks your code for type errors and suggests fixes.
+- `Pylint` / `ms-python.pylint` : a linter for Python. It checks your code for style errors and suggests fixes.
+- `Ruff` / `charliermarsh.ruff` : an extremely fast Python linter and code formatter. Can be used to replace Flake8 (plus dozens of plugins), Black, isort, pyupgrade, and more
+- `Jupyter` / `ms-toolsai.jupyter` : the official extension for Jupyter notebooks. Basic notebook support for language kernels that are supported in Jupyter Notebooks, and allows any Python environment to be used as a Jupyter kernel.
+- `Copilot` / `github.copilot` : AI peer programming tool. Free but account needed.
+- `Gitlens` / `eamodio.gitlens` : Git supercharged. It helps you with push, pull, multiple branches, commit history, and more.
+
+## Package manager
+
+You have multiple options in Python for [building your package](https://packaging.python.org/en/latest/tutorials/packaging-projects/), [isolate your environment](https://www.w3schools.com/python/python_virtualenv.asp), and [manage your dependencies](https://packaging.python.org/en/latest/tutorials/managing-dependencies/). Some are "all-in-one" solutions, while others are more modular. Here are some of the most popular ones:
+- [`pip`](https://packaging.python.org/en/latest/guides/tool-recommendations/#installing-packages) : the default package manager for Python. It is used to install and manage packages from the Python Package Index (PyPI). It is a good choice if you are working on a small project or if you are using a virtual environment.
+- [`uv`](https://docs.astral.sh/uv/) : a new package manager that does everything `pip` does, but faster and with a better user experience. Probably your new by default choice. Also supports pre-defined [tasks](https://docs.astral.sh/uv/#scripts), [projects](https://docs.astral.sh/uv/#projects)
+- [`poetry`](https://python-poetry.org/) : a dependency manager for Python. It is used to manage dependencies, build packages, and publish packages to PyPI. One of the most recent and popular "all-in-one" solution. Good documentation and easy to use.
+- [`conda / mamba`](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#term-Miniforge) : package managers that are popular in the data science community. They allow you to create isolated environments and manage dependencies easily. Can also be used to install non-Python dependencies (compilers, R-packages, Julia-packages, ...). Prefer the `miniforge` version, cf. [dedicated section](./amap.qmd#using-conda-at-amap).
+- [`pixi`](https://pixi.sh/) : a new package manager that is gaining popularity. Fast and easy to use, on top of the conda ecosystem. Very fast, and in many ways similar to `uv`, but with the advantage of being able to use all the conda packages.
+- other options like `pipenv`, `virtualenv`, `venv`, `pyenv`, [hatch](https://hatch.pypa.io/latest), [`flit`](https://flit.pypa.io/en/stable/) also exist for environment management, but are less popular in the scientific academic community.
+
+
+## Start version control with git
+
+[How to use git](git.qmd)
+
+## The files you need from the very beginning
+
+Whether you are writing a full package or just a collection of scripts, it is important to start your project with a good organization. This will help you to keep your code clean and readable, easy to be shared and maintained, and adaptable to future changes.
+
+Your basic structure should look like this:
+
+```bash
+pkg_name
+├── CHANGELOG.md               ┐
+├── README.md                  │
+├── LICENSE                    │Package metadata and build configuration
+├── pyproject.toml             ┘
+├── doc                        ┐
+│   └── index.md               │
+│   └── ...                    │  Package documentation
+│   └── examples               │
+│   └──── notebook1.ipynb      │
+│   └──── ...                  ┘
+├── src                        ┐
+│   └── pkg_name               │
+│       ├── __init__.py        │ Package source code
+│       ├── moduleA.py         │
+│       └── moduleB.py         ┘
+└── test                       ┐
+   └── ...                     ┘ Package tests
+```
+
+- `CHANGELOG.md` : a file that contains the history of changes made to the package. It is useful to keep track of the changes made to the package and to communicate them to the users.
+- `README.md` : a file that contains the short description of the package, how to install it, how to use it, and how to contribute to it. It is useful to communicate with the users and to provide them with the necessary information to use the package. It should also contain badges to indicate the package status (build, tests, coverage, etc.).
+- `LICENSE` : a file that contains the license under which the package is distributed. Maybe the first file to add to your project. You can choose a license from <https://choosealicense.com>
+- `pyproject.toml` : a file that contains the package metadata (name, version, author, description, etc.) and the build configuration (dependencies, build system, etc.). It is the main file for building and installing the package. To help you starting with this file, your [package / project manager](#package-manager) will help you to generate it. For example, with `poetry` / `pixi` / `flit` / `uv` / `hatch`, you can run `poetry / pixi / flit / uv / hatch init` to create the file and fill it with the necessary information. Otherwise, lots of information can be found in the _e.g._ [here](https://learn.scientific-python.org/development/guides/packaging-simple/)
+- `doc/` : a directory that contains the package documentation, cf. [dedicated section](documentation.qmd/#python-users).
+- `src/` : a directory that contains your scripts / code / modules. It is a good practice to put your code in a `src/` directory so that Python automatically recognizes it as a package (meaning you can then do an `from pkg_name.moduleA import functionA`), pending you add an `__init__.py` file in it. This file can be empty, but it is necessary to indicate that the directory is a package.
+- `test/` : a directory that contains the package tests, cf. [dedicated section](testing.qmd#python-users).
+
+## Use your package
+
+To use your package and all the nice scripts and functions you have written, you need to install it. You can do this by running the following command in the root of your project:
+
+```bash
+pip install -e .
+```
+
+`pip` will install the package. It will look for the `pyproject.toml` file in the current directory (`.`) and install the package in editable mode (`-e`), meaning that any changes you make to the source code will be reflected in the installed package without needing to reinstall it. Make sure to properly define your package dependencies in the `pyproject.toml` file, so that they are installed automatically when you install your package.
