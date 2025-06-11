@@ -106,7 +106,7 @@ When coding in Python, you will have to make several choices regarding the tools
 
 ## IDE
 
-We recommand using `VSCode` when starting a Python project. It is the most widely used integrated development environment (IDE) by Python users and developers. It comes with a lot of extensions that can be installed, such as:
+We recommend using `VSCode` when starting a Python project. It is the most widely used integrated development environment (IDE) by Python users and developers. It comes with a lot of extensions that can be installed, such as:
 - `Python` / `ms-python.python` : the official extension for Python development. Base extension for other extensions. Allows the choose your Python interpreter, use the debugger, etc...
 - `Pylance` / `ms-python.vscode-pylance` : a fast and feature-rich language server for Python (code completion, parameters suggestion, code navigation, etc...)
 - `MyPy` / `ms-python.mypy-type-checker` : a type checker for Python. It checks your code for type errors and suggests fixes.
