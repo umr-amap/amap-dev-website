@@ -1,0 +1,59 @@
+---
+title: "Good practices for software use at AMAP"
+format: html
+---
+
+# Institutional softwares
+
+## File transfer
+
+https://filesender.renater.fr/
+
+## Pool creation
+
+https://evento.renater.fr/
+
+## File sharing, storage & backup
+
+Work AMAP
+
+Drive IRD - NextCloud based : https://drive.ird.fr/apps/files/files
+Drive CNRS - NextCloud based : https://ods.cnrs.fr/sdrive.php
+Also include collaborative editing via onlyoffice.
+
+## Visioconference
+
+Cirad : Teams
+IRD : Zoom
+
+## Chat
+
+Cirad : Teams
+IRD : https://tchat.ird.fr/home
+
+## Forges
+
+Cirad : https://gitlab.cirad.fr/cirad
+IRD : https://forge.ird.fr/explore
+INRAE : https://forge.inrae.fr/explore/projects/starred
+
+# Alternatives, FOSS if possible
+
+## Forges
+
+Github : AMAP group - https://github.com/umr-amap
+Gitlab (FOSS) : https://about.gitlab.com
+
+## Chat
+
+Slack
+FOSS alternative : Discord - https://discord.com/ , Zulip - https://zulip.com/
+
+## LateX collaborative editing
+
+Overleaf
+FOSS alternative : PLM Latex - https://plmlatex.math.cnrs.fr/login
+
+## Markdown collaborative editing
+
+Hedgedoc (FOSS) : https://hedgedoc.org/
