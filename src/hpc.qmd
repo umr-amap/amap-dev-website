@@ -332,7 +332,8 @@ Then you can create and access your environments:
 conda create -n my_env python=3.11
 # activate the environment and install packages
 conda activate my_env
-conda install numpy pandas ...
+conda install mamba ## recommended
+mamba install numpy pandas ...
 # deactivate the environment
 conda deactivate
 ```
