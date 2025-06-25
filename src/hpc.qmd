@@ -446,7 +446,15 @@ This means you are asking for 1 GPU of type `a100` for 30 minutes, on `agap_gpu`
 Once you are connected to the GPU node, you must check the version of the `nvidia` driver with the command `nvidia-smi`. You can then exit the GPU node with `exit`.
 
 ### Install you environment
-Install `pytorch` (or `tensorflow` or any other package that requires GPU) in a dedicated environment which is compatible with the `nvidia` driver version seens in #interactive-gpu section. Install also additional dependencies needed.
+Install `pytorch` (or `tensorflow` or any other package that requires GPU) in a dedicated environment which is compatible with the `nvidia` driver version seens in #interactive-gpu section. Install also additional dependencies needed. Here is a workflow example :
+
+```bash
+conda activate my_env ## the environement created before
+ssh gpu02 ## the node with the GPU we will be working on
+## (if you have mamba installed)
+mamba install torch torchvision ## this way, torch recognises the good version for the GPU on the node
+exit
+```
 
 ### Submit a job on GPU node
 You can now submit a job on a GPU node. Here is an example of a script that you can use to submit a job on a GPU node:
@@ -466,10 +474,16 @@ module () {
     eval `/usr/bin/modulecmd bash $*`
 }
 
-module purge
-module load ... # load the software you need
+## needed for conda to be initialized
+. /home/user/.bashrc       
 
-cd /lustre/my_account/prg/
-./runThroughConfig_SSL_HP.sh
+conda activate my_env
+
+## cd /where/your/script/is/
+
+## Or python myscript.py
+python -c "
+import torch
+print(torch.cuda.is_available())"
 ```
 
