@@ -24,6 +24,5 @@ or use the dedicated shortcuts of the IDE.
 and to publish the website once it has been rendered (only from CIRAD and with your machine registered via ssh keys):
 
 ```bash
-rsync -avzr --delete -e ssh --chown=www-data:www-data ./_site/
-amap@palais.cirad.fr:/var/www/sites/polis/dev
+rsync -avzr --delete -e ssh --chown=www-data:www-data ./_site/ amap@palais.cirad.fr:/var/www/sites/polis/dev
 ```
