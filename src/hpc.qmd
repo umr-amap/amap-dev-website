@@ -475,7 +475,7 @@ module () {
 }
 
 ## needed for conda to be initialized
-. /home/user/.bashrc       
+. /home/user/.bashrc
 
 conda activate my_env
 
