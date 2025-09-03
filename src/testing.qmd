@@ -220,8 +220,3 @@ def test_my_function_with_fixture(sample_data):
 ## Run your tests automatically
 
 See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you ! Every time you push a commit (or any other action, depending on your configuration), GitHub will run your tests and report the results.
-
-
-
-
-# Python users
