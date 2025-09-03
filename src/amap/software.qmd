@@ -2,8 +2,80 @@
 title: "Free and open-source software"
 ---
 
+Proprietary softwares are still used at AMAP in particular, and academic research more generaly, despite the growing awareness of the benefits of open-source alternatives.
+
+While historical reasons may explain the reliance on proprietary tools, the landscape is changing. Researchers are increasingly recognizing the importance of open-source solutions as reliable and sustainable options for their work.
+
 ## Proprietary software: why not use them ?
 
-## What your institution says
+In academic research, the use of proprietary software can present several limitations:
+
+- **Lack of transparency**: Proprietary software does not allow you to inspect or modify the source code, which can hinder reproducibility and scientific integrity.
+- **Licensing costs and restrictions**: Licenses are often expensive and may limit the number of users or installations, which is problematic for collaborative and open research.
+- **Sustainability and long-term access**: If a company discontinues a product or changes its licensing model, you may lose access to your tools or data formats.
+- **Limited interoperability**: Proprietary formats can make it difficult to share data and methods with the broader scientific community.
+
+For these reasons, our institution strongly encourages the use and development of Free and Open Source Software (FOSS). FOSS promotes:
+
+- **Transparency and reproducibility**: Anyone can inspect, modify, and share the code, which is essential for robust science.
+- **Community-driven innovation**: Open-source projects benefit from contributions and peer review from researchers worldwide.
+- **Cost-effectiveness**: FOSS is generally free to use, adapt, and distribute, reducing barriers for research teams.
+- **Long-term sustainability**: Open standards and open code ensure that your research remains accessible and usable in the future.
+
+By choosing FOSS, you contribute to a more open, collaborative, and sustainable scientific ecosystem, in line with the values and policies of academic institutions.
 
 ## Always-evolving list of proprietary software used and their alternatives
+
+Here we intend to list proprietary software commonly used at AMAP and try to identify open-source alternatives that can be used in their place.
+
+As for all the content of this website, any suggestion is welcome to keep this list up to date.
+
+### Text editor
+
+#### Online Latex editors
+
+___Proprietary software___
+
+[`Overleaf`](https://www.overleaf.com/) is an online collaborative LaTeX editor. It is widely used for writing and editing scientific documents. While
+
+Free plan is available with limited features: only one collaborator, no git / github / Dropbox / Zotero integration, no document history, no track change, etc... Paid plans are much more in adequation with real case acedemic uses, but quite expensive.
+
+___Open source alternatives___
+
+[`plmlatex`](https://plmlatex.math.cnrs.fr/) . Based on the open-source version of Overleaf, hosted by `CNRS`. It is limited in the features it can offer compared to Overleaf's paid plan : no git / github integration and no track change, but multiple collaborators and version history are available. In summary, it is still not perfect, but a better option than `Overleaf`  free plan.
+
+#### Online text editors
+
+___Proprietary software___
+
+While [`Google Docs`](https://www.google.com/docs/about/) is a popular online word processor, as being efficient and free of access, it is not open-source and may raise concerns regarding data privacy.
+
+___Open source alternatives___
+
+[`Fidus Writer`](https://www.fiduswriter.org/) . Open Source online editor developed for academia research, funded by european programs. Provides real-time collaboration, equations edition, multiple format exports (including latex), citations, offline edition, multiple plugins. Not tested at AMAP yet (as far as we know).
+
+#### Local text editors
+
+___Proprietary software___
+
+Even if Microsoft Word is widely used in our community, it is a proprietary software that requires a paid license, using a closed-source model, with vendor lock-in.
+
+___Open source alternatives___
+
+[`LibreOffice Writer`](https://www.libreoffice.org/) . A powerful and free office suite, a successor to OpenOffice, with a large community of users and developers. It offers a word processor, spreadsheet, presentation software, and more. It is compatible with Microsoft Word formats (compatibility has increased a lot in recent years) and provides many advanced features, similar to Microsoft Word.
+
+#### More general Open source alternatives
+
+Even though this might require some technical skills at first, local editors in addition to `git` for version control can be an excellent option. Actualy, even if this workflow is adequate for `latex` edition, it can also be an excellent solution for writing documents in `markdown` (meaning a much more simple syntax, but still with a high degree of customization and using existing templates for most academic journals, *e.g.* using [Quarto](https://quarto.org/)). This includes all per-default git version control and collaboration features. This comes with a drawback of some technical skills needed (mostly due to `git` usage).
+
+Come and discuss with POLIS team to help you check if this can be the right solution for you.
+
+## Geographic Information System (GIS)
+
+#### Proprietary software
+
+[`ArcGIS`](https://www.arcgis.com/) is a popular proprietary GIS software suite for working with maps and geographic information. It offers a wide range of tools for spatial analysis, data visualization, and map creation, but it requires a paid license and is not open-source.
+
+#### Open source alternatives
+
+[`QGIS`](https://qgis.org/) is a free and open-source GIS.
