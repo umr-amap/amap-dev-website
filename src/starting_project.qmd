@@ -175,3 +175,123 @@ pip install -e .
 ```
 
 `pip` will install the package. It will look for the `pyproject.toml` file in the current directory (`.`) and install the package in editable mode (`-e`), meaning that any changes you make to the source code will be reflected in the installed package without needing to reinstall it. Make sure to properly define your package dependencies in the `pyproject.toml` file, so that they are installed automatically when you install your package.
+
+# Julia users
+
+The Julia sections will contain many links to blog posts and articles which we consider to be clear reasonably up-to-date, some of which will go through similar explanations in more detail. If you don't understand explanations here, or one resource is too verbose for you or doesn't explain things clearly, make sure to check out the others.
+
+Most of the resources are tailored for users/researchers who may extend packages or implement their own relating to their research work. Developers who may need to interface with more of Julia's complexity might want to check out the [Resources](TODO) page.
+
+## General points regarding Julia
+
+Julia is not used as much as R or Python at AMAP. It is a fast-moving language, so workflows may become outdated faster. It has several peculiarities, and a slightly fragmented tool ecosystem. Some packages might also overlap or be redundant, meaning it can be sometimes be hard to choose the 'best' or 'most standardised' one.
+
+You can find the main differences between Julia and other languages discussed [here](https://docs.julialang.org/en/v1/manual/noteworthy-differences/). Many transforms and syntactic features will be familiar to Python users, but there are notational differences and the type system in Julia is more complex. 
+
+If you are a C++-user for example, you will need to familiarise yourself with REPL-style coding, array/string indexes beginning at 1, `+=` not operating in place, and many more differences.
+
+Other comparison cheatsheets between R, Python, Matlab and Julia can be found [here](https://github.com/sswatson/cheatsheets/blob/master/jpr-cheatsheet.pdf) and 
+[here](https://cheatsheets.quantecon.org/)
+
+## Setting up Julia and VSCode
+
+The main and most popular IDE at AMAP is `VSCode`, which we will be referring to. The Julia extension for it includes some very convenient features out of the box, including amongst other things autocompletion, the Revise package (which enables making some changes without reloading your environment constantly), and a debugger.
+
+Follow the steps [here](https://www.julia-vscode.org/docs/stable/gettingstarted/). If you complete these successfully, you will be able to write your own scripts and packages.
+
+If you wish to install Julia via other means, you can check out [this page](https://docs.julialang.org/en/v1/manual/installation/).
+
+## Shortcuts
+
+Some Julia-specific shortcuts that will speed up the typical workflow : 
+- Ctrl + Shift + P (Cmd + Shift + P on MacOS) : Provides a shortcut to the commands that start and stop the REPL.
+- Shift + Enter : Executes the current block of code in the REPL and moves to the next one
+- F5 : Starts a debugging session (generally not the recommended approach, see TODO for details)
+- Shift + F5 : Ends a debugging session
+
+It can be practical to execute a whole script file at once, but for quick iteration on a function, adjusting parameter values, and practical debugging, it is generally more convenient to run/rerun the lines you are interested in one at a time with Shift + Enter.
+
+You can find other common shortcuts and commands [here](https://www.julia-vscode.org/docs/stable/userguide/keybindings/)
+
+## Environments and packages
+
+Julia's features are split into packages. The default installation comes with some standard packages and libraries ; for more specialised features you will need to find and install additional packages. There is a global registry, and most are open-source and can be found on `Github`. 
+
+If you install a package, it may pull in other dependencies. To avoid accumulating dependencies everywhere -you may only need a specific package for visualisation, but not wish to add it as a dependency for users of your code, for example- and to avoid conflicts, Julia provides means to compartimentalise via project `environments`. In a given environment, only *specified* packages (in fact, specific *versions* of these packages) will be made available. 
+
+If you don't set a custom environment, a default environment will be used. Any package installed in that environment will be available *everywhere*, which may cause conflicts down the line. It is recommended to keep this default as light as possible, and to use your own personal environments as soon as possible.
+
+Another point of note is `precompilation`. Julia [TODO]
+The more packages you add
+
+Environments, packages and dependencies are handled using `Pkg.jl`, which is the equivalent of Python's `pip` or `conda`. You can install packages and manage environments. The full documentation can be found [here](https://pkgdocs.julialang.org/v1/getting-started/).
+
+## Differential equations example
+
+tips when working on multiple packages at once
+quirks of recompilation not occurring
+
+## Debugging
+
+For general debugging advice and shortcuts, you can have a look [here](https://code.visualstudio.com/docs/debugtest/debugging)
+
+The VSCode extension for Julia provides debugging facilities. You can read more about general usage [here](https://www.julia-vscode.org/docs/stable/userguide/debugging/).
+
+Launching the debugger on your package or full-fledged script can be painfully slow. If you encounter this problem, to make things bearable : 
+- You really want to flag as many package dependencies as possible to be compiled and not interpreted if you aren't interested in debugging them.
+- You should restrict debugging to a function, to restrict scope and avoid pulling in too many global variables. It can be a high-level function of your package directly called from a top-level script.
+
+Here's an example running a predator-prey. With the `@enter` macro, you will be able to launch the debugger at that line and step into the source code of `ODEProblem` and see what values global and function-local variables hold at every point in the call stack. This is much more powerful than print debugging.
+
+```julia
+using DifferentialEquations 
+using Plots 
+
+function lotka_volterra!(d_u, u, p, t)
+    α, β, γ, δ = p
+
+    d_u[1] = α * u[1] - β *  u[1] * u[2]
+    d_u[2] = -γ * u[2] + δ *  u[1] * u[2]
+
+end
+
+u₀ = [0.9, 0.9]
+
+α =  2.0/3.0; β = 4.0/3.0; γ = 1.0; δ = 1.0
+p = [α, β, γ, δ]
+
+tspan = (0.0, 50.0)
+
+prob = @enter ODEProblem(lotka_volterra!, u₀, tspan, p)
+sol = solve(prob)
+
+plot( plot(sol, idxs = (1, 2)), plot(sol, idxs = (0, 1)))
+plot(sol)
+```
+
+## Working on multiple packages simultaneously
+
+## Publishing a package
+## How to organize your project repositories
+
+Working on a typical package with documentation and tests, you will have a structure similar to this package developed at AMAP : 
+
+[TODO insert image]
+
+- `.github` : Contains the .yml files that define Github Actions to be used in CI/CD. See the [dedicated section](TODO) for more details. 
+- `Project.toml`: a file that contains the package metadata (name, version, author, description, etc.) and the build configuration (dependencies, build system, etc.). It is the main file for building and installing the package. You should rarely need to tinker this file, changing project settings and versions occurs through Pkg.jl. More details [here](https://pkgdocs.julialang.org/v1/toml-files/)
+- `Manifest.toml`: a file containing a complete snapshot of dependencies (both direct and indirect), and the versions used. This file is automatically generated and is not meant to be edited. Note : you generally do NOT want to add it to a Github repository, only `Project.toml`.
+- `README.md` : a file that contains the short description of the package, how to install it, how to use it, and how to contribute to it. It is useful to communicate with the users and to provide them with the necessary information to use the package. It should also contain badges to indicate the package status (build, tests, coverage, etc.).
+- `LICENSE` : a file that contains the license under which the package is distributed. Maybe the first file to add to your project. You can choose a license from <https://choosealicense.com>
+- `benchmarks/`: a directory tied to a specific package, AirSpeedVelocity.jl, that can run benchmarks locally or via CI/CD.
+- `build/` : a directory that contains a local build of the package documentation, cf. [dedicated section](documentation.qmd#julia-users).
+- `docs/` : a directory that contains the package documentation, cf. [dedicated section](documentation.qmd#julia-users).
+- `examples/` : a directory containing potential example scripts or usage of your code, that might complement tutorials and documentation
+- `ext/`: a directory that might contain optional extensions to your module. If -for example- you have a function that provides a way to plot your custom data, you may wish to keep that function in a separate extension as the `Plots` package is a heavy dependency to add to a pacakge.
+- `src/` : a directory that contains your scripts / code / modules.
+- `test/` : a directory that contains the package tests, cf. [dedicated section](testing.qmd#julia-users).
+
+Note that you might have several different environments for a given package:
+- For general usage
+- For running tests
+- For building and generating documentation
