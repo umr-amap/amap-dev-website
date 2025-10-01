@@ -127,7 +127,7 @@ Access and computing resources are free for academic.
 
 #### How to open an account ?
 
-Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much resources.
+Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `IO - ISDM-Meso` but is still quite fast (< 1 week) if you don't ask for too much resources.
 
 ::: {.callout-warning}
 Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.
@@ -144,7 +144,7 @@ There are two ways to access GENCI resources:
   - Then fill the forms:
     - Form n°2 (resources) : correctly fill the type of resources you need, the number of hours and the amount of storage needed. If you don't know what to put here, ask the HPC team at AMAP.
     - Form n°3 (Structure de recherche) : choose UMR5120, "Identifiant RNSR" 200317641S
-    - Form n°5 (Soutien du projet) : you have access to mesocenter `Meso@LR`
+    - Form n°5 (Soutien du projet) : you have access to mesocenter `IO - ISDM-Meso`
 - Then you need to an account to the supercomputer:
   - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for resources you just created.
   - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put `194.199.235.81`, and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put `cluster-out.cirad.fr`.
@@ -159,7 +159,7 @@ To efficiently use HPC clusters, you'll need to follow a few steps.
 - learn how to submit jobs
 
 ::: {.callout-warning}
-The following steps are general and should apply to any HPC resources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
+The following steps are general and should apply to any HPC resources. We provide below examples for `IO - ISDM-Meso` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
 
 - [IO - ISDM-Meso](https://docs.meso.umontpellier.fr/login)
 - [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
@@ -180,7 +180,7 @@ The `Remote Desktop` service from `OOP`, which is supposed to give you access to
 #### Connection
 ##### Using a terminal
 
-The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the [`ssh` protocol](https://www.techtarget.com/searchsecurity/definition/Secure-Shell). For exemple, for `Meso@LR`cluster, in a terminal application, you can type:
+The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the [`ssh` protocol](https://www.techtarget.com/searchsecurity/definition/Secure-Shell). For exemple, for `IO - ISDM-Meso`cluster, in a terminal application, you can type:
 
 ```bash
 ssh -X my_login@io-login.meso.umontpellier.fr
@@ -217,9 +217,9 @@ If you feel at ease with a terminal, you can use `scp` or `rsync` commands to tr
 
 ```bash
 # single file
-scp /where/my_file/is/my_file.txt my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+scp /where/my_file/is/my_file.txt my_login@io-login.meso.umontpellier.fr:/where/to/put/it/
 # directory
-scp -r /where/my_directory/is/my_directory my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+scp -r /where/my_directory/is/my_directory my_login@io-login.meso.umontpellier.fr:/where/to/put/it/
 ```
 
 This means that you have to know beforehand the path to the directory on the cluster that you want to put your files in.
@@ -457,7 +457,7 @@ mv ${output_filename} ${MY_PROJ_DIR}
 
 To run a script using GPU on `IO - ISDM-Meso`, you need a little bit more tweaking (while it might be easier on adastra for example).
 
-By default, if you install a package that requires GPU, it will not work on `meso@lr` because the GPU is not available on the login node. You first need to install your package on a GPU compute node.
+By default, if you install a package that requires GPU, it will not work on `IO` because the GPU is not available on the login node. You first need to install your package on a GPU compute node.
 
 > warning
 > To run a script on a GPU node, please add the following to your `sbatch` scripts:
@@ -519,4 +519,3 @@ python -c "
 import torch
 print(torch.cuda.is_available())"
 ```
-
