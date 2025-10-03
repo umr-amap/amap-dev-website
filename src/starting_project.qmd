@@ -241,7 +241,7 @@ Launching the debugger on your package or full-fledged script can be painfully s
 - You really want to flag as many package dependencies as possible to be compiled and not interpreted if you aren't interested in debugging them.
 - You should restrict debugging to a function, to restrict scope and avoid pulling in too many global variables. It can be a high-level function of your package directly called from a top-level script.
 
-Here's an example running a predator-prey. With the `@enter` macro, you will be able to launch the debugger at that line and step into the source code of `ODEProblem` and see what values global and function-local variables hold at every point in the call stack. This is much more powerful than print debugging.
+Here's an example running a predator-prey. With the `@run` or `@enter` macro, you will be able to launch the debugger at that line and step into the source code of `ODEProblem` and see what values global and function-local variables hold at every point in the call stack. 
 
 ```julia
 using DifferentialEquations 
@@ -269,9 +269,14 @@ plot( plot(sol, idxs = (1, 2)), plot(sol, idxs = (0, 1)))
 plot(sol)
 ```
 
+This is much more powerful than print debugging, with the ability to inspect variable values at every point of the call stack when execution is halted, and run Julia commands (to ensure types are correct, for instance) in the debug console. The debugger can be slow or unstable, so the experience isn't as smooth as equivalent debugging with C/C++.
+
 ## Working on multiple packages simultaneously
 
 ## Publishing a package
+
+
+
 ## How to organize your project repositories
 
 Working on a typical package with documentation and tests, you will have a structure similar to this package developed at AMAP : 
@@ -291,7 +296,7 @@ Working on a typical package with documentation and tests, you will have a struc
 - `src/` : a directory that contains your scripts / code / modules.
 - `test/` : a directory that contains the package tests, cf. [dedicated section](testing.qmd#julia-users).
 
-Note that you might have several different environments for a given package:
+Note that you might con several different environments for a given package:
 - For general usage
 - For running tests
 - For building and generating documentation

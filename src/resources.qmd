@@ -25,3 +25,62 @@ Hints on how to install R packages on a shared cluster <https://www.pik-potsdam.
 # Working with R
 <https://ericmarcon.github.io/travailleR/>
 
+# Julia resources
+
+## Forums
+
+The Discourse forums are very active and include many of the core Julia package and language developers. Most well-posed questions are answered quite promptly.
+
+<https://discourse.julialang.org/>
+
+## Julia docs
+
+The Julia docs contain introductory sections on most topics, as well as an overview of the available features in the Base package and standard library. They are usually tailored for developers and drier than other resources, but quite in-depth.
+
+<https://docs.julialang.org/en/v1/>
+
+## Quick overview
+
+This three-part series by Guillaume Dalle is quite well-written if you are a developer in need of a quick refresher, or looking for relevant keywords regarding a specific topic : 
+https://modernjuliaworkflows.org/writing/
+https://modernjuliaworkflows.org/sharing/
+https://modernjuliaworkflows.org/optimizing/
+
+## Books
+
+There are several Julia books in the lab (you might need to check Julia developers' desks) :
+
+Julia for Data Analysis (Bogumil Kaminski)
+Hands-On Design Patterns and Best Practices with Julia (Tom Kwong)
+Practical Julia
+
+## Julia tutorial series
+
+## Performance 
+
+https://docs.julialang.org/en/v1/manual/performance-tips/
+https://gdalle.github.io/JuliaOptimizationDays2023/performance.html
+https://modernjuliaworkflows.org/optimizing/
+
+Relevant manual sections : 
+https://docs.julialang.org/en/v1/manual/multi-threading/
+https://docs.julialang.org/en/v1/manual/distributed-computing/
+
+## Testing/deploying
+
+https://blog.glcs.io/package-testing
+https://www.youtube.com/watch?v=fQJrEQIRPZU : Maintaining large-scale Julia ecosystems
+
+## Revise.jl (details for those not using Visual Studio Code)
+
+https://timholy.github.io/Revise.jl/stable/
+
+## Metaprogramming and World-age issues
+
+https://docs.julialang.org/en/v1.12.0-rc2/manual/worldage/ (new section in the manual)
+https://discourse.julialang.org/t/running-in-world-age-x-while-current-world-is-y-errors/5871/4
+https://arxiv.org/pdf/2010.07516 : Paper discussing world-age implementation
+
+## Debugging 
+
+https://techytok.com/lesson-workflow/
