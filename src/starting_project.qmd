@@ -300,3 +300,8 @@ Note that you might con several different environments for a given package:
 - For general usage
 - For running tests
 - For building and generating documentation
+
+# Releasing a package
+
+TODO
+https://github.com/JuliaRegistries/Registrator.jl?tab=readme-ov-file#release-notes
