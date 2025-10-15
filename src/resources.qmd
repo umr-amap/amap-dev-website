@@ -61,7 +61,7 @@ Practical Julia
 
 Some might have become partially outdated within a few years, but the more recent ones remain valid.
 
-## Overviews and extensive tutorials
+## Overviews and tutorial series
 
 ### Quick overviews
 
@@ -77,6 +77,13 @@ https://techytok.com/julia-vscode/
 
 Another course, Julia for Machine Learning, that contains some sections on the basics of the language, and some extensive workflow tutorials, including setting up a package, testing and documenting it, common mistakes
 https://adrianhill.de/julia-ml-course/
+
+### Exercises
+
+Online exercises, with other users' solutions made available after an exercise is completed. Julia has a rich syntax with many operators and plenty of different ways of accomplishing the same task (some more verbose, less flexible, more obscure, ...), which can make learning the language's extensive features quite slow at first. Being able to compare your code with alternative solutions can help learn new keywords.
+https://exercism.org/tracks/julia
+
+There are other websites providing exercises to learn Julia, but exercism is one that has been used by learners at AMAP.
 
 ### Cheatsheet
 
@@ -161,3 +168,10 @@ https://blog.sintef.com/industry/writing-type-stable-julia-code/
 TODO
 https://github.com/JuliaTesting/Aqua.jl?tab=readme-ov-file
 https://scientificcoder.com/automate-your-code-quality-in-julia#heading-documentation-testing
+https://medium.com/coffee-in-a-klein-bottle/creating-and-deploying-your-julia-package-documentation-1d09ddc90474
+https://jaantollander.com/post/how-to-create-software-packages-with-julia-language/#github-pages-and-actions
+
+https://syl1.gitbook.io/julia-language-a-concise-tutorial
+https://sylvaticus.github.io/SPMLJ/stable/
+
+TODO Rémi's video series
