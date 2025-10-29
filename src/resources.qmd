@@ -27,7 +27,9 @@ Hints on how to install R packages on a shared cluster <https://www.pik-potsdam.
 
 # Julia resources
 
-As a rule of thumb, many resources pre-2021 or so are likelier to contain outdated content.
+As a rule of thumb, many resources pre-2021 or so are likelier to contain outdated content. 
+
+The Julia section is not perfectly curated ; not all links listed here are duplicated with their related sections on this website (eg the [Documentation](documentation.qmd#julia-users) section has different compared to the small subsection [below](resources.qmd#documentation)). Some links also cover multiple topics.
 
 ## General resources
 
@@ -70,13 +72,20 @@ https://modernjuliaworkflows.org/writing/
 https://modernjuliaworkflows.org/sharing/
 https://modernjuliaworkflows.org/optimizing/
 
+An overview of options for code quality, testing, ... :
+https://scientificcoder.com/automate-your-code-quality-in-julia
+
 ## Julia tutorial series
 
 A 20-part series, which should be aimed at people with only basic programming knowledge
 https://techytok.com/julia-vscode/
 
-Another course, Julia for Machine Learning, that contains some sections on the basics of the language, and some extensive workflow tutorials, including setting up a package, testing and documenting it, common mistakes
+Another couple of courses, "Julia for Machine Learning" and "Introduction to Scientific Programming and Machine Learning with Julia". The first contains some sections on the basics of the language, and some extensive workflow tutorials, including setting up a package, testing and documenting it, common mistakes. The second has a section on the basics, with quizes, sections related to scientific computing and machine learning, and a 'Further topics sections', which also contains examples of [how to interface Julia with other languages](https://sylvaticus.github.io/SPMLJ/stable/01_-_JULIA1_-_Basic_Julia_programming/0106_-_Further_topics.html#Interfacing-with-other-languages). That course evolved from another course more focused on the basics, which you can find [here](https://syl1.gitbook.io/julia-language-a-concise-tutorial)
+
 https://adrianhill.de/julia-ml-course/
+https://sylvaticus.github.io/SPMLJ/stable/
+
+Rémi Vézy, a researcher at AMAP, also started a [video series](https://www.youtube.com/watch?v=ZZJJgQ2IzQQ&list=PLLiJ249IkzRFxZGALbKy75_ZyHxYCUmuk) (incomplete) presenting the basics of the Julia language.
 
 ### Exercises
 
@@ -91,15 +100,16 @@ https://cheatsheet.juliadocs.org/
 
 ## Specific topics and tooling
 
-Note : Most of the resources posted in the TODO overview and tutorials section will also cover some of the following topics, so make sure to check them out as well.
+Note : Most of the resources posted in the [overview and tutorials](resources.qmd#overviews-and-tutorial-series) section will also cover some of the following topics, so make sure to check them out as well.
 
 ### Package development/deployment
 
+https://jaantollander.com/post/how-to-create-software-packages-with-julia-language
 https://julialang.org/contribute/developing_package/
 
 ### CI/CD
 
-See the TODO section
+See the related [CI/CD](ci_cd.qmd#examples-for-a-julia-package) section
 https://medium.com/analytics-vidhya/an-introduction-to-continuous-integration-github-actions-for-julia-1a5a1a6e64d6
 
 ### VSCode
@@ -113,7 +123,6 @@ https://www.julia-vscode.org/docs/stable/
 The 'Running Code' and 'Environments' pages are especially important to read when starting out to avoid confusing issues :
 https://www.julia-vscode.org/docs/stable/userguide/runningcode/
 https://www.julia-vscode.org/docs/stable/userguide/env/
-
 
 ## Style guide
 
@@ -137,6 +146,11 @@ https://docs.julialang.org/en/v1/manual/distributed-computing/
 
 https://blog.glcs.io/package-testing
 https://www.youtube.com/watch?v=fQJrEQIRPZU : Maintaining large-scale Julia ecosystems
+https://github.com/JuliaTesting/Aqua.jl?tab=readme-ov-file Aqua.jl
+
+## Documentation 
+
+https://medium.com/coffee-in-a-klein-bottle/creating-and-deploying-your-julia-package-documentation-1d09ddc90474
 
 ## Workflow tips
 
@@ -149,6 +163,8 @@ https://timholy.github.io/Revise.jl/stable/
 
 ## Metaprogramming and World-age issues
 
+Metaprogramming is a large topic in Julia. `eval()` has subtleties and pitfalls. No related links listed here yet.
+
 https://docs.julialang.org/en/v1.12.0-rc2/manual/worldage/ (new section in the manual)
 https://discourse.julialang.org/t/running-in-world-age-x-while-current-world-is-y-errors/5871/4
 https://arxiv.org/pdf/2010.07516 : Paper discussing world-age implementation
@@ -157,21 +173,6 @@ https://arxiv.org/pdf/2010.07516 : Paper discussing world-age implementation
 
 https://techytok.com/lesson-workflow/
 
-TODO mark with an asterisk those that are more general than their subsection, and in some other way those that are mentioned on other pages
-
 ## Type stability
 
 https://blog.sintef.com/industry/writing-type-stable-julia-code/
-
-
-
-TODO
-https://github.com/JuliaTesting/Aqua.jl?tab=readme-ov-file
-https://scientificcoder.com/automate-your-code-quality-in-julia#heading-documentation-testing
-https://medium.com/coffee-in-a-klein-bottle/creating-and-deploying-your-julia-package-documentation-1d09ddc90474
-https://jaantollander.com/post/how-to-create-software-packages-with-julia-language/#github-pages-and-actions
-
-https://syl1.gitbook.io/julia-language-a-concise-tutorial
-https://sylvaticus.github.io/SPMLJ/stable/
-
-TODO Rémi's video series

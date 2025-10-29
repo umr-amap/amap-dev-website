@@ -184,9 +184,9 @@ You can write your documentation files as markdown files, document your function
 
 The general workflow is the following:
 - Write your scripts and document your functions with docstrings
-- Create a `docs` folder in your project root directory, and a `make.jl script file within that folder.
-- Activate that folder ; documentation will have its own environement. Add `Documenter` as a dependency and whatever packages you might need.
--  Note : When iterating on your code, you might want to test against your local version instead of a released version. You will need to `develop` or `Pkg.develop` your package instead of adding it with `add` or `Pkg.add`.
+- Create a `docs` folder in your project root directory, and a `make.jl` script file within that folder.
+- Activate that folder. Your project's documentation will have its own distinct environement. Add `Documenter` as a dependency and whatever packages you might need.
+-  Note : When iterating on your code, you might want to test against your local version instead of a released version. You may want to `develop` or `Pkg.develop` your own package in the documentation's environment instead of adding it with `add` or `Pkg.add` while writing and testing your documentation.
 
 TODO
 `DocMeta.setdocmeta!(...)`
@@ -195,7 +195,7 @@ deploydocs(;
 
 ## Adding documentation to tests
 
-To avoid documentation examples becoming outdated or unrunnable, it is possible to add them to your test suite and have them run during CI (see TODO for more details regarding Continuous Integration). 
+To avoid documentation examples becoming outdated or unrunnable, it is possible to add them to your test suite and have them run during CI (see the [Julia-related CI/CD](ci_cd.qmd#examples-for-a-julia-package) section for more details regarding Continuous Integration). 
 
 This is done via DocTests, which you can learn more about [here](https://documenter.juliadocs.org/stable/man/doctests/). AMAP's [PlantSimEngine's documentation](https://virtualplantlab.github.io/PlantSimEngine.jl/stable/) makes use of DocTests throughout, for instance. 
 
