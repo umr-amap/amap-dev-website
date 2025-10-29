@@ -88,27 +88,22 @@ At AMAP, we have access to several HPC resources. All the resources listed here 
 
 Other options for HPC on the cloud (plateforms like AWS, Azure, Google Cloud) are also available, but are not covered here. These plateform are not free and are not eligible to any kind of support from POLIS.
 
-### Meso-center `ISDM-Meso` {#sec-mesolr}
-Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`Meso@LR`](https://meso-lr.umontpellier.fr/) provides access to HPC resources for the Occitanie region. Although access to this resource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
+### Meso-center `ISDM-Meso` {#sec-io}
+Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`IO` - for Isabelle Olivieri](https://docs.meso.umontpellier.fr/fr/home) provides access to HPC resources for the Occitanie region. Although access to this resource is not free, an existing agreement between CIRAD and ISDM makes it free for researchers and accessible upon request only (most likely within a certain limit of computing hours, but we have never been able to verify that :smile:).
 
 #### Description of the cluster
-Technical specificities include:
 
-- 308 computational nodes of 28 cores each (bi processors Intel Xeon E5-2680 v4 2,4 Ghz (broadwell) 2×14 coeurs/noeud), 128 Go RAM
-- 2 nodes with big memory (`bigmem`) with 112 cores, 3To RAM each
-- 2 nodes with GPU and 52 CPU cores (bi-processors 26 cores) Poweredge R740 embedding RTX6000
-- 1,3Po storage, including 1Po fast storage on Lustre
-- `SLURM` workload manager
+Main specifications of `IO - ISDM-Meso` are descrbed at the [dedicated section of the documentation website](https://docs.meso.umontpellier.fr/fr/HPC/CLUSTER/cluster-io-specifications).
+
 
 #### How to open an account
 
-Getting an account to `Meso@LR` is usualy quite fast (~1 day). You only need to be part of AMAP and have an email adress from CIRAD.
+Getting an account to `IO - ISDM-Meso` is usualy quite fast (~1 day). You only need to be part of AMAP and have an email adress from CIRAD.
 
 You must send a mail to [Bertrand Pitollat](mailto:bertrand.pitollat@cirad.fr) and the HPC team at AMAP (currently the contact person being [T. Arsouze](mailto:thomas.arsouze@cirad.fr)) with the following requirements:
 
-- in the ["demande de ressources de calcul"](https://meso-lr.umontpellier.fr/wp-content/uploads/2021/03/1-Meso_dde_Calcul_nomprojets.doc), fill only the first part up to the description of your research project. Leave the remainder empty.
 - request to be attached to the group `d_cirad_amap` (this is the group of AMAP members)
-- fill the `charte informatique` available [here](https://meso-lr.umontpellier.fr/wp-content/uploads/2022/08/CharteCALCUL-NOM-Prenom.pdf)
+- fill the `charte informatique` available [here](https://isdm.umontpellier.fr/wp-content/uploads/2025/04/CharteMeso-CALCUL.pdf)
 
 ### GENCI
 
@@ -131,7 +126,8 @@ Access and computing resources are free for academic.
 `Joliot-Curie` cluster at TGCC provides access `Nvidia V100 SXM2` GPUs and Intel CPUs. Note that you can also have access to `Quantique plateform`.
 
 #### How to open an account ?
-Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `Meso@LR` but is still quite fast (< 1 week) if you don't ask for too much resources.
+
+Anyone at AMAP can open an account to GENCI resources. The process is a bit longer than for `IO - ISDM-Meso` but is still quite fast (< 1 week) if you don't ask for too much resources.
 
 ::: {.callout-warning}
 Before submitting any project, we highly recommand you to contact the POLIS HPC-team at AMAP (currently T. Arsouze, P. Verley and D. Lamonica) to discuss your needs and the best way to use the resources.
@@ -148,13 +144,14 @@ There are two ways to access GENCI resources:
   - Then fill the forms:
     - Form n°2 (resources) : correctly fill the type of resources you need, the number of hours and the amount of storage needed. If you don't know what to put here, ask the HPC team at AMAP.
     - Form n°3 (Structure de recherche) : choose UMR5120, "Identifiant RNSR" 200317641S
-    - Form n°5 (Soutien du projet) : you have access to mesocenter `Meso@LR`
+    - Form n°5 (Soutien du projet) : you have access to mesocenter `IO - ISDM-Meso`
 - Then you need to an account to the supercomputer:
   - "Demande de compte sur les calculateurs" -> "Demande de rattachement à un dossier de demande d'heures" and mention the project for resources you just created.
   - "Demande de compte sur les calculateurs" -> "Demande d'ouverture de compte". At some point you will need to provide an IP address of your computer: put `194.199.235.81`, and your "FQDN (Fully Qualified Domain Name) obligatoire associé à l'adresse IP" : put `cluster-out.cirad.fr`.
 - Finally, you... wait ! You will receive an email when your account is created and you project validated.
 
 ## How to use HPC clusters ?
+
 To efficiently use HPC clusters, you'll need to follow a few steps.
 
 - connect to the cluster and transfer your files
@@ -162,20 +159,31 @@ To efficiently use HPC clusters, you'll need to follow a few steps.
 - learn how to submit jobs
 
 ::: {.callout-warning}
-The following steps are general and should apply to any HPC resources. We provide below examples for `Meso@LR` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
+The following steps are general and should apply to any HPC resources. We provide below examples for `IO - ISDM-Meso` cluster. However, before any action, you ___MUST___ read the documentation of the cluster you are using:
 
-- [Meso@LR](https://hpc-lr.umontpellier.fr/documentation-utilisateurs/)
+- [IO - ISDM-Meso](https://docs.meso.umontpellier.fr/login)
 - [Adastra at CINES](https://dci.dci-gitlab.cines.fr/webextranet/)
 - [Jean-Zay at IDRIS](http://www.idris.fr/jean-zay/)
 :::
 
 ### Connect and transfer files to the cluster
+
+#### Specific section for `IO - ISDM-Meso`
+
+`IO` cluster is offering a new service called `Open On Demand`, which allows you to access the cluster via a web interface. 
+Main interface to login, using username and password, is [here](https://io-ood.meso.umontpellier.fr/). You can then easily see your files and transfer them (both upload and download) in the "Files" section, edit jobs and submit them in the "Jobs -> Job composer" section. While this is probably not the most efficient way to work on the cluster, it can be a very good first approach for a new user not used to using the terminal and working on a remote computer.
+
+::: {.callout-note}
+The `Remote Desktop` service from `OOP`, which is supposed to give you access to a full desktop environment, is currently not working. We will let you know once the service is available.
+:::
+
 #### Connection
 ##### Using a terminal
-The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the [`ssh` protocol](https://www.techtarget.com/searchsecurity/definition/Secure-Shell). For exemple, for `Meso@LR`cluster, in a terminal application, you can type:
+
+The most obvious and common way to connect to a remote machine (here your HPC cluster) is to use the [`ssh` protocol](https://www.techtarget.com/searchsecurity/definition/Secure-Shell). For exemple, for `IO - ISDM-Meso`cluster, in a terminal application, you can type:
 
 ```bash
-ssh -X my_login@muse-login.meso.umontpellier.fr
+ssh -X my_login@io-login.meso.umontpellier.fr
 ```
 
 To avoid typing your password each time you connect, you can use a [ssh key](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server).
@@ -189,13 +197,19 @@ You can [use basic linux commands](https://www.hostinger.com/tutorials/linux-com
 You are now connected to the `frontal` or `login` node of the cluster. This is the node where you can submit jobs, transfer files, and prepare your computation environment. This is ___NOT___ the node where your jobs will be executed and where you can do your computations.
 
 ##### Using an IDE
+
 You can also use an IDE (Integrated Development Environment - code editor that embeds multiple tools for developers) to connect to the cluster. For example `VSCode` provides a powerfull plugin to [develop on remote machines](https://code.visualstudio.com/docs/remote/ssh). This allows you to navigate, edit and run your code on the cluster directly from your IDE.
 
 `PyCharm` also provides a plugin to [develop on remote machines](https://www.jetbrains.com/help/pycharm/remote-development-starting-page.html).
 
 However, to our knowledge, no such solution exists for `RStudio`.
 
+::: {.callout-note}
+As stated in the [documentation - section 2](https://docs.meso.umontpellier.fr/fr/HPC/CLUSTER/cluster-io-specifications), `VSCode` remote plugin does not work currently on `IO - ISDM-Meso` cluster.
+:::
+
 #### Transfer files
+
 To run your code on the cluster, you need first to transfer your files. You can use multiple tools to transfer files:
 
 ##### `scp` & `rsync`
@@ -203,9 +217,9 @@ If you feel at ease with a terminal, you can use `scp` or `rsync` commands to tr
 
 ```bash
 # single file
-scp /where/my_file/is/my_file.txt my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+scp /where/my_file/is/my_file.txt my_login@io-login.meso.umontpellier.fr:/where/to/put/it/
 # directory
-scp -r /where/my_directory/is/my_directory my_login@muse-login.meso.umontpellier.fr:/where/to/put/it/
+scp -r /where/my_directory/is/my_directory my_login@io-login.meso.umontpellier.fr:/where/to/put/it/
 ```
 
 This means that you have to know beforehand the path to the directory on the cluster that you want to put your files in.
@@ -213,18 +227,21 @@ This means that you have to know beforehand the path to the directory on the clu
 [`rsync`](https://hpc-lr.umontpellier.fr/wp-content/uploads/2017/05/rsync.txt) is a more powerfull tool that allows you to synchronize directories between your computer and the cluster. It has a lot of options that you can use to customize the synchronization, and allows you to transfer only the files that have been modified since the last synchronization (very useful when you have a lot of files to transfer or when you have a slow and instable connection).
 
 ##### Filezilla
+
 [`Filezilla`](https://filezilla-project.org/) is a client for transfering files among machines. It is very easy to use and provides a graphical interface.
 
-You can find the "Quickconnect" bar at the top of the main window, and you need to provide the address of the "Host" : `muse-login.meso.umontpellier.fr`, your "Username" and "Password". You can also save your connection for later use : "File" -> "Copy current connection to Site Manager…".
+You can find the "Quickconnect" bar at the top of the main window, and you need to provide the address of the "Host" : `io-login.meso.umontpellier.fr`, your "Username" and "Password". You can also save your connection for later use : "File" -> "Copy current connection to Site Manager…".
 
 ##### Where to put my files ?
-HPC clusters usually have multiple places where to put your files. Here are the ones for `Meso@LR`:
 
-- `/home/my_login` : this is your home directory. You can put your scripts and small files here. This directory is backed up.
-- `/lustre/scratch` : this is a temporary directory with very fast access where you can put your large files and data. This directory is not backed up and can be erased after 2 months. This space is recommended for running your computations that can require large amount of data.
-- `/nfs/work` : this is a directory where you can put your input / output data or executable files. This directory is backed up and can be used to store your data for a long time.
+HPC clusters usually have multiple places where to put your files. Here are the ones for `IO - ISDM-Meso`:
+
+- `/home/my_login` : this is your home directory. You can put your scripts and small files here. This directory is not very efficient (meaning : no intensive I/O) and is only rarely backed up.
+- `/scratch/users/my_login` & `~/scratch_my_login` : this is a temporary directory with very fast access where you can put your large files and data. This directory is not backed up and can be erased after 2 months. This space is recommended for running your computations that can require large amount of data. If you want to share data on this disk with collaborators of the same group, 2 similar directories exist: `/scratch/projects/my_group` & `~/scratch_my_group`.
+- `/storage/simple/projects/my_group` & `~/work_my_group` : this is a directory where you can put your input / output data or executable files. This directory is backed up and can be used to store your data for a long time.
 
 ### Create your computation environment
+
 HPC clusters usually provide a lot of scientific softwares and libraries that you can use. They are installed in a module system that you can load and unload. Some useful commands are:
 
 - `module avail` : list all the available modules
@@ -232,37 +249,54 @@ HPC clusters usually provide a lot of scientific softwares and libraries that yo
 ```bash
 $ module avail
 
-------------------------------------------------------------------------- /usr/share/Modules/modulefiles -------------------------------------------------------------------------
-dot         module-git  module-info modules     null        use.own
+--------------------------------------------------------------------------- /opt/ohpc/pub/modulefiles ---------------------------------------------------------------------------
+   gnu12/12.2.0    hwloc/2.12.0    libfabric/1.18.0    os    papi/6.0.0    pmix/4.2.9    prun/2.2    ucx/1.18.0
 
--------------------------------------------------------------------- /trinity/shared/modulefiles/modulegroups --------------------------------------------------------------------
-bioinfo-cirad bioinfo-ifb   cv-admin      cv-advanced   cv-local      cv-standard   local
+------------------------------------------------------------------- /trinity/shared/modulefiles/modulegroups --------------------------------------------------------------------
+   bioinfo-cirad    bioinfo-ifb    deprecated    io-admin    io-local    singularity-hpc
 
------------------------------------------------------------------------ /trinity/shared/modulefiles/local ------------------------------------------------------------------------
-automake/1.16.1             geos/3.10.6                 ImageMagick/7.0.3-10        openjpeg/2.4.0              R/3.6.1                     sqlite/3.38.1
-Cast3M/2019                 geos/3.7.2                  intel/opencl-1.2-6.4.0.37   openslide/3.4.1             R/3.6.1-tcltk               squashfs/4.3
-cgal/5.2                    ghmm/1.0                    JDK/11.0.15                 phast/1.5                   R/3.6.3                     swig/3.0.11
-cmake/3.22.0                git/2.35.1                  JDK/jdk.8_x64               pi4u/torc                   R/4.0.2                     vmd/1.9.3
-...
-dawgpaws/1.0                       ImageMagick/7.0.11-14              pandoc/2.14.0.1                    skif/1.2                           yak/0.1
-deepgp/20220929-singularity        insilicoseq/1.5.4                  pantherscore/1.03                  SLR/20240610                       yulab-smu/20230217
-deeptmhmm/1.0.20                   interproscan/5.41-78.0             pantherscore/2.2                   slurm_drmaa/1.1.1                  zlib/1.2.8
-deepTools/3.5.1                    interproscan/5.48-83.0             parallel/20220922                  smrtlink/10.1.0.119588
-deepvariant/1.1.0                  interproscan/5.67-99.0             parsnp/1.7.4-conda                 snakemake/5.12.3
+----------------------------------------------------------------------- /nfs/work/agap_id-bin/modulefiles -----------------------------------------------------------------------
+   7zip/16.02-bin                                       cross_match/0.990329-bin                  last/1256                        python/packages/3.8.2
+   ASReml/4                                             cutesv/2.1.2--pyhdfd78af_0/module         lftp/4.9.2                       python/packages/3.9.13    (D)
+   ASReml/4.2                                    (D)    dagchainer/02.06.2008-bin                 libgd/2.3.0                      quicktree/2.0
+   GUSHR/20210623                                       demultiplex/1.14.0                        libgd/2.3.1               (D)    quota-alignment/20210719
+   MCQTL/5.2.6-bin                                      dgenies/1.5.0--pyhdfd78af_1/module        libjpeg/turbo-2.1.0              ranbow/20210719
+   MakeHub/1.0.5                                        dsuite/0.5_r58                            libpng/1.6.43                    reads2snp/2.0-bin
+   MethylDackel/0.6.0                                   egglib/3.0.0b21                           libsvm/330                       recon/1.08
+   OMA/2.4.2-bin                                        egglib/3.1                         (D)    liftoff/1.6.3                    red/2.0
+   ProtHint/2.6.0                                       entropy/246ccf1003c4                      ltr_harvest/1.0                  redhat/legacy
+   R/4.1.0                                              eugene/4.2a                               ltr_retriever/2.9.0-conda        repeat_explorer/0.3.8
+   R/packages/asreml_v3                                 eugene/4.3                         (D)    macs3/3.0.0b1                    repeatscout/1.0.5
+   R/packages/3.6.1                                     fasta/36.3.8h-bin                         maker/3.01.04                    resfinder/4.3.2
+   R/packages/4.0.2                                     faststructure/1.0-singularity             mash/2.3                         roary/3.13.0
+   R/packages/4.1.0                                     fex/20220324-bin                          mcl/14-137                       rsem/1.3.3-bin
+   R/packages/4.3.1-IFB                                 fimpute/3-bin                             mcscanx/2                        samtools/0.1.19-bin
+   R/packages/4.3.1                              (D)    findmite/1-singularity                    mdust/0                          scaffhunter/1
+   ...
+   checkv/1.0.3-singularity                             jvarkit/20211013                          python/packages/2.7.18           vmatch/2.3.1
+   cppunit/1.12.0-bin                                   kma/1.4.12a                               python/packages/3.6.8            wu-blast/2.26
+   createIndexMem/0.1-bin                               kmer-db/2.2.5-bin                         python/packages/3.7.2            zlib/1.2.8
+
+  Where:
+   D:  Default Module
 ```
+
 - `module load my_module` : load a module, e.g. `module load R/packages/4.3.1-IFB`
 - `module unload my_module` : unload a module, e.g. `module unload R/packages/4.3.1-IFB`
 - `module list` : list all the loaded modules in your environment, e.g.:
+
 ```bash
 $ module load R/packages/4.3.1-IFB
 $ module list
 Currently Loaded Modulefiles:
   1) bioinfo-ifb            2) r/4.3.1                3) R/packages/4.3.1-IFB
 ```
+
 You can see that `R/packages/4.3.1-IFB` (recommend for `R` users) is loaded with some dependecies.
 - `module purge` : unload all the loaded modules
 
-To access modules, you need to do some configuration first:
+To access modules, you need to do some configuration first (this only needs to be done once, and these instructions were given in the confirmation email sent to you when your account was created):
+
 ```bash
 nano ~/.bashrc    # nano is a text editor
 
@@ -283,9 +317,11 @@ export R_LIBS_USER
 ```
 
 #### Install additional R packages
+
 First, be aware that a lot of packages are already installed inside the `R/packages/4.3.1-IFB` module. If the module you need is not available, you have two solutions:
 
 - You can install packages in your home directory. If you need to install a package that requires compilation (such as `brms` for example), you'll need to provide information on how to do that:
+
 ```bash
 $ cd ~       # back to your HOME directory
 $ mkdir .R   # create a directory for R packages configuration
@@ -305,12 +341,7 @@ This will install your packages in the `$HOME/R/x86_64-pc-linux-gnu-library/4.3.
 - You can also use [conda](https://docs.conda.io/en/latest/) to create a dedicated environment and install additional packages. Although mostly used for installing python packages, conda can also be used to install R packages (search search for packages [here](https://anaconda.org/search?q=r-)).
 
 #### Install additional python packages
-The recommanded way to work with Python on the cluster is by using an environment manager. While there are many available (conda, virtualenv, pipenv, poetry, ...), we recommand to use `conda` as it is the most widely used by the scientific community AND it is already installed on the cluster.
-
-```bash
-module load anaconda/python3.8
-# Don't pay attention to the python version, you'll be able to create your own environment with the version you need.
-```
+The recommanded way to work with Python on the cluster is by using an environment manager. While there are many available (conda, virtualenv, pipenv, poetry, ...), we recommand to use `conda` as it is the most widely used by the scientific community AND it is already installed on the cluster. [miniforge](https://conda-forge.org/download) is the recommanded installer to access `conda` (or the equivalent and recommanded `mamba`).
 
 We recommand to tune the `conda` configuration file to work with the cluster:
 ```bash
@@ -339,7 +370,8 @@ conda deactivate
 ```
 
 ### Submit jobs
-All HPC clusters use a job scheduler to manage the resources and the jobs submitted by users. The most common job scheduler is `SLURM` (Simple Linux Utility for Resource Management). This is the scheduler use at `meso@lr`, but also `adastra` and `jean-zay`.
+
+All HPC clusters use a job scheduler to manage the resources and the jobs submitted by users. The most common job scheduler is `SLURM` (Simple Linux Utility for Resource Management). This is the scheduler use at `IO`, but also `adastra` and `jean-zay`.
 
 #### The SLURM scheduler
 You can find the documentation for `SLURM` [here](https://slurm.schedmd.com/).
@@ -371,7 +403,7 @@ We refer to `SLURM` documentation to see all the options available, but we list 
 
 #### How to submit and monitor a job
 #### Different partitions available
-Different types of resources are available on the cluster, as listed in @sec-mesolr:
+Different types of resources are available on the cluster, as listed in @sec-io:
 
 - __CPU__ node. Partition name : `agap_long`, `agap_normal`, `agap_short`
 
@@ -398,8 +430,8 @@ module load R/packages/4.3.1-IFB        # load the software you need
 set -v -x                               # useful to debug your script
 
 # Where your project is located, and where you will run it
-MY_PROJ_DIR="/home/arsouzet/projects/AMAP/arsouze/runs_StormR/"
-MY_PROJ_SCRATCH_DIR="/home/arsouzet/scratch/runs_StormR/$SLURM_ARRAY_TASK_ID"
+MY_PROJ_DIR="/home/my_login/projects/AMAP/arsouze/my_script/"
+MY_PROJ_SCRATCH_DIR="/home/my_login/scratch/my_script/$SLURM_ARRAY_TASK_ID"
 
 # Your script has 2 arguments: the input file and the output file
 input_filename="my_input_file.nc"
@@ -421,10 +453,11 @@ R CMD BATCH --vanilla "--args ${input_filename} ${output_filename}" my_analysis.
 mv ${output_filename} ${MY_PROJ_DIR}
 ```
 
-## Running a script using GPU on `meso@lr`
-To run a script using GPU on `meso@lr`, you need a little bit more tweaking (while it might be easier on adastra for example).
+## Running a script using GPU on `IO - ISDM-Meso`
 
-By default, if you install a package that requires GPU, it will not work on `meso@lr` because the GPU is not available on the login node. You first need to install your package on a GPU compute node.
+To run a script using GPU on `IO - ISDM-Meso`, you need a little bit more tweaking (while it might be easier on adastra for example).
+
+By default, if you install a package that requires GPU, it will not work on `IO` because the GPU is not available on the login node. You first need to install your package on a GPU compute node.
 
 > warning
 > To run a script on a GPU node, please add the following to your `sbatch` scripts:
@@ -486,4 +519,3 @@ python -c "
 import torch
 print(torch.cuda.is_available())"
 ```
-
