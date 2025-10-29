@@ -25,3 +25,154 @@ Hints on how to install R packages on a shared cluster <https://www.pik-potsdam.
 # Working with R
 <https://ericmarcon.github.io/travailleR/>
 
+# Julia resources
+
+As a rule of thumb, many resources pre-2021 or so are likelier to contain outdated content. 
+
+The Julia section is not perfectly curated ; not all links listed here are duplicated with their related sections on this website (eg the [Documentation](documentation.qmd#julia-users) section has different compared to the small subsection [below](resources.qmd#documentation)). Some links also cover multiple topics.
+
+## General resources
+
+### Forums
+
+The Discourse forums are very active and include many of the core Julia package and language developers. Most well-posed questions are answered quite promptly.
+
+<https://discourse.julialang.org/>
+
+### Julia docs
+
+The Julia docs contain introductory sections on most topics, as well as an overview of the available features in the Base package and standard library. They are usually tailored for developers and drier than other resources, but quite in-depth.
+
+<https://docs.julialang.org/en/v1/>
+
+### The Julia programming language Youtube channel
+
+This channel aggregates a good proportion of noteworthy talks and conferences on the language, its uses, future developments, package management, specific applications...
+
+It is worth checking out if you are working on a specific topic, you might find a couple of related talks, and worth keeping an eye on as a developer.
+
+<https://www.youtube.com/@TheJuliaLanguage>
+
+### Books
+
+There are several Julia books in the lab (you might need to check Julia developers' desks) :
+
+Julia for Data Analysis (Bogumil Kaminski)
+Hands-On Design Patterns and Best Practices with Julia (Tom Kwong)
+Practical Julia
+
+Some might have become partially outdated within a few years, but the more recent ones remain valid.
+
+## Overviews and tutorial series
+
+### Quick overviews
+
+This three-part series by Guillaume Dalle is well-written if you are a developer in need of a quick refresher, or looking for relevant keywords regarding a specific topic.  
+https://modernjuliaworkflows.org/writing/
+https://modernjuliaworkflows.org/sharing/
+https://modernjuliaworkflows.org/optimizing/
+
+An overview of options for code quality, testing, ... :
+https://scientificcoder.com/automate-your-code-quality-in-julia
+
+## Julia tutorial series
+
+A 20-part series, which should be aimed at people with only basic programming knowledge
+https://techytok.com/julia-vscode/
+
+Another couple of courses, "Julia for Machine Learning" and "Introduction to Scientific Programming and Machine Learning with Julia". The first contains some sections on the basics of the language, and some extensive workflow tutorials, including setting up a package, testing and documenting it, common mistakes. The second has a section on the basics, with quizes, sections related to scientific computing and machine learning, and a 'Further topics sections', which also contains examples of [how to interface Julia with other languages](https://sylvaticus.github.io/SPMLJ/stable/01_-_JULIA1_-_Basic_Julia_programming/0106_-_Further_topics.html#Interfacing-with-other-languages). That course evolved from another course more focused on the basics, which you can find [here](https://syl1.gitbook.io/julia-language-a-concise-tutorial)
+
+https://adrianhill.de/julia-ml-course/
+https://sylvaticus.github.io/SPMLJ/stable/
+
+Rémi Vézy, a researcher at AMAP, also started a [video series](https://www.youtube.com/watch?v=ZZJJgQ2IzQQ&list=PLLiJ249IkzRFxZGALbKy75_ZyHxYCUmuk) (incomplete) presenting the basics of the Julia language.
+
+### Exercises
+
+Online exercises, with other users' solutions made available after an exercise is completed. Julia has a rich syntax with many operators and plenty of different ways of accomplishing the same task (some more verbose, less flexible, more obscure, ...), which can make learning the language's extensive features quite slow at first. Being able to compare your code with alternative solutions can help learn new keywords.
+https://exercism.org/tracks/julia
+
+There are other websites providing exercises to learn Julia, but exercism is one that has been used by learners at AMAP.
+
+### Cheatsheet
+
+https://cheatsheet.juliadocs.org/
+
+## Specific topics and tooling
+
+Note : Most of the resources posted in the [overview and tutorials](resources.qmd#overviews-and-tutorial-series) section will also cover some of the following topics, so make sure to check them out as well.
+
+### Package development/deployment
+
+https://jaantollander.com/post/how-to-create-software-packages-with-julia-language
+https://julialang.org/contribute/developing_package/
+
+### CI/CD
+
+See the related [CI/CD](ci_cd.qmd#examples-for-a-julia-package) section
+https://medium.com/analytics-vidhya/an-introduction-to-continuous-integration-github-actions-for-julia-1a5a1a6e64d6
+
+### VSCode
+
+https://code.visualstudio.com/docs/languages/julia
+
+The extension's documentation has sections on editing, formatting, profiling, debugging and other topics :
+https://www.julia-vscode.org/docs/stable/
+
+
+The 'Running Code' and 'Environments' pages are especially important to read when starting out to avoid confusing issues :
+https://www.julia-vscode.org/docs/stable/userguide/runningcode/
+https://www.julia-vscode.org/docs/stable/userguide/env/
+
+## Style guide
+
+https://docs.julialang.org/en/v1/manual/style-guide/
+
+## Performance 
+
+Most of these links have some redundancy, but Julia has some specific language quirks that require specific tools for keeping good performance. Multiple examples can help understanding.
+
+https://docs.julialang.org/en/v1/manual/performance-tips/
+https://gdalle.github.io/JuliaPerf-CERMICS/
+https://gdalle.github.io/JuliaOptimizationDays2023/performance.html
+https://modernjuliaworkflows.org/optimizing/
+https://www.juliafordatascience.com/performance-tips/
+
+Relevant manual sections for parallelism : 
+https://docs.julialang.org/en/v1/manual/multi-threading/
+https://docs.julialang.org/en/v1/manual/distributed-computing/
+
+## Testing/deploying
+
+https://blog.glcs.io/package-testing
+https://www.youtube.com/watch?v=fQJrEQIRPZU : Maintaining large-scale Julia ecosystems
+https://github.com/JuliaTesting/Aqua.jl?tab=readme-ov-file Aqua.jl
+
+## Documentation 
+
+https://medium.com/coffee-in-a-klein-bottle/creating-and-deploying-your-julia-package-documentation-1d09ddc90474
+
+## Workflow tips
+
+Some of the points here are not so relevant to VSCode users (Revise is available by default, for instance)
+https://kdheepak.com/blog/julia-workflow-tips-and-tricks/
+
+## Revise.jl (details for those not using Visual Studio Code)
+
+https://timholy.github.io/Revise.jl/stable/
+
+## Metaprogramming and World-age issues
+
+Metaprogramming is a large topic in Julia. `eval()` has subtleties and pitfalls. No related links listed here yet.
+
+https://docs.julialang.org/en/v1.12.0-rc2/manual/worldage/ (new section in the manual)
+https://discourse.julialang.org/t/running-in-world-age-x-while-current-world-is-y-errors/5871/4
+https://arxiv.org/pdf/2010.07516 : Paper discussing world-age implementation
+
+## Debugging 
+
+https://techytok.com/lesson-workflow/
+
+## Type stability
+
+https://blog.sintef.com/industry/writing-type-stable-julia-code/
