@@ -202,6 +202,22 @@ def sample_data():
 def test_my_function_with_fixture(sample_data):
     assert my_function(sample_data) == 6
 ```
+# Julia users
+
+Julia has a standardised way of setting up tests using the `Test.jl` package. There are extensions (and alternatives for VSCode such as `testitem` practices).
+
+The general workflow is the following:
+
+- Add a `test` folder to your directory root
+- Activate that folder to create a test-specific environment and add the `Test` package to it
+- Write your test functions within that folder
+- Add a `runtests.jl` file to the `test` folder
+- Activate that folder ; documentation will have its own environement. Add `Documenter` as a dependency and whatever packages you might need.
+-  Note : When iterating on your code, you might want to test against your local version instead of a released version. You will need to `develop` or `Pkg.develop` your package instead of adding it with `add` or `Pkg.add`.
+- Add one or multiple `@testset`, which group tests together for legibility and compartimentalisation, and write your true/false tests within each `@testset` with the `@test` macro.
+- You can then run these tests manually by running the `runtests.jl` script, calling `Pkg.test()`, or add it to your CI/CD with a CI.yml file that makes use of the `julia-actions/julia-runtest` Github Action.
+
+JET, Ctuhlu, Aqua, etc
 
 # Take away messages
 
@@ -220,19 +236,3 @@ def test_my_function_with_fixture(sample_data):
 ## Run your tests automatically
 
 See [CI/CD page](ci_cd.qmd) to make GitHub run your tests for you ! Every time you push a commit (or any other action, depending on your configuration), GitHub will run your tests and report the results.
-
-# Julia users
-
-Julia has a standardised way of setting up tests using the `Test.jl` package. There are extensions (and alternatives for VSCode such as `testitem` practices).
-
-The general workflow is the following:
-- Add a `test` folder to your directory root
-- Activate that folder to create a test-specific environment and add the `Test` package to it
-- Write your test functions within that folder
-- Add a `runtests.jl` file to the `test` folder
-- Activate that folder ; documentation will have its own environement. Add `Documenter` as a dependency and whatever packages you might need.
--  Note : When iterating on your code, you might want to test against your local version instead of a released version. You will need to `develop` or `Pkg.develop` your package instead of adding it with `add` or `Pkg.add`.
-- Add one or multiple `@testset`, which group tests together for legibility and compartimentalisation, and write your true/false tests within each `@testset` with the `@test` macro.
-- You can then run these tests manually by running the `runtests.jl` script, calling `Pkg.test()`, or add it to your CI/CD with a CI.yml file that makes use of the `julia-actions/julia-runtest` Github Action.
-
-JET, Ctuhlu, Aqua, etc
