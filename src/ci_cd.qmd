@@ -10,7 +10,7 @@ You configure one or more development tasks to execute automatically when certai
 
 Even for a solo developer, having R CMD check run remotely, possibly on a couple of different operating systems, is a mighty weapon against the dreaded “works on my machine” problem.
 
-We recommand using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc... that are good too.
+We recommend using GitHub Actions for CI/CD which is free (for now) and with a lot of pre-existing actions available for the community. However, you can also use other CI/CD tools like Travis CI, CircleCI, Jenkins, etc... that are good too.
 
 If your project is hosted on `Gitlab`, you can use `Gitlab CI/CD` which is similar to GitHub Actions. However, this feature is currently not available at CIRAD nor IRD instances. Don't know yet about INRAE.
 
@@ -73,3 +73,27 @@ Here are your logs !
   - *pkgdown:* Deploy website or vignette with Github pages `usethis::use_pkgdown_github_pages()`,
 
   - *pr-commands:* Add /document and /style commands for pull requests.
+
+## Examples for a Julia package
+
+The general flow of a .yml workflow file is the following :
+- Define your action, name it, determine when it runs
+- Define a matrix of OS environments, julia versions and other custom options (environment variables, ...) for your action, to be distributed across runners.
+- List the Github Actions to be used in succession and their settings
+- Write the steps for your own action
+
+You can make use of existing Github Actions for several of these stages. Many commonly used actions can be found on the [julia-actions](https://github.com/julia-actions) repository. For instance, `julia-buildpkg` is an action that will take care of building your package on a runner (provided its files have been downloaded, which you can do beforehand via the `checkout` action).
+
+Other Github CI-related tools can be found [here](https://github.com/JuliaCI).
+
+Typically, you will usually wish at the beginning to checkout a Julia version and set it up, build your package if you wish to run it, possibly launch Julia with options via a script, and at the end run some additional actions (code coverage tests, saving some output to a file, creating a pull request, ...)
+
+You can find examples of CI/CD workflows of a Julia package developed at AMAP, PlantSimEngine, [here](https://github.com/VirtualPlantLab/PlantSimEngine.jl/blob/main/.github/workflows) that combine several actions for a given purpose :
+- CI.yml launches PlantSimEngine's tests on different environments
+- Integration.yml runs tests of packages that depend on PlantSimEngine (XPalm and PlantBioPhysics), to ensure that breaking changes aren't accidentally introduced in those packages.
+- Benchmarks.yml runs some benchmarks and reports its results on Github, making it straightforward to notice a performance regression when integrating changes
+- CompatHelper.yml, TagBot.yml, register.yml and dependabot.yml are all related to package deployment, and updating.
+
+Additional links : 
+https://medium.com/analytics-vidhya/an-introduction-to-continuous-integration-github-actions-for-julia-1a5a1a6e64d6
+https://jaantollander.com/post/how-to-create-software-packages-with-julia-language/#github-pages-and-actions
