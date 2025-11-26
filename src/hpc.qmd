@@ -20,16 +20,16 @@ There are many cases where you might need to use HPC resources.
 Let's say you have an analysis that you performed on a single plot, on one year. You want to extend this analysis to all the plots and all the years of your study.
 You'll probably find yourself in this type of situation:
 ```{r}
-plots <- c('P01', 'P02', ...)
+plots <- c("P01", "P02", ...)
 years <- c(2000, 2001, ...)
 
 for (plot in plots) {
-    for (year in years) {
-        data <- get_data(plot, year)
-        data <- preprocess_data(data, arguments...)
-        results <- run_analysis(data, arguments...)
-        write_results(results, plot, year)
-    }
+  for (year in years) {
+    data <- get_data(plot, year)
+    data <- preprocess_data(data, arguments...)
+    results <- run_analysis(data, arguments...)
+    write_results(results, plot, year)
+  }
 }
 ```
 This will require you to run the same analysis many times. If the analysis is long to run, all the analyses being independant, you might want to use HPC to run all the simulations in parallel.
@@ -49,9 +49,9 @@ write_results(results, plot, year)
 and then launch the script concurrently for all the plots and years using [`Rscript`](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/Rscript) and [`xargs`](https://www.man7.org/linux/man-pages/man1/xargs.1.html) :
 ```bash
 for plot in P01 P02 ...; do
-    for year in 2000 2001 ...; do
-        echo $plot $year
-    done
+  for year in 2000 2001 ...; do
+     echo $plot $year
+  done
 done | xargs -n 2 -P 4 Rscript my_script.R
 ```
 
@@ -93,7 +93,7 @@ Hosted at [CINES](https://www.cines.fr/), this regional Meso-center [`IO` - for 
 
 #### Description of the cluster
 
-Main specifications of `IO - ISDM-Meso` are descrbed at the [dedicated section of the documentation website](https://docs.meso.umontpellier.fr/fr/HPC/CLUSTER/cluster-io-specifications).
+Main specifications of `IO - ISDM-Meso` are descrbed at the [dedicated section of the documentation website](https://docs.meso.umontpellier.fr/fr/HPC/CLUSTER/cluster-io-specifications). Some additional specific to usage at CIRAD can be found in the [dedicated documentation](https://agap.gitlab.cirad.fr/cluster/documentation/).
 
 
 #### How to open an account
@@ -405,13 +405,11 @@ We refer to `SLURM` documentation to see all the options available, but we list 
 #### Different partitions available
 Different types of resources are available on the cluster, as listed in @sec-io:
 
-- __CPU__ node. Partition name : `agap_long`, `agap_normal`, `agap_short`
+- __CPU__ node. Partition name : `dedicated-cpu@cirad`, `dedicated-cpu@cirad-normal`, `dedicated-cpu@cirad-long`
 
-- __GPU__ node. Partition name : `agap_gpu`
+- __GPU__ node. Partition name : `dedicated-cpu@cirad-gpu`
 
-- __Big memory__ node. Partition name : `agap_bigmem`
-
-You can find the list of partitions available on the cluster with the command `sinfo` (including time limits and number of nodes available).
+You can find the list of partitions available on the cluster with the command `sacctmgr show assoc user=$(whoami) format=User,Account%30,DefaultQOS%30,QOS%75`.
 
 # Concrete examples
 Here is a very simple script that you can adapt to your needs. You can fill additional `SLURM` options, and also the modify the call to your script.
